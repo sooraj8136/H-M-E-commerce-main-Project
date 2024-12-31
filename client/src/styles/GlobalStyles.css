@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Urbanist", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.home {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.login {
+    margin-top: 100px
+}
+
+.final-font {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.signup {
+    text-align: center;
+    color: black;
+}
+
+.signup a {
+    text-align: center;
+    color: black;
+}
+
+.signup-first-btn {
+    max-width: 400px;
+    width: 200px;
+    padding: 10px 20px;
+    margin: 0 auto;
+}
+
+.nav-sec-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+    gap: 20px;
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 225px;
+    border-bottom: 1px solid black;
+}
+
+.search {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 6px 8px;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.search-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+}
+
+.first-header-sec {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.imageTag {
+    align-items: center;
+}
+
+.cart {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.footer {
+    color: black;
+    margin-top: 50px;
+}
+
+.footer-text {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.read-more-text {
+    color: black;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.footer-align-sec {
+    text-align: center;
+}
+
+.footer-img {
+    margin: 20px;
+}
+
+.footer-final-text-1 {
+    text-align: center;
+    margin: 40px 0px;
+    font-size: small;
+    font-weight: 500;
+}
+
+.footer-final-text-2 {
+    text-align: center;
+    margin: 40px 0px;
+}
+
+.footer-title {
+    font-size: small;
+    font-weight: bolder;
+}
+
+.list {
+    font-size: x-small;
+    font-weight: 500;
+}
+
+.footer-cap {
+    font-size: small;
+    font-weight: 550;
+}
+
+.submit-btn {
+    color: white;
+}
+
+.navlinks {
+    margin: 30px 0px;
+}
+
+.navlinks li {
+    font-weight: 600;
+}
+
+.carousel-caption h3 {
+    font-size: 2rem;
+}
+
+.carousel-caption p {
+    font-size: 1rem;
+}
+
+.product-card {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn {
+    max-width: 400px;
+    width: 200px;
+    padding: 10px 20px;
+    margin: 0 auto;
+}
+
+.pass-input {
+    max-width: 400px;
+    width: 200px;
+    padding: 10px 20px;
+    margin: 0 auto;
+}
+
+.card-title {
+    text-decoration: none;
+}
+
+.dark-theme {
+    margin: 20px;
+}
+
+.widget {
+    margin: 0 auto;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+.widget-text-1 {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.widget-text-2 {
+    font-size: xx-large;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-item {
+    text-align: center;
+}
+
+.product-item img {
+    max-width: 200px;
+    height: auto;
+}
+
+.preppy-btn {
+    padding: 20px 10px;
+}
+
+.ladies-clothing-cap {
+    margin: 50px 0px;
+}
+
+.ladies-clothing-cap h3 {
+    font-weight: 700;
+    font-size: medium;
+}
+
+.ladies-clothing-cap p {
+    font-weight: 500;
+    font-size: small;
+}
+
+.sales-text {
+    margin: 80px 0px;
+}
+
+.sales-text h1 {
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.sales-text p {
+    font-weight: 400;
+}
+
+.responsive-img-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+  
