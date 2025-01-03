@@ -19,7 +19,7 @@ function userLayout() {
     const location = useLocation()
 
     const { isUserAuth } = useSelector((state) => state.user)
-    const dispatch =useDispatch()
+    const dispatch = useDispatch()
 
     const checkUser = async () => {
         try {
@@ -27,17 +27,16 @@ function userLayout() {
                 method: "GET",
                 url: "/user/check-user",
             });
-          
+
             console.log(response, "=====checkUser");
             dispatch(saveUser())
         } catch (error) {
-            console.log(error); 
+            console.log(error);
             dispatch(clearUser())
-          
         }
     };
 
-    console.log("isuserAuth : - ", isUserAuth );
+    console.log("isuserAuth : - ", isUserAuth);
 
     useEffect(() => {
         checkUser();
@@ -45,9 +44,9 @@ function userLayout() {
 
     return (
         <>
-            {isUserAuth ? <UserHeader /> : <Header />}  
+            {isUserAuth ? <UserHeader /> : <Header />}
             <Outlet />
-            {isUserAuth ? <UserFooter /> : <Footer />} 
+            {isUserAuth ? <UserFooter /> : <Footer />}
         </>
     )
 }

@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 function SellerHeader() {
 
     const { darkMode } = useSelector((state) => state.mode)
-    console.log(darkMode)
 
     return (
         <>
@@ -28,20 +27,23 @@ function SellerHeader() {
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
                                     Seller Service
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
+                                <Nav.Link href="" className= {darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
                             </Nav>
                             <span>
                                 <DarkMode />
                             </span>
                             <ul className="nav justify-content-center">
                                 <li className="nav-item ">
-                                    <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"}>dashboard</Nav.Link>
+                                    <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-link"}>dashboard</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
-                                    <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"}>Manage Product</Nav.Link>
+                                    <Nav.Link href="/seller/seller-product" className={darkMode ? "text-black" : "text-white nav-link"}>Manage Product</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
-                                    <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"}>Orders</Nav.Link>
+                                    <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-link"}>Orders</Nav.Link>
+                                </li>
+                                <li className="nav-item ">
+                                    <Nav.Link href="/seller/profile" className={darkMode ? "text-black" : "text-white nav-link"}>Profile</Nav.Link>
                                 </li>
                             </ul>
                             <div className="search">
@@ -77,33 +79,8 @@ function SellerHeader() {
                         alt="Responsive image"
                     />
                 </div>
-                {/* <section className="navlinks">
-                    <div>
-                        <ul className="nav justify-content-center">
-                            <li className="nav-item ">
-                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"}>Sales</Nav.Link>
-                            </li>
-                            <li className="nav-item ">
-                                <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"}>Ladies</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/men-page" className={darkMode ? "text-black" : "text-white nav-link"}>Men</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"}>Kids</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"}>Home</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/contact" className={darkMode ? "text-black" : "text-white nav-link"}>Contact</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/product" className={darkMode ? "text-black" : "text-white nav-link"}>Products</Nav.Link>
-                            </li>
-                        </ul>
-                    </div>
-                </section> */}
+                <section className="navlinks">
+                </section>
             </header>
         </>
     )

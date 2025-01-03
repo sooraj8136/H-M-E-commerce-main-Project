@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 function Footer() {
 
     const { darkMode } = useSelector((state)=> state.mode)
-    console.log(darkMode)
 
     return (    
         <footer className="main-footer">

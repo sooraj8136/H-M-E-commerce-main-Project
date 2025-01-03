@@ -19,7 +19,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Data  :- ", data);
+      console.log("Data  :- ",  data);
 
       const response = await axiosInstance({ method: "POST", url: user.login_api, data });
       console.log(response, "====response");

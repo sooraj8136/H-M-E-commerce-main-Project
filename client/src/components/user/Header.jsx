@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 function Header() {
 
     const { darkMode } = useSelector((state) => state.mode)
-    console.log(darkMode)
 
     return (
         <>

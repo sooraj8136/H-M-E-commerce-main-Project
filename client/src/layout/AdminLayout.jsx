@@ -9,6 +9,7 @@ import Header from '../components/user/Header';
 import Footer from '../components/user/Footer';
 
 function AdminLayout() {
+
     const { darkMode } = useSelector((state) => state.mode);
 
     useEffect(() => {
@@ -16,7 +17,8 @@ function AdminLayout() {
     }, [darkMode]);
 
     const location = useLocation();
-    const { isAdminAuth } = useSelector((state) => state.admin); // Assuming admin slice
+
+    const { isAdminAuth } = useSelector((state) => state.admin); 
     const dispatch = useDispatch();
 
     const checkAdmin = async (req, res) => {
@@ -27,7 +29,7 @@ function AdminLayout() {
             });
 
             console.log(response, "=====checkAdmin");
-            dispatch(saveAdmin()); // Assuming saveAdmin stores admin data
+            dispatch(saveAdmin()); 
         } catch (error) {
             console.log(error);
             dispatch(clearAdmin()); 

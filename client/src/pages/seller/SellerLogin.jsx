@@ -7,13 +7,13 @@ import toast from "react-hot-toast";
 
 const SellerLogin = () => {
   const { darkMode } = useSelector((state) => state.mode);
-
+  
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();   
 
   const seller = {
     login_api: "/seller/login-seller",
-    profile_route: "/seller/profile",
+    profile_route: "/seller/seller-home",
     signup_route: "/seller/signup",
   };
 

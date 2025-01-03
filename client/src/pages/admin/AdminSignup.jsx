@@ -23,7 +23,7 @@ function AdminSignup() {
             toast.error("Sign-up failed. Please try again.");
             console.log(error);
         }
-    };
+    };  
 
     return (
         <>

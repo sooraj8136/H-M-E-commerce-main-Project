@@ -92,25 +92,60 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+// const updateProduct = async (req, res) => {
+
+//     try {
+
+//         const productId = req.params.id
+
+//         const savedProduct = await productDb.findByIdAndUpdate(productId, req.body, { new: true }).select("-password")
+
+//         if (!savedProduct) {
+//             return res.status(400).json({ message: "Sorry, Product not updated" })
+//         }
+
+//         res.status(200).json({ message: "Product updated successfully", data: savedProduct })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
+//     }
+// }
+
+
 const updateProduct = async (req, res) => {
-
     try {
+        const productId = req.params.id;
+        const { image, title, price, description, category } = req.body;
+        const updateFields = {};
 
-        const productId = req.params.id
+        if (image !== undefined && image !== "") updateFields.image = image; 
+        if (title !== undefined && title !== "") updateFields.title = title;
+        if (price !== undefined && price !== null) updateFields.price = price;
+        if (description !== undefined && description !== "") updateFields.description = description;
+        if (category !== undefined && category !== "") updateFields.category = category;
 
-        const savedProduct = await productDb.findByIdAndUpdate(productId, req.body, { new: true }).select("-password")
-
-        if (!savedProduct) {
-            return res.status(400).json({ message: "Sorry, Product not updated" })
+        if (Object.keys(updateFields).length === 0) {
+            return res.status(400).json({ message: "No valid fields to update" });
         }
 
-        res.status(200).json({ message: "Product updated successfully", data: savedProduct })
+        const savedProduct = await productDb.findByIdAndUpdate(productId, updateFields, { new: true }).select("-password");
+
+        if (!savedProduct) {
+            return res.status(400).json({ message: "Sorry, Product not updated" });
+        }
+
+        res.status(200).json({ message: "Product updated successfully", data: savedProduct });
 
     } catch (error) {
-        console.log(error)
-        res.status(error.status || 500).json({ error: error.message || "Internal server error" })
+        console.log(error);
+        res.status(error.status || 500).json({ error: error.message || "Internal server error" });
     }
-}
+};
+
+
+
+
 
 const productCategory = async (req, res) => {
 

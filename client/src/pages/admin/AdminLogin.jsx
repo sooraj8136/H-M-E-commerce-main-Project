@@ -12,9 +12,9 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   const admin = {
-    login_api: "/admin/admin-login", // Endpoint for admin login
-    profile_route: "/admin/profile", // Redirect to dashboard after login
-    signup_route: "/admin/signup", // Link to admin registration page
+    login_api: "/admin/admin-login", 
+    profile_route: "/admin/profile", 
+    signup_route: "/admin/signup",
   };
 
   const onSubmit = async (data) => {
@@ -24,7 +24,7 @@ const AdminLogin = () => {
       const response = await axiosInstance({ method: "POST", url: admin.login_api, data });
       console.log(response, "====response");
       toast.success("Admin log-in success");
-      navigate(admin.profile_route); // Navigate to the admin dashboard
+      navigate(admin.profile_route); 
     } catch (error) {
       toast.error("Admin log-in failed");
       console.log(error);

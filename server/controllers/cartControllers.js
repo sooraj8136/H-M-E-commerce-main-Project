@@ -74,33 +74,38 @@ const removeProductFromCart = async (req, res) => {
         const userId = req.user.id;
         const { productId } = req.body;
 
-
+        
         let cart = await cartDb.findOne({ userId });
         if (!cart) {
             return res.status(404).json({ message: "Cart not found" });
         }
 
-        const productToRemove = cart.products.find((item) => item.productId.equals(productId));
-        if (productToRemove.count === 0) {
-            return res.status(404).json({ message: "Sorry, Product not found in cart" });
+        const productIndex = cart.products.findIndex((item) => item.productId.equals(productId));
+        if (productIndex === -1) {
+            return res.status(404).json({ message: "Product not found in cart" });
         }
 
-        if(productToRemove.count > 0){
+        const productToRemove = cart.products[productIndex];
+
+        if (productToRemove.count > 1) {
             productToRemove.count -= 1
-        }
-        else{
-            cart.products.splice(1);
+        } else {
+            cart.products.splice(productIndex, 1) 
         }
 
-        cart.calculateTotalPrice();
+        if (typeof cart.calculateTotalPrice === "function") {
+            cart.calculateTotalPrice() 
+        }
 
         await cart.save();
 
-        res.status(200).json({ message: "cart item removed", data: cart });
+        res.status(200).json({ message: "Cart item removed successfully", data: cart });
     } catch (error) {
-        res.status(500).json({ message: "Internal server error", error });
+        console.error("Error removing product from cart:", error);
+        res.status(500).json({ message: "Internal server error", error })
     }
 };
+
 
 
 const clearCart = async (req, res) => {

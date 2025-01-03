@@ -6,7 +6,7 @@ import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 
 function SellerSignup() {
-    
+
   const { darkMode } = useSelector((state) => state.mode);
 
   const { register, handleSubmit } = useForm();

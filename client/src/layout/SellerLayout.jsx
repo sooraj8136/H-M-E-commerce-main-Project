@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import Header from '../components/user/Header';
-import Footer from '../components/user/Footer';
+
 import { Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { axiosInstance } from '../config/axiosInstance';
 import { clearSeller, saveSeller } from '../redux/features/sellerSlice';
 import SellerHeader from '../components/seller/SellerHeader';
 import SellerFooter from '../components/seller/SellerFooter';
+import Header from '../components/user/Header';
+import Footer from '../components/user/Footer';
 
 function SellerLayout() {
     
@@ -21,7 +22,7 @@ function SellerLayout() {
     const { isSellerAuth } = useSelector((state) => state.seller);
     const dispatch = useDispatch();
 
-    const checkSeller = async () => {
+    const checkSeller = async (req, res) => {
         try {
             const response = await axiosInstance({
                 method: "GET",

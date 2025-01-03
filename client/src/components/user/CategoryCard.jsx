@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import Nav from "react-bootstrap/Nav";
 
-function CategoryCard({ product }) { // Destructure the `product` prop
+function CategoryCard({ product }) { 
 
     const { darkMode } = useSelector((state) => state.mode);
     console.log(darkMode);

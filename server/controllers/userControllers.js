@@ -94,11 +94,11 @@ const userProfile = async (req, res) => {
         const user = await userDb.findById(userId).select("-password")
 
         if(!user){
-            res.status(404).json({message: "Sorry, user not found"})
+            return res.status(404).json({message: "Sorry, user not found"})
         }
 
         if(!user.isActive){
-            res.status(404).json({message: "Sorry, user deactivated"})
+            return res.status(404).json({message: "Sorry, user deactivated"})
         }
 
         res.status(200).json({ message: "User profile fetched", data: user })

@@ -40,7 +40,7 @@ function ProductList() {
         <>
             <Container>
                 
-                <h1 style={{fontWeight: "800", fontSize: "medium", maxWidth: "800px"}}> Best of {category} collection</h1>
+                {/* <h1 style={{fontWeight: "800", fontSize: "medium", maxWidth: "800px"}}> Best of {category} collection</h1> */}
                 
                 <Row>
                     {products?.map((productsArray) => (

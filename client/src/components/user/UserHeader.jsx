@@ -15,7 +15,7 @@ function UserHeader() {
     return (
         <>
             <header>
-                <h4>Auth User</h4>
+                {/* <h4>Auth User</h4> */}
                 <Navbar
                     expand="lg"
                     className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
@@ -37,7 +37,7 @@ function UserHeader() {
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
                                     <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/cart" className={darkMode ? "text-black" : "text-white"}>Shopping bag</Nav.Link>
+                                        <Nav.Link href="/user/cart" className={darkMode ? "text-black" : "text-white"}>Shopping bag</Nav.Link>
                                     </div>
                                     <div className="nav-sec-2 d-flex">
                                         <Nav.Link href="/wishlist" className={darkMode ? "text-black" : "text-white"}>Favourites</Nav.Link>
