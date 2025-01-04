@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { axiosInstance } from '../../config/axiosInstance';
 import { loadStripe } from "@stripe/stripe-js";
 
+
 function Cart() {
 
     const [productDetails, error] = useFetch("/cart/get-cart")
@@ -37,14 +38,14 @@ function Cart() {
             });
 
             console.log(session, "=======session");
-            const result = stripe.redirectToCheckout({
+            const result = stripe.redirectToCheckout({                                 
                 sessionId: session.data.sessionId,
             });
         } catch (error) {
             console.log(error);
         }
     };
-    
+
 
     return (
         <div className="">  

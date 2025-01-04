@@ -30,6 +30,8 @@ import UpdateProduct from '../pages/seller/UpdateProduct';
 import SellerProductsPage from '../pages/seller/SellerProductPage';
 import SellerProductDetails from '../pages/seller/SellerProductDetails';
 import SellerHomePage from '../pages/seller/SellerHomePage';
+import OrderList from '../pages/user/OrderList';
+import PaymentSuccess from '../pages/user/PaymentSuccess';
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +98,14 @@ export const router = createBrowserRouter([
           {
             path: 'profile',
             element: <ProfilePage />,
+          },
+          {
+            path: 'orders',
+            element: <OrderList />,
+          },
+          {
+            path: 'payment-success',
+            element: <PaymentSuccess />,
           },
           {
             path: 'wishlist',

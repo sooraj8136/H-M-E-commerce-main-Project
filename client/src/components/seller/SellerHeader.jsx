@@ -34,7 +34,7 @@ function SellerHeader() {
                             </span>
                             <ul className="nav justify-content-center">
                                 <li className="nav-item ">
-                                    <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-link"}>dashboard</Nav.Link>
+                                    <Nav.Link href="/seller/seller-home" className={darkMode ? "text-black" : "text-white nav-link"}>dashboard</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
                                     <Nav.Link href="/seller/seller-product" className={darkMode ? "text-black" : "text-white nav-link"}>Manage Product</Nav.Link>

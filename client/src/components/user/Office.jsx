@@ -24,7 +24,7 @@ function Office() {
                                     top: "50%",
                                     transform: "translateY(-70%)",
                                 }}>
-                                <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>The office edit</h2>
+                                <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>Classic silhouettes</h2>
                                 <div style={{
                                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                                     textAlign: "center",

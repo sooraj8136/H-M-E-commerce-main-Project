@@ -1,10 +1,15 @@
 import React from 'react';
 import { useFetch } from '../../hooks/useFetch';
+import Nav from "react-bootstrap/Nav";
+import { useSelector } from 'react-redux';
 
 function ProfilePage() {
 
+  const { darkMode } = useSelector((state) => state.mode)
+  console.log(darkMode)
+
   const [profileData, isLoading, error] = useFetch('/user/profile');
-  
+
   console.log("Profile Data :- ", profileData);
 
   if (isLoading) {
@@ -24,7 +29,14 @@ function ProfilePage() {
         <h2>{profileData?.mobile}</h2>
         <img src={profileData?.profilePic} alt="Profile" />
       </div>
-      <button>Log out</button>
+      <button>Sign out</button>
+      <div>
+        <button>
+          <div className="nav-sec-2 d-flex">
+            <Nav.Link href="/user/orders" className={darkMode ? "text-black" : "text-white"}>My orders</Nav.Link>
+          </div>
+        </button>
+      </div>
     </>
   );
 }

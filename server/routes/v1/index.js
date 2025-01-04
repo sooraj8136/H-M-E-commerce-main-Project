@@ -4,6 +4,7 @@ const userRouter = require('./userRoutes')
 const sellerRouter = require("./sellerRoutes")
 const cartRouter = require('./cartRoutes')
 const paymentRouter = require('./paymentRoutes')
+const orderRouter = require('./orderRotes')
 
 const v1Router = require('express').Router()
 
@@ -13,5 +14,6 @@ v1Router.use("/admin", adminRouter)
 v1Router.use("/seller", sellerRouter)
 v1Router.use("/cart", cartRouter)
 v1Router.use("/payment", paymentRouter)
+v1Router.use("/orders", orderRouter)
 
 module.exports = v1Router

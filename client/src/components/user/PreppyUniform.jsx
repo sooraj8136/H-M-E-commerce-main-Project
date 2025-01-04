@@ -16,7 +16,7 @@ function PreppyUniform() {
                             }}
                         >
                             <img
-                                src="https://media.alshaya.com/adobe/assets/urn:aaid:aem:84eb0ed2-2c2c-4b98-ae44-582719d0d02a/as/DS60F-3x2.jpg?preferwebp=true&width=750&format=jpg"
+                                src="https://image.hm.com/content/dam/global_campaigns/season_00/divided/ds11a/DS11A-3x2-1.jpg?imwidth=1536"
                                 className="img-fluid"
                                 alt="Sample"
                                 style={{
@@ -31,7 +31,7 @@ function PreppyUniform() {
                                     transform: "translateY(-70%)",
                                 }}
                             >
-                                <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>Preppy update</h2>
+                                <h2 style={{ fontWeight: "bold", fontSize: "30px", color: 'black' }}>Preppy finds</h2>
                                 <div
                                     style={{
                                         backgroundColor: "rgba(0, 0, 0, 0.5)",

@@ -39,9 +39,6 @@ function ProductList() {
     return (
         <>
             <Container>
-                
-                {/* <h1 style={{fontWeight: "800", fontSize: "medium", maxWidth: "800px"}}> Best of {category} collection</h1> */}
-                
                 <Row>
                     {products?.map((productsArray) => (
                         <Col key={productsArray._id} xs="12" sm="6" md="4" lg="4" xl="3" xxl="3">
