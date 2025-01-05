@@ -10,20 +10,20 @@ import Office from '../../components/user/Office'
 function LadiesPage() {
 
     const { darkMode } = useSelector((state) => state.mode)
-        console.log(darkMode)
+    console.log(darkMode)
 
     return (
         <>
 
             <Container>
-                    <div className="container  d-flex justify-content-center align-items-center">
-                        <p className={darkMode ? "text-black" : "text-white "}>H&M / <span className='text-danger' style={{
-                            fontWeight: "700",
-                        }}>Ladies</span></p>
-                    </div>
+                <div className="container  d-flex justify-content-center align-items-center">
+                    <p className={darkMode ? "text-black" : "text-white "}>H&M / <span className='text-danger' style={{
+                        fontWeight: "700",
+                    }}>Ladies</span></p>
+                </div>
                 <HomeWidget />
                 <LadiesProducts />
-                <Office/>
+                <Office />
                 <Accessories />
                 <PreppyUniform />
                 <div className='ladies-clothing-cap'>

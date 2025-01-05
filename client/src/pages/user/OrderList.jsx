@@ -1,62 +1,82 @@
 import React, { useEffect, useState } from "react";
+import { axiosInstance } from "../../config/axiosInstance";
+import { useSelector } from 'react-redux';
 
 const OrderList = () => {
-  const [orders, setOrders] = useState([]);
-  const [error, setError] = useState("");
 
-  // Retrieve userId dynamically from local storage
-  const userId = localStorage.getItem("userId"); // Ensure "userId" is the correct key
-  console.log("Retrieved User ID:", userId);
+  const { darkMode } = useSelector((state) => state.mode)
+  console.log(darkMode)
+
+  const [orders, setOrders] = useState([]);
+
+  const fetchOrderDetails = async () => {
+    try {
+      const response = await axiosInstance({
+        method: "GET",
+        url: "/orders/get-orders",
+      });
+
+      setOrders(response?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchOrders = async () => {
-      if (!userId) {
-        setError("User ID not found. Please log in.");
-        return;
-      }
+    fetchOrderDetails();
+  }, []);
 
-      try {
-        const response = await axiosInstance.get(`/orders/get-orders?userId=${userId}`);
-        console.log("Fetched Orders:", response.data); // Debug fetched orders
-        setOrders(response.data.data || []); // Ensure response structure matches
-      } catch (err) {
-        console.error("Error fetching orders:", err);
-        setError("Failed to fetch orders. Please try again later.");
-      }
-    };
-
-    fetchOrders();
-  }, [userId]);
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  console.log("Orders==============", orders);
 
   return (
-    <div>
-      <h1>Your Orders</h1>
+    <div className={`order-list-wrapper ${darkMode ? "light-mode" : "dark-mode"}`}>
+      <h1 className="order-list-header">ORDER SUMMARY</h1>
       {orders.length > 0 ? (
-        <ul>
-          {orders.map((order) => (
-            <li key={order._id}>
-              <h3>Order ID: {order._id}</h3>
-              <p>Status: {order.orderStatus}</p>
-              <p>Total Amount: ₹{order.totalAmount}</p>
-              <ul>
-                {order.items.map((item, index) => (
-                  <li key={index}>
-                    {item.name} - {item.quantity} x ₹{item.price}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
+        <table className="order-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Status</th>
+              <th>Total Amount</th>
+              <th>Date</th>
+              <th>Items</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order._id}>
+                <td>{order._id}</td>
+                <td>
+                  <span className={`order-status ${order.orderStatus.toLowerCase()}`}>
+                    {order.orderStatus}
+                  </span>
+                </td>
+                <td>₹{order.totalAmount.toFixed(2)}</td>
+                <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                <td>
+                  <ul className="order-items-list">
+                    {order.items.map((item, index) => (
+                      <li key={index} className="order-item-detail">
+                        <span className="item-name">{item.name}</span>
+                        <span className="item-quantity">x{item.quantity}</span>
+                        <span className="item-price">
+                          ₹{(item.quantity * item.price).toFixed(2)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
-        <p>No orders found.</p>
+        <p className="no-orders-text">You have no orders yet.</p>
       )}
     </div>
   );
+  
+  
 };
 
 export default OrderList;

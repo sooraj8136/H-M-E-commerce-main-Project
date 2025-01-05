@@ -37,13 +37,13 @@ function UserHeader() {
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
                                     <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/user/cart" className={darkMode ? "text-black" : "text-white"}>Shopping bag</Nav.Link>
+                                        <Nav.Link href="/user/profile" className={darkMode ? "text-black" : "text-white"}>My account</Nav.Link>
                                     </div>
                                     <div className="nav-sec-2 d-flex">
                                         <Nav.Link href="/user/wishlist" className={darkMode ? "text-black" : "text-white"}>Favourites</Nav.Link>
                                     </div>
                                     <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/user/profile" className={darkMode ? "text-black" : "text-white"}>Profile</Nav.Link>
+                                        <Nav.Link href="/user/cart" className={darkMode ? "text-black" : "text-white"}>Shopping bag</Nav.Link>
                                     </div>
                                 </div>
                             </Form>
