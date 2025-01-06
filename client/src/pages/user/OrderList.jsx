@@ -13,7 +13,7 @@ const OrderList = () => {
     try {
       const response = await axiosInstance({
         method: "GET",
-        url: "/orders/get-orders",
+        url: "/orders/get-order-by-userid",
       });
 
       setOrders(response?.data?.data);

@@ -35,8 +35,8 @@ const register = async (req, res) => {
 
         const savedUser = await newUser.save()
 
-        const { password: _, ...userData } = savedUser.toObject(); 
-        
+        const { password: _, ...userData } = savedUser.toObject();
+
         res.status(200).json({ message: "User registered successfully", data: userData })
 
     } catch (error) {
@@ -59,9 +59,9 @@ const login = async (req, res) => {
             return res.status(400).json({ error: "User not found" });
         }
 
-        if(!user.isActive){
-            res.status(404).json({message: "Sorry, you can not login, because your account has been deactivated! Contact Admin..."})
-        } 
+        if (!user.isActive) {
+            res.status(404).json({ message: "Sorry, you can not login, because your account has been deactivated! Contact Admin..." })
+        }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
         console.log(passwordMatch, "passwordMatch");
@@ -73,11 +73,11 @@ const login = async (req, res) => {
         const token = generateToken(user, "user");
         console.log(token, "=======token")
 
-        res.cookie("token", token); 
+        res.cookie("token", token);
 
         {
-            const { password,...userWithoutPassword } = user._doc;
-    
+            const { password, ...userWithoutPassword } = user._doc;
+
             res.status(200).json({ message: "login successfully", data: userWithoutPassword });
         }
 
@@ -93,12 +93,12 @@ const userProfile = async (req, res) => {
         const userId = req.user.id
         const user = await userDb.findById(userId).select("-password")
 
-        if(!user){
-            return res.status(404).json({message: "Sorry, user not found"})
+        if (!user) {
+            return res.status(404).json({ message: "Sorry, user not found" })
         }
 
-        if(!user.isActive){
-            return res.status(404).json({message: "Sorry, user deactivated"})
+        if (!user.isActive) {
+            return res.status(404).json({ message: "Sorry, user deactivated" })
         }
 
         res.status(200).json({ message: "User profile fetched", data: user })
@@ -107,7 +107,7 @@ const userProfile = async (req, res) => {
         res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
     }
 
-} 
+}
 
 const checkUser = async (req, res) => {
     try {
@@ -117,12 +117,12 @@ const checkUser = async (req, res) => {
         const user = await userDb.findById(userId)
         console.log("User Id :- ", user)
 
-        if(!user){
-            res.status(404).json({message: "Sorry, user not found"})
+        if (!user) {
+            res.status(404).json({ message: "Sorry, user not found" })
         }
 
-        if(!user.isActive){
-            res.status(404).json({message: "Sorry, user deactivated"})
+        if (!user.isActive) {
+            res.status(404).json({ message: "Sorry, user deactivated" })
         }
 
         res.status(200).json({ message: "Authorized user" })
@@ -138,7 +138,7 @@ const checkUser = async (req, res) => {
 const updateUserProfile = async (req, res) => {
     try {
         const userId = req.user.id;
-        
+
         const { name, email, mobile } = req.body;
 
         if (!name && !email && !mobile) {
@@ -165,31 +165,31 @@ const updateUserProfile = async (req, res) => {
             return res.status(404).json({ error: "User not found" });
         }
 
-        if(!user.isActive){
-            res.status(404).json({message: "Sorry, user deactivated"})
+        if (!user.isActive) {
+            res.status(404).json({ message: "Sorry, user deactivated" })
         }
 
-        if (name) 
+        if (name)
             user.name = name
 
-        if (email) 
+        if (email)
             user.email = email
 
-        if (mobile) 
+        if (mobile)
             user.mobile = mobile
-        
+
 
         await user.save();
 
         const updatedUserProfile = await userDb.findById(userId).select("-password");
 
-        console.log( updatedUserProfile )
+        console.log(updatedUserProfile)
 
         res.status(200).json({ message: "User profile updated successfully", data: updatedUserProfile });
 
 
     } catch (error) {
-        console.log(error); 
+        console.log(error);
         res.status(error.status || 500).json({ error: error.message || "Internal server Error" });
     }
 }
@@ -200,10 +200,10 @@ const userLogout = async (req, res) => {
         const userId = req.user.id
 
         const user = await userDb.findById(userId)
-        if(!user.isActive){
-            res.status(404).json({message: "Sorry, you can not logout, because your account has been deactivated!"})
-        } 
- 
+        if (!user.isActive) {
+            res.status(404).json({ message: "Sorry, you can not logout, because your account has been deactivated!" })
+        }
+
         res.clearCookie("token")
 
         res.status(200).json({ message: "User logout successfull" })
@@ -217,32 +217,32 @@ const userLogout = async (req, res) => {
 const deactivateUser = async (req, res) => {
 
     try {
-        
-        const {userId} = req.params
+
+        const { userId } = req.params
         const adminId = req.user.id
 
         console.log("User Id :- ", userId)
-        console.log("Admin Id :- ", adminId)    
+        console.log("Admin Id :- ", adminId)
 
         const user = await userDb.findById(userId)
-        if(!user){
-            res.status(404).json({message: "Sorry, user not found "})
+        if (!user) {
+            res.status(404).json({ message: "Sorry, user not found " })
         }
 
         const admin = await adminDb.findById(adminId)
-        if(!admin || admin.role !== 'admin'){
-            res.status(404).json({message: "Sorry, only admin can access "})
+        if (!admin || admin.role !== 'admin') {
+            res.status(404).json({ message: "Sorry, only admin can access " })
         }
 
-        if(!user.isActive){
-            res.status(404).json({message: "User is already deactivated!"})
-        } 
+        if (!user.isActive) {
+            res.status(404).json({ message: "User is already deactivated!" })
+        }
 
         user.isActive = false;
 
-        await user.save()  
+        await user.save()
 
-        res.status(200).json({message: "User account has been deactivated successfully", data: user})
+        res.status(200).json({ message: "User account has been deactivated successfully", data: user })
 
     } catch (error) {
         console.log(error);
@@ -253,34 +253,34 @@ const deactivateUser = async (req, res) => {
 
 
 const activateUser = async (req, res) => {
-        
+
     try {
-        
-        const {userId} = req.params
+
+        const { userId } = req.params
         const adminId = req.user.id
 
         console.log("User Id :- ", userId)
-        console.log("Admin Id :- ", adminId)    
+        console.log("Admin Id :- ", adminId)
 
         const user = await userDb.findById(userId)
-        if(!user){
-            res.status(404).json({message: "Sorry, user not found "})
+        if (!user) {
+            res.status(404).json({ message: "Sorry, user not found " })
         }
 
         const admin = await adminDb.findById(adminId)
-        if(!admin || admin.role !== 'admin'){
-            res.status(404).json({message: "Sorry, only admin can access "})
+        if (!admin || admin.role !== 'admin') {
+            res.status(404).json({ message: "Sorry, only admin can access " })
         }
 
-        if(user.isActive){ 
-            res.status(404).json({message: "User is already active!"})
+        if (user.isActive) {
+            res.status(404).json({ message: "User is already active!" })
         }
 
         user.isActive = true;
 
         await user.save()
 
-        res.status(200).json({message: "User account has been activated successfully", data: user})
+        res.status(200).json({ message: "User account has been activated successfully", data: user })
 
     } catch (error) {
         console.log(error);
@@ -290,7 +290,7 @@ const activateUser = async (req, res) => {
 }
 
 
-const deleteUser = async (req, res) => { 
+const deleteUser = async (req, res) => {
     try {
         const { userId } = req.params;
 
@@ -312,4 +312,14 @@ const deleteUser = async (req, res) => {
 
 
 
-module.exports = { register, login, userProfile, checkUser, updateUserProfile, userLogout, deactivateUser, activateUser, deleteUser }    
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await userDb.find();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to retrieve users', error });
+    }
+};
+
+
+module.exports = { register, login, userProfile, checkUser, updateUserProfile, userLogout, deactivateUser, activateUser, deleteUser, getAllUsers,  }    

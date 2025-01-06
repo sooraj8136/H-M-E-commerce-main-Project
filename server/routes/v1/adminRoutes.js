@@ -1,10 +1,12 @@
-const { registerAdmin, loginAdmin, checkAdmin, adminLogout, updateAdminProfile, adminProfile } = require("../../controllers/adminController")
+const { registerAdmin, loginAdmin, checkAdmin, adminLogout, updateAdminProfile, adminProfile, adminForgotPassword, adminResetPassword } = require("../../controllers/adminController")
 const { adminAuth } = require("../../middlewares/adminAuth")
 
 const adminRouter = require("express").Router()
 
 adminRouter.post("/register-admin", registerAdmin )
 adminRouter.post("/admin-login", loginAdmin )   
+adminRouter.post("/forgot-password", adminForgotPassword )   
+adminRouter.post("/reset-password/:token", adminResetPassword ) 
 
 adminRouter.get("/check-admin", adminAuth, checkAdmin )
 adminRouter.get("/admin-logout", adminAuth, adminLogout )

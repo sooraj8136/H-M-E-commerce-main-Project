@@ -26,6 +26,11 @@ const productchema = new mongoose.Schema(
             required: true,
             enum: ["Men", "Ladies", "Baby", "Kids", "Preppy", "Iconic_graphics", "Kidsnew", "Hello-kitty", "Babynew", "accessories", "office", "Denim"]
         },
+        stock: {
+            type: Number,
+            required: true,
+            default: 0,
+        },
         seller: { type: mongoose.Types.ObjectId, ref: "seller" },
     },
     { timestamps: true }

@@ -34,10 +34,10 @@ function AdminHeader() {
                         </span>
                         <ul className="nav justify-content-center">
                             <li className="nav-item ">
-                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"}>Manage User</Nav.Link>
+                                <Nav.Link href="/admin/admin-dashboard" className={darkMode ? "text-black" : "text-white nav-link"}>Dashboard</Nav.Link>
                             </li>
                             <li className="nav-item ">
-                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"}>Log out</Nav.Link>
+                                <Nav.Link href="/admin/admin-profile" className={darkMode ? "text-black" : "text-white nav-link"}>My account</Nav.Link>
                             </li>
                         </ul>
                         <div className="search">

@@ -1,6 +1,9 @@
 const adminDb = require("../model/adminModel")
 const bcrypt = require('bcrypt')
 const { generateToken } = require("../utils/token")
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
+const { catchErrorHandler } = require("../utils/catchErrorHandler");
 
 
 const registerAdmin = async (req, res) => {
@@ -32,9 +35,9 @@ const registerAdmin = async (req, res) => {
             name, email, mobile, role, password: adminHashedPassword, qualification
         })
 
-        const savedAdmin = await newAdmin.save() 
+        const savedAdmin = await newAdmin.save()
 
-        const { password: _, ...userData } = savedAdmin.toObject(); 
+        const { password: _, ...userData } = savedAdmin.toObject();
 
         res.status(200).json({ message: "Admin created successfully", data: userData })
 
@@ -60,7 +63,7 @@ const loginAdmin = async (req, res) => {
 
         if (!admin) {
             return res.status(400).json({ error: "Admin not found" });
-        } 
+        }
 
         const passwordMatch = await bcrypt.compare(password, admin.password);
 
@@ -94,24 +97,55 @@ const checkAdmin = (req, res) => {
 
 
     } catch (error) {
-        console.error("Error during admin login:", error.message); 
+        console.error("Error during admin login:", error.message);
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
 
 
+// const adminLogout = async (req, res) => {
+//     try {
+//         res.clearCookie("admin_token")
+
+//         res.status(200).json({ message: "Admin logout successfull" })
+
+//     } catch (error) {
+//         console.log(error);
+//         res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
+//     }
+
+// }
+
 const adminLogout = async (req, res) => {
     try {
-        res.clearCookie("admin_token")
 
-        res.status(200).json({ message: "Admin logout successfull" })
+        const adminId = req.user.id;
 
+        const admin = await adminDb.findById(adminId);
+
+        if (!admin) {
+            return res.status(404).json({ message: "Admin account not found." });
+        }
+
+        if (!admin.isActive) {
+            return res.status(403).json({
+                message: "Logout failed. Your account is deactivated.",
+            });
+        }
+
+        res.clearCookie("token");
+
+        res.status(200).json({ message: "Admin logout successful." });
     } catch (error) {
-        console.log(error);
-        res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
-    }
+        console.error("Error during admin logout:", error);
 
-}
+        res.status(error.status || 500).json({
+            error: error.message || "Internal Server Error",
+        });
+    }
+};
+
+module.exports = adminLogout;
 
 
 const updateAdminProfile = async (req, res) => {
@@ -170,8 +204,8 @@ const updateAdminProfile = async (req, res) => {
 
         const updatedAdminProfile = await adminDb.findById(adminId).select("-password");
 
-        if(!updatedAdminProfile){
-            res.status(400).jsaon({message: "Sorry, admin profile is not updated"})
+        if (!updatedAdminProfile) {
+            res.status(400).jsaon({ message: "Sorry, admin profile is not updated" })
         }
 
         console.log(updatedAdminProfile)
@@ -199,5 +233,85 @@ const adminProfile = async (req, res) => {
 }
 
 
+const adminForgotPassword = async (req, res) => {
+    const { email } = req.body;
 
-module.exports = { registerAdmin, loginAdmin, checkAdmin, adminLogout, updateAdminProfile, adminProfile }
+    try {
+
+        const admin = await adminDb.findOne({ email, role: "admin" });
+
+        if (!admin) {
+            return res.status(404).json({ message: "Admin not found" });
+        }
+
+        const resetToken = crypto.randomBytes(32).toString("hex");
+
+        admin.resetToken = resetToken;
+        admin.resetTokenExpires = Date.now() + process.env.TOKEN_EXPIRATION * 60 * 1000;
+
+        await admin.save();
+
+        const resetLink = `${process.env.CORS}/admin/reset-password/${resetToken}`;
+
+        const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        await transporter.sendMail({
+            from: `"H&M" <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject: "Reset your H&M password",
+            text: `We have received a password reset request from your account. If you have not issued a password reset request, you can safely ignore this mail, and your account will not be affected. Click the link to reset your password: ${resetLink}`,
+        });
+
+        res.status(200).json({ message: "Reset email sent!" });
+    } catch (error) {
+        catchErrorHandler(res, error);
+        res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
+    }
+};
+
+
+const adminResetPassword = async (req, res) => {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+
+    try {
+
+        if (!newPassword || newPassword.trim().length < 6) {
+            return res.status(400).json({
+                message: "Invalid password. Password must be at least 6 characters long.",
+            });
+        }
+
+        const admin = await adminDb.findOne({
+            resetToken: token,
+            resetTokenExpires: { $gt: Date.now() },
+        });
+
+        if (!admin) {
+            return res.status(400).json({ message: "Invalid or expired token" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        admin.password = hashedPassword;
+        admin.resetToken = undefined;
+        admin.resetTokenExpires = undefined;
+
+        await admin.save();
+
+        res.status(200).json({ message: "Your password has been reset successfully!" });
+    } catch (error) {
+        console.error("Error in adminResetPassword:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+
+
+module.exports = { registerAdmin, loginAdmin, checkAdmin, adminLogout, updateAdminProfile, adminProfile, adminResetPassword, adminForgotPassword }

@@ -13,7 +13,7 @@ const AdminLogin = () => {
 
   const admin = {
     login_api: "/admin/admin-login", 
-    profile_route: "/admin/profile", 
+    dashboard_route: "/admin/admin-dashboard", 
     signup_route: "/admin/signup",
   };
 
@@ -24,7 +24,7 @@ const AdminLogin = () => {
       const response = await axiosInstance({ method: "POST", url: admin.login_api, data });
       console.log(response, "====response");
       toast.success("Admin log-in success");
-      navigate(admin.profile_route); 
+      navigate("/admin/admin-dashboard"); 
     } catch (error) {
       toast.error("Admin log-in failed");
       console.log(error);

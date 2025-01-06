@@ -1,4 +1,4 @@
-const { register, login, userProfile, userLogout, checkUser, updateUserProfile, deactivateUser, activateUser, deleteUser } = require('../../controllers/userControllers')
+const { register, login, userProfile, userLogout, checkUser, updateUserProfile, deactivateUser, activateUser, deleteUser, getAllUsers } = require('../../controllers/userControllers')
 const { adminAuth } = require('../../middlewares/adminAuth')
 const { userAuth } = require('../../middlewares/userAuth')
 
@@ -10,6 +10,7 @@ userRouter.post("/login", login)
 userRouter.get("/profile", userAuth, userProfile)
 userRouter.get("/logout", userAuth, userLogout)
 userRouter.get("/check-user", userAuth, checkUser)
+userRouter.get("/get-all-user", adminAuth, getAllUsers)
 
 userRouter.put("/update-profile", userAuth, updateUserProfile)
 userRouter.put("/deactivate-user/:userId", adminAuth, deactivateUser)

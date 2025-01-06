@@ -32,6 +32,8 @@ import SellerProductDetails from '../pages/seller/SellerProductDetails';
 import SellerHomePage from '../pages/seller/SellerHomePage';
 import OrderList from '../pages/user/OrderList';
 import PaymentSuccess from '../pages/user/PaymentSuccess';
+import AdminDashboard from '../pages/admin/AdminDashboard';
+import GetAllUsers from '../pages/admin/GetAllUsers';
 
 export const router = createBrowserRouter([
   {
@@ -160,15 +162,23 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: 'admin-dashboard',
+        element: <AdminDashboard />,
+      },
+      {
         path: 'login',
         element: <AdminLogin />,
+      },
+      {
+        path: 'get-all-users',
+        element: <GetAllUsers />,
       },
       {
         path: 'signup',
         element: <AdminSignup />,
       },
       {
-        path: 'profile',
+        path: 'admin-profile',
         element: <AdminProfile />,
       },
     ],

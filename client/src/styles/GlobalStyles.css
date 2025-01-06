@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "bootstrap-icons/font/bootstrap-icons.css";
 
 * {
     font-family: "Urbanist", sans-serif;
@@ -282,151 +283,254 @@ ul {
     max-width: 1200px;
     margin: 20px auto;
     transition: all 0.3s ease;
-  }
-  
-  .order-list-header {
+}
+
+.order-list-header {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .order-table {
+}
+
+.order-table {
     width: 100%;
     border-collapse: collapse;
     background-color: inherit;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .order-table th,
-  .order-table td {
+}
+
+.order-table th,
+.order-table td {
     padding: 15px;
     text-align: left;
     border: 1px solid transparent;
-  }
-  
-  .order-table th {
+}
+
+.order-table th {
     font-weight: bold;
     text-transform: uppercase;
-  }
-  
-  .order-table td {
+}
+
+.order-table td {
     font-size: 0.95rem;
-  }
-  
-  .order-items-list {
+}
+
+.order-items-list {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .order-item-detail {
+}
+
+.order-item-detail {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
     font-size: 0.9rem;
-  }
-  
-  /* Light Mode - Vibrant Style */
-  .light-mode {
+}
+
+/* Light Mode - Vibrant Style */
+.light-mode {
     background-color: #ffffff;
     color: #000000;
-  }
-  
-  .light-mode .order-table {
+}
+
+.light-mode .order-table {
     background-color: #f4f4f4;
     border: 2px solid #000000;
-  }
-  
-  .light-mode .order-table th {
+}
+
+.light-mode .order-table th {
     background-color: #ffffff;
     color: #000000;
-  }
-  
-  .light-mode .order-status {
+}
+
+.light-mode .order-status {
     padding: 5px 10px;
     border-radius: 15px;
     font-weight: bold;
-  }
-  
-  .light-mode .order-status.pending {
+}
+
+.light-mode .order-status.pending {
     color: #ffffff;
-  }
-  
-  .light-mode .order-status.completed {
+}
+
+.light-mode .order-status.completed {
     background-color: #8bc34a;
     color: #ffffff;
-  }
-  
-  .light-mode .order-status.cancelled {
+}
+
+.light-mode .order-status.cancelled {
     background-color: #f44336;
     color: #ffffff;
-  }
-  
-  .light-mode .no-orders-text {
+}
+
+.light-mode .no-orders-text {
     color: #000000;
     text-align: center;
     font-size: 1.2rem;
     margin-top: 20px;
-  }
-  
-  /* Dark Mode - Minimalistic Style */
-  .dark-mode {
+}
+
+/* Dark Mode - Minimalistic Style */
+.dark-mode {
     background-color: #000000;
     color: #d3d3d3;
-  }
-  
-  .dark-mode .order-table {
+}
+
+.dark-mode .order-table {
     background-color: #000000;
     border: 2px solid #821414;
-  }
-  
-  .dark-mode .order-table th {
+}
+
+.dark-mode .order-table th {
     background-color: #333333;
     color: #aaaaaa;
-  }
-  
-  .dark-mode .order-status {
+}
+
+.dark-mode .order-status {
     padding: 5px 10px;
     border-radius: 15px;
     font-weight: normal;
-  }
-  
-  .dark-mode .order-status.pending {
+}
+
+.dark-mode .order-status.pending {
     background-color: #0b0b0b;
     color: #ff9800;
-  }
-  
-  .dark-mode .order-status.completed {
+}
+
+.dark-mode .order-status.completed {
     background-color: #444444;
     color: #4caf50;
-  }
-  
-  .dark-mode .order-status.cancelled {
+}
+
+.dark-mode .order-status.cancelled {
     background-color: #444444;
     color: #f44336;
-  }
-  
-  .dark-mode .no-orders-text {
+}
+
+.dark-mode .no-orders-text {
     color: #888888;
     text-align: center;
     font-size: 1.2rem;
     margin-top: 20px;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
+
     .order-table th,
     .order-table td {
-      font-size: 0.85rem;
-      padding: 10px;
+        font-size: 0.85rem;
+        padding: 10px;
     }
-  
+
     .order-list-header {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  }
-  
-  
+}
+
+.navbar {
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+}
+
+.nav-link {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #8c0000;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.user-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.user-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.user-card {
+    width: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card content */
+.user-card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.user-card h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.user-card p {
+    color: #555;
+    margin: 10px 0;
+}
+
+.user-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-actions button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.user-actions button:hover {
+    background-color: #454545;
+}
+
+.user-actions button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.dlt-btn {
+    background-color: #dc3545;
+    transition: background-color 0.3s;
+}
+
+.dlt-btn:hover {
+    background-color: #c82333;
+}
+
+.heading {
+    margin: 40px 0px;
+}
+

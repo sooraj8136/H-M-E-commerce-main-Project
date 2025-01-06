@@ -7,29 +7,30 @@ const UpdateProduct = () => {
   const { id: productId } = useParams(); 
   const [productData, setProductData] = useState({
     title: "",
-    price: "", 
-    description: "", 
-    category: "", 
+    price: "",
+    description: "",
+    category: "",
+    stock: "", 
   });
 
   const fetchProduct = async () => {
     try {
-      
       const response = await axiosInstance.get(`/product/${productId}`);
-      console.log('Fetched product data:', response.data); 
+      console.log("Fetched product data:", response.data);
 
       setProductData({
         title: response.data.title || "",
-        price: response.data.price !== null ? response.data.price : "", 
+        price: response.data.price !== null ? response.data.price : "",
         description: response.data.description || "",
         category: response.data.category || "",
+        stock: response.data.stock !== null ? response.data.stock : 0, 
       });
     } catch (error) {
-      console.error('Error fetching product details:', error); 
+      console.error("Error fetching product details:", error);
       toast.error("Failed to fetch product details");
     }
   };
-  
+
   useEffect(() => {
     fetchProduct();
   }, [productId]);
@@ -42,13 +43,12 @@ const UpdateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log('Updating product data:', productData);
-      
+      console.log("Updating product data:", productData);
       const response = await axiosInstance.put(`/product/update-product/${productId}`, productData);
-      console.log('Response after update:', response.data);
+      console.log("Response after update:", response.data);
       toast.success(response.data.message);
     } catch (error) {
-      console.error('Error updating product:', error);
+      console.error("Error updating product:", error);
       toast.error(error.response?.data?.message || "Failed to update product");
     }
   };
@@ -92,6 +92,15 @@ const UpdateProduct = () => {
             onChange={handleChange}
           />
         </div>
+        <div>
+          <label>Stock:</label>
+          <input
+            type="number"
+            name="stock"
+            value={productData.stock}
+            onChange={handleChange}
+          />
+        </div>
         <button type="submit">Update Product</button>
       </form>
     </div>
@@ -99,4 +108,3 @@ const UpdateProduct = () => {
 };
 
 export default UpdateProduct;
-

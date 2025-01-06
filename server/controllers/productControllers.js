@@ -116,19 +116,22 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const productId = req.params.id;
-        const { image, title, price, description, category } = req.body;
+        const { image, title, price, description, category, stock } = req.body; // Added stock to the destructuring
         const updateFields = {};
 
-        if (image !== undefined && image !== "") updateFields.image = image; 
+        // Update the fields only if they're defined and not empty
+        if (image !== undefined && image !== "") updateFields.image = image;
         if (title !== undefined && title !== "") updateFields.title = title;
         if (price !== undefined && price !== null) updateFields.price = price;
         if (description !== undefined && description !== "") updateFields.description = description;
         if (category !== undefined && category !== "") updateFields.category = category;
+        if (stock !== undefined && stock !== null) updateFields.stock = stock; // Update stock if present
 
         if (Object.keys(updateFields).length === 0) {
             return res.status(400).json({ message: "No valid fields to update" });
         }
 
+        // Find and update the product
         const savedProduct = await productDb.findByIdAndUpdate(productId, updateFields, { new: true }).select("-password");
 
         if (!savedProduct) {
@@ -142,6 +145,7 @@ const updateProduct = async (req, res) => {
         res.status(error.status || 500).json({ error: error.message || "Internal server error" });
     }
 };
+
 
 
 
