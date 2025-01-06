@@ -40,7 +40,7 @@ function SellerHeader() {
                                     <Nav.Link href="/seller/seller-product" className={darkMode ? "text-black" : "text-white nav-link"}>Manage Product</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
-                                    <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-link"}>Orders</Nav.Link>
+                                    <Nav.Link href="/seller/update-order-status" className={darkMode ? "text-black" : "text-white nav-link"}>Orders</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
                                     <Nav.Link href="/seller/profile" className={darkMode ? "text-black" : "text-white nav-link"}>Profile</Nav.Link>

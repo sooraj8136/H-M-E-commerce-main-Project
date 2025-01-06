@@ -129,7 +129,6 @@ const updateSellerProfile = async (req, res) => {
             }
         }
 
-
         if (mobile) {
             const existinSellerMobile = await sellerDb.findOne({ mobile });
             if (existinSellerMobile && existinSellerMobile._id.toString() !== sellerId) {
@@ -146,7 +145,6 @@ const updateSellerProfile = async (req, res) => {
         console.log(updatedSellerProfile);
 
         res.status(200).json({message: "Seller profile updated successfully", data: updatedSellerProfile});
-
 
     } catch (error) {
         console.log(error);
@@ -190,4 +188,14 @@ const deleteSeller = async (req, res) => {
 };
 
 
-module.exports = { registerSeller, loginSeller, checkSeller, sellerProfile, updateSellerProfile, sellerLogout, deleteSeller }
+const getAllSellers = async (req, res) => {
+    try {
+        const users = await sellerDb.find();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to retrieve users', error });
+    }
+};
+
+
+module.exports = { registerSeller, loginSeller, checkSeller, sellerProfile, updateSellerProfile, sellerLogout, deleteSeller, getAllSellers }

@@ -35,6 +35,20 @@ const getAllOrders = async (req, res) => {
 };
 
 
+const getAllOrdersBySeller = async (req, res) => {
+  try {
+
+    const orders = await OrderDb.find()
+      .populate('userId', 'name email')
+      .populate('items.productId', 'title price');
+
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to retrieve orders', error });
+  }
+};
+
+
 const updateOrderStatus = async (req, res) => {
   try {
     const { orderId } = req.params; 
@@ -66,4 +80,4 @@ const updateOrderStatus = async (req, res) => {
 
 
 
-module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus };
+module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getAllOrdersBySeller };

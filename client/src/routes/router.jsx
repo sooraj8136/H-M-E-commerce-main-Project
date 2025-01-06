@@ -34,6 +34,12 @@ import OrderList from '../pages/user/OrderList';
 import PaymentSuccess from '../pages/user/PaymentSuccess';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import GetAllUsers from '../pages/admin/GetAllUsers';
+import AdminProductPage from '../pages/admin/AdminProductPage';
+import AdminProductDetails from '../pages/admin/AdminProductDetails';
+import GetAllSellers from '../pages/admin/GetAllSellers';
+import GetAllOrders from '../pages/admin/GetAllOrders';
+import UpdateOrderStatus from '../pages/seller/UpdateOrderStatus';
+import GetAllOrdersSeller from '../pages/seller/GetAllOrdersSeller';
 
 export const router = createBrowserRouter([
   {
@@ -143,6 +149,14 @@ export const router = createBrowserRouter([
         element: <CreateProductForm />,
       },
       {
+        path: 'get-orders-seller',
+        element: <GetAllOrdersSeller />,
+      },
+      {
+        path: 'update-order-status',
+        element: <UpdateOrderStatus />,
+      },
+      {
         path: 'seller-product-details/:productId',
         element: < SellerProductDetails/>,
       },
@@ -172,6 +186,22 @@ export const router = createBrowserRouter([
       {
         path: 'get-all-users',
         element: <GetAllUsers />,
+      },
+      {
+        path: 'get-sellers',
+        element: <GetAllSellers />,
+      },
+      {
+        path: 'get-all-orders',
+        element: <GetAllOrders />,
+      },
+      {
+        path: 'admin-products',
+        element: <AdminProductPage />,
+      },
+      {
+        path: 'admin-product-details/:productId',
+        element: <AdminProductDetails />,
       },
       {
         path: 'signup',

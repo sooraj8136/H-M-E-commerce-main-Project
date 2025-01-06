@@ -12,17 +12,17 @@ const Sidebar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="#sellers" className="nav-link">
+            <a href="/admin/get-sellers" className="nav-link">
               <i className="bi bi-shop-window me-2"></i>Sellers
             </a>
           </li>
           <li className="nav-item">
-            <a href="#products" className="nav-link">
+            <a href="/admin/admin-products" className="nav-link">
               <i className="bi bi-box-seam me-2"></i>Products
             </a>
           </li>
           <li className="nav-item">
-            <a href="#orders" className="nav-link">
+            <a href="/admin/get-all-orders" className="nav-link">
               <i className="bi bi-cart-check me-2"></i>Orders
             </a>
           </li>

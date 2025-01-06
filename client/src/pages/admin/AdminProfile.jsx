@@ -2,7 +2,7 @@ import React from 'react';
 import { useFetch } from '../../hooks/useFetch';
 
 function AdminProfile() {
-  const [profileData, isLoading, error] = useFetch('/admin/admin-profile'); // Replace with the correct API for admin
+  const [profileData, isLoading, error] = useFetch('/admin/admin-profile'); 
 
   console.log('Admin Profile Data :- ', profileData);
 

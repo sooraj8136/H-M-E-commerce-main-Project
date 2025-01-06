@@ -32,7 +32,7 @@ function SellerSignup() {
         <h1 className="text-center">Seller Sign Up</h1>
       </div>
       <br />
-      <div className={darkMode ? "text-black" : "text-white"}>
+      <div className={darkMode ? "text-black" : "text-white"}>  
         <p className="text-center">
           Become a seller and start your business with us today!
         </p>

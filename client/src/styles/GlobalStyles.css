@@ -470,7 +470,6 @@ ul {
     width: 300px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -479,7 +478,6 @@ ul {
     transform: translateY(-5px);
 }
 
-/* Card content */
 .user-card-content {
     padding: 20px;
     text-align: center;
@@ -503,7 +501,7 @@ ul {
 }
 
 .user-actions button {
-    background-color: #000000;
+    background-color: #ffffff;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -533,4 +531,10 @@ ul {
 .heading {
     margin: 40px 0px;
 }
+
+.confirm-btn{
+    gap: 10px;
+}
+
+
 
