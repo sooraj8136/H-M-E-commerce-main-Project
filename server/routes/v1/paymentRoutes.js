@@ -5,41 +5,6 @@ const OrderDb = require("../../model/orderModel");
 
 const paymentRouter = require("express").Router();
 
-// paymentRouter.post("/create-checkout-session", userAuth, async (req, res, next) => {
-
-//     try {
-
-//         const { products } = req.body;
-
-//         const lineItems = products.map((product) => ({
-//             price_data: {
-//                 currency: "inr",
-//                 product_data: {
-//                     name: product?.productId?.title,
-//                     images: [product?.productId?.image],
-//                 },
-//                 unit_amount: Math.round(product?.productId?.price * 100),
-//             },
-//             quantity: 1,
-//         }));
-
-//         const session = await stripe.checkout.sessions.create({
-//             payment_method_types: ["card"],
-//             line_items: lineItems,
-//             mode: "payment",
-//             success_url: `${client_domain}/user/payment/success`,
-//             cancel_url: `${client_domain}/user/payment/cancel`,
-//         });
-
-//         res.json({ success: true, sessionId: session.id });
-//     } catch (error) {
-//         console.log(error)
-//         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
-//     }
-
-// })
-
-
 
 paymentRouter.post("/create-checkout-session", userAuth, async (req, res, next) => {
     try {
