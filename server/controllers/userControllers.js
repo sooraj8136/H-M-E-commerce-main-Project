@@ -215,41 +215,47 @@ const userLogout = async (req, res) => {
 }
 
 const deactivateUser = async (req, res) => {
-
     try {
+        const { userId } = req.params;
+        const adminId = req.user.id;
 
-        const { userId } = req.params
-        const adminId = req.user.id
+        console.log("User Id :- ", userId);
+        console.log("Admin Id :- ", adminId);
 
-        console.log("User Id :- ", userId)
-        console.log("Admin Id :- ", adminId)
-
-        const user = await userDb.findById(userId)
+        // Fetch the user
+        const user = await userDb.findById(userId);
         if (!user) {
-            res.status(404).json({ message: "Sorry, user not found " })
+            return res.status(404).json({ message: "Sorry, user not found" }); // Added return
         }
 
-        const admin = await adminDb.findById(adminId)
+        // Check if the requester is an admin
+        const admin = await adminDb.findById(adminId);
         if (!admin || admin.role !== 'admin') {
-            res.status(404).json({ message: "Sorry, only admin can access " })
+            return res.status(403).json({ message: "Sorry, only admin can access" }); // Added return
         }
 
+        // Check if the user is already deactivated
         if (!user.isActive) {
-            res.status(404).json({ message: "User is already deactivated!" })
+            return res.status(400).json({ message: "User is already deactivated!" }); // Added return
         }
 
+        // Deactivate the user
         user.isActive = false;
+        await user.save();
 
-        await user.save()
-
-        res.status(200).json({ message: "User account has been deactivated successfully", data: user })
+        return res.status(200).json({
+            message: "User account has been deactivated successfully",
+            data: user,
+        });
 
     } catch (error) {
-        console.log(error);
-        res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
+        console.error(error);
+        res
+            .status(error.status || 500)
+            .json({ error: error.message || "Internal Server Error" });
     }
+};
 
-}
 
 
 const activateUser = async (req, res) => {
