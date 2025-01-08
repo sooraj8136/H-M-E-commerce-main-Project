@@ -1,6 +1,9 @@
 const sellerDb = require("../model/sellerModel")
 const bcrypt = require('bcrypt')
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
+const { catchErrorHandler } = require("../utils/catchErrorHandler")
 
 
 const registerSeller = async (req, res) => {
@@ -198,4 +201,86 @@ const getAllSellers = async (req, res) => {
 };
 
 
-module.exports = { registerSeller, loginSeller, checkSeller, sellerProfile, updateSellerProfile, sellerLogout, deleteSeller, getAllSellers }
+
+const sellerForgotPassword = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const seller = await sellerDb.findOne({ email, role: "seller" });
+
+        if (!seller) {
+            return res.status(404).json({ message: "Seller not found" });
+        }
+
+        const resetToken = crypto.randomBytes(32).toString("hex");
+
+        seller.resetToken = resetToken;
+        seller.resetTokenExpires = Date.now() + process.env.TOKEN_EXPIRATION * 60 * 1000;
+
+        await seller.save();
+
+        const resetLink = `${process.env.CORS}/seller/reset-password/${resetToken}`;
+
+        const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        await transporter.sendMail({
+            from: `"H&M" <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject: "Reset your H&M Seller Account Password",
+            text: `We have received a password reset request from your account. If you have not issued a password reset request, you can safely ignore this email, and your account will not be affected. Click the link to reset your password: ${resetLink}`,
+        });
+
+        res.status(200).json({ message: "Reset email sent!" });
+    } catch (error) {
+        catchErrorHandler(res, error);
+        res.status(error.status || 500).json({ error: error.message || "Internal server Error" });
+    }
+};
+
+
+
+const sellerResetPassword = async (req, res) => {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+
+    try {
+        if (!newPassword || newPassword.trim().length < 6) {
+            return res.status(400).json({
+                message: "Invalid password. Password must be at least 6 characters long.",
+            });
+        }
+
+        const seller = await sellerDb.findOne({
+            resetToken: token,
+            resetTokenExpires: { $gt: Date.now() },
+        });
+
+        if (!seller) {
+            return res.status(400).json({ message: "Invalid or expired token" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        seller.password = hashedPassword;
+        seller.resetToken = undefined;
+        seller.resetTokenExpires = undefined;
+
+        await seller.save();
+
+        res.status(200).json({ message: "Your password has been reset successfully!" });
+    } catch (error) {
+        console.error("Error in sellerResetPassword:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+
+
+
+module.exports = { registerSeller, loginSeller, checkSeller, sellerProfile, updateSellerProfile, sellerLogout, deleteSeller, getAllSellers, sellerForgotPassword, sellerResetPassword }
