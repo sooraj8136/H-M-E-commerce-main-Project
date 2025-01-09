@@ -78,7 +78,11 @@ const loginAdmin = async (req, res) => {
         const token = generateToken(admin, "admin");
         console.log(token)
 
-        res.cookie("admin_token", token);
+        res.cookie("admin_token", token, {
+            sameSite: "None",
+            secure: true,
+            httpOnly: true
+        });
 
         res.status(200).json({ message: "Login successfully", data: admin });
         console.log(admin)
@@ -133,7 +137,11 @@ const adminLogout = async (req, res) => {
             });
         }
 
-        res.clearCookie("token");
+        res.clearCookie("token", {
+            sameSite: "None",
+            secure: true,
+            httpOnly: true
+        });
 
         res.status(200).json({ message: "Admin logout successful." });
     } catch (error) {

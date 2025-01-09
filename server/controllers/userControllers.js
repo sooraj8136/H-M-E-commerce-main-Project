@@ -73,7 +73,11 @@ const login = async (req, res) => {
         const token = generateToken(user, "user");
         console.log(token, "=======token")
 
-        res.cookie("token", token);
+        res.cookie("token", token, {
+            sameSite: "None",
+            secure: true,
+            httpOnly: true
+        });
 
         {
             const { password, ...userWithoutPassword } = user._doc;
@@ -204,7 +208,11 @@ const userLogout = async (req, res) => {
             res.status(404).json({ message: "Sorry, you can not logout, because your account has been deactivated!" })
         }
 
-        res.clearCookie("token")
+        res.clearCookie("token", {
+            sameSite: "None",
+            secure: true,
+            httpOnly: true
+        });
 
         res.status(200).json({ message: "User logout successfull" })
     } catch (error) {

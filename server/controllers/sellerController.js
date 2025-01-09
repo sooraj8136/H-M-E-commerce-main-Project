@@ -75,7 +75,11 @@ const loginSeller = async (req, res) => {
         const token = generateToken(seller, "seller");
         console.log(token)
 
-        res.cookie("seller_token", token);
+        res.cookie("seller_token", token, {
+            sameSite: "None",
+            secure: true,
+            httpOnly: true
+        });
 
         res.status(200).json({ message: "Seller login successfully", data: seller });
         console.log(seller)
@@ -158,7 +162,11 @@ const updateSellerProfile = async (req, res) => {
 
 const sellerLogout = async (req, res) => {
     try {
-        res.clearCookie("seller_token")
+        res.clearCookie("seller_token", {
+            sameSite: "None",
+            secure: true,
+            httpOnly: true
+        })
 
         res.status(200).json({ message: "Seller logout successfull" })
 
