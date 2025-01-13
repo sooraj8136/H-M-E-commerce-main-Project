@@ -77,7 +77,7 @@ const AdminLogin = () => {
         </div>
         <div className="text-center mb-4">
           <Link
-            to="/admin/forgot-password"
+            to="/admin/admin-forgot-password"
             className={darkMode ? "text-black" : "text-white forgot-password"}
           >
             Forgot password?

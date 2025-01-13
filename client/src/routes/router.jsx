@@ -40,6 +40,13 @@ import GetAllSellers from '../pages/admin/GetAllSellers';
 import GetAllOrders from '../pages/admin/GetAllOrders';
 import UpdateOrderStatus from '../pages/seller/UpdateOrderStatus';
 import GetAllOrdersSeller from '../pages/seller/GetAllOrdersSeller';
+import ForgotPassword from '../pages/admin/ForgotPassword';
+import ResetPassword from '../pages/admin/ResetPassword';
+import SellerForgotPassword from '../pages/seller/SellerForgotPassword';
+import SellerResetPassword from '../pages/seller/SellerResetPassword';
+import UserForgotPassword from '../pages/user/UserForgotPassword';
+import UserResetPassword from '../pages/user/UserResetPassword';
+import { AddReview } from '../components/user/AddReview';
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +101,14 @@ export const router = createBrowserRouter([
       {
         path: 'productDetails/:productId',
         element: <ProductDetailsPage />,
+      },
+      {
+        path: '/user/user-forgot-password',
+        element: <UserForgotPassword />,
+      },
+      {
+        path: '/user/user-reset-password/:token',
+        element: <UserResetPassword />,
       },
       {
         element: <ProtectedRoute />,
@@ -168,6 +183,14 @@ export const router = createBrowserRouter([
         path: 'signup',
         element: <SellerSignup />,
       },
+      {
+        path: 'seller-forgot-password',
+        element: <SellerForgotPassword />,
+      },
+      {
+        path: 'seller-reset-password/:token',
+        element: <SellerResetPassword />,
+      },
     ],
   },
   {
@@ -210,6 +233,14 @@ export const router = createBrowserRouter([
       {
         path: 'admin-profile',
         element: <AdminProfile />,
+      },  
+      {
+        path: 'admin-forgot-password',
+        element: <ForgotPassword />,
+      },
+      {
+        path: 'admin-reset-password/:token',
+        element: <ResetPassword />,
       },
     ],
   },

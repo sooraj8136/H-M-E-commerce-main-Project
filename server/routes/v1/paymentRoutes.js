@@ -10,7 +10,6 @@ paymentRouter.post("/create-checkout-session", userAuth, async (req, res, next) 
     try {
         const { products } = req.body;
 
-        // Map products to Stripe line items
         const lineItems = products.map((product) => ({
             price_data: {
                 currency: "inr",
@@ -20,16 +19,14 @@ paymentRouter.post("/create-checkout-session", userAuth, async (req, res, next) 
                 },
                 unit_amount: Math.round(product?.productId?.price * 100),
             },
-            quantity: product?.quantity || 1, // Use product quantity
+            quantity: product?.quantity || 1, 
         }));
 
-        // Calculate the total amount
+      
         const totalAmount = products.reduce(
             (sum, product) => sum + product?.productId?.price * (product?.quantity || 1),
             0
         );
-
-        // Create Stripe session
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             line_items: lineItems,
@@ -38,23 +35,22 @@ paymentRouter.post("/create-checkout-session", userAuth, async (req, res, next) 
             cancel_url: `${client_domain}/user/payment/cancel`,
         });
 
-        // Save order details to the database
+      
         const order = new OrderDb({
-            userId: req.user.id, // Assuming `userAuth` middleware sets `req.user`
+            userId: req.user.id,
             items: products.map((product) => ({
-                productId: product.productId, // Ensure productId is included
+                productId: product.productId, 
                 name: product?.productId?.title,
                 price: product?.productId?.price,
                 quantity: product?.quantity || 1,
             })),
             
-            totalAmount, // Pass the calculated total amount
-            orderStatus: "processing", // Default status
+            totalAmount, 
+            orderStatus: "processing", 
         });
 
-        await order.save(); // Save the order to the database
+        await order.save(); 
 
-        // Respond with session details
         res.json({ success: true, sessionId: session.id });
     } catch (error) {
         console.error(error);

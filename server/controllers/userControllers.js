@@ -1,6 +1,8 @@
 const userDb = require("../model/userModel")
 const adminDb = require("../model/adminModel")
 const bcrypt = require('bcrypt')
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
 
 
@@ -324,8 +326,6 @@ const deleteUser = async (req, res) => {
     }
 };
 
-
-
 const getAllUsers = async (req, res) => {
     try {
         const users = await userDb.find();
@@ -336,4 +336,92 @@ const getAllUsers = async (req, res) => {
 };
 
 
-module.exports = { register, login, userProfile, checkUser, updateUserProfile, userLogout, deactivateUser, activateUser, deleteUser, getAllUsers,  }    
+const userForgotPassword = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+
+        const user = await userDb.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        console.log("User found:", user);
+
+        const resetToken = crypto.randomBytes(32).toString("hex");
+
+        console.log("Generated reset token:", resetToken);
+
+        user.resetToken = resetToken;
+        user.resetTokenExpires = Date.now() + process.env.TOKEN_EXPIRATION * 60 * 1000;
+
+        await user.save();
+
+        const resetLink = `${process.env.CORS}/user/user-reset-password/${resetToken}`;
+
+        const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        await transporter.sendMail({
+            from: `"H&M" <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject: "Reset your H&M User Password",
+            text: `We have received a password reset request for your account. 
+                If you did not request this, you can safely ignore this email. 
+
+                lick the link below to reset your password:
+                ${resetLink}`,
+        });
+
+        res.status(200).json({ message: "Reset email sent!" });
+    } catch (error) {
+        console.error("Error in userForgotPassword:", error);
+        res.status(500).json({ message: "Internal server error." });
+    }
+};
+
+const userResetPassword = async (req, res) => {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+
+    try {
+        if (!newPassword || newPassword.trim().length < 8) {
+            return res.status(400).json({
+                message: "Invalid password. Password must be at least 8 characters long.",
+            });
+        }
+
+        const user = await userDb.findOne({
+            resetToken: token,
+            resetTokenExpires: { $gt: Date.now() },
+        });
+
+        console.log("User found:", user);
+
+        if (!user) {
+            return res.status(400).json({ message: "Invalid or expired token" });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        user.password = hashedPassword;
+        user.resetToken = undefined;
+        user.resetTokenExpires = undefined;
+
+        await user.save();
+
+        res.status(200).json({ message: "Your password has been reset successfully!" });
+    } catch (error) {
+        console.error("Error in userResetPassword:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+
+module.exports = { register, login, userProfile, checkUser, updateUserProfile, userLogout, deactivateUser, activateUser, deleteUser, getAllUsers,userForgotPassword, userResetPassword }    

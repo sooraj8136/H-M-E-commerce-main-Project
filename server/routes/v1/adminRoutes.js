@@ -5,8 +5,8 @@ const adminRouter = require("express").Router()
 
 adminRouter.post("/register-admin", registerAdmin )
 adminRouter.post("/admin-login", loginAdmin )   
-adminRouter.post("/forgot-password", adminForgotPassword )   
-adminRouter.post("/reset-password/:token", adminResetPassword ) 
+adminRouter.post("/admin-forgot-password", adminForgotPassword )   
+adminRouter.post("/admin-reset-password/:token", adminResetPassword ) 
 
 adminRouter.get("/check-admin", adminAuth, checkAdmin )
 adminRouter.get("/admin-logout", adminAuth, adminLogout )

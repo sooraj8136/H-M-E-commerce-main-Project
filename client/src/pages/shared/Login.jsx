@@ -82,7 +82,7 @@ const Login = () => {
         </div>
         <div className="text-center mb-4">
           <Link
-            to="/forgot-password"
+            to="/user/user-forgot-password"
             className={darkMode ? "text-black" : "text-white forgot-password"}>
             Forgot password?
           </Link>

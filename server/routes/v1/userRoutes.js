@@ -1,4 +1,4 @@
-const { register, login, userProfile, userLogout, checkUser, updateUserProfile, deactivateUser, activateUser, deleteUser, getAllUsers } = require('../../controllers/userControllers')
+const { register, login, userProfile, userLogout, checkUser, updateUserProfile, deactivateUser, activateUser, deleteUser, getAllUsers, userForgotPassword, userResetPassword } = require('../../controllers/userControllers')
 const { adminAuth } = require('../../middlewares/adminAuth')
 const { userAuth } = require('../../middlewares/userAuth')
 
@@ -6,6 +6,8 @@ const userRouter = require('express').Router()
 
 userRouter.post("/signup", register)
 userRouter.post("/login", login)
+userRouter.post("/user-forgot-password", userForgotPassword)
+userRouter.post("/user-reset-password/:token", userResetPassword)
 
 userRouter.get("/profile", userAuth, userProfile)
 userRouter.get("/logout", userAuth, userLogout)

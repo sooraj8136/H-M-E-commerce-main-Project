@@ -214,20 +214,25 @@ const sellerForgotPassword = async (req, res) => {
     const { email } = req.body;
 
     try {
+
         const seller = await sellerDb.findOne({ email, role: "seller" });
 
         if (!seller) {
             return res.status(404).json({ message: "Seller not found" });
         }
 
+        console.log(seller)
+        
         const resetToken = crypto.randomBytes(32).toString("hex");
+        
+        console.log(resetToken)
 
         seller.resetToken = resetToken;
         seller.resetTokenExpires = Date.now() + process.env.TOKEN_EXPIRATION * 60 * 1000;
 
         await seller.save();
 
-        const resetLink = `${process.env.CORS}/seller/reset-password/${resetToken}`;
+        const resetLink = `${process.env.CORS}/seller/seller-reset-password/${resetToken}`;
 
         const transporter = nodemailer.createTransport({
             service: "Gmail",
@@ -240,7 +245,7 @@ const sellerForgotPassword = async (req, res) => {
         await transporter.sendMail({
             from: `"H&M" <${process.env.EMAIL_USER}>`,
             to: email,
-            subject: "Reset your H&M Seller Account Password",
+            subject: "Reset your H&M Seller Password",
             text: `We have received a password reset request from your account. If you have not issued a password reset request, you can safely ignore this email, and your account will not be affected. Click the link to reset your password: ${resetLink}`,
         });
 
@@ -251,16 +256,14 @@ const sellerForgotPassword = async (req, res) => {
     }
 };
 
-
-
 const sellerResetPassword = async (req, res) => {
     const { token } = req.params;
     const { newPassword } = req.body;
 
     try {
-        if (!newPassword || newPassword.trim().length < 6) {
+        if (!newPassword || newPassword.trim().length < 8) {
             return res.status(400).json({
-                message: "Invalid password. Password must be at least 6 characters long.",
+                message: "Invalid password. Password must be at least 8 characters long.",
             });
         }
 
@@ -269,6 +272,8 @@ const sellerResetPassword = async (req, res) => {
             resetTokenExpires: { $gt: Date.now() },
         });
 
+        console.log("Seller found:", seller);
+        
         if (!seller) {
             return res.status(400).json({ message: "Invalid or expired token" });
         }
@@ -287,8 +292,6 @@ const sellerResetPassword = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
-
-
 
 
 module.exports = { registerSeller, loginSeller, checkSeller, sellerProfile, updateSellerProfile, sellerLogout, deleteSeller, getAllSellers, sellerForgotPassword, sellerResetPassword }
