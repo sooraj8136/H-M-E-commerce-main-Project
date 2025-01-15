@@ -4,6 +4,7 @@ const { generateToken } = require("../utils/token")
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { catchErrorHandler } = require("../utils/catchErrorHandler");
+const OrderDb = require('../model/orderModel');
 
 
 const registerAdmin = async (req, res) => {
@@ -321,5 +322,31 @@ const adminResetPassword = async (req, res) => {
 };
 
 
+const verifyOrder = async (req, res) => {
+    try {
+        // Check if the logged-in user is an admin
+        if (!req.user || req.user.role !== "admin") {
+            return res.status(403).json({ message: "Access denied. Only admins can verify products." });
+        }
 
-module.exports = { registerAdmin, loginAdmin, checkAdmin, adminLogout, updateAdminProfile, adminProfile, adminResetPassword, adminForgotPassword }
+        const { productId } = req.params;
+
+        // Find the product by ID
+        const product = await productDb.findById(productId);
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        // Verify the product
+        product.isVerified = true;
+        await product.save();
+
+        res.status(200).json({ message: "Product verified successfully", product });
+    } catch (error) {
+        res.status(500).json({ message: "Error verifying product", error: error.message });
+    }
+};
+
+
+
+module.exports = { registerAdmin, loginAdmin, checkAdmin, adminLogout, updateAdminProfile, adminProfile, adminResetPassword, adminForgotPassword, verifyOrder }

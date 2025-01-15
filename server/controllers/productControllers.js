@@ -1,8 +1,8 @@
 const { cloudinaryInstance } = require("../config/cloudinaryConfig")
 const productDb = require("../model/productModel")
+const sellerDb = require("../model/sellerModel")
 
 const getAllProduct = async (req, res) => {
-
     try {
 
         const allProduct = await productDb.find().select("title price image description category ")
@@ -20,18 +20,17 @@ const getAllProduct = async (req, res) => {
 }
 
 const createProduct = async (req, res) => {
-
     try {
 
-        const { image, title, price, description, category } = req.body
+        const { image, title, price, description, stock, category } = req.body
 
-        const {userId} = req.user;
+        const  sellerId  = req.user.id;
 
         console.log('Request Body:', req.body);
         console.log('Uploaded File:', req.file);
 
 
-        if (!title || !price || !description || !category) {
+        if (!title || !price || !description || !stock || !category) {
             return res.status(400).json({ message: "all fields are required" });
         }
 
@@ -39,8 +38,14 @@ const createProduct = async (req, res) => {
         console.log(uploadResult)
 
 
-        const newProduct = new productDb({ title, price, description, category, image: uploadResult.url, seller: userId });
+        const newProduct = new productDb({ title, price, description, category, image: uploadResult.url, seller: sellerId });
         const savedProduct = await newProduct.save()
+
+        await sellerDb.findOneAndUpdate(
+            { _id: sellerId },
+            { $push: { products: productDb._id } },
+            { new: true }
+        );
 
         res.status(200).json({ message: "New product created successfully", data: savedProduct })
 
@@ -72,7 +77,6 @@ const getProduct = async (req, res) => {
 
 
 const deleteProduct = async (req, res) => {
-
     try {
 
         const productId = req.params.id
@@ -92,46 +96,24 @@ const deleteProduct = async (req, res) => {
     }
 }
 
-// const updateProduct = async (req, res) => {
-
-//     try {
-
-//         const productId = req.params.id
-
-//         const savedProduct = await productDb.findByIdAndUpdate(productId, req.body, { new: true }).select("-password")
-
-//         if (!savedProduct) {
-//             return res.status(400).json({ message: "Sorry, Product not updated" })
-//         }
-
-//         res.status(200).json({ message: "Product updated successfully", data: savedProduct })
-
-//     } catch (error) {
-//         console.log(error)
-//         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
-//     }
-// }
-
 
 const updateProduct = async (req, res) => {
     try {
         const productId = req.params.id;
-        const { image, title, price, description, category, stock } = req.body; // Added stock to the destructuring
+        const { image, title, price, description, category, stock } = req.body; 
         const updateFields = {};
 
-        // Update the fields only if they're defined and not empty
         if (image !== undefined && image !== "") updateFields.image = image;
         if (title !== undefined && title !== "") updateFields.title = title;
         if (price !== undefined && price !== null) updateFields.price = price;
         if (description !== undefined && description !== "") updateFields.description = description;
         if (category !== undefined && category !== "") updateFields.category = category;
-        if (stock !== undefined && stock !== null) updateFields.stock = stock; // Update stock if present
+        if (stock !== undefined && stock !== null) updateFields.stock = stock; 
 
         if (Object.keys(updateFields).length === 0) {
             return res.status(400).json({ message: "No valid fields to update" });
         }
 
-        // Find and update the product
         const savedProduct = await productDb.findByIdAndUpdate(productId, updateFields, { new: true }).select("-password");
 
         if (!savedProduct) {
@@ -147,12 +129,7 @@ const updateProduct = async (req, res) => {
 };
 
 
-
-
-
-
 const productCategory = async (req, res) => {
-
     try {
         const { category } = req.params;
 
@@ -165,7 +142,6 @@ const productCategory = async (req, res) => {
         console.log(error)
         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
     }
-
 }
 
 

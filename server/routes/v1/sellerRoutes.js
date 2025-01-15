@@ -1,4 +1,4 @@
-const { registerSeller, loginSeller, checkSeller, sellerProfile, sellerLogout, updateSellerProfile, deleteSeller, getAllSellers, sellerForgotPassword, sellerResetPassword} = require("../../controllers/sellerController")
+const { registerSeller, loginSeller, checkSeller, sellerProfile, sellerLogout, updateSellerProfile, deleteSeller, getAllSellers, sellerForgotPassword, sellerResetPassword } = require("../../controllers/sellerController")
 const { adminAuth } = require("../../middlewares/adminAuth")
 const { sellerAuth } = require("../../middlewares/sellerAuth")
 

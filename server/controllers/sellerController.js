@@ -151,7 +151,7 @@ const updateSellerProfile = async (req, res) => {
 
         console.log(updatedSellerProfile);
 
-        res.status(200).json({message: "Seller profile updated successfully", data: updatedSellerProfile});
+        res.status(200).json({ message: "Seller profile updated successfully", data: updatedSellerProfile });
 
     } catch (error) {
         console.log(error);
@@ -177,10 +177,10 @@ const sellerLogout = async (req, res) => {
 
 }
 
-const deleteSeller = async (req, res) => { 
-    try {  
-        
-        const { sellerId } = req.params; 
+const deleteSeller = async (req, res) => {
+    try {
+
+        const { sellerId } = req.params;
 
         console.log("Seller Id :- ", sellerId);
 
@@ -222,9 +222,9 @@ const sellerForgotPassword = async (req, res) => {
         }
 
         console.log(seller)
-        
+
         const resetToken = crypto.randomBytes(32).toString("hex");
-        
+
         console.log(resetToken)
 
         seller.resetToken = resetToken;
@@ -273,7 +273,7 @@ const sellerResetPassword = async (req, res) => {
         });
 
         console.log("Seller found:", seller);
-        
+
         if (!seller) {
             return res.status(400).json({ message: "Invalid or expired token" });
         }
@@ -292,6 +292,7 @@ const sellerResetPassword = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
+
 
 
 module.exports = { registerSeller, loginSeller, checkSeller, sellerProfile, updateSellerProfile, sellerLogout, deleteSeller, getAllSellers, sellerForgotPassword, sellerResetPassword }

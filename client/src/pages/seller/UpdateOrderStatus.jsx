@@ -16,8 +16,9 @@ const UpdateOrderStatus = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axiosInstance.get('/orders/get-all-orders-seller');
-        setOrders(response.data);
+        const response = await axiosInstance.get('/orders/get-seller-orders');
+        console.log("API Response:", response.data);
+        setOrders(response.data.data || []); // Adjust based on your API's response structure
       } catch (err) {
         setError(err?.response?.data?.message || 'Failed to fetch orders');
         toast.error(err?.response?.data?.message || 'Failed to fetch orders');
@@ -75,7 +76,7 @@ const UpdateOrderStatus = () => {
             {orders.map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
-                <td>{order.userId?.name}</td>
+                <td>{order.userId?.name || "N/A"}</td> {/* Display User Name */}
                 <td>
                   {order.items.map((item, index) => (
                     <div key={index}>
