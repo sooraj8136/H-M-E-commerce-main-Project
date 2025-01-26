@@ -164,8 +164,7 @@ function SellerSignup() {
           Already have an account?&nbsp;
           <Link
             to="/seller/login"
-            className={darkMode ? "text-black" : "text-white forgot-password"}
-          >
+            className={darkMode ? "text-black" : "text-white forgot-password"}>
             Log in
           </Link>
         </p>

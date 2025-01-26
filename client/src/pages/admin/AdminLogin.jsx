@@ -12,8 +12,8 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   const admin = {
-    login_api: "/admin/admin-login", 
-    dashboard_route: "/admin/admin-dashboard", 
+    login_api: "/admin/admin-login",
+    dashboard_route: "/admin/admin-dashboard",
     signup_route: "/admin/signup",
   };
 
@@ -24,7 +24,7 @@ const AdminLogin = () => {
       const response = await axiosInstance({ method: "POST", url: admin.login_api, data });
       console.log(response, "====response");
       toast.success("Admin log-in success");
-      navigate("/admin/admin-dashboard"); 
+      navigate("/admin/admin-dashboard");
     } catch (error) {
       toast.error("Admin log-in failed");
       console.log(error);
@@ -84,7 +84,9 @@ const AdminLogin = () => {
           </Link>
         </div>
         <div className="d-flex justify-content-center">
-          <input type="submit" className="bg-black submit-btn" value="Sign in" style={{ maxWidth: "400px", width: "90%" }} />
+          <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }}>
+            Sign in
+          </button>
         </div>
         <br />
       </form>

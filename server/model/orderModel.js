@@ -29,6 +29,10 @@ const orderSchema = new mongoose.Schema(
       enum: ["processing", "transit", "out-for-delivery", "delivered"],
       default: "processing",
     },
+    canUpdate: {
+      type: Boolean,
+      default: false, 
+    },
   },
   { timestamps: true }
 );

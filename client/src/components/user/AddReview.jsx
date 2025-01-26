@@ -121,7 +121,7 @@ export const AddReview = () => {
       if (response) {
         toast.success("Review added successfully!");
         navigate(`/product-details/${productId}`);
-        handleCloseModal(); // Close the modal after submitting
+        handleCloseModal();
       }
     } catch (error) {
       console.error(error);
@@ -131,14 +131,14 @@ export const AddReview = () => {
 
   return (
     <div className="container">
-      <button  onClick={handleShowModal}>
-        Rate product
-      </button>
-
-      {/* Modal for Review Form */}
+      <div className="rate-product-container">
+        <button onClick={handleShowModal} className="rate-product">
+          Rate product
+        </button>
+      </div>
       <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Add Review</Modal.Title>
+          <h5 className="text-center">Add Your Review</h5>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column gap-2 align-items-center justify-content-center">
@@ -151,7 +151,7 @@ export const AddReview = () => {
                   style={{
                     cursor: "pointer",
                     fontSize: "2rem",
-                    color: star <= rating ? "#ffcc00" : "#d9d9d9",
+                    color: star <= rating ? "black" : "#d9d9d9",
                   }}
                 >
                   ★
@@ -159,10 +159,9 @@ export const AddReview = () => {
               ))}
             </div>
 
-            {/* Comment Input */}
             <div>
               <textarea
-                className="form-control rounded-2"
+                className="form-control rounded-2 review-textarea"
                 {...register("comment", { required: true })}
                 placeholder="Enter your comment"
                 aria-label="Comment"
@@ -170,12 +169,12 @@ export const AddReview = () => {
               />
             </div>
 
-            {/* Submit Button */}
             <div>
               <button
                 type="submit"
                 variant="dark"
-                disabled={rating === 0}  
+                disabled={rating === 0}
+                className="rating-btn"
               >
                 Submit
               </button>

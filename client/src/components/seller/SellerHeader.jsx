@@ -29,9 +29,7 @@ function SellerHeader() {
                                 </Nav.Link>
                                 <Nav.Link href="" className= {darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
                             </Nav>
-                            <span>
-                                <DarkMode />
-                            </span>
+                            
                             <ul className="nav justify-content-center">
                                 <li className="nav-item ">
                                     <Nav.Link href="/seller/seller-home" className={darkMode ? "text-black" : "text-white nav-link"}>dashboard</Nav.Link>
@@ -68,6 +66,9 @@ function SellerHeader() {
                                     </button>
                                 </div>
                             </div>
+                            <span>
+                                <DarkMode />
+                            </span>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>

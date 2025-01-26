@@ -46,7 +46,7 @@ import SellerForgotPassword from '../pages/seller/SellerForgotPassword';
 import SellerResetPassword from '../pages/seller/SellerResetPassword';
 import UserForgotPassword from '../pages/user/UserForgotPassword';
 import UserResetPassword from '../pages/user/UserResetPassword';
-import { AddReview } from '../components/user/AddReview';
+import PendingPermissionRequests from '../pages/admin/PermissionRequests';
 
 export const router = createBrowserRouter([
   {
@@ -241,6 +241,10 @@ export const router = createBrowserRouter([
       {
         path: 'admin-reset-password/:token',
         element: <ResetPassword />,
+      },
+      {
+        path: 'pending-requests',
+        element: <PendingPermissionRequests />,
       },
     ],
   },

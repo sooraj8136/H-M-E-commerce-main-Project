@@ -19,42 +19,87 @@ const getAllProduct = async (req, res) => {
     }
 }
 
+// const createProduct = async (req, res) => {
+//     try {
+
+//         const { image, title, price, description, stock, category } = req.body
+
+//         const  sellerId  = req.user.id;
+
+//         console.log('Request Body:', req.body);
+//         console.log('Uploaded File:', req.file);
+
+
+//         if (!title || !price || !description || !stock || !category) {
+//             return res.status(400).json({ message: "all fields are required" });
+//         }
+
+//         const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path)
+//         console.log(uploadResult)
+
+
+//         const newProduct = new productDb({ title, price, description, category, image: uploadResult.url, seller: sellerId });
+//         const savedProduct = await newProduct.save()
+
+//         await sellerDb.findOneAndUpdate(
+//             { _id: sellerId },
+//             { $push: { products: productDb._id } },
+//             { new: true }
+//         );
+
+//         res.status(200).json({ message: "New product created successfully", data: savedProduct })
+
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
+//     }
+// }
+
 const createProduct = async (req, res) => {
     try {
-
-        const { image, title, price, description, stock, category } = req.body
-
-        const  sellerId  = req.user.id;
+        const { image, title, price, description, materials, careguid, stock, category, sizes } = req.body;
+        const sellerId = req.user.id;
 
         console.log('Request Body:', req.body);
         console.log('Uploaded File:', req.file);
 
-
-        if (!title || !price || !description || !stock || !category) {
-            return res.status(400).json({ message: "all fields are required" });
+        if (!title || !price || !description || !materials || !careguid || !stock || !category || !sizes || sizes.length === 0) {
+            return res.status(400).json({ message: "All fields, including sizes, are required." });
         }
 
-        const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path)
-        console.log(uploadResult)
+        const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path);
+        console.log('Uploaded File:', uploadResult);
 
+        const newProduct = new productDb({
+            title,
+            price,
+            description,
+            materials,
+            careguid,
+            category,
+            sizes, 
+            image: uploadResult.url,
+            stock,
+            seller: sellerId,
+        });
 
-        const newProduct = new productDb({ title, price, description, category, image: uploadResult.url, seller: sellerId });
-        const savedProduct = await newProduct.save()
+        const savedProduct = await newProduct.save();
 
         await sellerDb.findOneAndUpdate(
             { _id: sellerId },
-            { $push: { products: productDb._id } },
+            { $push: { products: savedProduct._id } },
             { new: true }
         );
 
-        res.status(200).json({ message: "New product created successfully", data: savedProduct })
-
-
+        res.status(200).json({ message: "New product created successfully", data: savedProduct });
     } catch (error) {
-        console.log(error)
-        res.status(error.status || 500).json({ error: error.message || "Internal server error" })
+        console.log(error);
+        res.status(error.status || 500).json({ error: error.message || "Internal server error" });
     }
-}
+};
+
+
 
 const getProduct = async (req, res) => {
     try {
@@ -100,7 +145,7 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const productId = req.params.id;
-        const { image, title, price, description, category, stock } = req.body; 
+        const { image, title, price, description, category, stock } = req.body;
         const updateFields = {};
 
         if (image !== undefined && image !== "") updateFields.image = image;
@@ -108,7 +153,7 @@ const updateProduct = async (req, res) => {
         if (price !== undefined && price !== null) updateFields.price = price;
         if (description !== undefined && description !== "") updateFields.description = description;
         if (category !== undefined && category !== "") updateFields.category = category;
-        if (stock !== undefined && stock !== null) updateFields.stock = stock; 
+        if (stock !== undefined && stock !== null) updateFields.stock = stock;
 
         if (Object.keys(updateFields).length === 0) {
             return res.status(400).json({ message: "No valid fields to update" });

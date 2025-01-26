@@ -43,7 +43,6 @@ function ProductList() {
                     {products?.map((productsArray) => (
                         <Col key={productsArray._id} xs="12" sm="6" md="4" lg="4" xl="3" xxl="3">
                             <CategoryCard product={productsArray} />
-
                         </Col>
                     ))}
                 </Row>

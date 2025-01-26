@@ -13,7 +13,6 @@ function AdminHeader() {
 
     return (
         <>
-            {/* <h2>Admin Auth Header</h2> */}
             <Navbar
                 expand="lg"
                 className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
@@ -29,9 +28,7 @@ function AdminHeader() {
                             </Nav.Link>
                             <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
                         </Nav>
-                        <span>
-                            <DarkMode />
-                        </span>
+                        
                         <ul className="nav justify-content-center">
                             <li className="nav-item ">
                                 <Nav.Link href="/admin/admin-dashboard" className={darkMode ? "text-black" : "text-white nav-link"}>Dashboard</Nav.Link>
@@ -62,6 +59,9 @@ function AdminHeader() {
                                 </button>
                             </div>
                         </div>
+                        <span>
+                            <DarkMode />
+                        </span>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -73,30 +73,6 @@ function AdminHeader() {
                     alt="Responsive image"
                 />
             </div>
-            {/* <section className="navlinks">
-                <div>
-                    <ul className="nav justify-content-center">
-                        <li className="nav-item ">
-                            <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"}>Ladies</Nav.Link>
-                        </li>
-                        <li className="nav-item">
-                            <Nav.Link href="/men-page" className={darkMode ? "text-black" : "text-white nav-link"}>Men</Nav.Link>
-                        </li>
-                        <li className="nav-item">
-                            <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"}>Kids</Nav.Link>
-                        </li>
-                        <li className="nav-item">
-                            <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"}>Home</Nav.Link>
-                        </li>
-                        <li className="nav-item">
-                            <Nav.Link href="/about" className={darkMode ? "text-black" : "text-white nav-link"}>About</Nav.Link>
-                        </li>
-                        <li className="nav-item">
-                            <Nav.Link href="/product" className={darkMode ? "text-black" : "text-white nav-link"}>Products</Nav.Link>
-                        </li>
-                    </ul>
-                </div>
-            </section> */}
         </>
     )
 }

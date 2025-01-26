@@ -14,7 +14,6 @@ function Header() {
     return (
         <>
             <header>
-                {/* <h2>General Header</h2> */}
                 <Navbar
                     expand="lg"
                     className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
@@ -23,16 +22,14 @@ function Header() {
                         <Navbar.Collapse id="navbarScroll">
                             <Nav className="navbar-nav me-auto mb-2 mb-lg-0" navbarScroll>
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
-                                Sustainability
+                                    Sustainability
                                 </Nav.Link>
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
                                     Customer Service
                                 </Nav.Link>
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
                             </Nav>
-                            <span>
-                                <DarkMode />
-                            </span>
+
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
                                     <div className="nav-sec-2 d-flex">
@@ -64,6 +61,9 @@ function Header() {
                                     </button>
                                 </div>
                             </div>
+                            <span>
+                                <DarkMode />
+                            </span>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>

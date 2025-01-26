@@ -6,6 +6,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
+import { CiHeart } from "react-icons/ci";
+import { BsBag, BsPerson } from 'react-icons/bs';
 
 function UserHeader() {
 
@@ -15,7 +17,6 @@ function UserHeader() {
     return (
         <>
             <header>
-                {/* <h4>Auth User</h4> */}
                 <Navbar
                     expand="lg"
                     className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
@@ -31,22 +32,47 @@ function UserHeader() {
                                 </Nav.Link>
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
                             </Nav>
-                            <span>
-                                <DarkMode />
-                            </span>
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
-                                    <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/user/profile" className={darkMode ? "text-black" : "text-white"}>My account</Nav.Link>
+                                    <div className="d-flex align-items-center nav-item-section">
+                                        <BsPerson
+                                            style={{
+                                                fontSize: "1.4rem",
+                                                marginRight: "4px",
+                                                color: darkMode ? "#000" : "#fff",
+                                            }}
+                                        />
+                                        <Nav.Link href="/user/profile" className={darkMode ? "text-black" : "text-white"}>
+                                            My account
+                                        </Nav.Link>
                                     </div>
-                                    <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/user/wishlist" className={darkMode ? "text-black" : "text-white"}>Favourites</Nav.Link>
+                                    <div className="d-flex align-items-center nav-item-section">
+                                        <CiHeart
+                                            style={{
+                                                fontSize: "1.5rem",
+                                                marginRight: "4px",
+                                                color: darkMode ? "#000" : "#fff"
+                                            }}
+                                        />
+                                        <Nav.Link href="/user/wishlist" className={darkMode ? "text-black" : "text-white"}>
+                                            Favourites
+                                        </Nav.Link>
                                     </div>
-                                    <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/user/cart" className={darkMode ? "text-black" : "text-white"}>Shopping bag</Nav.Link>
+                                    <div className="d-flex align-items-center nav-item-section">
+                                        <BsBag
+                                            style={{
+                                                fontSize: "1.2rem",
+                                                marginRight: "4px",
+                                                color: darkMode ? "#000" : "#fff"
+                                            }}
+                                        />
+                                        <Nav.Link href="/user/cart" className={darkMode ? "text-black" : "text-white"}>
+                                            Shopping bag
+                                        </Nav.Link>
                                     </div>
                                 </div>
                             </Form>
+
                             <div className="search">
                                 <div className=" search-container ">
                                     <input
@@ -71,6 +97,9 @@ function UserHeader() {
                                     </button>
                                 </div>
                             </div>
+                            <span>
+                                <DarkMode />
+                            </span>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>

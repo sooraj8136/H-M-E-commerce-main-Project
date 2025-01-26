@@ -36,23 +36,36 @@ function ProductCards({ product }) {
 
 
 export const CartCards = ({ item, handleRemove }) => {
-
   console.log('item=====', item);
 
   return (
-    <div className="">
-      <img src={item?.productId?.image} alt="cart-item" className="w-24 h-20" />
-      <div>
-        <h2>{item?.productId?.title} </h2>
-        <h3>{item?.productId?.price} </h3>
-        <h3>{item?.count} </h3>
+    <div className="cart-card">
+      <div className="cart-card-image">
+        <img
+          src={item?.productId?.image}
+          alt="cart-item"
+          className="product-image"
+        />
       </div>
-      <button className="btn btn-secondary" onClick={() => handleRemove(item?.productId?._id)}>
-        Remove
-      </button>
+
+      <div className="cart-card-details">
+        <h2 className="product-title">{item?.productId?.title}</h2>
+        <h3 className="product-price">₹{item?.productId?.price}</h3>
+        <h4 className="product-quantity">Quantity: {item?.count}</h4>
+      </div>
+
+      <div className="cart-card-actions">
+        <button
+          className="btn btn-danger remove-button"
+          onClick={() => handleRemove(item?.productId?._id)}
+        >
+          Remove
+        </button>
+      </div>
     </div>
   );
 };
+
 
 
 export default ProductCards

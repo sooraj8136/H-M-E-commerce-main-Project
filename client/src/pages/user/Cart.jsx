@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import { CartCards } from '../../components/user/Cards'
+import { useSelector } from 'react-redux';
 import toast from "react-hot-toast";
 import { axiosInstance } from '../../config/axiosInstance';
 import { loadStripe } from "@stripe/stripe-js";
@@ -9,7 +10,7 @@ import { loadStripe } from "@stripe/stripe-js";
 function Cart() {
 
     const [productDetails, error] = useFetch("/cart/get-cart")
-
+    const { darkMode } = useSelector((state) => state.mode);
 
     const handleRemoveProduct = async (productId) => {
 
@@ -38,7 +39,7 @@ function Cart() {
             });
 
             console.log(session, "=======session");
-            const result = stripe.redirectToCheckout({                                 
+            const result = stripe.redirectToCheckout({
                 sessionId: session.data.sessionId,
             });
         } catch (error) {
@@ -48,10 +49,10 @@ function Cart() {
 
 
     return (
-        <div className="">  
+        <div className="">
             <div>
                 {productDetails?.products?.map((value) => (
-                    <CartCards item={value} key={value._id} handleRemove={handleRemoveProduct}/>
+                    <CartCards item={value} key={value._id} handleRemove={handleRemoveProduct} />
                 ))}
             </div>
             {productDetails?.products?.length ? (
@@ -65,7 +66,17 @@ function Cart() {
                     </button>
                 </div>
             ) : (
-                <h1> cart is empty </h1>
+                <>
+                    <div className='empty-cart'>
+                        <p className={darkMode ? 'text-black' : 'text-white'}>Free shipping above Rs.1999</p>
+                        <p className={darkMode ? 'text-black' : 'text-white'}>Free & flexible 15 days return</p>
+                        <p className={darkMode ? 'text-black' : 'text-white'}>Estimated delivery time: 2-7 days</p>
+                    </div>
+                    <div className={darkMode ? 'text-black' : 'text-white'}>
+                        <h1 className='text-center'
+                            style={{ fontWeight: '700', fontSize: 'xx-large' }}> Your Shopping Bag is empty! </h1>
+                    </div>
+                </>
             )}
         </div>
     )

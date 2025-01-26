@@ -21,10 +21,28 @@ const productchema = new mongoose.Schema(
             minLength: 10,
             maxLength: 300,
         },
+        materials: {
+            type: String,
+            required: true,
+        },
+        careguid: {
+            type: String,
+            required: true,
+        },
         category: {
             type: String,
             required: true,
             enum: ["Men", "Ladies", "Baby", "Kids", "Preppy", "Iconic_graphics", "Kidsnew", "Hello-kitty", "Babynew", "accessories", "office", "Denim"]
+        },
+        sizes: {
+            type: [String],
+            required: true,
+            validate: {
+                validator: function (sizes) {
+                    return sizes && sizes.length > 0;
+                },
+                message: "At least one size must be provided.",
+            },
         },
         stock: {
             type: Number,
