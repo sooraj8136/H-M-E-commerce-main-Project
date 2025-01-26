@@ -34,39 +34,43 @@ function UserHeader() {
                             </Nav>
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
-                                    <div className="d-flex align-items-center nav-item-section">
-                                        <BsPerson
-                                            style={{
-                                                fontSize: "1.4rem",
-                                                marginRight: "4px",
-                                                color: darkMode ? "#000" : "#fff",
-                                            }}
-                                        />
-                                        <Nav.Link href="/user/profile" className={darkMode ? "text-black" : "text-white"}>
+                                    <div className="d-flex align-items-center">
+                                        <Nav.Link
+                                            href="/user/profile"
+                                            className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                            aria-label="Profile"
+                                        >
+                                            <BsPerson
+                                                style={{
+                                                    fontSize: "1.4rem",
+                                                    marginRight: "8px", // Increased margin to properly space the icon
+                                                    color: darkMode ? "#000" : "#fff",
+                                                }}
+                                            />
                                             My account
                                         </Nav.Link>
                                     </div>
                                     <div className="d-flex align-items-center nav-item-section">
-                                        <CiHeart
-                                            style={{
-                                                fontSize: "1.5rem",
-                                                marginRight: "4px",
-                                                color: darkMode ? "#000" : "#fff"
-                                            }}
-                                        />
-                                        <Nav.Link href="/user/wishlist" className={darkMode ? "text-black" : "text-white"}>
+                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites">
+                                            <CiHeart
+                                                style={{
+                                                    fontSize: "1.5rem",
+                                                    marginRight: "4px",
+                                                    color: darkMode ? "#000" : "#fff"
+                                                }}
+                                            />
                                             Favourites
                                         </Nav.Link>
                                     </div>
                                     <div className="d-flex align-items-center nav-item-section">
-                                        <BsBag
-                                            style={{
-                                                fontSize: "1.2rem",
-                                                marginRight: "4px",
-                                                color: darkMode ? "#000" : "#fff"
-                                            }}
-                                        />
-                                        <Nav.Link href="/user/cart" className={darkMode ? "text-black" : "text-white"}>
+                                        <Nav.Link href="/user/cart" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Shopping bag">
+                                            <BsBag
+                                                style={{
+                                                    fontSize: "1.2rem",
+                                                    marginRight: "4px",
+                                                    color: darkMode ? "#000" : "#fff"
+                                                }}
+                                            />
                                             Shopping bag
                                         </Nav.Link>
                                     </div>
