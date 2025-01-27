@@ -10,8 +10,8 @@ function SalesPage() {
     return (
         <>
             <Container>
-                <div className="container  d-flex justify-content-center align-items-center">
-                    <p className={darkMode ? "text-black" : "text-white "}>H&M / <span className='text-danger' style={{
+                <div className="container  d-flex justify-content-center align-items-center heading-head">
+                    <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
                         fontWeight: "700",
                     }}>Sale</span></p>
                 </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from "react-bootstrap/Nav";
 import { Container } from "react-bootstrap";
 import { useSelector } from 'react-redux';
-import { FaTrashAlt } from 'react-icons/fa'; 
+import { FaTrashAlt } from 'react-icons/fa';
 
 function ProductCards({ product }) {
 
@@ -16,7 +16,7 @@ function ProductCards({ product }) {
           <div className="product-item text-center">
             <img src={product?.image} alt={product?.title}
               style={{
-                width: "300px",   
+                width: "300px",
                 height: "auto",
                 objectFit: "cover",
                 marginBottom: "10px",
@@ -70,47 +70,53 @@ function ProductCards({ product }) {
 
 
 export const CartCards = ({ item, handleUpdate }) => {
+
+  const { darkMode } = useSelector((state) => state.mode)
+  console.log(darkMode)
+
   return (
-    <div className="cart-card">
-      <div className="cart-card-image">
-        <img
-          src={item?.productId?.image}
-          alt={item?.productId?.title || 'cart-item'}
-          className="product-image"
-        />
-      </div>
+    <>
+      <Container>
+        <div className="cart-card">
+          <div className="cart-card-image">
+            <img
+              src={item?.productId?.image}
+              alt={item?.productId?.title || 'cart-item'}
+              className="product-image"
+            />
+          </div>
+          <div className="cart-card-details">
+            <h2 className="product-title">{item?.productId?.title}</h2>
+            <h3 className="product-price">Rs. {item?.price}.00</h3>
+            <h4 className="product-quantity">
+              <button
+                className="btn btn-decrement"
+                onClick={() => handleUpdate(item?.productId?._id, 'remove')}
+              >
+                -
+              </button>
+              {item?.count}
+              <button
+                className="btn btn-increment"
+                onClick={() => handleUpdate(item?.productId?._id, 'add')}
+              >
+                +
+              </button>
+            </h4>
+            <h4 className="product-total">Total : Rs. {item?.totalAmount}.00</h4>
+          </div>
 
-      <div className="cart-card-details">
-        <h2 className="product-title">{item?.productId?.title}</h2>
-        <h3 className="product-price">Rs. {item?.price}.00</h3>
-        <h4 className="product-quantity">
-          Quantity:
-          <button
-            className="btn btn-decrement"
-            onClick={() => handleUpdate(item?.productId?._id, 'remove')}
-          >
-            -
-          </button>
-          {item?.count}
-          <button
-            className="btn btn-increment"
-            onClick={() => handleUpdate(item?.productId?._id, 'add')}
-          >
-            +
-          </button>
-        </h4>
-        <h4 className="product-total">Total : Rs. {item?.totalAmount}.00</h4>
-      </div>
-
-      <div className="cart-card-actions">
-        <button
-          className="btn"
-          onClick={() => handleUpdate(item?.productId?._id, 'delete')} // Confirm 'delete' is correct action in your backend
-        >
-          <FaTrashAlt className="text-lg text-red-500" />
-        </button>
-      </div>
-    </div>
+          <div className="cart-card-actions">
+            <button
+              className="btn"
+              onClick={() => handleUpdate(item?.productId?._id, 'delete')} // Confirm 'delete' is correct action in your backend
+            >
+              <FaTrashAlt className="text-lg text-red-500" />
+            </button>
+          </div>
+        </div>
+      </Container>
+    </>
   );
 };
 
