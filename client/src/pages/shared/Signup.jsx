@@ -34,109 +34,138 @@ function Signup() {
 
   return (
     <>
-      <div className={darkMode ? "text-black" : "text-white"}>
-        <h1 className="text-center">Sign Up</h1>
+      <div className="container  d-flex justify-content-center align-items-center heading-head">
+        <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
+          fontWeight: "800"
+        }}>Register</span> </p>
+      </div>
+      <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "20px", fontWeight: "700" }}>
+        <p className="text-center">
+          Become a H&M member
+        </p>
       </div>
       <br />
-      <div className={darkMode ? "text-black" : "text-white"}>
+      <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "15px", fontWeight: "500" }}>
         <p className="text-center">
-          Join us today and enjoy exclusive benefits, offers, and rewards!
+          Become a member-Join us today and enjoy exclusive benefits, offers, and rewards!
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="input-sec text-center">
-          <label
-            htmlFor="name"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Name:
-          </label>
-          <div className="d-flex justify-content-center">
+        <div className="input-sec ">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="name"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Name:
+            </label>
             <input
               type="text"
-              {...register("name")}
+              {...register("name", { required: "Name is required" })}
               id="name"
               name="name"
-              className="pass-input mx-auto my-3"
+              className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
           </div>
 
-          <label
-            htmlFor="email"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Email:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="email"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Email:
+            </label>
             <input
               type="email"
-              {...register("email")}
+              {...register("email", { required: "Name is required" })}
               id="email"
               name="email"
-              className="pass-input mx-auto my-3"
+              className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
           </div>
 
-          <label
-            htmlFor="mobile"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Mobile:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="mobile"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Mobile:
+            </label>
             <input
               type="tel"
-              {...register("mobile")}
+              {...register("mobile", { required: "Name is required" })}
               id="mobile"
               name="mobile"
-              className="pass-input mx-auto my-3"
+              className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
           </div>
 
-          <label
-            htmlFor="password"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Password:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="password"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Password:
+            </label>
             <input
               type="password"
-              {...register("password")}
+              {...register("password", { required: "Name is required" })}
               id="password"
               name="password"
-              className="pass-input mx-auto my-3"
+              className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
           </div>
         </div>
 
-        <div className="d-flex justify-content-center">
-          <input
-            type="submit"
-            className="bg-black submit-btn"
-            value="Sign Up"
-            style={{ maxWidth: "400px", width: "90%" }}
-          />
+        <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+  <div className="form-check">
+    <input
+      type="checkbox"
+      id="terms"
+      {...register("terms", { required: "You must agree to the terms and conditions" })}
+      className="form-check-input custom-checkbox"
+      required
+    />
+    <label
+      htmlFor="terms"
+      className={`form-check-label ${darkMode ? "text-black" : "text-white"}`}
+      style={{ fontSize: "12px", fontWeight: "500" }}
+    >
+      Yes, email me offers, style updates, and special invites to sales and events.
+      <br />
+    </label>
+  </div>
+  <p style={{ fontSize: "12px", fontWeight: "500" }}>
+    Wish your inbox was more stylish? No problem, just subscribe to our newsletter. Find out what's hot and happening in the world of fashion, beauty, and home decor. Plus, you'll get bonus vouchers, birthday offers, and special invites to sales and events – straight to your inbox!
+  </p>
+  <p className="terms-n-cond" style={{ fontSize: "12px", fontWeight: "500" }}>
+    By clicking ‘Become a member’, I agree to the H&M Membership Terms and conditions.
+  </p>
+</div>
+
+
+        <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
+            Become an H&M member
+          </button>
         </div>
-        <br />
       </form>
 
-      <div className="d-flex justify-content-center mt-4">
+      <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
-          Already have an account?&nbsp;
           <Link
             to={user.login_route}
             className={darkMode ? "text-black" : "text-white forgot-password"}
           >
-            Log in
+            Back to Log in
           </Link>
         </p>
       </div>

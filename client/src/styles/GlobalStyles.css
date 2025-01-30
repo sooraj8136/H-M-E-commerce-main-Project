@@ -18,6 +18,14 @@
     margin-top: 100px
 }
 
+.terms-n-cond {
+    color: #5f5f5f;
+}
+
+.forgot-password {
+    text-decoration: none;
+}
+
 .final-font {
     text-align: center;
     margin-top: 30px;
@@ -37,7 +45,8 @@
     max-width: 400px;
     width: 200px;
     padding: 10px 20px;
-    margin: 0 auto;
+    margin: 10 auto;
+    border: 1px solid black;
 }
 
 .nav-sec-2 {
@@ -180,8 +189,19 @@ ul {
     width: 200px;
     padding: 10px 20px;
     margin: 0 auto;
-    border: none;
+    border: 1px solid white;
     color: white;
+    background-color: #000000de;
+}
+
+.signup-btn {
+    max-width: 400px;
+    width: 200px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    border: 1px solid white;
+    color: white;
+    background-color: #000000de;
 }
 
 .pass-input {
@@ -1310,10 +1330,41 @@ hr {
 
 /* add to cart increase decrease buttons */
 
-.btn-increment{
-    font-weight:500 ;
+.btn-increment {
+    font-weight: 500;
 }
 
-.btn-decrement{
+.btn-decrement {
     font-weight: 500;
+}
+
+/*Chekc box */
+
+.custom-checkbox:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.custom-checkbox:checked {
+    background-color: #000;
+    border-color: #000;
+}
+
+.custom-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 2px;
 }

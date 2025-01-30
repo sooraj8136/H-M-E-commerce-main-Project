@@ -43,10 +43,10 @@ const adminSchema = new mongoose.Schema(
         },
         resetToken: {
             type: String
-        }, // For password reset
+        },
         resetTokenExpires: {
             type: Date
-        }, // Token expiration time
+        },
 
         products: [{ type: mongoose.Types.ObjectId, ref: "products" }],
     },

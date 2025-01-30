@@ -7,9 +7,9 @@ import toast from "react-hot-toast";
 
 const SellerLogin = () => {
   const { darkMode } = useSelector((state) => state.mode);
-  
+
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();   
+  const navigate = useNavigate();
 
   const seller = {
     login_api: "/seller/login-seller",
@@ -17,7 +17,7 @@ const SellerLogin = () => {
     signup_route: "/seller/signup",
   };
 
-  const onSubmit = async (data) => {    
+  const onSubmit = async (data) => {
     try {
       console.log("Data  :- ", data);
 
@@ -33,49 +33,50 @@ const SellerLogin = () => {
 
   return (
     <>
+      <div className="container  d-flex justify-content-center align-items-center heading-head">
+        <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
+          fontWeight: "800"
+        }}>seller login/Register</span> </p>
+      </div>
       <div className={darkMode ? "text-black" : "text-white"}>
-        <h1 className="text-center">Seller Sign In</h1>
+        <h1 className="text-center"
+          style={{ fontSize: "20px", fontWeight: "bold" }}>Seller Sign in </h1>
       </div>
       <br />
-      <div className={darkMode ? "text-black" : "text-white"}>
+      <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "15px", fontWeight: "500" }}>
         <p className="text-center">
           Access your seller account and start managing your store today.
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="input-sec text-center">
-          <label
-            htmlFor="email"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Email:
-          </label>
-          <br />
-          <div className="d-flex justify-content-center">
+        <div className="input-sec">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="email"
+              className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
+              Email:
+            </label>
             <input
               type="email"
               {...register("email")}
               id="email"
               name="email"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input w-100 mt-1"
               required
             />
           </div>
-          <label
-            htmlFor="password"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Password:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="password"
+              className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
+              Password:
+            </label>
             <input
               type="password"
               {...register("password")}
               id="password"
               name="password"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input w-100 mt-1"
               required
             />
           </div>
@@ -89,7 +90,9 @@ const SellerLogin = () => {
           </Link>
         </div>
         <div className="d-flex justify-content-center">
-          <input type="submit" className="bg-black submit-btn" value="Sign in" style={{ maxWidth: "400px", width: "90%" }} />
+          <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }}>
+            Sign in
+          </button>
         </div>
         <br />
       </form>

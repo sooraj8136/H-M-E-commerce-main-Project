@@ -23,149 +23,133 @@ function AdminSignup() {
             toast.error("Sign-up failed. Please try again.");
             console.log(error);
         }
-    };  
+    };
 
     return (
         <>
-            <div className={darkMode ? "text-black" : "text-white"}>
-                <h1 className="text-center">Admin Sign Up</h1>
+            <div className="container  d-flex justify-content-center align-items-center heading-head">
+                <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
+                    fontWeight: "800"
+                }}>Admin Register</span> </p>
             </div>
             <br />
-            <div className={darkMode ? "text-black" : "text-white"}>
+            <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "15px", fontWeight: "500" }}>
                 <p className="text-center">
                     Join us as an admin to manage the platform's content and users!
                 </p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="input-sec text-center">
-                    {/* Name Input */}
-                    <label
-                        htmlFor="name"
-                        className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-                    >
-                        Name:
-                    </label>
-                    <div className="d-flex justify-content-center">
+                <div className="input-sec">
+                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                        <label
+                            htmlFor="name"
+                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+                        >
+                            Name:
+                        </label>
                         <input
                             type="text"
                             {...register("name", { required: "Name is required" })}
                             id="name"
                             name="name"
-                            className="pass-input mx-auto my-3"
-                            style={{ maxWidth: "400px", width: "90%" }}
+                            className="pass-input mx-auto my-1 w-100"
+                            required
                         />
                     </div>
-                    <label
-                        htmlFor="role"
-                        className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-                    >
-                        Role:
-                    </label>
-                    <div className="d-flex justify-content-center">
+                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                        <label
+                            htmlFor="role"
+                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+                        >
+                            Role:
+                        </label>
                         <select
                             {...register("role", { required: "Role is required" })}
                             id="role"
                             name="role"
-                            className="pass-input mx-auto my-3"
-                            style={{ maxWidth: "400px", width: "90%" }}
+                            className="pass-input mx-auto my-1 w-100"
+                            required
                         >
                             <option value="admin">Admin</option>
-                            <option value="superAdmin">Super Admin</option>
                         </select>
                     </div>
-
-                    {/* Email Input */}
-                    <label
-                        htmlFor="email"
-                        className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-                    >
-                        Email:
-                    </label>
-                    <div className="d-flex justify-content-center">
+                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                        <label
+                            htmlFor="email"
+                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+                        >
+                            Email:
+                        </label>
                         <input
                             type="email"
                             {...register("email", { required: "Email is required" })}
                             id="email"
                             name="email"
-                            className="pass-input mx-auto my-3"
-                            style={{ maxWidth: "400px", width: "90%" }}
+                            className="pass-input mx-auto my-1 w-100"
+                            required
                         />
                     </div>
-
-                    {/* Mobile Input */}
-                    <label
-                        htmlFor="mobile"
-                        className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-                    >
-                        Mobile:
-                    </label>
-                    <div className="d-flex justify-content-center">
+                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                        <label
+                            htmlFor="mobile"
+                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+                        >
+                            Mobile:
+                        </label>
                         <input
                             type="tel"
                             {...register("mobile", { required: "Mobile is required" })}
                             id="mobile"
                             name="mobile"
-                            className="pass-input mx-auto my-3"
-                            style={{ maxWidth: "400px", width: "90%" }}
+                            className="pass-input mx-auto my-1 w-100"
+                            required
                         />
                     </div>
-
-                    {/* Password Input */}
-                    <label
-                        htmlFor="password"
-                        className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-                    >
-                        Password:
-                    </label>
-                    <div className="d-flex justify-content-center">
+                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                        <label
+                            htmlFor="password"
+                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+                        >
+                            Password:
+                        </label>
                         <input
                             type="password"
                             {...register("password", { required: "Password is required" })}
                             id="password"
                             name="password"
-                            className="pass-input mx-auto my-3"
-                            style={{ maxWidth: "400px", width: "90%" }}
+                            className="pass-input mx-auto my-1 w-100"
+                            required
                         />
                     </div>
-
-                    {/* Qualification Input (Optional) */}
-                    <label
-                        htmlFor="qualification"
-                        className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-                    >
-                        Qualification (Optional):
-                    </label>
-                    <div className="d-flex justify-content-center">
+                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                        <label
+                            htmlFor="qualification"
+                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+                        >
+                            Qualification:
+                        </label>
                         <input
                             type="text"
                             {...register("qualification")}
                             id="qualification"
                             name="qualification"
-                            className="pass-input mx-auto my-3"
-                            style={{ maxWidth: "400px", width: "90%" }}
+                            className="pass-input mx-auto my-1 w-100"
                         />
                     </div>
                 </div>
-
-                <div className="d-flex justify-content-center">
-                    <input
-                        type="submit"
-                        className="bg-black submit-btn"
-                        value="Sign Up"
-                        style={{ maxWidth: "400px", width: "90%" }}
-                    />
+                <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                    <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
+                        Sign up
+                    </button>
                 </div>
-                <br />
             </form>
-
-            <div className="d-flex justify-content-center mt-4">
+            <div className="d-flex justify-content-center mt-2">
                 <p className="text-center">
-                    Already have an account?&nbsp;
                     <Link
                         to="/admin/login"
                         className={darkMode ? "text-black" : "text-white forgot-password"}
                     >
-                        Log in
+                        Back to sign in
                     </Link>
                 </p>
             </div>

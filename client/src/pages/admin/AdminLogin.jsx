@@ -33,44 +33,44 @@ const AdminLogin = () => {
 
   return (
     <>
+      <div className="container d-flex justify-content-center align-items-center heading-head">
+        <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{ fontWeight: "800" }}>Admin Sign in</span></p>
+      </div>
       <div className={darkMode ? "text-black" : "text-white"}>
-        <h1 className="text-center">Admin Sign In</h1>
+        <h1 className="text-center" style={{ fontSize: "20px", fontWeight: "bold" }}>Admin Sign in </h1>
       </div>
       <br />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="input-sec text-center">
-          <label
-            htmlFor="email"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Email:
-          </label>
-          <br />
-          <div className="d-flex justify-content-center">
+        <div className="input-sec">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="email"
+              className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}
+            >
+              Email:
+            </label>
             <input
               type="email"
               {...register("email")}
               id="email"
               name="email"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input w-100 mt-1"
               required
             />
           </div>
-          <label
-            htmlFor="password"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Password:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="password"
+              className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}
+            >
+              Password:
+            </label>
             <input
               type="password"
               {...register("password")}
               id="password"
               name="password"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input w-100 mt-1"
               required
             />
           </div>
@@ -78,25 +78,29 @@ const AdminLogin = () => {
         <div className="text-center mb-4">
           <Link
             to="/admin/admin-forgot-password"
-            className={darkMode ? "text-black" : "text-white forgot-password"}
+            className={darkMode ? "text-black forgot-password" : "text-white forgot-password"}
           >
             Forgot password?
           </Link>
         </div>
         <div className="d-flex justify-content-center">
-          <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }}>
+          <button className=" signin-btn" style={{ maxWidth: "400px", width: "90%", fontWeight: "700" }}>
             Sign in
           </button>
         </div>
         <br />
+        <div className="d-flex justify-content-center mt-2">
+          <button className="signup-first-btn text-center my-1 w-90" style={{ maxWidth: "400px", width: "90%", fontWeight: "700", backgroundColor: "white" }}>
+            <Link
+              to={admin.signup_route}
+              className={darkMode ? "text-black" : "text-black"}
+              style={{ textDecoration: "none" }} 
+            >
+              Register Admin
+            </Link>
+          </button>
+        </div>
       </form>
-      <div className="d-flex justify-content-center mt-4">
-        <button className="signup-first-btn text-center my-4 w-90" style={{ maxWidth: "400px", width: "90%" }}>
-          <Link to={admin.signup_route} className={darkMode ? "text-black" : "text-black"}>
-            Register admin
-          </Link>
-        </button>
-      </div>
     </>
   );
 };
