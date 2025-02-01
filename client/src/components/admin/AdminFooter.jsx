@@ -1,6 +1,7 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from 'react-redux';
+import { FaFacebookSquare, FaInstagram, FaPinterest, FaSpotify, FaYoutube } from 'react-icons/fa';
 
 function AdminFooter() {
 

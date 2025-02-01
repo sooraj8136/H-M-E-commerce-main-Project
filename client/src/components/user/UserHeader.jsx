@@ -43,7 +43,7 @@ function UserHeader() {
                                             <BsPerson
                                                 style={{
                                                     fontSize: "1.4rem",
-                                                    marginRight: "8px", // Increased margin to properly space the icon
+                                                    marginRight: "8px", 
                                                     color: darkMode ? "#000" : "#fff",
                                                 }}
                                             />

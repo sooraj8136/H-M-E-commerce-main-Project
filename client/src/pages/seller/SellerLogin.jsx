@@ -36,7 +36,7 @@ const SellerLogin = () => {
       <div className="container  d-flex justify-content-center align-items-center heading-head">
         <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
           fontWeight: "800"
-        }}>seller login/Register</span> </p>
+        }}>seller login</span> </p>
       </div>
       <div className={darkMode ? "text-black" : "text-white"}>
         <h1 className="text-center"
@@ -84,7 +84,7 @@ const SellerLogin = () => {
         <div className="text-center mb-4">
           <Link
             to="/seller/seller-forgot-password"
-            className={darkMode ? "text-black" : "text-white forgot-password"}
+            className={`${darkMode ? "text-black" : "text-white"} forgot-password no-underline`}
           >
             Forgot password?
           </Link>
@@ -96,10 +96,12 @@ const SellerLogin = () => {
         </div>
         <br />
       </form>
-      <div className="d-flex justify-content-center mt-4">
-        <button className="signup-first-btn text-center my-4 w-90" style={{ maxWidth: "400px", width: "90%" }} >
-          <Link to={seller.signup_route} className={darkMode ? "text-black" : "text-black"}>
-            Become a seller
+      <div className="d-flex justify-content-center mt-2">
+        <button className="signup-first-btn text-center my-1 w-90" style={{ maxWidth: "400px", width: "90%", fontWeight: "700", backgroundColor: "white" }} >
+          <Link to={seller.signup_route} className={darkMode ? "text-black" : "text-black"}
+            style={{ textDecoration: "none" }}
+          >
+            Become an H&M seller
           </Link>
         </button>
       </div>

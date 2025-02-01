@@ -55,7 +55,7 @@ const addReview = async (req, res) => {
             data: review,
         });
     } catch (error) {
-        catchErrorHandler(res, error);
+        res.status(500).json({ message: "Internal server error", error });
     }
 };
 
@@ -95,7 +95,7 @@ const editReview = async (req, res) => {
             data: existingReview,
         });
     } catch (error) {
-        catchErrorHandler(res, error);
+        res.status(500).json({ message: "Internal server error", error });
     }
 };
 

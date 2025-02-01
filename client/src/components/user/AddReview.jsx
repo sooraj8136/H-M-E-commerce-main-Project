@@ -98,7 +98,7 @@ export const AddReview = () => {
   const { productId } = useParams();
 
   const [rating, setRating] = useState(0);
-  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
+  const [showModal, setShowModal] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
@@ -113,14 +113,14 @@ export const AddReview = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axiosInstance.post("/review/add-review", {
-        ...data,
+        ...data,  
         productId,
         rating,
       });
 
       if (response) {
         toast.success("Review added successfully!");
-        navigate(`/product-details/${productId}`);
+        navigate("/user/success-review");
         handleCloseModal();
       }
     } catch (error) {

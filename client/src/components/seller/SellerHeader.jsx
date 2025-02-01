@@ -13,7 +13,6 @@ function SellerHeader() {
     return (
         <>
             <header>
-                {/* <h2>Auth Seller Header</h2> */}
                 <Navbar
                     expand="lg"
                     className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>

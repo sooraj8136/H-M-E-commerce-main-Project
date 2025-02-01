@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
+import { BsPerson } from 'react-icons/bs';
 
 function Header() {
 
@@ -33,7 +34,15 @@ function Header() {
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
                                     <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/login" className={darkMode ? "text-black" : "text-white me-3"}>Sign in</Nav.Link>
+                                        <Nav.Link href="/login" className={darkMode ? "text-black" : "text-white me-3"}>
+                                            <BsPerson
+                                                style={{
+                                                    fontSize: "1.4rem",
+                                                    marginRight: "8px",
+                                                    color: darkMode ? "#000" : "#fff",
+                                                }}
+                                            />
+                                            Sign in</Nav.Link>
                                     </div>
                                 </div>
                             </Form>

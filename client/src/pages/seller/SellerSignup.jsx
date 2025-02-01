@@ -28,144 +28,136 @@ function SellerSignup() {
 
   return (
     <>
-      <div className={darkMode ? "text-black" : "text-white"}>
-        <h1 className="text-center">Seller Sign Up</h1>
+      <div className="container  d-flex justify-content-center align-items-center heading-head">
+        <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
+          fontWeight: "800"
+        }}>Seller Register</span> </p>
       </div>
       <br />
-      <div className={darkMode ? "text-black" : "text-white"}>  
+      <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "15px", fontWeight: "500" }}>
         <p className="text-center">
           Become a seller and start your business with us today!
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="input-sec text-center">
-          <label
-            htmlFor="name"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Name:
-          </label>
-          <div className="d-flex justify-content-center">
+        <div className="input-sec">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="name"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Name:
+            </label>
             <input
               type="text"
-              {...register("name")}
+              {...register("name", { required: "Name is required" })}
               id="name"
               name="name"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input mx-auto my-1 w-100"
               required
             />
           </div>
 
-          <label
-            htmlFor="email"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Email:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="email"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Email:
+            </label>
             <input
               type="email"
-              {...register("email")}
+              {...register("email", { required: "Name is required" })}
               id="email"
               name="email"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input mx-auto my-1 w-100"
               required
             />
           </div>
 
-          <label
-            htmlFor="mobile"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Mobile:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="mobile"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Mobile:
+            </label>
             <input
               type="tel"
-              {...register("mobile")}
+              {...register("mobile", { required: "Name is required" })}
               id="mobile"
               name="mobile"
-              className="pass-input mx-auto my-3"
+              className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
           </div>
 
-          <label
-            htmlFor="password"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Password:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="password"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Password:
+            </label>
             <input
               type="password"
-              {...register("password")}
+              {...register("password", { required: "Name is required" })}
               id="password"
               name="password"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input mx-auto my-1 w-100"
               required
             />
           </div>
 
-          <label
-            htmlFor="storeName"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Store Name:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="storeName"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Store Name:
+            </label>
             <input
               type="text"
-              {...register("storeName")}
+              {...register("storeName", { required: "Name is required" })}
               id="storeName"
               name="storeName"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input mx-auto my-1 w-100"
               required
             />
           </div>
 
-          <label
-            htmlFor="address"
-            className={darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}
-          >
-            Store Address:
-          </label>
-          <div className="d-flex justify-content-center">
+          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+            <label
+              htmlFor="address"
+              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+            >
+              Store Address:
+            </label>
             <input
               type="text"
-              {...register("address")}
+              {...register("address", { required: "Name is required" })}
               id="address"
               name="address"
-              className="pass-input mx-auto my-3"
-              style={{ maxWidth: "400px", width: "90%" }}
+              className="pass-input mx-auto my-1 w-100"
               required
             />
           </div>
         </div>
 
-        <div className="d-flex justify-content-center">
-          <input
-            type="submit"
-            className="bg-black submit-btn"
-            value="Sign Up"
-            style={{ maxWidth: "400px", width: "90%" }}
-          />
+        <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
+            Sign up
+          </button>
         </div>
-        <br />
       </form>
 
-      <div className="d-flex justify-content-center mt-4">
+      <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
-          Already have an account?&nbsp;
           <Link
             to="/seller/login"
             className={darkMode ? "text-black" : "text-white forgot-password"}>
-            Log in
+            Back to sign in
           </Link>
         </p>
       </div>

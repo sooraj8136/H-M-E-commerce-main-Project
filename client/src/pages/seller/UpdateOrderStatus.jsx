@@ -269,12 +269,12 @@ const UpdateOrderStatus = () => {
                     <button
                       className="request-permission-button"
                       onClick={() =>
-                        requestPermission(order._id, selectedStatus[order._id])
+                        requestPermission(order._id, selectedStatus[order._id] || order.orderStatus)
                       }
-                      disabled={!selectedStatus[order._id]}
                     >
                       Request Permission
                     </button>
+
                   </>
                 )}
               </div>

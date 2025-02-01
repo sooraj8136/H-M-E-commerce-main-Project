@@ -47,6 +47,7 @@ import SellerResetPassword from '../pages/seller/SellerResetPassword';
 import UserForgotPassword from '../pages/user/UserForgotPassword';
 import UserResetPassword from '../pages/user/UserResetPassword';
 import PendingPermissionRequests from '../pages/admin/PermissionRequests';
+import SuccessReview from '../components/user/SuccessReview';
 
 export const router = createBrowserRouter([
   {
@@ -133,6 +134,10 @@ export const router = createBrowserRouter([
           {
             path: 'wishlist',
             element: <WishlistPage />,
+          },
+          {
+            path: 'success-review',
+            element: <SuccessReview />,
           },
         ],
       },
