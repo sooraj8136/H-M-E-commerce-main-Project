@@ -115,7 +115,7 @@ const updateCount = async (req, res) => {
             if (existingProductIndex > -1) {
                 cart.products[existingProductIndex].count -= 1;
                 if (cart.products[existingProductIndex].count === 0) {
-                    cart.products.splice(existingProductIndex, 1); // Remove the product if count is 0
+                    cart.products.splice(existingProductIndex, 1);
                 } else {
                     cart.products[existingProductIndex].totalAmount =
                         cart.products[existingProductIndex].price *
@@ -137,6 +137,7 @@ const updateCount = async (req, res) => {
 
         res.status(200).json({ message: "Cart updated successfully", data: cart });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: error.message || "Internal server error" });
     }
 };
@@ -185,6 +186,7 @@ const clearCart = async (req, res) => {
 
         res.status(200).json({ message: "Your cart has been cleared successfully", data: cart });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: "Internal server error", error });
     }
 };

@@ -23,16 +23,12 @@ const PendingPermissionRequests = () => {
 
     const handleUpdateRequest = async (requestId, isApproved) => {
         try {
-            // Ensure isApproved is a boolean
             isApproved = Boolean(isApproved);
 
-            // Use correct method and data passing
             const response = await axiosInstance.post(
                 `/orders/requests/${requestId}`,
                 { isApproved }
             );
-
-            // Update the user message and refresh the request list
             setMessage(response.data.message);
             fetchPendingRequests();
         } catch (error) {

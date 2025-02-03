@@ -48,6 +48,7 @@ import UserForgotPassword from '../pages/user/UserForgotPassword';
 import UserResetPassword from '../pages/user/UserResetPassword';
 import PendingPermissionRequests from '../pages/admin/PermissionRequests';
 import SuccessReview from '../components/user/SuccessReview';
+import UpdateUserProfile from '../pages/user/UpdateUserProfile';
 
 export const router = createBrowserRouter([
   {
@@ -138,6 +139,10 @@ export const router = createBrowserRouter([
           {
             path: 'success-review',
             element: <SuccessReview />,
+          },
+          {
+            path: 'update-user-profile',
+            element: <UpdateUserProfile />,
           },
         ],
       },

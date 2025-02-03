@@ -314,9 +314,8 @@ ul {
     width: 100%;
     border-collapse: collapse;
     background-color: inherit;
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(71, 71, 71, 0.1);
 }
 
 .order-table th,
@@ -348,7 +347,6 @@ ul {
     font-size: 0.9rem;
 }
 
-/* Light Mode - Vibrant Style */
 .light-mode {
     background-color: #ffffff;
     color: #000000;
@@ -356,7 +354,6 @@ ul {
 
 .light-mode .order-table {
     background-color: #f4f4f4;
-    border: 2px solid #000000;
 }
 
 .light-mode .order-table th {
@@ -398,8 +395,7 @@ ul {
 }
 
 .dark-mode .order-table {
-    background-color: #000000;
-    border: 2px solid #821414;
+    background-color: #1d1c1c;
 }
 
 .dark-mode .order-table th {
@@ -409,7 +405,6 @@ ul {
 
 .dark-mode .order-status {
     padding: 5px 10px;
-    border-radius: 15px;
     font-weight: normal;
 }
 
@@ -952,81 +947,6 @@ ul {
 
 /*user profile responsive*/
 
-/* .profile-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: center;
-}
-
-
-.profile-container img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-top: 20px;
-}
-
-
-.buttons {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-
-@media (max-width: 425px) {
-    .profile-container {
-        padding: 10px;
-    }
-
-    .profile-container img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-container h2 {
-        font-size: 1.2rem;
-    }
-
-    .profile-container button {
-        width: 100%;
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 375px) {
-    .profile-container img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .profile-container h2 {
-        font-size: 1rem;
-    }
-
-    .profile-container button {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 320px) {
-    .profile-container img {
-        width: 90px;
-        height: 90px;
-    }
-
-    .profile-container h2 {
-        font-size: 0.9rem;
-    }
-
-    .profile-container button {
-        font-size: 1rem;
-    }
-} */
-
-
-/* Profile Container */
 .profile-container {
     max-width: 600px;
     width: 100%;
@@ -1036,15 +956,19 @@ ul {
     padding: 20px;
 }
 
-/* Buttons Section */
+[data-theme="light"] .profile-container {
+    background-color: black;
+    box-shadow: 0 18px 95px rgba(0, 0, 0, 0.8), 0 -18px 95px rgba(0, 0, 0, 0.8); /* Black shadow */
+}
+
 .buttons-container {
     display: flex;
     flex-direction: column;
     width: 50%;
     padding-right: 20px;
+    
 }
 
-/* Buttons */
 .my-orders-btn {
     display: flex;
     align-items: center;
@@ -1059,6 +983,7 @@ ul {
     text-align: left;
     margin-bottom: 10px;
     transition: 0.3s ease;
+    border: 1px solid white;
 }
 
 
@@ -1178,8 +1103,8 @@ ul {
 }
 
 .arrow-icon {
-    margin-left: auto;  /* Push the icon to the right */
-    font-size: 20px; /* Adjust the size if necessary */
+    margin-left: auto;  
+    font-size: 20px; 
 }
 
 .cart-card-image {
@@ -1249,10 +1174,14 @@ ul {
     box-shadow: 0 18px 95px rgba(0, 0, 0, 0.05), 0 -18px 95px rgba(0, 0, 0, 0.05);
 }
 
+[data-theme="light"] .cart-container {
+    background-color: black;
+    box-shadow: 0 18px 95px rgba(0, 0, 0, 0.8), 0 -18px 95px rgba(0, 0, 0, 0.8); 
+}
+
 .cart-items {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 100%;
 }
 
@@ -1324,7 +1253,6 @@ ul {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
-    color: #555;
 }
 
 .free {
@@ -1473,8 +1401,6 @@ hr {
     }
 }
 
-/* add to cart increase decrease buttons */
-
 .btn-increment {
     font-weight: 500;
 }
@@ -1516,6 +1442,32 @@ hr {
 
 .forgot-pass{
     text-decoration: none;
+}
+
+.update-prof-btn {
+    max-width: 400px;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 0 auto;
+    border: 1px solid white;
+    color: white;
+    background-color: #000000e8;
+    font-weight: 700;
+}
+
+.update-prof-cancel-btn{
+    max-width: 400px;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 0 auto;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color: #ffffffe8;
+    font-weight: 700;
+}
+
+.no-border-radius {
+    border-radius: 0 !important;
 }
 
 

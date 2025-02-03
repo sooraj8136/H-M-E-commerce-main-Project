@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { axiosInstance } from '../../config/axiosInstance';  // Ensure axiosInstance is configured
+import { axiosInstance } from '../../config/axiosInstance'; 
 
 const CreateProductForm = () => {
-  // State to hold the product details (title, price, description, category, image)
   const [productDetails, setProductDetails] = useState({
     title: '',
     price: '',
@@ -12,28 +11,24 @@ const CreateProductForm = () => {
     image: null,
   });
 
-  // Function to update text inputs (title, price, description, category)
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProductDetails({
       ...productDetails,
-      [name]: value,  // Update the respective field in the state
+      [name]: value, 
     });
   };
 
-  // Function to handle image file input change
   const handleImageChange = (e) => {
     setProductDetails({
       ...productDetails,
-      image: e.target.files[0],  // Save the selected image file
+      image: e.target.files[0],  
     });
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();  // Prevent page refresh on form submit
+    e.preventDefault();  
 
-    // Create FormData object to handle file upload
     const formData = new FormData();
     formData.append('title', productDetails.title);
     formData.append('price', productDetails.price);
@@ -42,18 +37,15 @@ const CreateProductForm = () => {
     formData.append('image', productDetails.image);
 
     try {
-      // Send the form data to the backend using axiosInstance
       const response = await axiosInstance.post('/product/create-product', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',  // Ensure correct content type for file upload
+          'Content-Type': 'multipart/form-data', 
         },
       });
 
-      // Success message
       toast.success('Product created successfully!');
       console.log('Product created:', response.data);
     } catch (error) {
-      // Error message
       toast.error('Failed to create product');
       console.error('Error:', error);
     }

@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
+const { cloudinaryInstance } = require("../config/cloudinaryConfig")
 
 
 const register = async (req, res) => {
@@ -140,65 +141,42 @@ const checkUser = async (req, res) => {
 
 }
 
-
 const updateUserProfile = async (req, res) => {
     try {
         const userId = req.user.id;
-
         const { name, email, mobile } = req.body;
 
-        if (!name && !email && !mobile) {
-            return res.status(400).json({ error: "At least one field is required to update" });
+        console.log("REQ.BODY = ", req.body);
+
+        if (!name && !email && !mobile && !req.file) {
+            return res.status(400).json({ error: "At least one field (name, email, or mobile) is required to update" });
         }
 
-        if (email) {
-            const existingUserWithEmail = await userDb.findOne({ email });
-            if (existingUserWithEmail && existingUserWithEmail._id.toString() !== userId) {
-                return res.status(400).json({ error: "Email already in use by another user" });
-            }
+        let profilePictureUrl = null;
+
+        if (req.file) {
+            const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path);
+            profilePictureUrl = uploadResult.url;
         }
 
-        if (mobile) {
-            const existingUserWithMobile = await userDb.findOne({ mobile });
-            if (existingUserWithMobile && existingUserWithMobile._id.toString() !== userId) {
-                return res.status(400).json({ error: "Mobile number already in use by another user" });
-            }
-        }
+        const updatedUserData = await userDb.findByIdAndUpdate(
+            userId,
+            {
+                name: name || undefined,
+                email: email || undefined,
+                mobile: mobile || undefined,
+                profilePic: profilePictureUrl || undefined,
+            },
+            { new: true }
+        );
 
-        const user = await userDb.findById(userId);
-
-        if (!user) {
-            return res.status(404).json({ error: "User not found" });
-        }
-
-        if (!user.isActive) {
-            res.status(404).json({ message: "Sorry, user deactivated" })
-        }
-
-        if (name)
-            user.name = name
-
-        if (email)
-            user.email = email
-
-        if (mobile)
-            user.mobile = mobile
-
-
-        await user.save();
-
-        const updatedUserProfile = await userDb.findById(userId).select("-password");
-
-        console.log(updatedUserProfile)
-
-        res.status(200).json({ message: "User profile updated successfully", data: updatedUserProfile });
-
-
+        res.status(200).json({ message: "User profile details updated", data: updatedUserData });
     } catch (error) {
         console.log(error);
         res.status(error.status || 500).json({ error: error.message || "Internal server Error" });
     }
-}
+};
+
 
 const userLogout = async (req, res) => {
     try {
@@ -424,4 +402,4 @@ const userResetPassword = async (req, res) => {
 };
 
 
-module.exports = { register, login, userProfile, checkUser, updateUserProfile, userLogout, deactivateUser, activateUser, deleteUser, getAllUsers,userForgotPassword, userResetPassword }    
+module.exports = { register, login, userProfile, checkUser, updateUserProfile, userLogout, deactivateUser, activateUser, deleteUser, getAllUsers, userForgotPassword, userResetPassword }    
