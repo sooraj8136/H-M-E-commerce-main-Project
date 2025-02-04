@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { useSelector } from 'react-redux';
-import { Card, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from 'react-router-dom';
 
@@ -18,18 +18,24 @@ function ProfilePage() {
     <>
       <div className="heading-head d-flex justify-content-center align-items-center mb-3">
         <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com / <span className="text-danger fw-bold">Account</span>
+          HM.com / <span className="text-danger fw-bold">My Account</span>
+        </p>
+      </div>
+      <div className="heading-head d-flex justify-content-center align-items-center ">
+        <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "30px", fontWeight: "600" }}>
+          Settings
+        </p>
+      </div>
+      <div className="d-flex justify-content-center align-items-center mb-3">
+        <p className={`${darkMode ? "text-black" : "text-white"} responsive-text`} style={{ fontSize: "15px", fontWeight: "400" }}>
+          You can manage your account and subscriptions here
         </p>
       </div>
       <Container data-theme={darkMode ? "dark" : "light"}>
         <div className="d-flex justify-content-center">
           <div className="profile-container p-4">
-            <div>
+            <div className='m-4'>
               <div className="profile-details text-start text-dark">
-                <div className="text-center mb-3">
-                  <img src={profileData?.profilePic} alt="Profile" className="profile-img" />
-                </div>
-
                 <div className="info-section">
                   <p className="label">Name:</p>
                   <h5 className={darkMode ? "text-black" : "text-white info-text"}>{profileData?.name}</h5>

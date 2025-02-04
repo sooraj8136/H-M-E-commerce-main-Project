@@ -148,15 +148,8 @@ const updateUserProfile = async (req, res) => {
 
         console.log("REQ.BODY = ", req.body);
 
-        if (!name && !email && !mobile && !req.file) {
+        if (!name && !email && !mobile) {
             return res.status(400).json({ error: "At least one field (name, email, or mobile) is required to update" });
-        }
-
-        let profilePictureUrl = null;
-
-        if (req.file) {
-            const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path);
-            profilePictureUrl = uploadResult.url;
         }
 
         const updatedUserData = await userDb.findByIdAndUpdate(
@@ -165,7 +158,6 @@ const updateUserProfile = async (req, res) => {
                 name: name || undefined,
                 email: email || undefined,
                 mobile: mobile || undefined,
-                profilePic: profilePictureUrl || undefined,
             },
             { new: true }
         );
@@ -176,6 +168,7 @@ const updateUserProfile = async (req, res) => {
         res.status(error.status || 500).json({ error: error.message || "Internal server Error" });
     }
 };
+
 
 
 const userLogout = async (req, res) => {
