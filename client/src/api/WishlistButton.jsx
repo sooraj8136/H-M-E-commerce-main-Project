@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; 
-import { axiosInstance } from '../config/axiosInstance'; // Make sure the axiosInstance is properly set up
+import { axiosInstance } from '../config/axiosInstance';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 const WishlistButton = ({ productId }) => {
@@ -44,7 +44,7 @@ const WishlistButton = ({ productId }) => {
 
   return (
     <button
-      onClick={handleWishlistToggle}
+      onClick={handleWishlistToggle} 
       style={{
         background: 'transparent',
         border: 'none',
