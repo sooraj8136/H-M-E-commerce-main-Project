@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { axiosInstance } from '../../config/axiosInstance';  
 import WishlistButton from '../../api/WishlistButton';
+import { FaTrashAlt } from 'react-icons/fa';
 
 function ProductCards({ product }) {
   const { darkMode } = useSelector((state) => state.mode);
@@ -51,8 +52,6 @@ return (
           <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '1rem' }}>
             Rs. {product?.price}.00
           </p>
-
-          {/* Wishlist Button positioned closer to the top-right corner */}
           <div className="position-absolute" style={{ top: '-15px', right: '-1px' }}>
             <WishlistButton productId={product?._id} isInWishlist={isInWishlist} setIsInWishlist={setIsInWishlist} />
           </div>
