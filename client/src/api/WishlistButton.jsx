@@ -9,7 +9,7 @@ const WishlistButton = ({ productId }) => {
     // Check if the product is already in the wishlist
     const checkWishlist = async () => {
       try {
-        const response = await axiosInstance.get('/wishlist/get-wishlist'); // Use the axiosInstance
+        const response = await axiosInstance.get('/wishlist/get-wishlist'); 
         console.log('Wishlist Response:', response.data); // Log the response for debugging
 
         const wishlistProducts = response.data.data.products; // Ensure this is an array of product objects
