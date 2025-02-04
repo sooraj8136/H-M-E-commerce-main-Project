@@ -30,7 +30,7 @@ const WishlistButton = ({ productId }) => {
     try {
       if (isInWishlist) {
         // Remove from wishlist
-        await axiosInstance.delete(`/wishlist/remove-from-wishlist/${productId}`); // Updated route
+        await axiosInstance.delete(`/wishlist/remove-from-wishlist/${productId}`); 
         setIsInWishlist(false);
       } else {
         // Add to wishlist
