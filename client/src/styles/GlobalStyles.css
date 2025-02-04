@@ -243,15 +243,6 @@ ul {
     gap: 20px;
 }
 
-.product-item {
-    text-align: center;
-}
-
-.product-item img {
-    max-width: 200px;
-    height: auto;
-}
-
 .preppy-btn {
     padding: 20px 10px;
 }
@@ -1465,12 +1456,6 @@ hr {
     border-radius: 0 !important;
 }
 
-@media (min-width: 320px) {
-    .responsive-text {
-        text-align: center;
-        padding: 0 10px;
-    }
-}
 
-
+  
   

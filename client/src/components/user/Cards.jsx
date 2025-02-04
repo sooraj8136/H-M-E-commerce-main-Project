@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Nav from 'react-bootstrap/Nav';
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { axiosInstance } from '../../config/axiosInstance';  
+import { axiosInstance } from '../../config/axiosInstance';
 import { FaTrashAlt } from 'react-icons/fa';
 import WishlistButton from '../../api/WishlistButton';
+import { Link } from 'react-router-dom';  
 
 function ProductCards({ product }) {
   const { darkMode } = useSelector((state) => state.mode);
@@ -28,10 +28,10 @@ function ProductCards({ product }) {
     checkWishlist();
   }, [product]);
 
-return (
-    <Container className="d-flex justify-content-center align-items-center my-3">
-      <Nav.Link href={`/productDetails/${product?._id}`} className="text-decoration-none">
-        <div className="product-item text-center position-relative">
+  return (
+    <Container className="d-flex flex-wrap justify-content-center">
+      <div className="text-center position-relative mx-1">
+        <Link href={`/productDetails/${product?._id}`} className="text-decoration-none">
           <img
             src={product?.image}
             alt={product?.title}
@@ -39,24 +39,27 @@ return (
               width: '300px',
               height: 'auto',
               objectFit: 'cover',
-              marginBottom: '20px',
+              marginBottom: '10px',
               maxWidth: '1024px',
+              width: '320px'
             }}
           />
-          <h3
-            className={darkMode ? 'text-black' : 'text-white'}
-            style={{ fontSize: '1rem', marginBottom: '0.5rem' }}
-          >
-            {product?.title}
-          </h3>
-          <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '1rem' }}>
-            Rs. {product?.price}.00
-          </p>
-          <div className="position-absolute" style={{ top: '-15px', right: '-1px' }}>
-            <WishlistButton productId={product?._id} isInWishlist={isInWishlist} setIsInWishlist={setIsInWishlist} />
+          <div className="d-flex flex-column align-items-start">
+            <h3
+              className={darkMode ? 'text-black' : 'text-white'}
+              style={{ fontSize: '1rem', fontWeight: "600", marginBottom: '0.5rem' }}
+            >
+              {product?.title}
+            </h3>
+            <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: "500" }}>
+              Rs. {product?.price}.00
+            </p>
           </div>
+        </Link>
+        <div className="position-absolute" style={{ top: '-15px', right: '-1px' }}>
+          <WishlistButton productId={product?._id} isInWishlist={isInWishlist} setIsInWishlist={setIsInWishlist} />
         </div>
-      </Nav.Link>
+      </div>
     </Container>
   );
 }
