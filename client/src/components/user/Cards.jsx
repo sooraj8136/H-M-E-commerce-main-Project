@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import WishlistButton from '../../api/Wishlistbutton';  // Assuming it's correctly imported
-import { axiosInstance } from '../../config/axiosInstance';  // Assuming you have an axiosInstance set up
+import { axiosInstance } from '../../config/axiosInstance';  
+import WishlistButton from '../../api/Wishlistbutton';
 
 function ProductCards({ product }) {
   const { darkMode } = useSelector((state) => state.mode);
