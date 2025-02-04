@@ -131,18 +131,22 @@ export const AddReview = () => {
 
   return (
     <div className="container">
-      <div className="rate-product-container">
+      <div className="rate-product-container text-center">
         <button onClick={handleShowModal} className="rate-product">
           Rate product
         </button>
       </div>
       <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Header closeButton>
-          <h5 className="text-center">Add Your Review</h5>
+          <h5 className="text-center w-100">Add Your Review</h5>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column gap-2 align-items-center justify-content-center">
-            <div className="d-flex gap-1 mb-3">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="d-flex flex-column gap-2 align-items-center justify-content-center"
+            style={{ width: "100%" }}
+          >
+            <div className="d-flex gap-1 mb-3 justify-content-center">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
@@ -159,22 +163,23 @@ export const AddReview = () => {
               ))}
             </div>
 
-            <div>
+            <div className="w-100">
               <textarea
                 className="form-control rounded-2 review-textarea"
                 {...register("comment", { required: true })}
                 placeholder="Enter your comment"
                 aria-label="Comment"
                 rows="4"
+                style={{ width: "100%", minWidth: "250px", maxWidth: "100%" }}
               />
             </div>
 
-            <div>
+            <div className="w-100 text-center">
               <button
                 type="submit"
-                variant="dark"
+                className="rating-btn w-100"
                 disabled={rating === 0}
-                className="rating-btn"
+                style={{ maxWidth: "250px", minWidth: "150px" }}
               >
                 Submit
               </button>
