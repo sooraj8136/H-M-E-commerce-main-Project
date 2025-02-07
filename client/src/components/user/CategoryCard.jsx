@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import WishlistButton from '../../api/Wishlistbutton';
+import WishlistButton from '../../api/WishlistButton';
 
 function CategoryCard({ product }) {
 
