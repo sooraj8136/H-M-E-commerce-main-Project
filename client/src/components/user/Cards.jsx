@@ -4,22 +4,19 @@ import { useSelector } from 'react-redux';
 import { axiosInstance } from '../../config/axiosInstance';
 import { FaTrashAlt } from 'react-icons/fa';
 import WishlistButton from '../../api/WishlistButton';
-import { Link } from 'react-router-dom';  
+import { Link } from 'react-router-dom';
 
 function ProductCards({ product }) {
   const { darkMode } = useSelector((state) => state.mode);
-
   const [isInWishlist, setIsInWishlist] = useState(false);
 
   useEffect(() => {
-    // Fetch the wishlist on mount to check if the product is already in the wishlist
     const checkWishlist = async () => {
       try {
         const response = await axiosInstance.get('/wishlist/get-wishlist');
         const wishlistProducts = response.data.data.products;
 
-        // Check if the current product is in the wishlist
-        setIsInWishlist(wishlistProducts.some((product) => product._id === product?._id));
+        setIsInWishlist(wishlistProducts.some((p) => p._id === product?._id));
       } catch (error) {
         console.error('Error fetching wishlist:', error);
       }
@@ -31,27 +28,27 @@ function ProductCards({ product }) {
   return (
     <Container className="d-flex flex-wrap justify-content-center">
       <div className="text-center position-relative mx-1">
-        <Link href={`/productDetails/${product?._id}`} className="text-decoration-none">
+        <Link to={`/productDetails/${product?._id}`} className="text-decoration-none">
           <img
             src={product?.image}
             alt={product?.title}
             style={{
-              width: '300px',
+              width: '100%',
               height: 'auto',
               objectFit: 'cover',
               marginBottom: '10px',
               maxWidth: '1024px',
-              width: '320px'
+              width: '300px',
             }}
           />
           <div className="d-flex flex-column align-items-start">
             <h3
               className={darkMode ? 'text-black' : 'text-white'}
-              style={{ fontSize: '1rem', fontWeight: "600", marginBottom: '0.5rem' }}
+              style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.5rem' }}
             >
               {product?.title}
             </h3>
-            <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: "500" }}>
+            <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: '500' }}>
               Rs. {product?.price}.00
             </p>
           </div>
@@ -63,6 +60,8 @@ function ProductCards({ product }) {
     </Container>
   );
 }
+
+
 
 export const CartCards = ({ item, handleUpdate }) => {
   const { darkMode } = useSelector((state) => state.mode);
@@ -101,7 +100,7 @@ export const CartCards = ({ item, handleUpdate }) => {
         <div className="cart-card-actions">
           <button
             className="btn"
-            onClick={() => handleUpdate(item?.productId?._id, 'delete')} // Confirm 'delete' is correct action in your backend
+            onClick={() => handleUpdate(item?.productId?._id, 'delete')} 
           >
             <FaTrashAlt className="text-lg text-red-500" />
           </button>

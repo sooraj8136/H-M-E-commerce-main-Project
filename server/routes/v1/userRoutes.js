@@ -11,7 +11,7 @@ userRouter.post("/user-forgot-password", userForgotPassword)
 userRouter.post("/user-reset-password/:token", userResetPassword)
 
 userRouter.get("/profile", userAuth, userProfile)
-userRouter.get("/logout", userAuth, userLogout)
+userRouter.post("/logout", userAuth, userLogout)
 userRouter.get("/check-user", userAuth, checkUser)
 userRouter.get("/get-all-user", adminAuth, getAllUsers)
 

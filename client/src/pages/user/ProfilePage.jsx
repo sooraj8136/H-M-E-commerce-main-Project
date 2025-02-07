@@ -3,7 +3,9 @@ import { useFetch } from '../../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { IoIosArrowForward } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import toast from "react-hot-toast";
+import { axiosInstance } from '../../config/axiosInstance';
 
 function ProfilePage() {
 
@@ -11,8 +13,21 @@ function ProfilePage() {
   console.log(darkMode);
 
   const [profileData, error] = useFetch('/user/profile');
-
   console.log("Profile Data :- ", profileData);
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const response = await axiosInstance.post("/user/logout");
+      console.log(response, "====response");
+      toast.success("Logout success");
+      navigate("/login");
+    } catch (error) {
+      toast.error("Logout failed");
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -57,7 +72,7 @@ function ProfilePage() {
             <div className='buttons-container justify-content-center'>
               <div className="buttons d-flex flex-column align-items-start mt-4">
                 <button className="my-orders-btn d-flex justify-content-between w-100">
-                  <Link to="/user/orders" className={darkMode ? "text-white" : "text-white"}>
+                  <Link to="/user/orders" className={darkMode ? "text-white" : "text-white"} style={{ textDecoration: "none", width: "100%" }}>
                     My Orders
                   </Link>
                   <IoIosArrowForward className="arrow-icon" />
@@ -65,7 +80,7 @@ function ProfilePage() {
               </div>
               <div className="buttons d-flex flex-column align-items-start mt-4">
                 <button className="my-orders-btn d-flex justify-content-between w-100">
-                  <Link to="/user/update-user-profile" className={darkMode ? "text-white" : "text-white"}>
+                  <Link to="/user/update-user-profile" className={darkMode ? "text-white" : "text-white"} style={{ textDecoration: "none", width: "100%" }}>
                     Edit my profile
                   </Link>
                   <IoIosArrowForward className="arrow-icon" />
@@ -73,17 +88,17 @@ function ProfilePage() {
               </div>
               <div className="buttons d-flex flex-column align-items-start mt-4">
                 <button className="my-orders-btn d-flex justify-content-between w-100">
-                  <Link to="/contact" className={darkMode ? "text-white" : "text-white"}>
+                  <Link to="/contact" className={darkMode ? "text-white" : "text-white"} style={{ textDecoration: "none", width: "100%" }}>
                     Contact us
                   </Link>
                   <IoIosArrowForward className="arrow-icon" />
                 </button>
               </div>
               <div className="buttons d-flex flex-column align-items-start mt-4">
-                <button className="my-orders-btn d-flex justify-content-between w-100">
-                  <Link to="/contact-us" className={darkMode ? "text-white" : "text-white no-underline"}>
+                <button className="my-orders-btn d-flex justify-content-between w-100" onClick={handleLogout}>
+                  <span className={darkMode ? "text-white" : "text-white"}>
                     Sign out
-                  </Link>
+                  </span>
                   <IoIosArrowForward className="arrow-icon" />
                 </button>
               </div>

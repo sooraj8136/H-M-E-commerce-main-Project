@@ -53,7 +53,7 @@ import UpdateUserProfile from '../pages/user/UpdateUserProfile';
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <UserLayout />, 
+    element: <UserLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -183,7 +183,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'seller-product-details/:productId',
-        element: < SellerProductDetails/>,
+        element: < SellerProductDetails />,
       },
       {
         path: 'update-product/:id',
@@ -243,7 +243,7 @@ export const router = createBrowserRouter([
       {
         path: 'admin-profile',
         element: <AdminProfile />,
-      },  
+      },
       {
         path: 'admin-forgot-password',
         element: <ForgotPassword />,

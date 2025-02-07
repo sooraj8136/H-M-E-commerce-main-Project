@@ -148,6 +148,7 @@ import { axiosInstance } from '../../config/axiosInstance';
 import { loadStripe } from '@stripe/stripe-js';
 import { CartCards } from '../../components/user/Cards';
 import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const [productDetails, isLoading, error, refreshData] = useFetch('/cart/get-cart');
@@ -197,14 +198,21 @@ function Cart() {
   const makePayment = async () => {
     try {
       const stripe = await loadStripe(import.meta.env.VITE_STRIPE_Publishable_key);
-
       const session = await axiosInstance.post('/payment/create-checkout-session', {
         products: cartData,
       });
 
-      await stripe.redirectToCheckout({ sessionId: session.data.sessionId });
+      const result = await stripe.redirectToCheckout({ sessionId: session.data.sessionId });
+
+      if (result?.error) {
+        toast.error(result.error.message);
+        return;
+      }
+
+      navigate('/payment-success');
+
     } catch (error) {
-      toast.error('Failed to initiate payment');
+      toast.error('Failed to complete payment');
       console.error(error);
     }
   };

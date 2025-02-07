@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 import { useFetch } from '../../hooks/useFetch';
 import toast from "react-hot-toast";
 import { axiosInstance } from '../../config/axiosInstance';
-import { AddReview } from '../../components/user/AddReview';
 import { BsBag } from 'react-icons/bs';
 import { Button, Collapse } from 'react-bootstrap';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { AddReview } from '../../components/user/AddReview';
 
 function ProductDetailsPage() {
     const { darkMode } = useSelector((state) => state.mode);
@@ -97,7 +97,6 @@ function ProductDetailsPage() {
                                 <BsBag style={{ marginLeft: '8px' }} />
                                 Add
                             </button>
-                            <AddReview />
 
                             <hr />
                             <Button
@@ -176,6 +175,7 @@ function ProductDetailsPage() {
                                     <p style={{ fontSize: '1rem', fontWeight: '500' }}>{product?.careguid}</p>
                                 </div>
                             </Collapse>
+                            <AddReview/>
                         </Col>
                     </Row>
                 ) : (

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
 import { axiosInstance } from '../../config/axiosInstance';
 import { useSelector } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
 
 function WishlistPage() {
   const { darkMode } = useSelector((state) => state.mode);
@@ -46,50 +47,52 @@ function WishlistPage() {
           Favourites
         </h2>
       </div>
-  
+
       {loading ? (
         <p className="text-center">Loading wishlist...</p>
       ) : wishlist.length === 0 ? (
         <p className="text-center">Your wishlist is empty.</p>
       ) : (
-        <Container className="d-flex flex-wrap justify-content-center">
-          {wishlist.map((product) => (
-            <div key={product._id} className="text-center position-relative mx-1">
-              <Link to={`/productDetails/${product._id}`} className="text-decoration-none">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  style={{
-                    width: '300px',
-                    height: 'auto',
-                    objectFit: 'cover',
-                    marginBottom: '10px',
-                    maxWidth: '1024px',
-                  }}
-                />
-              </Link>
-              <div className="d-flex flex-column align-items-start">
-                <h3 className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '1rem',fontWeight: "600", marginBottom: '0.5rem' }}>
-                  {product.title}
-                </h3>
-                <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: "500" }}>
-                  Rs. {product.price}.00
-                </p>
-              </div>
-  
-              <div className="position-absolute" style={{ top: '10px', right: '10px' }}>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent the Link from being triggered
-                    handleRemoveFromWishlist(product._id);
-                  }}
-                  className="btn "
-                >
-                  <FaTrashAlt />
-                </button>
-              </div>
-            </div>
-          ))}
+        <Container>
+          <Row className="d-flex justify-content-start">
+            {wishlist.map((product) => (
+              <Col xs={12} sm={6} md={4} lg={3} key={product._id} className="text-center position-relative mb-4">
+                <Link to={`/productDetails/${product._id}`} className="text-decoration-none">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                      marginBottom: '10px',
+                      maxWidth: '1024px',
+                    }}
+                  />
+                </Link>
+                <div className="d-flex flex-column align-items-start">
+                  <h3 className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '1rem', fontWeight: "600", marginBottom: '0.5rem' }}>
+                    {product.title}
+                  </h3>
+                  <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: "500" }}>
+                    Rs. {product.price}.00
+                  </p>
+                </div>
+
+                <div className="position-absolute" style={{ top: '10px', right: '10px' }}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent the Link from being triggered
+                      handleRemoveFromWishlist(product._id);
+                    }}
+                    className="btn"
+                  >
+                    <FaTrashAlt />
+                  </button>
+                </div>
+              </Col>
+            ))}
+          </Row>
         </Container>
       )}
     </Container>

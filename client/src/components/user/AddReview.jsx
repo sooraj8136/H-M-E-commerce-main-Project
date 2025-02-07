@@ -1,192 +1,148 @@
-// import { useForm } from "react-hook-form";
-// import { useParams, useNavigate } from "react-router-dom";
-// import toast from "react-hot-toast";
-// import { axiosInstance } from "../../config/axiosInstance";
-// import Button from "react-bootstrap/esm/Button";
-// import { useState } from "react";
-
-// export const AddReview = () => {
-//   const { productId } = useParams();
-
-//   const [rating, setRating] = useState(0);
-
-//   const { register, handleSubmit } = useForm();
-
-//   const navigate = useNavigate();
-
-//   const handleStarClick = (value) => {
-//     setRating(value);  
-//   };
-
-//   const onSubmit = async (data) => {
-//     try {
-//       const response = await axiosInstance.post("/review/add-review", {
-//         ...data,
-//         productId,
-//         rating,  
-//       });
-
-//       if (response) {
-//         toast.success("Review added successfully!");
-//         navigate(`/product-details/${productId}`);
-//       }
-//     } catch (error) {
-//       console.error(error);
-//       toast.error(error.response?.data?.message || "Something went wrong!");
-//     }
-//   };
-
-//   return (
-//     <div className="container">
-//       <form onSubmit={handleSubmit(onSubmit)} className="login-box mx-auto mt-5 d-flex flex-column gap-2 align-items-center justify-content-center rounded-3">
-//         <h3 className="mt-2 fw-bold text-black">Add Review</h3>
-
-//         <div className="d-flex gap-1">
-//           {[1, 2, 3, 4, 5].map((star) => (
-//             <span
-//               key={star}
-//               onClick={() => handleStarClick(star)}
-//               className="star"
-//               style={{
-//                 cursor: "pointer",
-//                 fontSize: "2rem",
-//                 color: star <= rating ? "#ffcc00" : "#d9d9d9",
-//               }}
-//             >
-//               ★
-//             </span>
-//           ))}
-//         </div>
-
-//         {/* Comment Input */}
-//         <div>
-//           <textarea
-//             className="form-control rounded-2"
-//             {...register("comment", { required: true })}
-//             placeholder="Enter your comment"
-//             aria-label="Comment"
-//             rows="4"
-//           />
-//         </div>
-
-//         {/* Submit Button */}
-//         <div>
-//           <Button
-//             className="rounded-2 border-0 px-4 py-2 text-center text-white mt-1"
-//             type="submit"
-//             variant="dark"
-//             disabled={rating === 0}  // Disable button if no rating is selected
-//           >
-//             Submit
-//           </Button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-
-
-import { useForm } from "react-hook-form";
-import { useParams, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form"; 
+import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../../config/axiosInstance";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const AddReview = () => {
   const { productId } = useParams();
 
   const [rating, setRating] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const [reviews, setReviews] = useState([]);
+  const [editingReview, setEditingReview] = useState(null);
+  const { register, handleSubmit, setValue } = useForm();
 
-  const navigate = useNavigate();
-
-  const handleStarClick = (value) => {
-    setRating(value);
+  const handleStarClick = (value) => setRating(value);
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setEditingReview(null);
+    setRating(0);
+    setValue("comment", "");
+  };
+  const handleShowModal = (review = null) => {
+    if (review) {
+      setEditingReview(review);
+      setRating(review.rating);
+      setValue("comment", review.comment);
+    }
+    setShowModal(true);
   };
 
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+  const fetchReviews = async () => {
+    try {
+      const response = await axiosInstance.get(`/review/get-review/${productId}`);
+      setReviews(response.data);
+    } catch (error) {
+      console.error(error);
+      setReviews([]);
+    }
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, [productId]);
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post("/review/add-review", {
-        ...data,  
-        productId,
-        rating,
-      });
-
-      if (response) {
+      if (editingReview) {
+        await axiosInstance.put(`/review/update-review/${productId}`, {
+          ...data,
+          rating,
+          productId,
+        });
+        toast.success("Review updated successfully!");
+      } else {
+        await axiosInstance.post("/review/add-review", {
+          ...data,
+          productId,
+          rating,
+        });
         toast.success("Review added successfully!");
-        navigate("/user/success-review");
-        handleCloseModal();
       }
+      fetchReviews();
+      handleCloseModal();
     } catch (error) {
       console.error(error);
       toast.error(error.response?.data?.message || "Something went wrong!");
     }
   };
 
+  const deleteReview = async (reviewId) => {
+    try {
+      await axiosInstance.delete(`/review/delete-review/${productId}/${reviewId}`);
+      toast.success("Review deleted successfully!");
+      fetchReviews();
+    } catch (error) {
+      console.error("Error deleting review:", error);
+      toast.error(error.response?.data?.message || "Failed to delete review!");
+    }
+  };
+
   return (
     <div className="container">
       <div className="rate-product-container text-center">
-        <button onClick={handleShowModal} className="rate-product">
+        <button onClick={() => handleShowModal()} className="rate-product">
           Rate product
         </button>
       </div>
+
       <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Header closeButton>
-          <h5 className="text-center w-100">Add Your Review</h5>
+          <h5 className="text-center w-100">{editingReview ? "Edit" : "Add"} Your Review</h5>
         </Modal.Header>
         <Modal.Body>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="d-flex flex-column gap-2 align-items-center justify-content-center"
-            style={{ width: "100%" }}
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column gap-2 align-items-center justify-content-center">
             <div className="d-flex gap-1 mb-3 justify-content-center">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
                   onClick={() => handleStarClick(star)}
                   className="star"
-                  style={{
-                    cursor: "pointer",
-                    fontSize: "2rem",
-                    color: star <= rating ? "black" : "#d9d9d9",
-                  }}
+                  style={{ cursor: "pointer", fontSize: "2rem", color: star <= rating ? "black" : "#d9d9d9" }}
                 >
                   ★
                 </span>
               ))}
             </div>
-
             <div className="w-100">
               <textarea
                 className="form-control rounded-2 review-textarea"
                 {...register("comment", { required: true })}
                 placeholder="Enter your comment"
-                aria-label="Comment"
                 rows="4"
-                style={{ width: "100%", minWidth: "250px", maxWidth: "100%" }}
+                style={{ width: "100%" }}
               />
             </div>
-
             <div className="w-100 text-center">
-              <button
-                type="submit"
-                className="rating-btn w-100"
-                disabled={rating === 0}
-                style={{ maxWidth: "250px", minWidth: "150px" }}
-              >
-                Submit
+              <button type="submit" className="rating-btn w-100" disabled={rating === 0}>
+                {editingReview ? "Update" : "Submit"}
               </button>
             </div>
           </form>
         </Modal.Body>
       </Modal>
+
+      <div className="reviews-container mt-4">
+        <h5 className="text-center">Customer Reviews</h5>
+        {reviews.length > 0 ? (
+          reviews.map((review) => (
+            <div key={review._id} className="review-card p-3 border rounded-2 mb-2">
+              <p><strong>Rating:</strong> {review.rating} ★</p>
+              <p><strong>Comment:</strong> {review.comment}</p>
+              <button className="btn btn-warning btn-sm me-2" onClick={() => handleShowModal(review)}>
+                Edit
+              </button>
+              <button className="btn btn-danger btn-sm" onClick={() => deleteReview(review._id)}>
+                Delete
+              </button>
+            </div>
+          ))
+        ) : (
+          <p className="text-center">No reviews yet.</p>
+        )}
+      </div>
     </div>
   );
 };
