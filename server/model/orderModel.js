@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema(
       {
         productId: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "product",
+          ref: "products",
           required: true,
         },
         name: String,
@@ -31,7 +31,7 @@ const orderSchema = new mongoose.Schema(
     },
     canUpdate: {
       type: Boolean,
-      default: false, 
+      default: false,
     },
   },
   { timestamps: true }

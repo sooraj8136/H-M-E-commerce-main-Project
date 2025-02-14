@@ -193,6 +193,9 @@ const UpdateOrderStatus = () => {
                   <strong>Order ID:</strong> {order._id}
                 </p>
                 <p>
+                  <strong>User ID:</strong> {order.userId.name}
+                </p>
+                <p>
                   <strong>Status:</strong> {order.orderStatus}
                 </p>
                 <p>

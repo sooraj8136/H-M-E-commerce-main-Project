@@ -148,7 +148,6 @@ import { axiosInstance } from '../../config/axiosInstance';
 import { loadStripe } from '@stripe/stripe-js';
 import { CartCards } from '../../components/user/Cards';
 import { Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const [productDetails, isLoading, error, refreshData] = useFetch('/cart/get-cart');

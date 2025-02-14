@@ -1,48 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../config/axiosInstance';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const WishlistButton = ({ productId }) => {
+  const navigate = useNavigate();
   const [isInWishlist, setIsInWishlist] = useState(false);
 
   useEffect(() => {
     const checkWishlist = async () => {
       try {
         const response = await axiosInstance.get('/wishlist/get-wishlist');
-
-        console.log('Wishlist Response:', response.data); // Debugging
-
-        // Ensure data exists before accessing products
         const wishlistProducts = response?.data?.data?.products || [];
-
-        console.log('Wishlist Products:', wishlistProducts); // Debugging
-
-        // Check if product is in wishlist
         setIsInWishlist(wishlistProducts.some((product) => product._id === productId));
       } catch (error) {
-        console.error('Error fetching wishlist:', error);
+        if (error?.response?.status !== 401) {
+          toast.error(error?.response?.data?.message || 'Failed to load wishlist');
+        }   
       }
     };
-
     checkWishlist();
   }, [productId]);
-
 
   const handleWishlistToggle = async () => {
     try {
       if (isInWishlist) {
-        // Remove from wishlist
         await axiosInstance.delete(`/wishlist/remove-from-wishlist/${productId}`);
         setIsInWishlist(false);
+        toast.success('Removed from wishlist');
       } else {
-        // Add to wishlist
-        await axiosInstance.post('/wishlist/add-to-wishlist', { productId }); // Updated route
+        await axiosInstance.post('/wishlist/add-to-wishlist', { productId });
         setIsInWishlist(true);
+        toast.success('Added to wishlist');
       }
     } catch (error) {
       console.error('Error updating wishlist:', error);
+  
+      if (error?.response?.status === 401) {
+        toast.error('You have to log in to add items to your wishlist.');
+        navigate('/login'); 
+      } else {
+        toast.error(error?.response?.data?.message || 'Failed to update wishlist');
+      }
     }
   };
+  
 
   return (
     <button
@@ -60,23 +63,9 @@ const WishlistButton = ({ productId }) => {
       }}
     >
       {isInWishlist ? (
-        <FaHeart
-          style={{
-            fontSize: '32px',
-            color: 'red',
-            margin: '0',
-            padding: '4px',
-          }}
-        />
+        <FaHeart style={{ fontSize: '32px', color: 'red', margin: '0', padding: '4px' }} />
       ) : (
-        <FaRegHeart
-          style={{
-            fontSize: '32px',
-            color: 'black',
-            margin: '0',
-            padding: '4px',
-          }}
-        />
+        <FaRegHeart style={{ fontSize: '32px', color: 'black', margin: '0', padding: '4px' }} />
       )}
     </button>
   );

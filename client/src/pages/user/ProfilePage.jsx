@@ -38,7 +38,7 @@ function ProfilePage() {
       </div>
       <div className="heading-head d-flex justify-content-center align-items-center ">
         <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "30px", fontWeight: "600" }}>
-          Settings
+          My Account
         </p>
       </div>
       <div className="d-flex justify-content-center align-items-center mb-3">

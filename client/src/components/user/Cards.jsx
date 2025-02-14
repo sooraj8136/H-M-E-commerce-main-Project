@@ -33,12 +33,10 @@ function ProductCards({ product }) {
             src={product?.image}
             alt={product?.title}
             style={{
-              width: '100%',
-              height: 'auto',
               objectFit: 'cover',
               marginBottom: '10px',
               maxWidth: '1024px',
-              width: '300px',
+              width: '265px',
             }}
           />
           <div className="d-flex flex-column align-items-start">

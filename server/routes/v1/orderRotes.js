@@ -1,4 +1,4 @@
-const { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, getPendingRequests, updatePermissionRequest, sendPermissionRequestToAdmin } = require("../../controllers/orderController");
+const { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, getPendingRequests, updatePermissionRequest, sendPermissionRequestToAdmin, getSellerOrdersByStatus } = require("../../controllers/orderController");
 const { adminAuth } = require("../../middlewares/adminAuth");
 const { sellerAuth } = require("../../middlewares/sellerAuth");
 const { userAuth } = require("../../middlewares/userAuth");
@@ -9,6 +9,7 @@ orderRouter.get("/get-order-by-userid", userAuth, getOrdersByUserId ) //user can
 orderRouter.get("/get-all-orders", adminAuth, getAllOrders )  // Admin can fetch all orders
 orderRouter.get("/get-seller-orders", sellerAuth, getSellerOrders )  // seller can fetch thir own product orders
 
+orderRouter.post("/get-seller-orders-by-status", sellerAuth, getSellerOrdersByStatus )
 orderRouter.get("/requests", adminAuth, getPendingRequests ) 
 orderRouter.post("/requests/:requestId", adminAuth, updatePermissionRequest ) 
 orderRouter.post("/permission-request", sendPermissionRequestToAdmin ) 

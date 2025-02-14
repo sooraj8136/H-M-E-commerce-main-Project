@@ -34,13 +34,13 @@ function SellerHeader() {
                                     <Nav.Link href="/seller/seller-home" className={darkMode ? "text-black" : "text-white nav-link"}>dashboard</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
-                                    <Nav.Link href="/seller/seller-product" className={darkMode ? "text-black" : "text-white nav-link"}>Manage Product</Nav.Link>
+                                    <Nav.Link href="/seller/seller-product" className={darkMode ? "text-black" : "text-white nav-link"}>Manage Products</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
-                                    <Nav.Link href="/seller/update-order-status" className={darkMode ? "text-black" : "text-white nav-link"}>Orders</Nav.Link>
+                                    <Nav.Link href="/seller/seller-order-page" className={darkMode ? "text-black" : "text-white nav-link"}>Orders</Nav.Link>
                                 </li>
                                 <li className="nav-item ">
-                                    <Nav.Link href="/seller/profile" className={darkMode ? "text-black" : "text-white nav-link"}>Profile</Nav.Link>
+                                    <Nav.Link href="/seller/profile" className={darkMode ? "text-black" : "text-white nav-link"}>My Account</Nav.Link>
                                 </li>
                             </ul>
                             <div className="search">

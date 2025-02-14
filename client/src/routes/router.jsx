@@ -49,6 +49,7 @@ import UserResetPassword from '../pages/user/UserResetPassword';
 import PendingPermissionRequests from '../pages/admin/PermissionRequests';
 import SuccessReview from '../components/user/SuccessReview';
 import UpdateUserProfile from '../pages/user/UpdateUserProfile';
+import SellerOrder from '../pages/seller/SellerOrder';
 
 export const router = createBrowserRouter([
   {
@@ -172,6 +173,10 @@ export const router = createBrowserRouter([
       {
         path: 'create-product',
         element: <CreateProductForm />,
+      },
+      {
+        path: 'seller-order-page',
+        element: <SellerOrder />,
       },
       {
         path: 'get-orders-seller',

@@ -1,11 +1,15 @@
-import { useForm } from "react-hook-form"; 
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../../config/axiosInstance";
 import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Collapse, Button } from 'react-bootstrap';
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 export const AddReview = () => {
+  const { darkMode } = useSelector((state) => state.mode);
   const { productId } = useParams();
 
   const [rating, setRating] = useState(0);
@@ -13,6 +17,7 @@ export const AddReview = () => {
   const [reviews, setReviews] = useState([]);
   const [editingReview, setEditingReview] = useState(null);
   const { register, handleSubmit, setValue } = useForm();
+  const [openReviews, setOpenReviews] = useState(false);
 
   const handleStarClick = (value) => setRating(value);
   const handleCloseModal = () => {
@@ -83,7 +88,7 @@ export const AddReview = () => {
   return (
     <div className="container">
       <div className="rate-product-container text-center">
-        <button onClick={() => handleShowModal()} className="rate-product">
+        <button onClick={() => handleShowModal()} className="rate-product" style={{ border: "1px solid white" }}>
           Rate product
         </button>
       </div>
@@ -125,23 +130,52 @@ export const AddReview = () => {
       </Modal>
 
       <div className="reviews-container mt-4">
-        <h5 className="text-center">Customer Reviews</h5>
-        {reviews.length > 0 ? (
-          reviews.map((review) => (
-            <div key={review._id} className="review-card p-3 border rounded-2 mb-2">
-              <p><strong>Rating:</strong> {review.rating} ★</p>
-              <p><strong>Comment:</strong> {review.comment}</p>
-              <button className="btn btn-warning btn-sm me-2" onClick={() => handleShowModal(review)}>
-                Edit
-              </button>
-              <button className="btn btn-danger btn-sm" onClick={() => deleteReview(review._id)}>
-                Delete
-              </button>
-            </div>
-          ))
-        ) : (
-          <p className="text-center">No reviews yet.</p>
-        )}
+        <div className="d-flex w-100">
+          <Button
+            variant="link"
+            className="align-items-center w-100"
+            onClick={() => setOpenReviews(!openReviews)}
+            aria-controls="reviews-collapse-text"
+            aria-expanded={openReviews}
+            style={{
+              marginTop: '1rem',
+              fontWeight: '500',
+              textDecoration: 'none'
+            }}
+          >
+            <span className={darkMode ? 'text-black' : 'text-white'}>
+              Customer Reviews
+            </span>
+            <span className="ms-auto">
+              {openReviews ? <MdKeyboardArrowUp size={22} color="black" className={darkMode ? 'text-black' : 'text-white'} /> : <MdKeyboardArrowDown size={22} color="black" className={darkMode ? 'text-black' : 'text-white'} />}
+            </span>
+          </Button>
+        </div>
+        <Collapse in={openReviews}>
+          <div id="reviews-collapse-text" className="mt-3">
+            {reviews.length > 0 ? (
+              reviews.map((review) => (
+                <div key={review._id} className="mb-2">
+                  <p className={darkMode ? 'text-black mb-0' : 'text-white mb-0'}>
+                    {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                  </p>
+                  <p className={darkMode ? 'text-black mb-1' : 'text-white mb-1'}>
+                    {review.comment}
+                  </p>
+                  <a href="#" className={darkMode ? 'text-black me-3' : 'text-white me-3'} onClick={(e) => { e.preventDefault(); handleShowModal(review); }}>
+                    Edit
+                  </a>
+                  <a href="#" className={darkMode ? 'text-black me-3' : 'text-white me-3'} onClick={(e) => { e.preventDefault(); deleteReview(review._id); }}>
+                    Delete
+                  </a>
+                </div>
+              ))
+            ) : (
+              <p className="text-center">No reviews yet.</p>
+            )}
+          </div>
+        </Collapse>
+
       </div>
     </div>
   );

@@ -78,7 +78,7 @@ const createProduct = async (req, res) => {
             materials,
             careguid,
             category,
-            sizes, 
+            sizes,
             image: uploadResult.url,
             stock,
             seller: sellerId,
@@ -119,6 +119,23 @@ const getProduct = async (req, res) => {
         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
     }
 }
+
+const getSellerProducts = async (req, res) => {
+    try {
+        const userId = req.user.id;
+
+        const products = await sellerDb.findById(userId).populate("products");
+
+        if (!products) {
+            return res.status(404).json({ message: "Products not found" });
+        }
+
+        res.status(200).json({ message: "Products fetched successfully", data: products });
+    } catch (error) {
+        console.log(error)
+        res.status(error.status || 500).json({ error: error.message || "Internal server error" })
+    }
+};
 
 
 const deleteProduct = async (req, res) => {
@@ -190,5 +207,4 @@ const productCategory = async (req, res) => {
 }
 
 
-
-module.exports = { getAllProduct, createProduct, getProduct, deleteProduct, updateProduct, productCategory }
+module.exports = { getAllProduct, createProduct, getProduct, deleteProduct, updateProduct, productCategory, getSellerProducts }

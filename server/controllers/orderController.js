@@ -220,6 +220,53 @@ const getPendingRequests = async (req, res) => {
   }
 };
 
+const getSellerOrdersByStatus = async (req, res) => {
+  try {
+    const userId = req.user?.id; // Ensure the user is authenticated
+
+    const { status } = req.body; // Status filter from the request body
+
+    if (!userId) {
+      return res.status(400).json({ error: "Seller not authorized" });
+    }
+
+    // Get all products associated with this seller
+    const sellerProducts = await productDb.find({ seller: userId }).select("_id");
+
+    if (!sellerProducts.length) {
+      return res.status(404).json({ message: "No products found for this seller" });
+    }
+
+    // Extract product IDs to filter orders
+    const productIds = sellerProducts.map((product) => product._id);
+
+    const query = {
+      "items.productId": { $in: productIds },
+    };
+
+    if (status) query.orderStatus = status; // Add status filter if provided
+
+    // Fetch orders with the necessary details
+    const ordersByStatus = await OrderDb.find(query).populate(
+      "items.productId",
+      "title price image"
+    );
+
+    if (!ordersByStatus.length) {
+      return res.status(404).json({ message: "No orders found for this seller" });
+    }
+
+    res.status(200).json({
+      message: "Orders fetched successfully",
+      data: ordersByStatus,
+    });
+  } catch (error) {
+    console.error("Error in getSellerOrdersByStatus:", error);
+    res.status(error.status || 500).json({
+      error: error.message || "Internal server error",
+    });
+  }
+};
 
 
-module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin };
+module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin, getSellerOrdersByStatus };
