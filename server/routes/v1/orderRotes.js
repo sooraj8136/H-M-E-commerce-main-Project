@@ -1,4 +1,4 @@
-const { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, getPendingRequests, updatePermissionRequest, sendPermissionRequestToAdmin, getSellerOrdersByStatus } = require("../../controllers/orderController");
+const { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, getPendingRequests, updatePermissionRequest, sendPermissionRequestToAdmin, getSellerOrdersByStatus, updateStock } = require("../../controllers/orderController");
 const { adminAuth } = require("../../middlewares/adminAuth");
 const { sellerAuth } = require("../../middlewares/sellerAuth");
 const { userAuth } = require("../../middlewares/userAuth");
@@ -13,6 +13,7 @@ orderRouter.post("/get-seller-orders-by-status", sellerAuth, getSellerOrdersBySt
 orderRouter.get("/requests", adminAuth, getPendingRequests ) 
 orderRouter.post("/requests/:requestId", adminAuth, updatePermissionRequest ) 
 orderRouter.post("/permission-request", sendPermissionRequestToAdmin ) 
+orderRouter.post("/update-Stock", userAuth, updateStock ) 
 
 
 orderRouter.put("/orders/:orderId/status", sellerAuth, updateOrderStatus )

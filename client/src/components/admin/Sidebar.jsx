@@ -3,7 +3,6 @@ import React from "react";
 const Sidebar = () => {
   return (
     <div className="d-flex flex-column  vh-100 p-3 ">
-      <h4 className="mb-4">Admin Dashboard</h4>
       <div className="d-flex flex-column">
         <ul className="nav flex-column">
           <li className="nav-item">

@@ -269,4 +269,47 @@ const getSellerOrdersByStatus = async (req, res) => {
 };
 
 
-module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin, getSellerOrdersByStatus };
+const updateStock = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const order = await OrderDb.findOne({ userId: userId })
+      .sort({ createdAt: -1 })
+      .populate("items.productId");
+
+    if (!order) {
+      return res.status(404).json({ message: "No orders found for this user" });
+    }
+    
+    console.log("USER ID === ", userId);
+    // Update stock for each product in the order
+    const updatedProducts = await Promise.all(
+      order.items.map(async (item) => {
+        const product = item.productId;
+        if (product) {
+          // Validate stock availability
+          if (item.quantity > product.stock) {
+            throw new Error(
+              `Insufficient stock for ${product.title.trim()}. Available: ${product.stock}`
+            );
+          }
+
+          product.stock = Math.max(0, product.stock - item.quantity);
+          await product.save();
+
+          return {
+            title: product.title,
+            price: product.price,
+            updatedStock: product.stock,
+          };
+        }
+      })
+    );
+    return res.status(200).json({ message: "Stock updated successfully", updatedProducts, });
+  } catch (error) {
+    catchErrorHandler(res, error);
+  }
+};
+
+
+
+module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin, getSellerOrdersByStatus, updateStock };
