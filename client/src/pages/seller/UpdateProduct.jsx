@@ -26,7 +26,7 @@ const UpdateProduct = () => {
         stock: response.data.stock !== null ? response.data.stock : 0, 
       });
     } catch (error) {
-      console.error("Error fetching product details:", error);
+      console.error("Error when fetching product details:", error);
       toast.error("Failed to fetch product details");
     }
   };
@@ -48,7 +48,7 @@ const UpdateProduct = () => {
       console.log("Response after update:", response.data);
       toast.success(response.data.message);
     } catch (error) {
-      console.error("Error updating product:", error);
+      console.error("Error when updating product:", error);
       toast.error(error.response?.data?.message || "Failed to update product");
     }
   };

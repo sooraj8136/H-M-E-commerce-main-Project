@@ -34,7 +34,7 @@ function ProductCards({ product }) {
             alt={product?.title}
             style={{
               objectFit: 'cover',
-              marginBottom: '10px',
+              marginBottom: '5px',
               maxWidth: '1024px',
               width: '265px',
             }}

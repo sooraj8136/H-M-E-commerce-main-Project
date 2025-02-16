@@ -272,6 +272,7 @@ const getSellerOrdersByStatus = async (req, res) => {
 const updateStock = async (req, res) => {
   try {
     const userId = req.user.id;
+
     const order = await OrderDb.findOne({ userId: userId })
       .sort({ createdAt: -1 })
       .populate("items.productId");
@@ -279,12 +280,14 @@ const updateStock = async (req, res) => {
     if (!order) {
       return res.status(404).json({ message: "No orders found for this user" });
     }
-    
+
     console.log("USER ID === ", userId);
+
     // Update stock for each product in the order
     const updatedProducts = await Promise.all(
       order.items.map(async (item) => {
         const product = item.productId;
+
         if (product) {
           // Validate stock availability
           if (item.quantity > product.stock) {
@@ -293,8 +296,15 @@ const updateStock = async (req, res) => {
             );
           }
 
-          product.stock = Math.max(0, product.stock - item.quantity);
+          const newStock = product.stock - item.quantity;
+
+          product.stock = Math.max(0, newStock);
+
           await product.save();
+
+          console.log(
+            `Updated stock for ${product.title.trim()}: ${product.stock}`
+          );
 
           return {
             title: product.title,
@@ -304,12 +314,16 @@ const updateStock = async (req, res) => {
         }
       })
     );
-    return res.status(200).json({ message: "Stock updated successfully", updatedProducts, });
+
+    return res.status(200).json({
+      message: "Stock updated successfully",
+      updatedProducts,
+    });
   } catch (error) {
-    catchErrorHandler(res, error);
+    console.error("Error in updating stock:", error.message);
+    return res.status(400).json({ message: error.message });
   }
 };
-
 
 
 module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin, getSellerOrdersByStatus, updateStock };
