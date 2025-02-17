@@ -50,6 +50,8 @@ import PendingPermissionRequests from '../pages/admin/PermissionRequests';
 import SuccessReview from '../components/user/SuccessReview';
 import UpdateUserProfile from '../pages/user/UpdateUserProfile';
 import SellerOrder from '../pages/seller/SellerOrder';
+import ProtectedRouteSeller from './ProtectedRouteSeller';
+import ProtectedRouteAdmin from './ProtectedRouteAdmin';
 
 export const router = createBrowserRouter([
   {
@@ -159,42 +161,6 @@ export const router = createBrowserRouter([
         element: <SellerLogin />,
       },
       {
-        path: 'profile',
-        element: <SellerProfile />,
-      },
-      {
-        path: 'seller-product',
-        element: <SellerProductsPage />,
-      },
-      {
-        path: 'seller-home',
-        element: <SellerHomePage />,
-      },
-      {
-        path: 'create-product',
-        element: <CreateProductForm />,
-      },
-      {
-        path: 'seller-order-page',
-        element: <SellerOrder />,
-      },
-      {
-        path: 'get-orders-seller',
-        element: <GetAllOrdersSeller />,
-      },
-      {
-        path: 'update-order-status',
-        element: <UpdateOrderStatus />,
-      },
-      {
-        path: 'seller-product-details/:productId',
-        element: < SellerProductDetails />,
-      },
-      {
-        path: 'update-product/:id',
-        element: <UpdateProduct />,
-      },
-      {
         path: 'signup',
         element: <SellerSignup />,
       },
@@ -206,6 +172,48 @@ export const router = createBrowserRouter([
         path: 'seller-reset-password/:token',
         element: <SellerResetPassword />,
       },
+      {
+        element: <ProtectedRouteSeller />,
+        path: '',
+        children: [
+          {
+            path: 'profile',
+            element: <SellerProfile />,
+          },
+          {
+            path: 'seller-product',
+            element: <SellerProductsPage />,
+          },
+          {
+            path: 'seller-home',
+            element: <SellerHomePage />,
+          },
+          {
+            path: 'create-product',
+            element: <CreateProductForm />,
+          },
+          {
+            path: 'seller-order-page',
+            element: <SellerOrder />,
+          },
+          {
+            path: 'get-orders-seller',
+            element: <GetAllOrdersSeller />,
+          },
+          {
+            path: 'update-order-status',
+            element: <UpdateOrderStatus />,
+          },
+          {
+            path: 'seller-product-details/:productId',
+            element: < SellerProductDetails />,
+          },
+          {
+            path: 'update-product/:id',
+            element: <UpdateProduct />,
+          },
+        ]
+      }
     ],
   },
   {
@@ -214,40 +222,12 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'admin-dashboard',
-        element: <AdminDashboard />,
-      },
-      {
-        path: 'login',
-        element: <AdminLogin />,
-      },
-      {
-        path: 'get-all-users',
-        element: <GetAllUsers />,
-      },
-      {
-        path: 'get-sellers',
-        element: <GetAllSellers />,
-      },
-      {
-        path: 'get-all-orders',
-        element: <GetAllOrders />,
-      },
-      {
-        path: 'admin-products',
-        element: <AdminProductPage />,
-      },
-      {
-        path: 'admin-product-details/:productId',
-        element: <AdminProductDetails />,
-      },
-      {
         path: 'signup',
         element: <AdminSignup />,
       },
       {
-        path: 'admin-profile',
-        element: <AdminProfile />,
+        path: 'login',
+        element: <AdminLogin />,
       },
       {
         path: 'admin-forgot-password',
@@ -258,9 +238,44 @@ export const router = createBrowserRouter([
         element: <ResetPassword />,
       },
       {
-        path: 'pending-requests',
-        element: <PendingPermissionRequests />,
-      },
+        element: <ProtectedRouteAdmin />,
+        path: '',
+        children: [
+          {
+            path: 'admin-dashboard',
+            element: <AdminDashboard />,
+          },
+          {
+            path: 'get-all-users',
+            element: <GetAllUsers />,
+          },
+          {
+            path: 'get-sellers',
+            element: <GetAllSellers />,
+          },
+          {
+            path: 'get-all-orders',
+            element: <GetAllOrders />,
+          },
+          {
+            path: 'admin-products',
+            element: <AdminProductPage />,
+          },
+          {
+            path: 'admin-product-details/:productId',
+            element: <AdminProductDetails />,
+          },
+
+          {
+            path: 'admin-profile',
+            element: <AdminProfile />,
+          },
+          {
+            path: 'pending-requests',
+            element: <PendingPermissionRequests />,
+          },
+        ]
+      }
     ],
   },
 ]);

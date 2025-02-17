@@ -16,7 +16,7 @@ function PreppyUniform() {
                             }}
                         >
                             <img
-                                src="https://image.hm.com/content/dam/global_campaigns/season_00/divided/ds11a/DS11A-3x2-1.jpg?imwidth=1536"
+                                src="https://image.hm.com/content/dam/global_campaigns/season_01/women/ds11e/DS11E-3x2-1.jpg?imwidth=1536"
                                 className="img-fluid"
                                 alt="Sample"
                                 style={{
@@ -31,7 +31,7 @@ function PreppyUniform() {
                                     transform: "translateY(-70%)",
                                 }}
                             >
-                                <h2 style={{ fontWeight: "bold", fontSize: "30px", color: 'black' }}>Preppy finds</h2>
+                                <h2 style={{ fontWeight: "bold", fontSize: "30px", color: 'black' }}>Preppy luxe</h2>
                                 <div
                                     style={{
                                         backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -41,7 +41,7 @@ function PreppyUniform() {
                                 >
                                     <ul className="preppy-btn" style={{ listStyleType: "none", padding: 0, margin: 0 }}>
                                         <li style={{ cursor: "pointer", color: "white" }}>
-                                            <Nav.Link href="/Preppy">Shop now</Nav.Link>
+                                            <Nav.Link href="/Preppy luxe">Shop now</Nav.Link>
                                         </li>
                                     </ul>
                                 </div>

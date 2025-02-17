@@ -6,6 +6,8 @@ import PreppyUniform from '../../components/user/PreppyUniform'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import Office from '../../components/user/Office'
+import ModernRomance from '../../components/user/ModernRomance'
+import ActivewearByMove from '../../components/user/ActivewearByMove'
 
 function LadiesPage() {
 
@@ -25,7 +27,9 @@ function LadiesPage() {
                 <LadiesProducts />
                 <Office />
                 <Accessories />
+                <ModernRomance/>
                 <PreppyUniform />
+                <ActivewearByMove/>
                 <div className='ladies-clothing-cap'>
                     <div className="container mt-4 d-flex justify-content-center align-items-center">
                         <div className="position-relative"

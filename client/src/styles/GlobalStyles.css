@@ -1452,6 +1452,39 @@ hr {
     font-weight: 700;
 }
 
-.no-border-radius {
-    border-radius: 0 !important;
+.edit-nav:hover {
+    color: #ad0000 !important;
+}
+
+.edit-nav a:hover {
+    color: #ad0000 !important;
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .button-group {
+        max-width: 930px;
+        width: 100%;
+    }
+}
+
+.responsive-text {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .responsive-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .responsive-text {
+        font-size: 0.8rem;
+    }
 }
