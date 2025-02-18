@@ -20,7 +20,6 @@ function KidsPage() {
                             fontWeight: "700",
                         }}>Kids</span> </p>
                     </div>
-                <HomeWidget />
                 <BabyProducts/>
                 <KidsLimitedEdition />
                 <KidsProducts />

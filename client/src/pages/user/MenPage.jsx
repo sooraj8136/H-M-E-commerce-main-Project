@@ -21,7 +21,6 @@ function MenPage() {
                         }}>Men</span></p>
                 </div>
             </div>
-            <HomeWidget />
             <NewUtilitarian/>
             <MenProducts />
             <DenimMen/>

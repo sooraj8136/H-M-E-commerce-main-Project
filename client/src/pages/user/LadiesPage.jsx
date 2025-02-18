@@ -23,9 +23,8 @@ function LadiesPage() {
                         fontWeight: "700",
                     }}>Ladies</span></p>
                 </div>
-                <HomeWidget />
-                <LadiesProducts />
                 <Office />
+                <LadiesProducts />
                 <Accessories />
                 <ModernRomance/>
                 <PreppyUniform />
