@@ -25,6 +25,7 @@ function NewUtilitarian() {
                                     transform: "translateY(-70%)",
                                 }}>
                                 <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>New utilitarian</h2>
+                                <p>Fresh staples with functional details and sporty appeal.</p>
                                 <div style={{
                                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                                     textAlign: "center",

@@ -4,29 +4,27 @@ import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 
 const UpdateProduct = () => {
-  const { id: productId } = useParams(); 
+  const { id: productId } = useParams();
   const [productData, setProductData] = useState({
     title: "",
     price: "",
     description: "",
     category: "",
-    stock: "", 
+    stock: "",
   });
 
   const fetchProduct = async () => {
     try {
-      const response = await axiosInstance.get(`/product/${productId}`);
-      console.log("Fetched product data:", response.data);
-
+      const { data } = await axiosInstance.get(`/product/${productId}`);
       setProductData({
-        title: response.data.title || "",
-        price: response.data.price !== null ? response.data.price : "",
-        description: response.data.description || "",
-        category: response.data.category || "",
-        stock: response.data.stock !== null ? response.data.stock : 0, 
+        title: data.title || "",
+        price: data.price || "",
+        description: data.description || "",
+        category: data.category || "",
+        stock: data.stock || 0,
       });
     } catch (error) {
-      console.error("Error when fetching product details:", error);
+      console.error("Error fetching product details:", error);
       toast.error("Failed to fetch product details");
     }
   };
@@ -48,8 +46,8 @@ const UpdateProduct = () => {
       console.log("Response after update:", response.data);
       toast.success(response.data.message);
     } catch (error) {
-      console.error("Error when updating product:", error);
-      toast.error(error.response?.data?.message || "Failed to update product");
+      console.error("Error when updating product : ", error);
+      toast.error("Failed to update product");
     }
   };
 

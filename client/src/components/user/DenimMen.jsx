@@ -16,7 +16,7 @@ function DenimMen() {
                             }}
                         >
                             <img
-                                src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11ca1/scroll/MS11CA1-dress-up-your-denim-LP1-CPD-v2.jpg?imwidth=4800"
+                                src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11e6/MS11E6-Denimroundup-3x2-v3.jpg?imwidth=1536"
                                 className="img-fluid"
                                 alt="Sample"
                                 style={{
@@ -31,6 +31,7 @@ function DenimMen() {
                                     transform: "translateY(-70%)",
                                 }}>
                                 <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>Denim roundup</h2>
+                                <p>Get to know the fit. A quick guide to signature jeans styles.</p>
                                 <div style={{
                                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                                     textAlign: "center",
@@ -38,7 +39,7 @@ function DenimMen() {
                                 }}>
                                     <ul className="preppy-btn" style={{ listStyleType: "none", padding: 0, margin: 0 }}>
                                         <li style={{ cursor: "pointer", color: "white" }}>
-                                            <Nav.Link href="/Denim" >Shop now</Nav.Link>
+                                            <Nav.Link href="/denim-roundup" >Shop now</Nav.Link>
                                         </li>
                                     </ul>
                                 </div>

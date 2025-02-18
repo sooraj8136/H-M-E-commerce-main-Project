@@ -20,6 +20,50 @@ const getAllProduct = async (req, res) => {
 }
 
 
+// const createProduct = async (req, res) => {
+//     try {
+//         const { image, title, price, description, materials, careguid, stock, category, sizes } = req.body;
+//         const sellerId = req.user.id;
+
+//         console.log('Request Body:', req.body);
+//         console.log('Uploaded File:', req.file);
+
+//         if (!title || !price || !description || !materials || !careguid || !stock || !category || !sizes || sizes.length === 0) {
+//             return res.status(400).json({ message: "All fields, including sizes, are required." });
+//         }
+
+//         const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path);
+//         console.log('Uploaded File:', uploadResult);
+
+//         const newProduct = new productDb({
+//             title,
+//             price,
+//             description,
+//             materials,
+//             careguid,
+//             category,
+//             sizes,
+//             image: uploadResult.url,
+//             stock,
+//             seller: sellerId,
+//         });
+
+//         const savedProduct = await newProduct.save();
+
+//         await sellerDb.findOneAndUpdate(
+//             { _id: sellerId },
+//             { $push: { products: savedProduct._id } },
+//             { new: true }
+//         );
+
+//         res.status(200).json({ message: "New product created successfully", data: savedProduct });
+//     } catch (error) {
+//         console.log(error);
+//         res.status(error.status || 500).json({ error: error.message || "Internal server error" });
+//     }
+// };
+
+
 const createProduct = async (req, res) => {
     try {
         const { image, title, price, description, materials, careguid, stock, category, sizes } = req.body;
@@ -28,7 +72,12 @@ const createProduct = async (req, res) => {
         console.log('Request Body:', req.body);
         console.log('Uploaded File:', req.file);
 
-        if (!title || !price || !description || !materials || !careguid || !stock || !category || !sizes || sizes.length === 0) {
+        let parsedSizes = sizes;
+        if (typeof sizes === 'string') {
+            parsedSizes = JSON.parse(sizes); // Parse the string back to an array
+        }
+
+        if (!title || !price || !description || !materials || !careguid || !stock || !category || !parsedSizes || parsedSizes.length === 0) {
             return res.status(400).json({ message: "All fields, including sizes, are required." });
         }
 
@@ -42,7 +91,7 @@ const createProduct = async (req, res) => {
             materials,
             careguid,
             category,
-            sizes,
+            sizes: parsedSizes,
             image: uploadResult.url,
             stock,
             seller: sellerId,

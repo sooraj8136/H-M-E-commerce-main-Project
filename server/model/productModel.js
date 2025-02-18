@@ -33,7 +33,7 @@ const productSchema = new mongoose.Schema(
             type: String,
             required: true,
             enum: ["Ladies", "Preppy luxe", "New neutrals", "Modern romance", "Activewear-by-Move",
-                "Hot-sellers", "New-utilitarian", "Denim",
+                "Hot-sellers", "New-utilitarian", "Denim", "Transitional-fits",
                 "Baby", "Babynew", "Hello-kitty",
                 "Kids", "Kidsnew", "accessories"]
         },

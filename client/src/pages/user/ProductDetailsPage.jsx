@@ -235,6 +235,8 @@ function ProductDetailsPage() {
         'Activewear-by-Move': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'Hot-sellers': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'New-utilitarian': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Denim': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Transitional-fits': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'Kids': ['XS', 'S', 'M', 'L', 'XL', 'XXL']
     };
 

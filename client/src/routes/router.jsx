@@ -53,6 +53,8 @@ import SellerOrder from '../pages/seller/SellerOrder';
 import ProtectedRouteSeller from './ProtectedRouteSeller';
 import ProtectedRouteAdmin from './ProtectedRouteAdmin';
 import ActiveWear from '../pages/user/ActiveWear';
+import DenimRoundUp from '../pages/user/DenimRoundUp';
+import TransitionalFits from '../pages/user/TransitionalFits';
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +105,14 @@ export const router = createBrowserRouter([
       {
         path: 'active-wear',
         element: <ActiveWear />,
+      },
+      {
+        path: 'denim-roundup',
+        element: <DenimRoundUp />,
+      },
+      {
+        path: 'transitional-fits',
+        element: <TransitionalFits/>,
       },
       {
         path: ':category',

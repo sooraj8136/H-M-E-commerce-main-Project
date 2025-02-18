@@ -4,7 +4,8 @@ import { Container, Nav } from 'react-bootstrap'
 function ModernRomance() {
     return (
         <>
-            <Container>
+            <Container className="d-flex justify-content-center align-items-center"
+                style={{ maxWidth: "100%" }}>
                 <section>
                     <div
                         className="container mt-4 d-flex justify-content-center align-items-center">

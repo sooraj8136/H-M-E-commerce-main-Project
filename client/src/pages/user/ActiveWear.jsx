@@ -4,14 +4,13 @@ import { useSelector } from 'react-redux';
 import CategoryCard from '../../components/user/CategoryCard';
 import { axiosInstance } from '../../config/axiosInstance';
 import { Link } from 'react-router-dom';
-import { BiSolidLeftArrow } from 'react-icons/bi'; // Import the left arrow icon
+import { BiSolidLeftArrow } from 'react-icons/bi';
 
 
 function ActiveWear() {
     const { darkMode } = useSelector((state) => state.mode);
 
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {

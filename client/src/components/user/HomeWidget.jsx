@@ -18,8 +18,7 @@ function HomeWidget() {
             flexDirection: "column",
             justifyContent: "space-between",
             height: "400px",
-          }}
-        >
+          }}>
           <div
             style={{
               display: "flex",
