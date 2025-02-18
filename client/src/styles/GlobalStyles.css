@@ -1488,3 +1488,9 @@ hr {
         font-size: 0.8rem;
     }
 }
+
+.alata-regular {
+    font-family:"Urbanist", serif;
+    font-weight: 300;
+    font-style: normal;
+}

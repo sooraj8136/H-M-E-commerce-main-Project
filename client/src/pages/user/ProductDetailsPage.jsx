@@ -228,7 +228,14 @@ function ProductDetailsPage() {
     const navigate = useNavigate();
 
     const sizesByCategory = {
-        Kids: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+        'Ladies': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Preppy luxe': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'New neutrals': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Modern romance': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Activewear-by-Move': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Hot-sellers': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'New-utilitarian': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Kids': ['XS', 'S', 'M', 'L', 'XL', 'XXL']
     };
 
     const category = product?.category;

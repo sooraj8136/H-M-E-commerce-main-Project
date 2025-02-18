@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Nav } from 'react-bootstrap'
 
-function ActivewearByMove() {
+function NewUtilitarian() {
     return (
         <>
             <Container>
@@ -16,32 +16,23 @@ function ActivewearByMove() {
                             }}
                         >
                             <img
-                                src="https://image.hm.com/content/dam/global_campaigns/season_01/move/6021a/6021A-3x2-1.jpg?imwidth=1536"
-                                className="img-fluid"
-                                alt="Sample"
-                                style={{
-                                    width: "100%",
-                                    height: "auto",
-                                }}
-                            />
+                                src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11lh5/MS11LH5-athleisure-teaser-3x2.jpg?imwidth=1536"
+                                className="img-fluid" alt="Sample" style={{ width: "100%", height: "auto", }} />
                             <div
                                 className="preppy-sec position-absolute text-white"
                                 style={{
                                     top: "50%",
                                     transform: "translateY(-70%)",
-                                }}
-                            >
-                                <h2 style={{ fontWeight: "bold", fontSize: "30px", color: 'black' }}>Activewear by Move</h2>
-                                <div
-                                    style={{
-                                        backgroundColor: "rgba(0, 0, 0, 0.5)",
-                                        textAlign: "center",
-                                        padding: "10px",
-                                    }}
-                                >
+                                }}>
+                                <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>New utilitarian</h2>
+                                <div style={{
+                                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                                    textAlign: "center",
+                                    padding: "10px",
+                                }}>
                                     <ul className="preppy-btn" style={{ listStyleType: "none", padding: 0, margin: 0 }}>
                                         <li style={{ cursor: "pointer", color: "white" }}>
-                                            <Nav.Link href="/active-wear">Shop now</Nav.Link>
+                                            <Nav.Link href="/New-utilitarian" >Shop now</Nav.Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -54,4 +45,4 @@ function ActivewearByMove() {
     )
 }
 
-export default ActivewearByMove
+export default NewUtilitarian

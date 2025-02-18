@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import WishlistButton from '../../api/WishlistButton';
+import { axiosInstance } from '../../config/axiosInstance';
 
 function CategoryCard({ product }) {
 
@@ -27,29 +28,29 @@ function CategoryCard({ product }) {
 
     return (
         <>
-            <Container className="d-flex justify-content-center align-items-center my-3 ">
+            <Container className="d-flex justify-content-center align-items-center">
                 <div className="text-center position-relative mx-1">
                     <Link
                         key={product._id}
                         to={`/productDetails/${product._id}`}
                         className="text-decoration-none">
-                        <div className="product-item text-center"
+                        <div className="product-item text-start"
                         >
                             <img src={product?.image} alt={product?.title} style={{
                                 width: "300px",
                                 height: "auto",
                                 objectFit: "cover",
-                                marginBottom: "10px",
-                                maxWidth: "1024px"
+                                marginBottom: "6px",
+                                maxWidth: "1024px",
                             }} />
                             <h3
                                 className={darkMode ? "text-black" : "text-white"}
-                                style={{ fontSize: "1rem", marginBottom: "0.5rem", }}>
+                                style={{ fontSize: "0.8rem",fontWeight: '600', marginBottom: "0.5rem", }}>
                                 {product?.title}
                             </h3>
                             <p
                                 className={darkMode ? "text-black" : "text-white price"}
-                                style={{ fontSize: "1rem", }}>
+                                style={{ fontSize: "0.8rem",fontWeight: '500' }}>
                                 Rs.{product?.price}.00
                             </p>
                         </div>

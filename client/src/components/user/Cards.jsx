@@ -27,14 +27,14 @@ function ProductCards({ product }) {
 
   return (
     <Container className="d-flex flex-wrap justify-content-center">
-      <div className="text-center position-relative mx-1">
+      <div className="text-center position-relative mx-1 text-start">
         <Link to={`/productDetails/${product?._id}`} className="text-decoration-none">
           <img
             src={product?.image}
             alt={product?.title}
             style={{
               objectFit: 'cover',
-              marginBottom: '5px',
+              marginBottom: '6px',
               maxWidth: '1024px',
               width: '265px',
             }}
@@ -42,7 +42,7 @@ function ProductCards({ product }) {
           <div className="d-flex flex-column align-items-start">
             <h3
               className={darkMode ? 'text-black' : 'text-white'}
-              style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.5rem' }}
+              style={{ fontSize: '0.8rem', fontWeight: '600', marginBottom: '0.5rem' }}
             >
               {product?.title}
             </h3>

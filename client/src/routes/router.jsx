@@ -52,6 +52,7 @@ import UpdateUserProfile from '../pages/user/UpdateUserProfile';
 import SellerOrder from '../pages/seller/SellerOrder';
 import ProtectedRouteSeller from './ProtectedRouteSeller';
 import ProtectedRouteAdmin from './ProtectedRouteAdmin';
+import ActiveWear from '../pages/user/ActiveWear';
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ export const router = createBrowserRouter([
       {
         path: 'product',
         element: <ProductPage />,
+      },
+      {
+        path: 'active-wear',
+        element: <ActiveWear />,
       },
       {
         path: ':category',

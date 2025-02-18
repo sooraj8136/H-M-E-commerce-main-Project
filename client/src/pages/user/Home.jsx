@@ -1,5 +1,4 @@
 import React from 'react'
-import Carrousel from '../../components/user/Carrousel'
 import HomeWidget from '../../components/user/HomeWidget'
 import IconicGraphics from '../../components/user/IconicGraphics'
 import PreppyUniform from '../../components/user/PreppyUniform'
@@ -22,7 +21,6 @@ function Home() {
                         }}>Home</span></p>
                     </div>
                 </div>
-                <Carrousel />
                 <HomeWidget />
                 <PreppyUniform />
                 <IconicGraphics />

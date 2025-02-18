@@ -19,42 +19,6 @@ const getAllProduct = async (req, res) => {
     }
 }
 
-// const createProduct = async (req, res) => {
-//     try {
-
-//         const { image, title, price, description, stock, category } = req.body
-
-//         const  sellerId  = req.user.id;
-
-//         console.log('Request Body:', req.body);
-//         console.log('Uploaded File:', req.file);
-
-
-//         if (!title || !price || !description || !stock || !category) {
-//             return res.status(400).json({ message: "all fields are required" });
-//         }
-
-//         const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path)
-//         console.log(uploadResult)
-
-
-//         const newProduct = new productDb({ title, price, description, category, image: uploadResult.url, seller: sellerId });
-//         const savedProduct = await newProduct.save()
-
-//         await sellerDb.findOneAndUpdate(
-//             { _id: sellerId },
-//             { $push: { products: productDb._id } },
-//             { new: true }
-//         );
-
-//         res.status(200).json({ message: "New product created successfully", data: savedProduct })
-
-
-//     } catch (error) {
-//         console.log(error)
-//         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
-//     }
-// }
 
 const createProduct = async (req, res) => {
     try {

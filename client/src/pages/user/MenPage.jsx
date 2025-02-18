@@ -5,6 +5,7 @@ import IconicGraphics from '../../components/user/IconicGraphics'
 import DenimMen from '../../components/user/DenimMen'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
+import NewUtilitarian from '../../components/user/NewUtilitarian'
 
 function MenPage() {
 
@@ -13,7 +14,7 @@ function MenPage() {
     
     return (
         <>
-            <div>
+            <div style={{fontWeight: '600'}}>
                 <div className="container  d-flex justify-content-center align-items-center heading-head">
                     <p className={darkMode ? "text-black" : "text-white "}>HM.com /<span className='text-danger' style={{
                             fontWeight: "700",
@@ -21,6 +22,7 @@ function MenPage() {
                 </div>
             </div>
             <HomeWidget />
+            <NewUtilitarian/>
             <MenProducts />
             <DenimMen/>
             <IconicGraphics/>

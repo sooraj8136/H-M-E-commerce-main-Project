@@ -34,7 +34,7 @@ function MenProducts() {
                             <div>
                                 <li >
                                     <Nav.Link
-                                        href="/Men"
+                                        href="/Hot-sellers"
                                         style={{
                                             color: "black",
                                             backgroundColor: "white",

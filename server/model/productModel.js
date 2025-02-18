@@ -32,9 +32,9 @@ const productSchema = new mongoose.Schema(
         category: {
             type: String,
             required: true,
-            enum: ["Ladies", "Preppy luxe", "New neutrals", "Modern romance", "Activewear by Move",
-                "Men", "Denim",
-                "Baby", "Babynew",  "Hello-kitty", 
+            enum: ["Ladies", "Preppy luxe", "New neutrals", "Modern romance", "Activewear-by-Move",
+                "Hot-sellers", "New-utilitarian", "Denim",
+                "Baby", "Babynew", "Hello-kitty",
                 "Kids", "Kidsnew", "accessories"]
         },
         sizes: {
