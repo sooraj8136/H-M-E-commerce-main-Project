@@ -13,7 +13,7 @@ const PaymentSuccess = () => {
         const handlePostPayment = async () => {
             try {
                 await axiosInstance.delete('/cart/clear-cart');
-                toast.success('Your payment was successful');
+                toast.success('Your payment successful');
 
                 const response = await axiosInstance.post('/orders/update-stock');
                 if (response.status === 200) {
@@ -22,7 +22,7 @@ const PaymentSuccess = () => {
                     toast.error('Failed to update stock.');
                 }
             } catch (error) {
-                toast.error('Something went wrong during post-payment actions.');
+                toast.error('Something went wrong');
                 console.error(error);
             }
         };
@@ -36,25 +36,10 @@ const PaymentSuccess = () => {
 
     return (
         <div
-            className={`text-center d-flex flex-column align-items-center justify-content-center ${darkMode ? 'text-black' : 'text-white'
-                }`}
-        >
+            className={`text-center d-flex flex-column align-items-center justify-content-center ${darkMode ? 'text-black' : 'text-white'}`} >
             <div className="text-center d-flex flex-column align-items-center justify-content-center">
-                <p
-                    style={{
-                        fontWeight: '700',
-                        fontSize: 'x-large',
-                    }}
-                >
-                    Thank you for your purchase
-                </p>
-                <p
-                    style={{
-                        fontWeight: '500',
-                    }}
-                >
-                    Happy shopping!
-                </p>
+                <p style={{fontWeight: '700', fontSize: 'x-large',}}>Thank you for your purchase</p>
+                <p style={{ fontWeight: '500',}}>Happy shopping!</p>
 
                 <div className="d-flex justify-content-center my-3">
                     <LiaThumbsUpSolid

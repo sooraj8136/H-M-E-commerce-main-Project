@@ -57,11 +57,9 @@ function TransitionalFits() {
                             }}
                         >
                             <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-28px', color: 'black' }} />
-                            <div style={{ color: 'white', fontSize: 'small', fontWeight: '700', textAlign: 'left' }}>
+                            <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                                 Rs.2,699.00
                                 <br />
-                                <div></div>
-                                Loose Fit Poplin shirt
                             </div>
                         </button>
                     </Link>
@@ -93,10 +91,8 @@ function TransitionalFits() {
                             }}
                         >
                             <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-26px', color: 'black' }} />
-                            <div style={{ color: 'white', fontSize: 'small', fontWeight: '700', textAlign: 'left' }}>
+                            <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                                 Rs.2,699.00
-                                <br />
-                                Regular Fit Napped...
                             </div>
                         </button>
                     </Link>
@@ -121,11 +117,9 @@ function TransitionalFits() {
                             }}
                         >
                             <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-26px', color: 'black' }} />
-                            <div style={{ color: 'white', fontSize: 'small', fontWeight: '700', textAlign: 'left' }}>
+                            <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                                 Rs.1,499.00
                                 <br />
-                                <div></div>
-                                Relaxed Fit Poplin tr...
                             </div>
                         </button>
                     </Link>
@@ -165,11 +159,9 @@ function TransitionalFits() {
                         }}
                     >
                         <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-26px', color: 'black' }} />
-                        <div style={{ color: 'white', fontSize: 'small', fontWeight: '700', textAlign: 'left' }}>
+                        <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                             Rs.1,999.00
                             <br />
-                            <div></div>
-                            Regular Fit Texture...
                         </div>
                     </button>
                 </Link>
@@ -199,11 +191,9 @@ function TransitionalFits() {
                         }}
                     >
                         <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-26px', color: 'black' }} />
-                        <div style={{ color: 'white', fontSize: 'small', fontWeight: '700', textAlign: 'left' }}>
+                        <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                             Rs.5,499.00
                             <br />
-                            <div></div>
-                            Regular Fit Car Coat...
                         </div>
                     </button>
                 </Link>

@@ -4,48 +4,59 @@ import { Container, Nav } from 'react-bootstrap'
 function MenProducts() {
     return (
         <>
-            <Container
-                className="d-flex justify-content-center align-items-center"
-                style={{ maxWidth: "100%", height: "15%" }}
-            >
-                <div
-                    className="widget text-white text-center"
+            <Container className="d-flex justify-content-center align-items-center"
+                style={{ maxWidth: "100%", }}>
+                <div className="widget text-white text-center"
                     style={{
                         maxWidth: "930px",
                         width: "100%",
-                        height: "5%",
-                        backgroundColor: "rgb(68, 14, 14)",
-                    }}
-                >
+                        height: "150px",
+                        backgroundImage: "url('https://www2.hm.com/content/dam/TOOLBOX/LOCAL%20ACTIVITIES/w6/334896_HM_50proc_rabatt_3x1.jpg')",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        padding: "20px"
+                    }}>
                     <div>
-                        <br />
-                        <p className="widget-text-2">Upgrade your Cloths With H&M</p>
-                        <p className="text-center">
-                        Explore the essential collection
+                        <p className="widget-text-2 mb-1"
+                            style={{
+                                fontSize: "0.9rem",
+                                fontWeight: "bold",
+                                color: 'white',
+                                lineHeight: "1.2",
+                            }}>
+                            Most-loved styles starting at ₹399
+                        </p>
+                        <p className="text-center mb-3" style={{
+                            fontSize: ".7rem",
+                            fontWeight: '500',
+                            lineHeight: "1.5",
+                            color: 'white',
+                        }} >
+                            Explore the hot-sellers
                         </p>
                         <ul
-                            className="preppy-btn"
+                            className="preppy-btn d-flex justify-content-center"
                             style={{
                                 listStyleType: "none",
                                 padding: 0,
-                                margin: "10px",
-                            }}
-                        >
-                            <div>
-                                <li >
-                                    <Nav.Link
-                                        href="/Hot-sellers"
-                                        style={{
-                                            color: "black",
-                                            backgroundColor: "white",
-                                            padding: "10px 20px",
-                                            fontWeight: "bold"
-                                        }}
-                                    >
-                                        Shop now
-                                    </Nav.Link>
-                                </li>
-                            </div>
+                                margin: 0,
+                                gap: "10px",
+                                flexWrap: "wrap",
+                            }} >
+                            <li>
+                                <Nav.Link href="/Hot-sellers"
+                                    style={{
+                                        color: "black",
+                                        backgroundColor: "white",
+                                        padding: "5px 10px",
+                                        fontSize: '0.9rem',
+                                        fontWeight: "bold",
+                                        textDecoration: "none",
+                                    }}>
+                                    Shop now
+                                </Nav.Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

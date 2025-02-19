@@ -1,10 +1,11 @@
 import React from 'react'
-import HomeWidget from '../../components/user/HomeWidget'
 import IconicGraphics from '../../components/user/IconicGraphics'
 import PreppyUniform from '../../components/user/PreppyUniform'
-import KidsArrivals from '../../components/user/KidsArrivals'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
+import NewUtilitarian from '../../components/user/NewUtilitarian';
+import KidsDenim from '../../components/user/KidsDenim';
+import Office from '../../components/user/Office';
 
 function Home() {
 
@@ -21,10 +22,10 @@ function Home() {
                         }}>Home</span></p>
                     </div>
                 </div>
-                <HomeWidget />
                 <PreppyUniform />
-                <IconicGraphics />
-                <KidsArrivals />
+                <NewUtilitarian/>
+                <KidsDenim/>
+                <Office/>
             </Container>
         </>
     )

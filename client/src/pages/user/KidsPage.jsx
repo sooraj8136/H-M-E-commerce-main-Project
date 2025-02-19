@@ -1,11 +1,9 @@
 import React from 'react'
-import HomeWidget from '../../components/user/HomeWidget'
 import KidsProducts from '../../components/user/KidsProducts'
-import KidsLimitedEdition from '../../components/user/KidsLimitedEdition'
-import KidsArrivals from '../../components/user/KidsArrivals'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
-import BabyProducts from '../../components/user/BabyProducts'
+import KidsEffortlessBlues from '../../components/user/KidsEffortlessBlues';
+import KidsDenim from '../../components/user/KidsDenim';
 
 function KidsPage() {
 
@@ -15,15 +13,14 @@ function KidsPage() {
     return (
         <>
             <Container>
-                    <div className="container  d-flex justify-content-center align-items-center heading-head">
-                        <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
-                            fontWeight: "700",
-                        }}>Kids</span> </p>
-                    </div>
-                <BabyProducts/>
-                <KidsLimitedEdition />
+                <div className="container  d-flex justify-content-center align-items-center heading-head">
+                    <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
+                        fontWeight: "700",
+                    }}>Kids</span> </p>
+                </div>
+                <KidsEffortlessBlues />
                 <KidsProducts />
-                <KidsArrivals />
+                <KidsDenim/>
                 <div className='ladies-clothing-cap'>
                     <div className="container mt-4 d-flex justify-content-center align-items-center">
                         <div className="position-relative"

@@ -237,7 +237,10 @@ function ProductDetailsPage() {
         'New-utilitarian': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'Denim': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'Transitional-fits': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Kids': ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+        'Kids': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        'Kids9-14y': ['8-9Y', '9-10Y', '10-11Y', '11-12Y', '12-13Y', '13-14Y', '14+'],
+        'Baby': ['4-6M', '6-9M', '9-12M', '11-12M', '12-18M', '1-2Y', '2-3Y', '3-4Y'],
+        'Kids2-8y': ['1-2Y', '2-3Y', '3-4Y', '4-5Y', '5-6Y', '6-7Y', '7-8Y', '8-9Y', '9-10Y']
     };
 
     const category = product?.category;
@@ -309,7 +312,7 @@ function ProductDetailsPage() {
                             <p className="dull-title">MRP inclusive of all taxes</p>
                             <p
                                 className={darkMode ? "text-black" : "text-white"}
-                                style={{ fontSize: "1rem", fontWeight: "bold" }}
+                                style={{ fontSize: "1.2rem", fontWeight: "600" }}
                             >
                                 Rs. {product?.price}.00
                             </p>
@@ -323,8 +326,10 @@ function ProductDetailsPage() {
                                             className={`size text-center ${selectedSize === size ? "selected" : ""
                                                 }`}
                                             style={{
+                                                fontSize: '0.8rem',
+                                                fontWeight: '500',
                                                 border: "1px solid white",
-                                                transition: "0.3s ease-in-out",
+                                                padding: '7px',
                                             }}
                                             onClick={() => handleSizeSelect(size)}
                                         >

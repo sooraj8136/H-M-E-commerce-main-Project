@@ -1494,3 +1494,63 @@ hr {
     font-weight: 300;
     font-style: normal;
 }
+
+
+
+
+
+/*kids Denim */
+@media (max-width: 768px) {
+    .responsive-heading {
+        font-size: 1.8rem;
+    }
+    .responsive-subheading {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (max-width: 375px) {
+    .responsive-heading {
+        font-size: 1.5rem;
+    }
+    .responsive-subheading {
+        font-size: 0.8rem;
+        white-space: nowrap;  
+        overflow: hidden;    
+        text-overflow: ellipsis;  
+    }
+}
+
+/*Denim men*/
+
+@media (max-width: 768px) {
+    .preppy-sec {
+        bottom: 5%;
+        padding: 0 10px; 
+    }
+    .preppy-sec h2 {
+        font-size: calc(1.2rem + 0.5vw); 
+    }
+    .preppy-sec p {
+        font-size: 0.9rem;
+    }
+    .preppy-btn li a {
+        font-size: 0.8rem;
+        padding: 6px 10px; 
+    }
+}
+
+@media (max-width: 576px) {
+    .preppy-sec h2 {
+        font-size: calc(1rem + 0.5vw);
+    }
+    .preppy-sec p {
+        font-size: 0.8rem; 
+    }
+    .preppy-btn li a {
+        font-size: 0.7rem;
+        padding: 5px 8px;
+    }
+}
+

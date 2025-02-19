@@ -4,45 +4,83 @@ import { Container, Nav } from 'react-bootstrap'
 function DenimMen() {
     return (
         <>
-            <Container>
+            <Container className="d-flex justify-content-center align-items-center"
+                style={{ maxWidth: "100%" }}>
                 <section>
                     <div
-                        className="container mt-4 d-flex justify-content-center align-items-center">
-                        <div
-                            className="position-relative"
+                        className="position-relative"
+                        style={{
+                            maxWidth: "930px", // Matches the width of the second container
+                            width: "100%",
+                            height: "100%", // Added height to align with the second container
+                            marginTop: '27px',
+                        }}>
+                        <img
+                            src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11e6/MS11E6-Denimroundup-3x2-v3.jpg?imwidth=1536"
+                            className="img-fluid"
+                            alt="Activewear"
                             style={{
-                                maxWidth: "930px",
                                 width: "100%",
+                                height: "100%", // Fills the container height
+                                objectFit: "cover", // Maintains aspect ratio
+                            }} />
+                        <div
+                            className="preppy-sec position-absolute text-white d-flex flex-column justify-content-end"
+                            style={{
+                                bottom: "10%", // Aligns content at the bottom
+                                left: "0",
+                                width: "100%",
+                                height: "100%",
+                                textAlign: "center", // Centers text and button
+                                padding: "0 20px",
                             }}
                         >
-                            <img
-                                src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11e6/MS11E6-Denimroundup-3x2-v3.jpg?imwidth=1536"
-                                className="img-fluid"
-                                alt="Sample"
+                            <h2
                                 style={{
-                                    width: "100%",
-                                    height: "auto",
+                                    fontWeight: "bold",
+                                    fontSize: "calc(1.5rem + 1vw)", // Responsive font size
+                                    marginBottom: "10px",
                                 }}
-                            />
-                            <div
-                                className="preppy-sec position-absolute text-white"
-                                style={{
-                                    top: "50%",
-                                    transform: "translateY(-70%)",
-                                }}>
-                                <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>Denim roundup</h2>
-                                <p>Get to know the fit. A quick guide to signature jeans styles.</p>
-                                <div style={{
-                                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                                    textAlign: "center",
-                                    padding: "10px",
-                                }}>
-                                    <ul className="preppy-btn" style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-                                        <li style={{ cursor: "pointer", color: "white" }}>
-                                            <Nav.Link href="/denim-roundup" >Shop now</Nav.Link>
-                                        </li>
-                                    </ul>
-                                </div>
+                            >
+                                Denim roundup
+                            </h2>
+                            <p 
+                                style={{ 
+                                    fontSize: "small", 
+                                    marginBottom: "10px", 
+                                    fontWeight: '500',
+                                }}
+                            >
+                                Get to know the fit. A quick guide to signature jeans styles.
+                            </p>
+                            <div>
+                                <ul
+                                    className="preppy-btn"
+                                    style={{
+                                        listStyleType: "none",
+                                        padding: 0,
+                                        margin: 0,
+                                        marginBottom: '30px', // Adjusted spacing for smaller screens
+                                    }}
+                                >
+                                    <li>
+                                        <Nav.Link
+                                            href="/denim-roundup"
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "black",
+                                                backgroundColor: "white",
+                                                border: "1px solid white",
+                                                padding: "8px 12px", // Scalable padding
+                                                fontWeight: "bold",
+                                                fontSize: 'small',
+                                                display: "inline-block",
+                                            }}
+                                        >
+                                            Shop now
+                                        </Nav.Link>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -52,4 +90,4 @@ function DenimMen() {
     )
 }
 
-export default DenimMen
+export default DenimMen;

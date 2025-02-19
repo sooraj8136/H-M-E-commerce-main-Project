@@ -4,39 +4,74 @@ import { Container, Nav } from 'react-bootstrap'
 function NewUtilitarian() {
     return (
         <>
-            <Container>
+            <Container className="d-flex justify-content-center align-items-center"
+                style={{ maxWidth: "100%" }}>
                 <section>
                     <div
-                        className="container mt-4 d-flex justify-content-center align-items-center">
-                        <div
-                            className="position-relative"
+                        className="position-relative"
+                        style={{
+                            maxWidth: "930px", // Matches the width of the second container
+                            width: "100%",
+                            height: "100%", // Added height to align with the second container
+                            marginTop: '27px'
+                        }}>
+                        <img
+                            src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11lh5/MS11LH5-athleisure-teaser-3x2.jpg?imwidth=1536"
+                            className="img-fluid"
+                            alt="Sample"
                             style={{
-                                maxWidth: "930px",
                                 width: "100%",
+                                height: "100%", // Fills the container height
+                                objectFit: "cover", // Maintains aspect ratio
                             }}
-                        >
-                            <img
-                                src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11lh5/MS11LH5-athleisure-teaser-3x2.jpg?imwidth=1536"
-                                className="img-fluid" alt="Sample" style={{ width: "100%", height: "auto", }} />
-                            <div
-                                className="preppy-sec position-absolute text-white"
+                        />
+                        <div
+                            className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
+                            style={{
+                                top: "0", // Ensures it spans the full height
+                                left: "0", // Aligns the content to the left
+                                width: "100%",
+                                height: "100%", // Matches container height
+                                textAlign: "left", // Aligns the text to the left
+                                paddingLeft: "20px", // Adds some space from the left edge
+                            }}>
+                            <h2
                                 style={{
-                                    top: "50%",
-                                    transform: "translateY(-70%)",
-                                }}>
-                                <h2 style={{ fontWeight: "bold", fontSize: "30px" }}>New utilitarian</h2>
-                                <p>Fresh staples with functional details and sporty appeal.</p>
-                                <div style={{
-                                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                                    textAlign: "center",
-                                    padding: "10px",
-                                }}>
-                                    <ul className="preppy-btn" style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-                                        <li style={{ cursor: "pointer", color: "white" }}>
-                                            <Nav.Link href="/New-utilitarian" >Shop now</Nav.Link>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    fontWeight: "bold",
+                                    fontSize: "calc(1.5rem + 1vw)", // Responsive font size
+                                    marginBottom: "10px",
+                                }}
+                            >
+                                New neutrals
+                            </h2>
+                            <p style={{ fontSize: "small", marginBottom: "6px", fontWeight: '500' }}>Fresh staples with functional details and sporty appeal.</p>
+                            <div>
+                                <ul
+                                    className="preppy-btn d-flex justify-content-start flex-wrap"
+                                    style={{
+                                        listStyleType: "none",
+                                        padding: 0,
+                                        margin: 0,
+                                        gap: "10px",
+                                    }}
+                                >
+                                    <li>
+                                        <Nav.Link
+                                            href="/New-utilitarian"
+                                            style={{
+                                                textDecoration: "none",
+                                                color: "black",
+                                                backgroundColor: "white",
+                                                border: "1px solid white",
+                                                padding: "6px 8px",
+                                                fontWeight: "bold",
+                                                fontSize: 'small'
+                                            }}
+                                        >
+                                            Shop now
+                                        </Nav.Link>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

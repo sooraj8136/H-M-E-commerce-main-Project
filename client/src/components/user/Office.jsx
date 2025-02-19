@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Container, Nav } from 'react-bootstrap'
+import { BiSolidLeftArrow } from 'react-icons/bi';
 
 function Office() {
     return (
@@ -14,18 +16,17 @@ function Office() {
                             width: "100%",
                             height: "100%", // Added height to align with the second container
                             marginTop: '27px'
-                        }}
-                    >
-                        <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/women/ws11j/WS11J-3x2-1.jpg?imwidth=1536"
-                            className="img-fluid"
-                            alt="Sample"
-                            style={{
-                                width: "100%",
-                                height: "100%", // Fills the container height
-                                objectFit: "cover", // Maintains aspect ratio
-                            }}
-                        />
+                        }}>
+                            <img
+                                src="https://image.hm.com/content/dam/global_campaigns/season_01/women/ws11j/WS11J-3x2-1.jpg?imwidth=1536"
+                                className="img-fluid"
+                                alt="Sample"
+                                style={{
+                                    width: "100%",
+                                    height: "100%", // Fills the container height
+                                    objectFit: "cover", // Maintains aspect ratio
+                                }}
+                            />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
                             style={{

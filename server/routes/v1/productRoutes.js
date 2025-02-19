@@ -14,7 +14,7 @@ productRouter.post("/create-product", sellerAuth, upload.single("image"), create
 
 productRouter.delete("/delete-product/:id",sellerAuth, deleteProduct )
 
-productRouter.put("/update-product/:id",sellerAuth, updateProduct )
+productRouter.put("/update-product/:id",sellerAuth,upload.single("image"), updateProduct )
 
 
 
