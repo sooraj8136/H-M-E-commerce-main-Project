@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 
 function SellerSignup() {
-
   const { darkMode } = useSelector((state) => state.mode);
-
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
   const onSubmit = async (data) => {
     try {
@@ -29,22 +29,38 @@ function SellerSignup() {
   return (
     <>
       <div className="container  d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
-          fontWeight: "800"
-        }}>Seller Register</span> </p>
+        <p className={darkMode ? "text-black" : "text-white "}>
+          HM.com /{" "}
+          <span
+            className="text-danger"
+            style={{
+              fontWeight: "800",
+            }}
+          >
+            Seller Register
+          </span>{" "}
+        </p>
       </div>
       <br />
-      <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "15px", fontWeight: "500" }}>
+      <div
+        className={darkMode ? "text-black" : "text-white"}
+        style={{ fontSize: "15px", fontWeight: "500" }}
+      >
         <p className="text-center">
           Become a seller and start your business with us today!
         </p>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-sec">
-          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <div
+            className="mb-3"
+            style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
+          >
             <label
               htmlFor="name"
-              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${
+                darkMode ? "text-black" : "text-white"
+              } nav-sec-1 fs-10 fw-normal`}
             >
               Name:
             </label>
@@ -58,16 +74,21 @@ function SellerSignup() {
             />
           </div>
 
-          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <div
+            className="mb-3"
+            style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
+          >
             <label
               htmlFor="email"
-              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${
+                darkMode ? "text-black" : "text-white"
+              } nav-sec-1 fs-10 fw-normal`}
             >
               Email:
             </label>
             <input
               type="email"
-              {...register("email", { required: "Name is required" })}
+              {...register("email", { required: "Email is required" })}
               id="email"
               name="email"
               className="pass-input mx-auto my-1 w-100"
@@ -75,51 +96,85 @@ function SellerSignup() {
             />
           </div>
 
-          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <div
+            className="mb-3"
+            style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
+          >
             <label
               htmlFor="mobile"
-              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${
+                darkMode ? "text-black" : "text-white"
+              } nav-sec-1 fs-10 fw-normal`}
             >
               Mobile:
             </label>
             <input
               type="tel"
-              {...register("mobile", { required: "Name is required" })}
+              {...register("mobile", { required: "Mobile is required" })}
               id="mobile"
               name="mobile"
               className="pass-input mx-auto my-1 w-100"
-              style={{ maxWidth: "400px", width: "90%" }}
               required
             />
           </div>
 
-          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <div
+            className="mb-3"
+            style={{
+              maxWidth: "400px",
+              width: "90%",
+              margin: "auto",
+              position: "relative",
+            }}
+          >
             <label
               htmlFor="password"
-              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${
+                darkMode ? "text-black" : "text-white"
+              } nav-sec-1 fs-10 fw-normal`}
             >
               Password:
             </label>
             <input
-              type="password"
-              {...register("password", { required: "Name is required" })}
+              type={showPassword ? "text" : "password"} 
+              {...register("password", { required: "Password is required" })}
               id="password"
               name="password"
               className="pass-input mx-auto my-1 w-100"
               required
             />
+            <span
+              onClick={() => setShowPassword(!showPassword)} 
+              style={{
+                position: "absolute",
+                right: "10px",
+                top: "65%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+                fontSize: "0.9rem",
+                fontWeight: "600",
+                color: darkMode ? "black" : "white",
+              }}
+            >
+              {showPassword ? "HIDE" : "SHOW"}
+            </span>
           </div>
 
-          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <div
+            className="mb-3"
+            style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
+          >
             <label
               htmlFor="storeName"
-              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${
+                darkMode ? "text-black" : "text-white"
+              } nav-sec-1 fs-10 fw-normal`}
             >
               Store Name:
             </label>
             <input
               type="text"
-              {...register("storeName", { required: "Name is required" })}
+              {...register("storeName", { required: "Store Name is required" })}
               id="storeName"
               name="storeName"
               className="pass-input mx-auto my-1 w-100"
@@ -127,16 +182,21 @@ function SellerSignup() {
             />
           </div>
 
-          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+          <div
+            className="mb-3"
+            style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
+          >
             <label
               htmlFor="address"
-              className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${
+                darkMode ? "text-black" : "text-white"
+              } nav-sec-1 fs-10 fw-normal`}
             >
               Store Address:
             </label>
             <input
               type="text"
-              {...register("address", { required: "Name is required" })}
+              {...register("address", { required: "Address is required" })}
               id="address"
               name="address"
               className="pass-input mx-auto my-1 w-100"
@@ -145,7 +205,10 @@ function SellerSignup() {
           </div>
         </div>
 
-        <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+        <div
+          className="mb-3"
+          style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
+        >
           <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
             Sign up
           </button>
@@ -156,7 +219,8 @@ function SellerSignup() {
         <p className="text-center">
           <Link
             to="/seller/login"
-            className={darkMode ? "text-black" : "text-white forgot-password"}>
+            className={darkMode ? "text-black" : "text-white forgot-password"}
+          >
             Back to sign in
           </Link>
         </p>

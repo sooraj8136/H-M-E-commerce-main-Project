@@ -49,7 +49,6 @@ import UserResetPassword from '../pages/user/UserResetPassword';
 import PendingPermissionRequests from '../pages/admin/PermissionRequests';
 import SuccessReview from '../components/user/SuccessReview';
 import UpdateUserProfile from '../pages/user/UpdateUserProfile';
-import SellerOrder from '../pages/seller/SellerOrder';
 import ProtectedRouteSeller from './ProtectedRouteSeller';
 import ProtectedRouteAdmin from './ProtectedRouteAdmin';
 import DenimRoundUp from '../pages/user/DenimRoundUp';
@@ -201,10 +200,6 @@ export const router = createBrowserRouter([
           {
             path: 'create-product',
             element: <CreateProductForm />,
-          },
-          {
-            path: 'seller-order-page',
-            element: <SellerOrder />,
           },
           {
             path: 'get-orders-seller',

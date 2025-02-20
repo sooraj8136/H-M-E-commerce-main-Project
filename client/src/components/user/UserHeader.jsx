@@ -19,7 +19,7 @@ function UserHeader() {
             <header>
                 <Navbar
                     expand="lg"
-                    className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
+                    className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black "}>
                     <Container fluid>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
@@ -39,11 +39,11 @@ function UserHeader() {
                                             href="/user/profile"
                                             className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
                                             aria-label="Profile"
-                                        >
+                                            style={{fontWeight: '550'}}>
                                             <BsPerson
                                                 style={{
-                                                    fontSize: "1.4rem",
-                                                    marginRight: "8px", 
+                                                    fontSize: "1.6rem",
+                                                    marginRight: "8px",
                                                     color: darkMode ? "#000" : "#fff",
                                                 }}
                                             />
@@ -51,10 +51,10 @@ function UserHeader() {
                                         </Nav.Link>
                                     </div>
                                     <div className="d-flex align-items-center nav-item-section">
-                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites">
+                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites" style={{fontWeight: '550'}}>
                                             <CiHeart
                                                 style={{
-                                                    fontSize: "1.5rem",
+                                                    fontSize: "1.6rem",
                                                     marginRight: "4px",
                                                     color: darkMode ? "#000" : "#fff"
                                                 }}
@@ -63,10 +63,11 @@ function UserHeader() {
                                         </Nav.Link>
                                     </div>
                                     <div className="d-flex align-items-center nav-item-section">
-                                        <Nav.Link href="/user/cart" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Shopping bag">
+                                        <Nav.Link href="/user/cart" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                            aria-label="Shopping bag">
                                             <BsBag
                                                 style={{
-                                                    fontSize: "1.2rem",
+                                                    fontSize: "1.3rem",
                                                     marginRight: "4px",
                                                     color: darkMode ? "#000" : "#fff"
                                                 }}

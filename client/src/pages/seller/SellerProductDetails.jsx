@@ -5,14 +5,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
 import { useFetch } from '../../hooks/useFetch';
-import { axiosInstance } from '../../config/axiosInstance'; 
+import { axiosInstance } from '../../config/axiosInstance';
 import toast from 'react-hot-toast';
-import { Modal, Button } from 'react-bootstrap'; 
+import { Modal, Button } from 'react-bootstrap';
+import GetReview from '../../components/seller/GetReview';
 
 function SellerProductDetails() {
-  const { darkMode } = useSelector((state) => state.mode); 
+  const { darkMode } = useSelector((state) => state.mode);
   const { productId } = useParams();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const [product, error] = useFetch(`/product/get-product/${productId}`);
   const [showModal, setShowModal] = useState(false);
@@ -21,12 +22,12 @@ function SellerProductDetails() {
     try {
       const response = await axiosInstance.delete(`/product/delete-product/${productId}`);
       toast.success('Product deleted successfully');
-      setShowModal(false); 
-      navigate('/seller/seller-product'); 
+      setShowModal(false);
+      navigate('/seller/seller-product');
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message || 'Failed to delete product');
-      setShowModal(false); 
+      setShowModal(false);
     }
   };
 
@@ -44,30 +45,61 @@ function SellerProductDetails() {
           <Col xs="12" md="6" className="text-center text-md-start">
             <h1
               className={darkMode ? 'text-black' : 'text-white'}
-              style={{ fontSize: '2rem', marginBottom: '1rem' }}
+              style={{ fontSize: '1.5rem', marginBottom: '1rem' }}
             >
               {product?.title}
             </h1>
             <p
               className={darkMode ? 'text-black' : 'text-white'}
-              style={{ fontSize: '1.25rem', marginBottom: '1.5rem' }}
-            >
-              {product?.description}
-            </p>
-            <p
-              className={darkMode ? 'text-black' : 'text-white'}
-              style={{ fontSize: '1.5rem', fontWeight: 'bold' }}
+              style={{ fontSize: '1.2rem', fontWeight: '600' }}
             >
               Rs.{product?.price}.00
             </p>
+            <p
+              className={darkMode ? 'text-black' : 'text-white'}
+              style={{ fontSize: '0.9rem', fontWeight: '500' }}
+            >
+              <strong style={{fontWeight: 'bold'}}>Stock  :</strong> {product?.stock}
+            </p>
+            <p
+              className={darkMode ? 'text-black' : 'text-white'}
+              style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
+            >
+              <strong style={{fontWeight: 'bold'}}>Description : </strong>{product?.description}
+            </p>
+            <p
+              className={darkMode ? 'text-black' : 'text-white'}
+              style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
+            >
+              <strong style={{fontWeight: 'bold'}}> Category : </strong>{product?.category}
+            </p>
+            <p
+              className={darkMode ? 'text-black' : 'text-white'}
+              style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
+            >
+              <strong style={{fontWeight: 'bold'}}>Careguid : </strong>{product?.careguid}
+            </p>
+            <p
+              className={darkMode ? 'text-black' : 'text-white'}
+              style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
+            >
+             <strong style={{fontWeight: 'bold'}}> Materials :</strong>{product?.materials}
+            </p>
+            <GetReview />
 
             <Link to={`/seller/update-product/${productId}`}>
-              <button className="btn btn-warning mt-3">Update Product</button>
+              <button
+                className="bg-black signin-btn"
+                style={{ maxWidth: '400px', width: '90%' }}
+              >
+                Update Product
+              </button>
             </Link>
 
             <button
-              onClick={() => setShowModal(true)} 
-              className="btn btn-danger mt-3 ml-3"
+              onClick={() => setShowModal(true)}
+              className="bg-black signin-btn mt-3"
+              style={{ maxWidth: '400px', width: '90%' }}
             >
               Delete Product
             </button>
@@ -81,16 +113,24 @@ function SellerProductDetails() {
         <Modal.Header closeButton>
           <Modal.Title>Confirm Deletion</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Are you sure you want to delete this product? This action cannot be undone.
+        <Modal.Body className='text-center'>
+          Are you sure you want to delete this product?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
+          <button
+            className="bg-black signin-btn"
+            style={{ maxWidth: '400px', width: '90%' }}
+            onClick={() => setShowModal(false)}
+          >
             Cancel
-          </Button>
-          <Button variant="danger" onClick={handleDeleteProduct}>
+          </button>
+          <button
+            className="bg-black signin-btn"
+            style={{ maxWidth: '400px', width: '90%' }}
+            onClick={handleDeleteProduct}
+          >
             Confirm Delete
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </Container>

@@ -1,5 +1,4 @@
 import React from 'react'
-import IconicGraphics from '../../components/user/IconicGraphics'
 import PreppyUniform from '../../components/user/PreppyUniform'
 import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux';

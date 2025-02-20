@@ -5,6 +5,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
+import { Dropdown } from "react-bootstrap";
+import { MdDashboard } from "react-icons/md";
+import { VscMenu } from "react-icons/vsc";
+import { IoCartOutline } from "react-icons/io5";
+import { BsPerson } from "react-icons/bs";
+import Form from "react-bootstrap/Form";
 
 function SellerHeader() {
 
@@ -15,7 +21,8 @@ function SellerHeader() {
             <header>
                 <Navbar
                     expand="lg"
-                    className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
+                    className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}
+                >
                     <Container fluid>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
@@ -26,27 +33,75 @@ function SellerHeader() {
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
                                     Seller Service
                                 </Nav.Link>
-                                <Nav.Link href="" className= {darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
                             </Nav>
-                            
-                            <ul className="nav justify-content-center">
-                                <li className="nav-item ">
-                                    <Nav.Link href="/seller/seller-home" className={darkMode ? "text-black" : "text-white nav-link"}>dashboard</Nav.Link>
-                                </li>
-                                <li className="nav-item ">
-                                    <Nav.Link href="/seller/seller-product" className={darkMode ? "text-black" : "text-white nav-link"}>Manage Products</Nav.Link>
-                                </li>
-                                <li className="nav-item ">
-                                    <Nav.Link href="/seller/seller-order-page" className={darkMode ? "text-black" : "text-white nav-link"}>Orders</Nav.Link>
-                                </li>
-                                <li className="nav-item ">
-                                    <Nav.Link href="/seller/profile" className={darkMode ? "text-black" : "text-white nav-link"}>My Account</Nav.Link>
-                                </li>
-                            </ul>
-                            <div className="search">
-                                <div className=" search-container ">
+
+                            <Form className="d-flex align-items-center flex-column flex-lg-row">
+                                <div className="nav-sec-2 d-flex flex-column flex-lg-row">
+                                    <Nav.Link
+                                        href="/seller/seller-home"
+                                        className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"} mb-2 mb-lg-0`}
+                                    >
+                                        <MdDashboard className="me-2" />
+                                        Dashboard
+                                    </Nav.Link>
+                                    <Dropdown className="mb-2 mb-lg-0">
+                                        <Dropdown.Toggle
+                                            id=""
+                                            className={`btn-sm d-flex align-items-center ${darkMode ? "text-black" : "text-white"} border-0`}
+                                            style={{
+                                                backgroundColor: "transparent",
+                                                boxShadow: "none",
+                                                color: darkMode ? "black" : "white",
+                                                fontSize: "1rem",
+                                                fontWeight: "500",
+                                            }}
+                                        >
+                                            <VscMenu className="me-2" />
+                                            Products
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item href="/seller/seller-product">Manage Products</Dropdown.Item>
+                                            <Dropdown.Item href="/seller/create-product">Create Product</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                    <Dropdown>
+                                        <Dropdown.Toggle
+                                            variant="link"
+                                            className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"} mb-2 mb-lg-0`}
+                                            style={{
+                                                textDecoration: "none",
+                                                border: "none",
+                                                padding: "0",
+                                            }}
+                                        >
+                                            <IoCartOutline className="me-2" style={{ fontSize: "20px" }} />
+                                            Orders
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu >
+                                            <Dropdown.Item href="/seller/get-orders-seller" className={darkMode ? "text-black" : "text-black"}>
+                                                View Orders
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="/seller/update-order-status" className={darkMode ? "text-black" : "text-black"}>
+                                                Update Orders
+                                            </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                    <Nav.Link
+                                        href="/seller/profile"
+                                        className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"} mb-2 mb-lg-0`}
+                                    >
+                                        <BsPerson className="me-2" style={{ fontSize: "20px" }} />
+                                        My Account
+                                    </Nav.Link>
+                                </div>
+                            </Form>
+
+                            <div className="search mt-3 mt-lg-0">
+                                <div className="search-container d-flex align-items-center">
                                     <input
-                                        className="search-input"
+                                        className={`search-input ${darkMode ? "text-black" : "text-white"}`}
                                         placeholder="Search"
                                         aria-label="Search"
                                         type="search"
@@ -65,12 +120,13 @@ function SellerHeader() {
                                     </button>
                                 </div>
                             </div>
-                            <span>
+                            <span className="mt-3 mt-lg-0">
                                 <DarkMode />
                             </span>
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
+
                 <div className="imageTag text-center">
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"

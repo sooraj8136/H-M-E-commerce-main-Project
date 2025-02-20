@@ -1,42 +1,10 @@
-// import React from 'react';
-// import { useFetch } from '../../hooks/useFetch';
-
-// function SellerProfile() {
-
-//   const [profileData, isLoading, error] = useFetch('/seller/seller-profile');
-
-//   console.log('Profile Data :- ', profileData);
-
-//   if (isLoading) {
-//     return <div>Loading...</div>;
-//   }
-
-//   if (error) {
-//     <div>Error fetching profile data</div>;
-//   }
-
-//   return (
-//     <div>
-//       <h1 className='text-center'>Profile</h1>
-//       <h2>{profileData?.name}</h2>
-//       <h2>{profileData?.email}</h2>
-//       <h2>{profileData?.mobile}</h2>
-//       <h2>{profileData?.storeName}</h2>
-//       <h2>{profileData?.address}</h2>
-//       <img src={profileData?.profilePic} alt="Profile" style={{ width: '100px', height: '100px', borderRadius: '50%' }} />
-//       <button>Log out</button>
-//     </div>
-//   );
-// }
-
-// export default SellerProfile;
-
-
-
 import React from 'react';
 import { useFetch } from '../../hooks/useFetch';
+import { useSelector } from 'react-redux';
 
 function SellerProfile() {
+
+  const { darkMode } = useSelector((state) => state.mode);
 
   const [profileData, isLoading, error] = useFetch('/seller/seller-profile');
 

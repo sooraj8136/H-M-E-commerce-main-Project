@@ -9,10 +9,10 @@ function Accessories() {
     <div
       className="position-relative"
       style={{
-        maxWidth: "930px", // Matches the width of the second container
-        width: "100%", // Ensures it doesn't exceed the max width
-        height: "100%", // Adjust height for consistency
-        marginTop: "27px", // Matches the margin-top of the second container
+        maxWidth: "930px",
+        width: "100%", 
+        height: "100%", 
+        marginTop: "27px",
       }}
     >
       <img
@@ -20,26 +20,26 @@ function Accessories() {
         className="img-fluid"
         alt="Sample"
         style={{
-          width: "100%", // Ensures it fills the container width
-          height: "100%", // Fills the container height
-          objectFit: "cover", // Maintains aspect ratio while covering the container
+          width: "100%", 
+          height: "100%",
+          objectFit: "cover", 
         }}
       />
       <div
         className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
         style={{
-          top: "0", // Ensures it spans the full height
-          left: "0", // Aligns the content to the left
-          width: "100%", // Full width of the container
-          height: "100%", // Matches container height
-          textAlign: "left", // Aligns the text to the left
-          paddingLeft: "20px", // Adds padding to the left
+          top: "0", 
+          left: "0", 
+          width: "100%", 
+          height: "100%", 
+          textAlign: "left", 
+          paddingLeft: "20px", 
         }}
       >
         <h2
           style={{
             fontWeight: "bold",
-            fontSize: "calc(1.5rem + 1vw)", // Responsive font size
+            fontSize: "calc(1.5rem + 1vw)",
             marginBottom: "10px",
           }}
         >

@@ -29,12 +29,14 @@ function ProductPage() {
     return (
         <Container>
             <div className="container py-5 text-center">
-                <h2 className="display-4 fw-bold" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)' }}>
-                    Manage Your Products
-                </h2>
-                <p className="lead" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
-                    View, add, update, and delete your products with ease. Manage your inventory with just a few clicks! Keep your store updated and your customers happy.
-                </p>
+                <div className={darkMode ? "text-black" : "text-white"}>
+                    <h2 className="display-4 fw-bold" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)' }}>
+                        Manage Your Products
+                    </h2>
+                    <p className="lead" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
+                        View, add, update, and delete your products with ease. Manage your inventory with just a few clicks! Keep your store updated and your customers happy.
+                    </p>
+                </div>
             </div>
             <div className="container d-flex justify-content-center align-items-center">
                 <p className={darkMode ? "text-black" : "text-white"}>
