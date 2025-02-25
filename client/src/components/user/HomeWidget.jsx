@@ -36,7 +36,6 @@ function HomeWidget() {
                 paddingLeft: "20px",
               }}
             >
-              {/* Button group always visible on all screen sizes */}
               <div
                 className="button-group position-absolute d-flex justify-content-center flex-wrap"
                 style={{
@@ -99,7 +98,7 @@ function HomeWidget() {
                   fontWeight: "600",
                 }}
               >
-                Explore the latest in denim fashion.
+                Explore the latest fashion.
               </p>
             </div>
           </div>
