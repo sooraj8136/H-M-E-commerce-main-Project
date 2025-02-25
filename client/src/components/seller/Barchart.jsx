@@ -18,6 +18,7 @@ const Barchart = () => {
   const { darkMode } = useSelector((state) => state.mode);
 
   const [chart, setChart] = useState(null);
+  const [isDataAvailable, setIsDataAvailable] = useState(true);
 
   useEffect(() => {
     const fetchOrderData = async () => {
@@ -31,30 +32,38 @@ const Barchart = () => {
 
         console.log("API Response Orders:", orders);
 
-        // Extract labels and data
-        const labels = orders.map((order) =>
-          new Date(order?.createdAt).toLocaleDateString()
-        );
+        if (orders && orders.length > 0) {
+          // Extract labels and data
+          const labels = orders.map((order) =>
+            new Date(order?.createdAt).toLocaleDateString()
+          );
 
-        const totalAmounts = orders.map((order) => order?.totalAmount);
+          const totalAmounts = orders.map((order) => order?.totalAmount);
 
-        console.log("Labels:", labels);
-        console.log("Total Amounts:", totalAmounts);
+          console.log("Labels:", labels);
+          console.log("Total Amounts:", totalAmounts);
 
-        setChart({
-          labels,
-          datasets: [
-            {
-              label: "Total price of Orders",
-              data: totalAmounts,
-              borderColor: darkMode ? "black" : "white",
-              backgroundColor: darkMode ? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)",
-              borderWidth: 1,
-            },
-          ],
-        });
+          setChart({
+            labels,
+            datasets: [
+              {
+                label: "Total price of Orders",
+                data: totalAmounts,
+                borderColor: darkMode ? "black" : "white",
+                backgroundColor: darkMode
+                  ? "rgba(0, 0, 0, 0.7)"
+                  : "rgba(255, 255, 255, 0.7)",
+                borderWidth: 1,
+              },
+            ],
+          });
+          setIsDataAvailable(true);
+        } else {
+          setIsDataAvailable(false);
+        }
       } catch (error) {
         console.error("Error fetching order data:", error);
+        setIsDataAvailable(false);
       }
     };
     fetchOrderData();
@@ -72,60 +81,68 @@ const Barchart = () => {
       <h1
         className="text-center"
         style={{
-          color: darkMode ? "black" : "white", 
+          color: darkMode ? "black" : "white",
         }}
       >
         Sales Analyse & Order Statistics
       </h1>
-      {chart ? (
-        <Bar
-          data={chart}
-          options={{
-            responsive: true,
-            plugins: {
-              legend: {
-                labels: {
+      {isDataAvailable ? (
+        chart ? (
+          <Bar
+            data={chart}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: {
+                  labels: {
+                    color: darkMode ? "black" : "white",
+                  },
+                },
+                title: {
+                  display: true,
+                  text: "Order Data",
                   color: darkMode ? "black" : "white",
                 },
-              },
-              title: {
-                display: true,
-                text: "Order Data",
-                color: darkMode ? "black" : "white", 
-              },
-              tooltip: {
-                backgroundColor: darkMode ? "black" : "white", 
-                titleColor: darkMode ? "white" : "black", 
-                bodyColor: darkMode ? "white" : "black",
-              },
-            },
-            scales: {
-              x: {
-                ticks: {
-                  color: darkMode ? "black" : "white", 
-                },
-                grid: {
-                  color: darkMode ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.3)", 
+                tooltip: {
+                  backgroundColor: darkMode ? "black" : "white",
+                  titleColor: darkMode ? "white" : "black",
+                  bodyColor: darkMode ? "white" : "black",
                 },
               },
-              y: {
-                ticks: {
-                  color: darkMode ? "black" : "white", 
+              scales: {
+                x: {
+                  ticks: {
+                    color: darkMode ? "black" : "white",
+                  },
+                  grid: {
+                    color: darkMode
+                      ? "rgba(0, 0, 0, 0.3)"
+                      : "rgba(255, 255, 255, 0.3)",
+                  },
                 },
-                grid: {
-                  color: darkMode ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.3)",
+                y: {
+                  ticks: {
+                    color: darkMode ? "black" : "white",
+                  },
+                  grid: {
+                    color: darkMode
+                      ? "rgba(0, 0, 0, 0.3)"
+                      : "rgba(255, 255, 255, 0.3)",
+                  },
                 },
               },
-            },
-          }}
-        />
+            }}
+          />
+        ) : null
       ) : (
         <p
           style={{
-            color: darkMode ? "black" : "white", 
+            color: darkMode ? "black" : "white",
+            textAlign: "center",
+            fontSize: "18px",
           }}
         >
-          Loading...
+          No Orders available for you
         </p>
       )}
     </div>

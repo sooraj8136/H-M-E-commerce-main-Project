@@ -10,13 +10,12 @@ function KidsDenim() {
                     <div
                         className="position-relative"
                         style={{
-                            maxWidth: "930px", // Matches the width of the second container
+                            maxWidth: "930px",
                             width: "100%",
-                            height: "100%", // Added height to align with the second container
+                            height: "100%",
                             marginTop: '27px'
                         }}
                     >
-                        {/* Faded Black Overlay */}
                         <div
                             style={{
                                 position: "absolute",
@@ -24,19 +23,18 @@ function KidsDenim() {
                                 left: 0,
                                 width: "100%",
                                 height: "100%",
-                                background: "linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))",
                                 zIndex: 1,
                             }}
                         ></div>
 
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/kids/4031a/4031A-3x2-1-a-new-take-on-denim.jpg?imwidth=1536"
+                            src="https://image.hm.com/content/dam/global_campaigns/season_01/kids/4041b/4041B-3x2-h-m-adorables-spring-2025.jpg?imwidth=1536"
                             className="img-fluid"
                             alt="A new take on denim"
                             style={{
                                 width: "100%",
-                                height: "100%", // Fills the container height
-                                objectFit: "cover", // Maintains aspect ratio
+                                height: "100%",
+                                objectFit: "cover",
                                 zIndex: 0,
                             }}
                         />
@@ -52,14 +50,14 @@ function KidsDenim() {
                             }}
                         >
                             <h2 className="responsive-heading" style={{ fontWeight: "bold", marginBottom: "10px" }}>
-                                A new take on denim
+                                H&M Adorables
                             </h2>
                             <p className="responsive-subheading" style={{ fontSize: "small", marginBottom: "10px", fontWeight: '500' }}>
-                                New denim essentials
+                                S/S 2025
                             </p>
                             <div
                                 style={{
-                                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                                    backgroundColor: "rgb(255, 255, 255)",
                                     textAlign: "center",
                                     padding: "5px 10px",
                                     display: "inline-block",

@@ -33,14 +33,14 @@ function ProductPage() {
                     <h2 className="display-4 fw-bold" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)' }}>
                         Manage Your Products
                     </h2>
-                    <p className="lead" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
+                    <p className="lead" style={{ fontSize: '1rem', fontWeight:'500' }}>
                         View, add, update, and delete your products with ease. Manage your inventory with just a few clicks! Keep your store updated and your customers happy.
                     </p>
                 </div>
             </div>
-            <div className="container d-flex justify-content-center align-items-center">
+            <div className="container d-flex justify-content-center align-items-center heading-head">
                 <p className={darkMode ? "text-black" : "text-white"}>
-                    H&M / <span className='text-danger fw-bold'>All products</span>
+                    H&M / <span className='text-danger' style={{ fontWeight: "700" }}>All products</span>
                 </p>
             </div>
             {loading ? (

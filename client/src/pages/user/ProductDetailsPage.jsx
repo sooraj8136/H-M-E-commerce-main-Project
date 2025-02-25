@@ -228,6 +228,7 @@ function ProductDetailsPage() {
     const navigate = useNavigate();
 
     const sizesByCategory = {
+        'accessories': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'Ladies': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'Preppy luxe': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
         'New neutrals': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],

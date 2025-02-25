@@ -58,9 +58,8 @@ function SellerSignup() {
           >
             <label
               htmlFor="name"
-              className={`d-block ${
-                darkMode ? "text-black" : "text-white"
-              } nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${darkMode ? "text-black" : "text-white"
+                } nav-sec-1 fs-10 fw-normal`}
             >
               Name:
             </label>
@@ -80,9 +79,8 @@ function SellerSignup() {
           >
             <label
               htmlFor="email"
-              className={`d-block ${
-                darkMode ? "text-black" : "text-white"
-              } nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${darkMode ? "text-black" : "text-white"
+                } nav-sec-1 fs-10 fw-normal`}
             >
               Email:
             </label>
@@ -102,9 +100,8 @@ function SellerSignup() {
           >
             <label
               htmlFor="mobile"
-              className={`d-block ${
-                darkMode ? "text-black" : "text-white"
-              } nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${darkMode ? "text-black" : "text-white"
+                } nav-sec-1 fs-10 fw-normal`}
             >
               Mobile:
             </label>
@@ -120,55 +117,12 @@ function SellerSignup() {
 
           <div
             className="mb-3"
-            style={{
-              maxWidth: "400px",
-              width: "90%",
-              margin: "auto",
-              position: "relative",
-            }}
-          >
-            <label
-              htmlFor="password"
-              className={`d-block ${
-                darkMode ? "text-black" : "text-white"
-              } nav-sec-1 fs-10 fw-normal`}
-            >
-              Password:
-            </label>
-            <input
-              type={showPassword ? "text" : "password"} 
-              {...register("password", { required: "Password is required" })}
-              id="password"
-              name="password"
-              className="pass-input mx-auto my-1 w-100"
-              required
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)} 
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "65%",
-                transform: "translateY(-50%)",
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                fontWeight: "600",
-                color: darkMode ? "black" : "white",
-              }}
-            >
-              {showPassword ? "HIDE" : "SHOW"}
-            </span>
-          </div>
-
-          <div
-            className="mb-3"
             style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
           >
             <label
               htmlFor="storeName"
-              className={`d-block ${
-                darkMode ? "text-black" : "text-white"
-              } nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${darkMode ? "text-black" : "text-white"
+                } nav-sec-1 fs-10 fw-normal`}
             >
               Store Name:
             </label>
@@ -188,9 +142,8 @@ function SellerSignup() {
           >
             <label
               htmlFor="address"
-              className={`d-block ${
-                darkMode ? "text-black" : "text-white"
-              } nav-sec-1 fs-10 fw-normal`}
+              className={`d-block ${darkMode ? "text-black" : "text-white"
+                } nav-sec-1 fs-10 fw-normal`}
             >
               Store Address:
             </label>
@@ -202,6 +155,46 @@ function SellerSignup() {
               className="pass-input mx-auto my-1 w-100"
               required
             />
+          </div>
+          <div
+            className="mb-3"
+            style={{
+              maxWidth: "400px",
+              width: "90%",
+              margin: "auto",
+              position: "relative",
+            }}
+          >
+            <label
+              htmlFor="password"
+              className={`d-block ${darkMode ? "text-black" : "text-white"
+                } nav-sec-1 fs-10 fw-normal`}
+            >
+              Password:
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              {...register("password", { required: "Password is required" })}
+              id="password"
+              name="password"
+              className="pass-input mx-auto my-1 w-100"
+              required
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: "absolute",
+                right: "10px",
+                top: "65%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+                fontSize: "0.9rem",
+                fontWeight: "600",
+                color: darkMode ? "black" : "white",
+              }}
+            >
+              {showPassword ? "HIDE" : "SHOW"}
+            </span>
           </div>
         </div>
 

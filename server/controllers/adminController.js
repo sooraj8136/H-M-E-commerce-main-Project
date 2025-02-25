@@ -124,21 +124,7 @@ const checkAdmin = (req, res) => {
 const adminLogout = async (req, res) => {
     try {
 
-        const adminId = req.user.id;
-
-        const admin = await adminDb.findById(adminId);
-
-        if (!admin) {
-            return res.status(404).json({ message: "Admin account not found." });
-        }
-
-        if (!admin.isActive) {
-            return res.status(403).json({
-                message: "Logout failed. Your account is deactivated.",
-            });
-        }
-
-        res.clearCookie("token", {
+        res.clearCookie("admin_token", {
             sameSite: "None",
             secure: true,
             httpOnly: true
@@ -153,8 +139,6 @@ const adminLogout = async (req, res) => {
         });
     }
 };
-
-module.exports = adminLogout;
 
 
 const updateAdminProfile = async (req, res) => {

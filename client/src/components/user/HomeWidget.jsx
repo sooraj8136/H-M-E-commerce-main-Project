@@ -4,101 +4,106 @@ import { Container } from "react-bootstrap";
 function HomeWidget() {
   return (
     <>
-      <Container
-        className="d-flex justify-content-center align-items-center"
-        style={{ maxWidth: "100%" }}
-      >
-        <div
-          className="widget text-white text-center"
-          style={{
-            maxWidth: "930px",
-            width: "100%",
-            backgroundColor: "#c9002e",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: "400px",
-          }}>
+      <Container className="d-flex justify-content-center align-items-center" style={{ maxWidth: "100%" }}>
+        <section>
           <div
+            className="position-relative"
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              height: "100%",
-            }}
-          >
-            <h2>Weekend offer</h2>
-            <h1
-              className="widget-text-1"
-              style={{
-                fontSize: "calc(2rem + 1vw)",
-                marginBottom: "10px",
-              }}
-            >
-              Hurry up!
-            </h1>
-            <p className="responsive-text" style={{ fontSize: "large" }}>
-              Shop t-shirts, polos & more at slashed prices.
-            </p>
-          </div>
-          <div
-            className="button-group d-flex justify-content-center flex-wrap mt-4 d-none d-md-flex"
-            style={{
-              gap: "9px",
-              marginTop: "20px",
               maxWidth: "930px",
               width: "100%",
+              height: "100%",
+              marginTop: "27px",
             }}
           >
-            <a href="/New neutrals" style={{ textDecoration: "none" }}>
-              <button
-                className="btn-light"
+            <img
+              src="https://image.hm.com/content/dam/global_campaigns/season_07/divided/5017a/5017A-3x2-baggy-fit-denim.jpg?imwidth=1536"
+              className="img-fluid"
+              alt="Sample"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+            <div
+              className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
+              style={{
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                textAlign: "left",
+                paddingLeft: "20px",
+              }}
+            >
+              {/* Button group always visible on all screen sizes */}
+              <div
+                className="button-group position-absolute d-flex justify-content-center flex-wrap"
                 style={{
-                  padding: "7px 10px",
-                  fontSize: ".9rem",
-                  fontWeight: "700",
-                  border: "none",
+                  bottom: "50px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  gap: "9px",
+                  maxWidth: "930px",
+                  width: "100%",
                 }}
               >
-                Ladies
-              </button>
-            </a>
-            <a href="/New neutrals" style={{ textDecoration: "none" }}>
-              <button
-                className="btn-light"
+                <a href="/New-neutrals" style={{ textDecoration: "none" }}>
+                  <button
+                    className="btn-light"
+                    style={{
+                      padding: "7px 10px",
+                      fontSize: ".9rem",
+                      fontWeight: "700",
+                      border: "1px solid #ddd",
+                    }}
+                  >
+                    Ladies
+                  </button>
+                </a>
+                <a href="/New-neutrals" style={{ textDecoration: "none" }}>
+                  <button
+                    className="btn-light"
+                    style={{
+                      padding: "7px 10px",
+                      fontSize: ".9rem",
+                      fontWeight: "700",
+                      border: "1px solid #ddd",
+                    }}
+                  >
+                    Men
+                  </button>
+                </a>
+                <a href="/Hot-sellers" style={{ textDecoration: "none" }}>
+                  <button
+                    className="btn-light"
+                    style={{
+                      padding: "7px 10px",
+                      fontSize: ".9rem",
+                      fontWeight: "700",
+                      border: "1px solid #ddd",
+                    }}
+                  >
+                    Kids & Baby
+                  </button>
+                </a>
+              </div>
+
+              <p
+                className="position-absolute text-center"
                 style={{
-                  padding: "7px 10px",
-                  fontSize: ".9rem",
-                  fontWeight: "700",
-                  border: "none",
+                  bottom: "3px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  fontSize: "x-small",
+                  fontWeight: "600",
                 }}
               >
-                Men
-              </button>
-            </a>
-            <a href="/Hot-sellers" style={{ textDecoration: "none" }}>
-              <button
-                className="btn-light"
-                style={{
-                  padding: "7px 10px",
-                  fontSize: ".9rem",
-                  fontWeight: "700",
-                  border: "none",
-                }}
-              >
-                Kids & Baby
-              </button>
-            </a>
+                Explore the latest in denim fashion.
+              </p>
+            </div>
           </div>
-          <p
-            className="text-center mt-4"
-            style={{ fontSize: "x-small", fontWeight: "600" }}
-          >
-            Offer only valid online. *T&C Apply
-          </p>
-        </div>
+        </section>
       </Container>
     </>
   );

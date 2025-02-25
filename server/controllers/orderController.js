@@ -24,7 +24,6 @@ const getOrdersByUserId = async (req, res) => {
   }
 };
 
-//Admin Auth
 const getAllOrders = async (req, res) => {
   try {
 
@@ -222,31 +221,27 @@ const getPendingRequests = async (req, res) => {
 
 const getSellerOrdersByStatus = async (req, res) => {
   try {
-    const userId = req.user?.id; // Ensure the user is authenticated
-
-    const { status } = req.body; // Status filter from the request body
+    const userId = req.user?.id; 
+    const { status } = req.body; 
 
     if (!userId) {
       return res.status(400).json({ error: "Seller not authorized" });
     }
 
-    // Get all products associated with this seller
     const sellerProducts = await productDb.find({ seller: userId }).select("_id");
 
     if (!sellerProducts.length) {
       return res.status(404).json({ message: "No products found for this seller" });
     }
 
-    // Extract product IDs to filter orders
     const productIds = sellerProducts.map((product) => product._id);
 
     const query = {
       "items.productId": { $in: productIds },
     };
 
-    if (status) query.orderStatus = status; // Add status filter if provided
+    if (status) query.orderStatus = status; 
 
-    // Fetch orders with the necessary details
     const ordersByStatus = await OrderDb.find(query).populate(
       "items.productId",
       "title price image"

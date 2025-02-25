@@ -118,7 +118,7 @@ function UserFooter() {
                         </div>
 
                         <div className="col-md-3 mb-4">
-                            <p className={darkMode ? "text-black" : "text-white"}>
+                            <p className={darkMode ? "text-black" : "text-white"} style={{fontSize: 'small', fontWeight:'600'}}>
                                 Sign up now and be the first to know about exclusive offers,
                                 <br /> latest fashion news & style tips!
                             </p>
@@ -211,7 +211,7 @@ function UserFooter() {
                         </div>
                     </div>
                     <div className="footer-final-text-1">
-                        <p className={darkMode ? "text-black" : "text-white "}>
+                        <p className={darkMode ? "text-black" : "text-white "} >
                             The content of this site is copyright-protected and is the
                             property of H & M Hennes & Mauritz AB.
                         </p>

@@ -1,81 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import { axiosInstance } from '../../config/axiosInstance';
-import toast from 'react-hot-toast';
-import Container from 'react-bootstrap/Container';
-import Table from 'react-bootstrap/Table';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { axiosInstance } from "../../config/axiosInstance";
+import { useSelector } from "react-redux";
+import { Container, Row, Col, ListGroup } from "react-bootstrap";
+import toast from "react-hot-toast";
 
 const GetAllOrders = () => {
+  const { darkMode } = useSelector((state) => state.mode);
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const { darkMode } = useSelector((state) => state.mode);
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axiosInstance.get("/orders/get-all-orders");
+        setOrders(response.data);
+      } catch (err) {
+        setError(err?.response?.data?.message || "Failed to fetch orders");
+        toast.error(err?.response?.data?.message || "Failed to fetch orders");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchOrders();
+  }, []);
 
-    const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchOrders = async () => {
-            try {
-                const response = await axiosInstance.get('/orders/get-all-orders');
-                setOrders(response.data);
-            } catch (err) {
-                setError(err?.response?.data?.message || 'Failed to fetch orders');
-                toast.error(err?.response?.data?.message || 'Failed to fetch orders');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchOrders();
-    }, []);
-
-    return (
-        <Container className="my-5">
-            <h1 className="text-center mb-4">All Orders</h1>
-            {loading ? (
-                <p>Loading all orders...</p>
-            ) : error ? (
-                <p className="text-danger">{error}</p>
-            ) : orders.length === 0 ? (
-                <p>No orders found.</p>
-            ) : (
-                <Table striped bordered hover responsive>
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>User Name</th>
-                            <th>User Email</th>
-                            <th>Items</th>
-                            <th>Total Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orders.map((order) => (
-                            <tr key={order._id}>
-                                <td>{order._id}</td>
-                                <td>{order.userId?.name}</td>
-                                <td>{order.userId?.email}</td>
-                                <td>
-                                    {order.items.map((item, index) => (
-                                        <div key={index}>
-                                            <strong>{item.productId?.title}</strong> - Rs.{item.productId?.price} x {item.quantity}
-                                        </div>
-                                    ))}
-                                </td>
-                                <td>
-                                    Rs.{' '}
-                                    {order.items.reduce(
-                                        (total, item) => total + item.quantity * item.productId?.price,
-                                        0
-                                    )}
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
-            )}
-        </Container>
-    );
+  return (
+    <Container data-theme={darkMode ? "dark" : "light"} className="py-5">
+      <div className="container d-flex justify-content-center align-items-center heading-head">
+        <p className={darkMode ? "text-black" : "text-white"}>
+          HM.com / <span className="text-danger" style={{ fontWeight: "700" }}>Orders</span>
+        </p>
+      </div>
+      <h1 className="text-center mt-4 mb-4" style={{ color: darkMode ? "black" : "white", fontSize: 'x-large', fontWeight: '600' }}>
+        All Orders
+      </h1>
+      <div className="cart-container">
+        <div className="cart-items">
+          {loading ? (
+            <p>Loading all orders...</p>
+          ) : error ? (
+            <p className="text-danger">{error}</p>
+          ) : orders.length > 0 ? (
+            orders.map((order) => (
+              <div key={order._id} className="p-4 rounded-lg shadow-md bg-white dark:bg-gray-800 mb-4">
+                <Row className="mb-3">
+                  <Col xs={12} sm={6}>
+                    <h6 className="mb-0">Order ID: {order._id}</h6>
+                  </Col>
+                  <Col xs={12} sm={6} className="text-sm-end mt-2 mt-sm-0">
+                    <span className="d-inline-block d-sm-inline" style={{ fontWeight: "bold" }}>
+                      {order.orderStatus}
+                    </span>
+                  </Col>
+                </Row>
+                <p><strong>User Name:</strong> {order.userId?.name}</p>
+                <p><strong>User Email:</strong> {order.userId?.email}</p>
+                <p><strong>Total Amount:</strong> ₹{order.items.reduce((total, item) => total + item.quantity * item.productId?.price, 0).toFixed(2)}</p>
+                <p><strong>Date:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
+                <ListGroup variant="flush" className="mb-3">
+                  <ListGroup.Item className="fw-bold">Items:</ListGroup.Item>
+                  {order.items.map((item, index) => (
+                    <ListGroup.Item key={index}>
+                      <Row>
+                        <Col xs={6}>{item.productId?.title}</Col>
+                        <Col xs={3} className="text-center"> {item.quantity}</Col>
+                        <Col xs={3} className="text-end">₹{(item.quantity * item.productId?.price).toFixed(2)}</Col>
+                      </Row>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+            ))
+          ) : (
+            <div className={darkMode ? "text-black" : "text-white"}>
+              <h1 className="text-center" style={{ fontWeight: "700", fontSize: "xx-large" }}>
+                No orders found.
+              </h1>
+            </div>
+          )}
+        </div>
+      </div>
+    </Container>
+  );
 };
 
 export default GetAllOrders;

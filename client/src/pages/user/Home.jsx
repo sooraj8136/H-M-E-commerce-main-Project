@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import NewUtilitarian from '../../components/user/NewUtilitarian';
 import KidsDenim from '../../components/user/KidsDenim';
 import Office from '../../components/user/Office';
+import HomeWidget from '../../components/user/HomeWidget';
 
 function Home() {
 
@@ -21,6 +22,7 @@ function Home() {
                         }}>Home</span></p>
                     </div>
                 </div>
+                <HomeWidget/>
                 <PreppyUniform />
                 <NewUtilitarian/>
                 <KidsDenim/>

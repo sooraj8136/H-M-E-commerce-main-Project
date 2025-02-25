@@ -107,6 +107,21 @@ function AdminSignup() {
                     </div>
                     <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
                         <label
+                            htmlFor="qualification"
+                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
+                        >
+                            Qualification:
+                        </label>
+                        <input
+                            type="text"
+                            {...register("qualification")}
+                            id="qualification"
+                            name="qualification"
+                            className="pass-input mx-auto my-1 w-100"
+                        />
+                    </div>
+                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+                        <label
                             htmlFor="password"
                             className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
                         >
@@ -119,21 +134,6 @@ function AdminSignup() {
                             name="password"
                             className="pass-input mx-auto my-1 w-100"
                             required
-                        />
-                    </div>
-                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-                        <label
-                            htmlFor="qualification"
-                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
-                        >
-                            Qualification:
-                        </label>
-                        <input
-                            type="text"
-                            {...register("qualification")}
-                            id="qualification"
-                            name="qualification"
-                            className="pass-input mx-auto my-1 w-100"
                         />
                     </div>
                 </div>

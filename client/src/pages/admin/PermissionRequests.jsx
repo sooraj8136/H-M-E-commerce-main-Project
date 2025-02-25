@@ -1,41 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
 
 const PendingPermissionRequests = () => {
+    const { darkMode } = useSelector((state) => state.mode);
     const [requests, setRequests] = useState([]);
-    const [message, setMessage] = useState("");
-    const [loading, setLoading] = useState(false);
-
 
     const fetchPendingRequests = async () => {
         try {
-            setLoading(true);
             const response = await axiosInstance.get("/orders/requests");
             setRequests(response.data.requests || []);
-            setMessage(response.data.message);
         } catch (error) {
             console.error("Error fetching pending requests:", error);
-            setMessage("Failed to fetch pending requests.");
-        } finally {
-            setLoading(false);
+            toast.error("Failed to fetch pending requests.");
         }
     };
 
     const handleUpdateRequest = async (requestId, isApproved) => {
         try {
-            isApproved = Boolean(isApproved);
-
             const response = await axiosInstance.post(
                 `/orders/requests/${requestId}`,
-                { isApproved }
+                { isApproved: Boolean(isApproved) }
             );
-            setMessage(response.data.message);
+            toast.success(response.data.message);
             fetchPendingRequests();
         } catch (error) {
             console.error("Error updating request:", error.response?.data || error.message);
-            setMessage(
-                error.response?.data?.message || "Failed to update permission request."
-            );
+            toast.error(error.response?.data?.message || "Failed to update request.");
         }
     };
 
@@ -44,50 +37,59 @@ const PendingPermissionRequests = () => {
     }, []);
 
     return (
-        <div className="pending-requests-container">
-            <h1 className="heading">Pending Permission Requests</h1>
-
-            {message && <p className="message">{message}</p>}
-
-            {loading ? (
-                <p className="loading">Loading requests...</p>
-            ) : requests.length > 0 ? (
-                <ul className="request-list">
-                    {requests.map((request) => (
-                        <li key={request._id} className="request-item">
-                            <div className="request-info">
-                                <p>
-                                    <strong>Order ID:</strong> {request.orderId._id}
-                                </p>
-                                <p>
-                                    <strong>Status Requested:</strong> {request.status}
-                                </p>
-                                <p>
-                                    <strong>Requested At:</strong> {new Date(request.createdAt).toLocaleString()}
-                                </p>
-                            </div>
-
-                            <div className="request-actions">
-                                <button
-                                    className="approve-button"
-                                    onClick={() => handleUpdateRequest(request._id, true)}
-                                >
-                                    Approve
-                                </button>
-                                <button
-                                    className="deny-button"
-                                    onClick={() => handleUpdateRequest(request._id, false)}
-                                >
-                                    Deny
-                                </button>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p className="no-requests">No pending requests.</p>
-            )}
-        </div>
+        <Container className="d-flex flex-column align-items-center py-5">
+            <div className="container  d-flex justify-content-center align-items-center heading-head  mt-4">
+                <p className={darkMode ? "text-black" : "text-white"}>HM.com / <span className='text-danger' style={{
+                    fontWeight: "800"
+                }}>Pending requests</span> </p>
+            </div>
+            <h1 className="text-center mt-4 mb-4" style={{ color: darkMode ? "black" : "white", fontSize: 'x-large', fontWeight: '600' }}>
+                Pending requests
+            </h1>
+            <Row className="w-100 d-flex flex-column align-items-center">
+                {requests.length > 0 ? (
+                    requests.map((request) => (
+                        <Col key={request._id} xs={12} className="mb-4">
+                            <Card className="w-100 border-0 shadow-sm" style={{ borderRadius: "0" }}>
+                                <Card.Body>
+                                    <Card.Text><strong>Order ID:</strong> {request.orderId._id}</Card.Text>
+                                    <Card.Text><strong>Requested Status:</strong> {request.status}</Card.Text>
+                                    <Card.Text><strong>Requested At:</strong> {new Date(request.createdAt).toLocaleString()}</Card.Text>
+                                    <div className="d-flex gap-3">
+                                        <button onClick={() => handleUpdateRequest(request._id, true)} style={{
+                                            textDecoration: "none",
+                                            color: "white",
+                                            backgroundColor: "black",
+                                            border: "1px solid white",
+                                            padding: "8px 12px",
+                                            fontSize: 'small',
+                                            display: "inline-block",
+                                            fontWeight: "600"
+                                        }}>
+                                            Approve
+                                        </button>
+                                        <button onClick={() => handleUpdateRequest(request._id, false)} style={{
+                                            textDecoration: "none",
+                                            color: "white",
+                                            backgroundColor: "black",
+                                            border: "1px solid white",
+                                            padding: "8px 12px",
+                                            fontSize: 'small',
+                                            display: "inline-block",
+                                            fontWeight: "600"
+                                        }}>
+                                            Deny
+                                        </button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))
+                ) : (
+                    <p className="text-center mt-4">No pending requests!</p>
+                )}
+            </Row>
+        </Container>
     );
 };
 

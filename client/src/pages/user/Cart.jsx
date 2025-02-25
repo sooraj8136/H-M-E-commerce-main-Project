@@ -178,7 +178,7 @@ function Cart() {
         throw new Error('Invalid action');
       }
 
-      setCartData(updatedCart); // ✅ Update UI immediately
+      setCartData(updatedCart); // Update UI immediately
 
       const url = action === 'delete' ? '/cart/remove-from-cart' : '/cart/update-count';
       const data = { productId, action };
@@ -222,14 +222,6 @@ function Cart() {
         <p className={darkMode ? "text-black" : "text-white "}>
           HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Shopping bag</span>
         </p>
-      </div>
-      <div className="empty-cart">
-        <p className={darkMode ? 'text-black' : 'text-white'}>Free shipping above Rs.1999</p>
-        <p className={darkMode ? 'text-black' : 'text-white'}>Free & flexible 15 days return</p>
-        <p className={darkMode ? 'text-black' : 'text-white'}>Estimated delivery time: 2-7 days</p>
-      </div>
-      <div className='shopping-bag-head'>
-        <p className={darkMode ? 'text-black' : 'text-white'}>Shopping bag</p>
       </div>
       <div className="cart-container" >
         <div className="cart-items">

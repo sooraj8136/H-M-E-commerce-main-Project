@@ -42,7 +42,7 @@ function WishlistPage() {
           HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Favourites</span>
         </p>
       </div>
-      <div className='text-center mb-4'>
+      <div className='text-center mb-5 mt-3'>
         <h2 className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: "40px", fontWeight: "700" }}>
           Favourites
         </h2>
@@ -79,7 +79,7 @@ function WishlistPage() {
                   </p>
                 </div>
 
-                <div className="position-absolute" style={{ top: '10px', right: '10px' }}>
+                <div className="position-absolute" style={{ top: '6px', right: '15px' }}>
                   <button
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent the Link from being triggered

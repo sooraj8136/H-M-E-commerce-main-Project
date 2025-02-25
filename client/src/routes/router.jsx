@@ -53,6 +53,8 @@ import ProtectedRouteSeller from './ProtectedRouteSeller';
 import ProtectedRouteAdmin from './ProtectedRouteAdmin';
 import DenimRoundUp from '../pages/user/DenimRoundUp';
 import TransitionalFits from '../pages/user/TransitionalFits';
+import UpdateSellerProfile from '../pages/seller/UpdateSellerProfile';
+import UpdateAdminProfile from '../pages/admin/UpdateAdminProfile';
 
 export const router = createBrowserRouter([
   {
@@ -190,6 +192,10 @@ export const router = createBrowserRouter([
             element: <SellerProfile />,
           },
           {
+            path: 'update-seller-profile',
+            element: <UpdateSellerProfile />,
+          },
+          {
             path: 'seller-product',
             element: <SellerProductsPage />,
           },
@@ -274,6 +280,10 @@ export const router = createBrowserRouter([
           {
             path: 'admin-profile',
             element: <AdminProfile />,
+          },
+          {
+            path: 'update-admin-profile',
+            element: <UpdateAdminProfile />,
           },
           {
             path: 'pending-requests',

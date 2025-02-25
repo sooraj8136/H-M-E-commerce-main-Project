@@ -18,9 +18,9 @@ function KidsPage() {
                         fontWeight: "700",
                     }}>Kids</span> </p>
                 </div>
-                <KidsEffortlessBlues />
-                <KidsProducts />
                 <KidsDenim/>
+                <KidsProducts />
+                <KidsEffortlessBlues />
                 <div className='ladies-clothing-cap'>
                     <div className="container mt-4 d-flex justify-content-center align-items-center">
                         <div className="position-relative"

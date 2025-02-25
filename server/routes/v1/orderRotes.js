@@ -7,7 +7,7 @@ const orderRouter = require("express").Router();
 
 orderRouter.get("/get-order-by-userid", userAuth, getOrdersByUserId ) //user can fetch  their orders
 orderRouter.get("/get-all-orders", adminAuth, getAllOrders )  // Admin can fetch all orders
-orderRouter.get("/get-seller-orders", sellerAuth, getSellerOrders )  // seller can fetch thir own product orders
+orderRouter.get("/get-seller-orders", sellerAuth, getSellerOrders )  // seller can fetch their own product orders
 
 orderRouter.post("/get-seller-orders-by-status", sellerAuth, getSellerOrdersByStatus )
 orderRouter.get("/requests", adminAuth, getPendingRequests ) 

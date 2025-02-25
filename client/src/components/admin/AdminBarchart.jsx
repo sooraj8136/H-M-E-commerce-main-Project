@@ -1,13 +1,17 @@
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend, } from "chart.js";
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from "chart.js";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
+import { Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const AdminBarhart = () => {
+    const { darkMode } = useSelector((state) => state.mode);
+
     const [chart, setChart] = useState(null);
-    const [error, setError] = useState(null);
+    const [isDataAvailable, setIsDataAvailable] = useState(true);
 
     useEffect(() => {
         const fetchOrderData = async () => {
@@ -19,54 +23,99 @@ const AdminBarhart = () => {
 
                 const orders = response?.data;
 
-                const labels = orders.map((order) =>
-                    new Date(order.createdAt).toLocaleDateString()
-                );
-                const totalAmounts = orders.map((order) => order.totalAmount);
+                if (orders && orders.length > 0) {
+                    const labels = orders.map((order) =>
+                        new Date(order.createdAt).toLocaleDateString()
+                    );
+                    const totalAmounts = orders.map((order) => order.totalAmount);
 
-                setChart({
-                    labels,
-                    datasets: [
-                        {
-                            label: "Total price of Orders",
-                            data: totalAmounts,
-                            borderColor: "rgb(0, 0, 0)",
-                            backgroundColor: "rgb(0, 0, 0)",
-                            borderWidth: 1,
-                            fill: false,
-                        },
-                    ],
-                });
+                    setChart({
+                        labels,
+                        datasets: [
+                            {
+                                label: "Total price of Orders",
+                                data: totalAmounts,
+                                borderColor: darkMode ? "black" : "white",
+                                backgroundColor: darkMode ? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)",
+                                borderWidth: 1,
+                            },
+                        ],
+                    });
+                    setIsDataAvailable(true);
+                } else {
+                    setIsDataAvailable(false);
+                }
             } catch (err) {
                 console.error("Error fetching orders:", err);
-                setError(err.message || "An error occurred while fetching data.");
+                setIsDataAvailable(false);
             }
         };
 
         fetchOrderData();
-    }, []);
+    }, [darkMode]);
 
     return (
-        <div>
-            <h1>Sales analyse</h1>
-            {error ? (
-                <p style={{ color: "red" }}>{error}</p>
-            ) : chart ? (
-                <Bar
-                    data={chart}
-                    options={{
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: "top",
+        <Container
+            style={{
+                backgroundColor: darkMode ? "white" : "black",
+                color: darkMode ? "black" : "white",
+                padding: "20px",
+                borderRadius: "10px",
+            }}
+        >
+            <h1 className="text-center" style={{ color: darkMode ? "black" : "white", fontSize:'x-large', fontWeight:'600'}}>
+                Sales Analyse
+            </h1>
+            {isDataAvailable ? (
+                chart ? (
+                    <Bar
+                        data={chart}
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        color: darkMode ? "black" : "white",
+                                    },
+                                },
+                                title: {
+                                    display: true,
+                                    text: "Order Data",
+                                    color: darkMode ? "black" : "white",
+                                },
+                                tooltip: {
+                                    backgroundColor: darkMode ? "black" : "white",
+                                    titleColor: darkMode ? "white" : "black",
+                                    bodyColor: darkMode ? "white" : "black",
+                                },
                             },
-                        },
-                    }}
-                />
+                            scales: {
+                                x: {
+                                    ticks: {
+                                        color: darkMode ? "black" : "white",
+                                    },
+                                    grid: {
+                                        color: darkMode ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.3)",
+                                    },
+                                },
+                                y: {
+                                    ticks: {
+                                        color: darkMode ? "black" : "white",
+                                    },
+                                    grid: {
+                                        color: darkMode ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.3)",
+                                    },
+                                },
+                            },
+                        }}
+                    />
+                ) : null
             ) : (
-                <p>Loading...</p>
+                <p style={{ color: darkMode ? "black" : "white", textAlign: "center", fontSize: "18px" }}>
+                    No Orders available
+                </p>
             )}
-        </div>
+        </Container>
     );
 };
 

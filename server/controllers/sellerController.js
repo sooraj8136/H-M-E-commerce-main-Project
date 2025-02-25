@@ -117,33 +117,38 @@ const sellerProfile = async (req, res) => {
 
 
 const updateSellerProfile = async (req, res) => {
-
     try {
+        const sellerId = req.user.id;
+        const { name, email, mobile, storeName, address } = req.body;
 
-        const sellerId = req.user.id
-
-        const { name, email, mobile, role, qualification, storeName, address } = req.body
-
-
-        if (!name && !email && !mobile && !role && !qualification && !storeName && !address) {
-            res.status(400).json({ message: "All fields are required" })
+        if (!name && !email && !mobile && !storeName && !address) {
+            return res.status(400).json({ message: "At least one field is required to update" });
         }
 
         if (email) {
             const existingSellerEmail = await sellerDb.findOne({ email });
             if (existingSellerEmail && existingSellerEmail._id.toString() !== sellerId) {
-                return res.status(400).json({ error: "This Email already registered with another seller" });
+                return res.status(400).json({ error: "This email is already registered with another seller" });
             }
         }
 
         if (mobile) {
-            const existinSellerMobile = await sellerDb.findOne({ mobile });
-            if (existinSellerMobile && existinSellerMobile._id.toString() !== sellerId) {
-                return res.status(400).json({ error: "This mobile number already registered with another seller" });
+            const existingSellerMobile = await sellerDb.findOne({ mobile });
+            if (existingSellerMobile && existingSellerMobile._id.toString() !== sellerId) {
+                return res.status(400).json({ error: "This mobile number is already registered with another seller" });
             }
         }
 
-        const updatedSellerProfile = await sellerDb.findByIdAndUpdate(sellerId, req.body, { new: true }).select("-password");
+        const updateData = {};
+        if (name) updateData.name = name;
+        if (email) updateData.email = email;
+        if (mobile) updateData.mobile = mobile;
+        if (storeName) updateData.storeName = storeName;
+        if (address) updateData.address = address;
+
+        const updatedSellerProfile = await sellerDb
+            .findByIdAndUpdate(sellerId, updateData, { new: true })
+            .select("-password");
 
         if (!updatedSellerProfile) {
             return res.status(404).json({ error: "Sorry, seller not found" });
@@ -152,12 +157,12 @@ const updateSellerProfile = async (req, res) => {
         console.log(updatedSellerProfile);
 
         res.status(200).json({ message: "Seller profile updated successfully", data: updatedSellerProfile });
-
     } catch (error) {
-        console.log(error);
-        res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
+        console.error(error);
+        res.status(error.status || 500).json({ error: error.message || "Internal server error" });
     }
-}
+};
+
 
 
 const sellerLogout = async (req, res) => {

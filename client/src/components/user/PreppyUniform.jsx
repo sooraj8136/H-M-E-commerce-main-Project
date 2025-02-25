@@ -43,7 +43,7 @@ function PreppyUniform() {
                                     marginBottom: "10px",
                                 }}
                             >
-                                New neutrals
+                                Preppy Updates
                             </h2>
                             <div>
                                 <ul

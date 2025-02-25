@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const UpdateProduct = () => {
+  const { darkMode } = useSelector((state) => state.mode); 
   const { id: productId } = useParams();
   const [productData, setProductData] = useState({
     image: null,
@@ -74,104 +76,146 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div className="p-4 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Update Product</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block font-medium mb-1">Image:</label>
+    <>
+      <div className="container d-flex justify-content-center align-items-center heading-head">
+        <p className={darkMode ? "text-black" : "text-white"}>
+          HM.com /
+          <span className="text-danger" style={{ fontWeight: "800" }}>
+            Update Product
+          </span>
+        </p>
+      </div>
+      <div className={darkMode ? "text-black" : "text-white"}>
+        <h1 className="text-center" style={{ fontSize: "20px", fontWeight: "bold" }}>
+          Update Your Product
+        </h1>
+      </div>
+      <br />
+      <div
+        className={darkMode ? "text-black" : "text-white"}
+        style={{ fontSize: "0.9rem", fontWeight: "500" }}
+      >
+        <p className="text-center">
+          Update your product details
+        </p>
+      </div>
+      <form onSubmit={handleSubmit} className="p-4" style={{ maxWidth: "400px", margin: "0 auto" }}>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Image:
+          </label>
           <input
             type="file"
             name="image"
             onChange={handleImageChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           />
         </div>
-        <div>
-          <label className="block font-medium mb-1">Title:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Title:
+          </label>
           <input
             type="text"
             name="title"
             value={productData.title}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           />
         </div>
-        <div>
-          <label className="block font-medium mb-1">Price:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Price:
+          </label>
           <input
             type="number"
             name="price"
             value={productData.price}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           />
         </div>
-        <div>
-          <label className="block font-medium mb-1">Description:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Description:
+          </label>
           <textarea
             name="description"
             value={productData.description}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           ></textarea>
         </div>
-        <div>
-          <label className="block font-medium mb-1">Category:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Category:
+          </label>
           <input
             type="text"
             name="category"
             value={productData.category}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           />
         </div>
-        <div>
-          <label className="block font-medium mb-1">Stock:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Stock:
+          </label>
           <input
             type="number"
             name="stock"
             value={productData.stock}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           />
         </div>
-        <div>
-          <label className="block font-medium mb-1">Size:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Sizes (comma-separated):
+          </label>
           <input
             type="text"
             name="size"
             value={productData.size}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           />
         </div>
-        <div>
-          <label className="block font-medium mb-1">Materials:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Materials:
+          </label>
           <input
             type="text"
             name="materials"
             value={productData.materials}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           />
         </div>
-        <div>
-          <label className="block font-medium mb-1">Care Guide:</label>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Care Guidelines:
+          </label>
           <textarea
             name="careguid"
             value={productData.careguid}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="w-100 pass-input mt-1"
           ></textarea>
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Update Product
-        </button>
+        <div className="d-flex justify-content-center">
+          <button
+            type="submit"
+            className="bg-black signin-btn"
+            style={{ maxWidth: "400px", width: "100%" }}
+          >
+            Update Product
+          </button>
+        </div>
       </form>
-    </div>
+    </>
   );
 };
 

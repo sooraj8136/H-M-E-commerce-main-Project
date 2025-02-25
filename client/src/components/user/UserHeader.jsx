@@ -34,24 +34,8 @@ function UserHeader() {
                             </Nav>
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
-                                    <div className="d-flex align-items-center">
-                                        <Nav.Link
-                                            href="/user/profile"
-                                            className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                            aria-label="Profile"
-                                            style={{fontWeight: '550'}}>
-                                            <BsPerson
-                                                style={{
-                                                    fontSize: "1.6rem",
-                                                    marginRight: "8px",
-                                                    color: darkMode ? "#000" : "#fff",
-                                                }}
-                                            />
-                                            My account
-                                        </Nav.Link>
-                                    </div>
                                     <div className="d-flex align-items-center nav-item-section">
-                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites" style={{fontWeight: '550'}}>
+                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites" style={{ fontWeight: '550' }}>
                                             <CiHeart
                                                 style={{
                                                     fontSize: "1.6rem",
@@ -73,6 +57,22 @@ function UserHeader() {
                                                 }}
                                             />
                                             Shopping bag
+                                        </Nav.Link>
+                                    </div>
+                                    <div className="d-flex align-items-center">
+                                        <Nav.Link
+                                            href="/user/profile"
+                                            className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                            aria-label="Profile"
+                                            style={{ fontWeight: '550' }}>
+                                            <BsPerson
+                                                style={{
+                                                    fontSize: "1.6rem",
+                                                    marginRight: "8px",
+                                                    color: darkMode ? "#000" : "#fff",
+                                                }}
+                                            />
+                                            My account
                                         </Nav.Link>
                                     </div>
                                 </div>

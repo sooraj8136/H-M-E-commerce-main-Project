@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CreateProductForm = () => {
+  const navigate = useNavigate();
   const { darkMode } = useSelector((state) => state.mode); 
   const [productDetails, setProductDetails] = useState({
     title: "",
@@ -58,6 +60,7 @@ const CreateProductForm = () => {
 
       toast.success("Product created successfully!");
       console.log("Product created:", response.data);
+      navigate("/seller/get-seller-products");
     } catch (error) {
       toast.error("Failed to create product");
       console.error("Error:", error);
