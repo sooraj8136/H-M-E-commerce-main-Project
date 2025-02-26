@@ -108,19 +108,6 @@ const checkAdmin = (req, res) => {
 }
 
 
-// const adminLogout = async (req, res) => {
-//     try {
-//         res.clearCookie("admin_token")
-
-//         res.status(200).json({ message: "Admin logout successfull" })
-
-//     } catch (error) {
-//         console.log(error);
-//         res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
-//     }
-
-// }
-
 const adminLogout = async (req, res) => {
     try {
 

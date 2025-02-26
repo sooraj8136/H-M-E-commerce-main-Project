@@ -73,35 +73,6 @@ const getSellerOrders = async (req, res) => {
 };
 
 
-
-// const updateOrderStatus = async (req, res) => {
-//   try {
-//     const { orderId } = req.params;
-//     const { status } = req.body;
-
-//     if (!["processing", "transit", "out-for-delivery", "delivered"].includes(status)) {
-//       return res.status(400).json({ message: "Invalid order status" });
-//     }
-
-//     const updatedOrder = await OrderDb.findByIdAndUpdate(
-//       orderId,
-//       { orderStatus: status },
-//       { new: true, runValidators: true }
-//     );
-
-//     if (!updatedOrder) {
-//       return res.status(404).json({ message: "Order not found" });
-//     }
-
-//     res.status(200).json({ message: "Order status updated successfully", order: updatedOrder });
-//   } catch (error) {
-//     console.error("Error updating order status:", error);
-//     res.status(500).json({ message: "Internal server error", error: error.message });
-//   }
-
-// };
-
-
 const updateOrderStatus = async (req, res) => {
   try {
     const { orderId } = req.params;

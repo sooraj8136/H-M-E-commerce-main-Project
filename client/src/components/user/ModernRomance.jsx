@@ -47,7 +47,7 @@ function ModernRomance() {
                             >
                                 Modern romance
                             </h2>
-                            <Link to="/productDetails/67bd57a4633cb6e3d51574bb" className="position-absolute" style={{ top: '45%', left: '57%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
+                            <Link to="/productDetails/67bd57a4633cb6e3d51574bb" className="position-absolute" style={{ top: '75%', left: '67%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
                                 <button
                                     style={{
                                         padding: '10px 20px',

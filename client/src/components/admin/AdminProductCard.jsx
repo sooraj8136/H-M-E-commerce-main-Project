@@ -1,36 +1,42 @@
-import React from 'react'
-import Nav from "react-bootstrap/Nav";
-import { Container } from "react-bootstrap";
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-function AdminProductCard({product}) {
-    const { darkMode } = useSelector((state) => state.mode)
-    console.log(darkMode)
+function AdminProductCard({ product }) {
+    const { darkMode } = useSelector((state) => state.mode);
 
     return (
-        <>
-            <Container className="d-flex justify-content-center align-items-center my-3">
-                <Nav.Link href={`/admin/admin-product-details/${product?._id}`} className="text-decoration-none">
-                    <div className="product-item text-center">
-                        <img src={product?.image} alt={product?.title}
-                            style={{
-                                width: "300px",
-                                height: "auto",
-                                objectFit: "cover",
-                                marginBottom: "10px",
-                                maxWidth: "1024px"
-                            }} />
-                        <h3 className={darkMode ? "text-black" : "text-white "}
-                            style={{ fontSize: "1rem", marginBottom: "0.5rem", }} >
-                            {product?.title}</h3>
-                        <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "1rem", }} >
-                            Rs.{product?.price}.00
+        <Container className="d-flex flex-wrap justify-content-center">
+            <div className="text-center position-relative mx-1 text-start" style={{ maxWidth: '100%' }}>
+                <Link to={`/admin/admin-product-details/${product?._id}`} className="text-decoration-none">
+                    <img
+                        src={product?.image}
+                        alt={product?.title}
+                        style={{
+                            objectFit: 'cover',
+                            marginBottom: '6px',
+                            maxWidth: '1024px',
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                        className="img-fluid"
+                    />
+                    <div className="d-flex flex-column align-items-start">
+                        <h3
+                            className={darkMode ? 'text-black' : 'text-white'}
+                            style={{ fontSize: '0.8rem', fontWeight: '600', marginBottom: '0.5rem' }}
+                        >
+                            {product?.title}
+                        </h3>
+                        <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: '500' }}>
+                            Rs. {product?.price}.00
                         </p>
                     </div>
-                </Nav.Link>
-            </Container>
-        </>
-    )
+                </Link>
+            </div>
+        </Container>
+    );
 }
 
-export default AdminProductCard
+export default AdminProductCard;

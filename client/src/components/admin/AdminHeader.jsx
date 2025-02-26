@@ -62,6 +62,7 @@ function AdminHeader() {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
+                                            <Dropdown.Item href="/admin/get-all-orders">All Orders</Dropdown.Item>
                                             <Dropdown.Item href="/admin/pending-requests">Pending Requests</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>

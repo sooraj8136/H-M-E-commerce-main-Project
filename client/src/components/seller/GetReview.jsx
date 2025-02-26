@@ -64,15 +64,11 @@ function GetReview() {
             {reviews.length > 0 ? (
               reviews.map((review) => (
                 <div key={review._id} className="mb-2">
-                  <p
-                    className={darkMode ? "text-white mb-0" : "text-black mb-0"}
-                  >
+                  <p className="mb-0">
                     {"★".repeat(review.rating)}
                     {"☆".repeat(5 - review.rating)}
                   </p>
-                  <p
-                    className={darkMode ? "text-white mb-1" : "text-black mb-1"}
-                  >
+                  <p>
                     {review.comment}
                   </p>
                 </div>
