@@ -17,25 +17,24 @@ function UserHeader() {
     return (
         <>
             <header>
-                <Navbar
-                    expand="lg"
-                    className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black "}>
+                <Navbar expand="lg" className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black mb-4"} style={{paddingBottom: '40px', marginTop: '20px'}}>
                     <Container fluid>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
                             <Nav className="navbar-nav me-auto mb-2 mb-lg-0" navbarScroll>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Sustainability
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Customer Service
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
+                                    Newsletter</Nav.Link>
                             </Nav>
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
                                     <div className="d-flex align-items-center nav-item-section">
-                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites" style={{ fontWeight: '550' }}>
+                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites" style={{ fontSize: '0.8rem' }}>
                                             <CiHeart
                                                 style={{
                                                     fontSize: "1.6rem",
@@ -48,10 +47,10 @@ function UserHeader() {
                                     </div>
                                     <div className="d-flex align-items-center nav-item-section">
                                         <Nav.Link href="/user/cart" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                            aria-label="Shopping bag">
+                                            aria-label="Shopping bag" style={{ fontSize: '0.8rem' }}>
                                             <BsBag
                                                 style={{
-                                                    fontSize: "1.3rem",
+                                                    fontSize: "1.1rem",
                                                     marginRight: "4px",
                                                     color: darkMode ? "#000" : "#fff"
                                                 }}
@@ -64,10 +63,10 @@ function UserHeader() {
                                             href="/user/profile"
                                             className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
                                             aria-label="Profile"
-                                            style={{ fontWeight: '550' }}>
+                                            style={{ fontSize: '0.8rem' }}>
                                             <BsPerson
                                                 style={{
-                                                    fontSize: "1.6rem",
+                                                    fontSize: "1.3rem",
                                                     marginRight: "8px",
                                                     color: darkMode ? "#000" : "#fff",
                                                 }}
@@ -120,25 +119,25 @@ function UserHeader() {
                     <div>
                         <ul className="nav justify-content-center">
                             <li className="nav-item ">
-                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"}>Sales</Nav.Link>
+                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Sales</Nav.Link>
                             </li>
                             <li className="nav-item ">
-                                <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"}>Ladies</Nav.Link>
+                                <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Ladies</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/men-page" className={darkMode ? "text-black" : "text-white nav-link"}>Men</Nav.Link>
+                                <Nav.Link href="/men-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Men</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"}>Kids</Nav.Link>
+                                <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Kids</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"}>Home</Nav.Link>
+                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Home</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/contact" className={darkMode ? "text-black" : "text-white nav-link"}>Contact</Nav.Link>
+                                <Nav.Link href="/contact" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Contact</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/product" className={darkMode ? "text-black" : "text-white nav-link"}>Products</Nav.Link>
+                                <Nav.Link href="/product" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Products</Nav.Link>
                             </li>
                         </ul>
                     </div>

@@ -9,7 +9,7 @@ const SellerLogin = () => {
   const { darkMode } = useSelector((state) => state.mode);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false); 
 
   const seller = {
     login_api: "/seller/login-seller",
@@ -115,7 +115,7 @@ const SellerLogin = () => {
               style={{
                 position: "absolute",
                 right: "10px",
-                top: "69%",
+                top: "68%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
                 fontSize: "0.9rem",

@@ -11,7 +11,6 @@ function DenimRoundUp() {
     const { darkMode } = useSelector((state) => state.mode);
 
     const [products, setProducts] = useState([]);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -19,7 +18,7 @@ function DenimRoundUp() {
                 const response = await axiosInstance.get('/product/Denim');
                 setProducts(response.data?.data || []);
             } catch (err) {
-                setError('Failed to fetch products');
+                console.error("Error fetching products:", error);
             }
         };
 

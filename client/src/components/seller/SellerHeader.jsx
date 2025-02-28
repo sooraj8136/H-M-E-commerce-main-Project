@@ -19,21 +19,20 @@ function SellerHeader() {
     return (
         <>
             <header>
-                <Navbar
-                    expand="lg"
-                    className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}
-                >
+                <Navbar expand="lg" className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}
+                    style={{ paddingBottom: '40px', marginTop: '20px' }}>
                     <Container fluid>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
                             <Nav className="navbar-nav me-auto mb-2 mb-lg-0" navbarScroll>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Sustainability
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Seller Service
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
+                                    Newsletter</Nav.Link>
                             </Nav>
 
                             <Form className="d-flex align-items-center flex-column flex-lg-row">
@@ -41,7 +40,7 @@ function SellerHeader() {
                                     <Nav.Link
                                         href="/seller/seller-home"
                                         className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"} mb-2 mb-lg-0`}
-                                    >
+                                        style={{ fontSize: '0.8rem' }}>
                                         <MdDashboard className="me-2" />
                                         Dashboard
                                     </Nav.Link>
@@ -53,7 +52,7 @@ function SellerHeader() {
                                                 backgroundColor: "transparent",
                                                 boxShadow: "none",
                                                 color: darkMode ? "black" : "white",
-                                                fontSize: "1rem",
+                                                fontSize: "0.8rem",
                                                 fontWeight: "500",
                                             }}
                                         >
@@ -61,8 +60,8 @@ function SellerHeader() {
                                             Products
                                         </Dropdown.Toggle>
                                         <Dropdown.Menu>
-                                            <Dropdown.Item href="/seller/seller-product">Manage Products</Dropdown.Item>
-                                            <Dropdown.Item href="/seller/create-product">Create Product</Dropdown.Item>
+                                            <Dropdown.Item href="/seller/seller-product" style={{ fontSize: '0.8rem' }}>Manage Products</Dropdown.Item>
+                                            <Dropdown.Item href="/seller/create-product" style={{ fontSize: '0.8rem' }}>Create Product</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
                                     <Dropdown>
@@ -73,6 +72,8 @@ function SellerHeader() {
                                                 textDecoration: "none",
                                                 border: "none",
                                                 padding: "0",
+                                                fontSize:'0.8rem',
+                                                fontWeight: "500",
                                             }}
                                         >
                                             <IoCartOutline className="me-2" style={{ fontSize: "20px" }} />
@@ -80,10 +81,12 @@ function SellerHeader() {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu >
-                                            <Dropdown.Item href="/seller/get-orders-seller" className={darkMode ? "text-black" : "text-black"}>
+                                            <Dropdown.Item href="/seller/get-orders-seller" className={darkMode ? "text-black" : "text-black"} 
+                                            style={{ fontSize: '0.8rem' }}>
                                                 View Orders
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="/seller/update-order-status" className={darkMode ? "text-black" : "text-black"}>
+                                            <Dropdown.Item href="/seller/update-order-status" className={darkMode ? "text-black" : "text-black"} 
+                                            style={{ fontSize: '0.8rem' }}>
                                                 Update Orders
                                             </Dropdown.Item>
                                         </Dropdown.Menu>
@@ -91,8 +94,8 @@ function SellerHeader() {
                                     <Nav.Link
                                         href="/seller/profile"
                                         className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"} mb-2 mb-lg-0`}
-                                    >
-                                        <BsPerson className="me-2" style={{ fontSize: "20px" }} />
+                                        style={{ fontSize: '0.8rem' }}>
+                                        <BsPerson className="me-2" style={{ fontSize: "1.3rem" }} />
                                         My Account
                                     </Nav.Link>
                                 </div>

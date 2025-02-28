@@ -20,7 +20,7 @@ const getOrdersByUserId = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching orders:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error", error: error.message })
   }
 };
 
@@ -33,7 +33,7 @@ const getAllOrders = async (req, res) => {
 
     res.json(orders);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to retrieve orders', error });
+    res.status(500).json({ message: "Internal server error", error: error.message })
   }
 };
 
@@ -185,15 +185,15 @@ const getPendingRequests = async (req, res) => {
     const pendingRequests = await PermissionRequest.find({ isApproved: false }).populate("orderId");
     res.status(200).json({ message: "Pending requests fetched successfully", requests: pendingRequests });
   } catch (error) {
-    console.error("Error fetching pending requests:", error);
+    console.error("Error fetching pending requests=====", error);
     res.status(500).json({ message: "Internal server error", error: error.message });
   }
 };
 
 const getSellerOrdersByStatus = async (req, res) => {
   try {
-    const userId = req.user?.id; 
-    const { status } = req.body; 
+    const userId = req.user?.id;
+    const { status } = req.body;
 
     if (!userId) {
       return res.status(400).json({ error: "Seller not authorized" });
@@ -211,7 +211,7 @@ const getSellerOrdersByStatus = async (req, res) => {
       "items.productId": { $in: productIds },
     };
 
-    if (status) query.orderStatus = status; 
+    if (status) query.orderStatus = status;
 
     const ordersByStatus = await OrderDb.find(query).populate(
       "items.productId",
@@ -222,15 +222,10 @@ const getSellerOrdersByStatus = async (req, res) => {
       return res.status(404).json({ message: "No orders found for this seller" });
     }
 
-    res.status(200).json({
-      message: "Orders fetched successfully",
-      data: ordersByStatus,
-    });
+    res.status(200).json({ message: "Orders fetched successfully", data: ordersByStatus, });
   } catch (error) {
-    console.error("Error in getSellerOrdersByStatus:", error);
-    res.status(error.status || 500).json({
-      error: error.message || "Internal server error",
-    });
+    console.error("Error in getSellerOrdersByStatus=====", error);
+    res.status(500).json({ message: "Internal server error", error: error.message });
   }
 };
 
@@ -239,57 +234,49 @@ const updateStock = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    const order = await OrderDb.findOne({ userId: userId })
+    const order = await OrderDb.findOne({ userId })
       .sort({ createdAt: -1 })
       .populate("items.productId");
 
     if (!order) {
-      return res.status(404).json({ message: "No orders found for this user" });
+      return res.status(404).json({ message: "No recent orders found" });
     }
 
-    console.log("USER ID === ", userId);
+    console.log("USER ID:", userId);
 
-    // Update stock for each product in the order
-    const updatedProducts = await Promise.all(
-      order.items.map(async (item) => {
-        const product = item.productId;
+    const updatedProducts = [];
 
-        if (product) {
-          // Validate stock availability
-          if (item.quantity > product.stock) {
-            throw new Error(
-              `Insufficient stock for ${product.title.trim()}. Available: ${product.stock}`
-            );
-          }
+    for (const item of order.items) {
+      const product = item.productId;
 
-          const newStock = product.stock - item.quantity;
-
-          product.stock = Math.max(0, newStock);
-
-          await product.save();
-
-          console.log(
-            `Updated stock for ${product.title.trim()}: ${product.stock}`
-          );
-
-          return {
-            title: product.title,
-            price: product.price,
-            updatedStock: product.stock,
-          };
+      if (product) {
+        if (item.quantity > product.stock) {
+          return res.status(400).json({
+            message: `Insufficient stock for ${product.title}. Available: ${product.stock}`,
+          });
         }
-      })
-    );
+
+        product.stock -= item.quantity;
+        await product.save();
+
+        updatedProducts.push({
+          title: product.title,
+          price: product.price,
+          updatedStock: product.stock,
+        });
+      }
+    }
 
     return res.status(200).json({
       message: "Stock updated successfully",
       updatedProducts,
     });
   } catch (error) {
-    console.error("Error in updating stock:", error.message);
-    return res.status(400).json({ message: error.message });
+    console.error("Stock update error:", error.message);
+    res.status(500).json({ message: "Internal server error", error: error.message })
   }
 };
+
 
 
 module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin, getSellerOrdersByStatus, updateStock };

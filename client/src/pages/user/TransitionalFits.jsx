@@ -11,7 +11,6 @@ function TransitionalFits() {
     const { darkMode } = useSelector((state) => state.mode);
 
     const [products, setProducts] = useState([]);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -19,7 +18,7 @@ function TransitionalFits() {
                 const response = await axiosInstance.get('/product/Transitional-fits');
                 setProducts(response.data?.data || []);
             } catch (err) {
-                setError('Failed to fetch products');
+                console.error("Error fetching products:", error);
             }
         };
 

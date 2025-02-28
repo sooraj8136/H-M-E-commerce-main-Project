@@ -15,29 +15,29 @@ function Header() {
     return (
         <>
             <header>
-                <Navbar
-                    expand="lg"
-                    className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
+                <Navbar expand="lg" className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}
+                    style={{ paddingBottom: '40px', marginTop: '20px' }}>
                     <Container fluid>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
                             <Nav className="navbar-nav me-auto mb-2 mb-lg-0" navbarScroll>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Sustainability
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Customer Service
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
+                                    Newsletter</Nav.Link>
                             </Nav>
 
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
                                     <div className="nav-sec-2 d-flex">
-                                        <Nav.Link href="/login" className={darkMode ? "text-black" : "text-white me-3"}>
+                                        <Nav.Link href="/login" className={darkMode ? "text-black" : "text-white me-3"} style={{ fontSize: '0.8rem' }}>
                                             <BsPerson
                                                 style={{
-                                                    fontSize: "1.4rem",
+                                                    fontSize: "1.3rem",
                                                     marginRight: "8px",
                                                     color: darkMode ? "#000" : "#fff",
                                                 }}
@@ -88,25 +88,25 @@ function Header() {
                     <div>
                         <ul className="nav justify-content-center">
                             <li className="nav-item ">
-                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"}>Sales</Nav.Link>
+                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Sales</Nav.Link>
                             </li>
                             <li className="nav-item ">
-                                <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"}>Ladies</Nav.Link>
+                                <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Ladies</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/men-page" className={darkMode ? "text-black" : "text-white nav-link"}>Men</Nav.Link>
+                                <Nav.Link href="/men-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Men</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"}>Kids</Nav.Link>
+                                <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Kids</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"}>Home</Nav.Link>
+                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Home</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/contact" className={darkMode ? "text-black" : "text-white nav-link"}>Contact</Nav.Link>
+                                <Nav.Link href="/contact" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Contact</Nav.Link>
                             </li>
                             <li className="nav-item">
-                                <Nav.Link href="/product" className={darkMode ? "text-black" : "text-white nav-link"}>Products</Nav.Link>
+                                <Nav.Link href="/product" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Products</Nav.Link>
                             </li>
                         </ul>
                     </div>

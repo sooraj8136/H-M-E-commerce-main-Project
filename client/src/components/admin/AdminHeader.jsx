@@ -19,56 +19,63 @@ function AdminHeader() {
     return (
         <>
             <header>
-                <Navbar expand="lg" className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}>
+                <Navbar expand="lg" className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}
+                    style={{ paddingBottom: '40px', marginTop: '20px' }}>
                     <Container fluid>
                         <Navbar.Toggle aria-controls="navbarScroll" />
                         <Navbar.Collapse id="navbarScroll">
                             <Nav className="navbar-nav me-auto mb-2 mb-lg-0" navbarScroll>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Sustainability</Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Customer Service</Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"}>Newsletter</Nav.Link>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.9rem' }}>Sustainability</Nav.Link>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.9rem' }}>Customer Service</Nav.Link>
+                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.9rem' }}>Newsletter</Nav.Link>
                             </Nav>
 
                             <Form className="d-flex align-items-center">
                                 <div className="nav-sec-2">
                                     <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/admin-dashboard" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}>
+                                        <Nav.Link href="/admin/admin-dashboard" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`
+                                        } style={{ fontSize: '0.9rem' }}>
                                             <MdDashboard className="me-2" />
                                             Dashboard
                                         </Nav.Link>
                                     </div>
                                     <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/get-all-users" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}>
+                                        <Nav.Link href="/admin/get-all-users" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                            style={{ fontSize: '0.9rem' }}>
                                             <BsPerson className="me-2" style={{ fontSize: "20px" }} />
                                             Users
                                         </Nav.Link>
                                     </div>
                                     <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/get-sellers" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}>
+                                        <Nav.Link href="/admin/get-sellers" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} 
+                                        style={{ fontSize: '0.9rem' }}>
                                             <BsShopWindow className="me-2" />
                                             Sellers
                                         </Nav.Link>
                                     </div>
                                     <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/admin-products" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}>
+                                        <Nav.Link href="/admin/admin-products" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                            style={{ fontSize: '0.9rem' }}>
                                             <VscMenu className="me-2" />
                                             Products
                                         </Nav.Link>
                                     </div>
                                     <Dropdown>
-                                        <Dropdown.Toggle variant="transparent" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} style={{ border: 'none', background: 'none' }}>
+                                        <Dropdown.Toggle variant="transparent" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} 
+                                        style={{ border: 'none', background: 'none', fontSize: '0.9rem' }}>
                                             <IoCartOutline className="me-2" style={{ fontSize: "20px" }} />
                                             Orders
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item href="/admin/get-all-orders">All Orders</Dropdown.Item>
-                                            <Dropdown.Item href="/admin/pending-requests">Pending Requests</Dropdown.Item>
+                                            <Dropdown.Item href="/admin/get-all-orders" style={{ fontSize: '0.9rem' }}>All Orders</Dropdown.Item>
+                                            <Dropdown.Item href="/admin/pending-requests" style={{ fontSize: '0.9rem' }}>Pending Requests</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
                                     <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/admin-profile" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}>
-                                            <IoPersonCircleOutline className="me-2" style={{ fontSize: "20px" }} />
+                                        <Nav.Link href="/admin/admin-profile" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                        style={{ fontSize: '0.8rem' }}>
+                                            <IoPersonCircleOutline className="me-2" style={{ fontSize: "1.2rem" }} />
                                             My Account
                                         </Nav.Link>
                                     </div>

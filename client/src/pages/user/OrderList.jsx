@@ -1,33 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
-import { useSelector } from 'react-redux';
-import { Container, Badge, ListGroup, Button, Row, Col } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
 
 const OrderList = () => {
-
-  const { darkMode } = useSelector((state) => state.mode)
-  console.log(darkMode)
-
+  const { darkMode } = useSelector((state) => state.mode);
   const [orders, setOrders] = useState([]);
 
-  const fetchOrderDetails = async () => {
-    try {
-      const response = await axiosInstance({
-        method: "GET",
-        url: "/orders/get-order-by-userid",
-      });
-
-      setOrders(response?.data?.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchOrderDetails = async () => {
+      try {
+        const response = await axiosInstance.get("/orders/get-order-by-userid");
+        setOrders(response?.data?.data || []);
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      }
+    };
     fetchOrderDetails();
   }, []);
-
-  console.log("Orders==============", orders);
 
   return (
     <Container data-theme={darkMode ? "dark" : "light"} className="py-5">
@@ -53,26 +43,25 @@ const OrderList = () => {
                   <Col xs={12} sm={6}>
                     <h6 className="mb-0">Order ID: {order._id}</h6>
                   </Col>
-                  <Col xs={12} sm={6} className="text-sm-end mt-2 mt-sm-0">
+                  <Col xs={12} sm={6} className="text-sm-end mt-1 mt-sm-0">
                     <span className="d-inline-block d-sm-inline" style={{ fontWeight: "bold" }}>
                       {order.orderStatus}
                     </span>
                   </Col>
                 </Row>
-                <p><strong>Total Amount:</strong> ₹{order.totalAmount.toFixed(2)}</p>
+                <p><strong>Total Amount:</strong> Rs. {order.totalAmount.toFixed(2)}</p>
                 <p><strong>Date:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
-                <ListGroup variant="flush" className="mb-3">
-                  <ListGroup.Item className="fw-bold">Items:</ListGroup.Item>
-                  {order.items.map((item, index) => (
-                    <ListGroup.Item key={index}>
-                      <Row>
-                        <Col xs={6}>{item.name}</Col>
-                        <Col xs={3} className="text-center"> {item.quantity}</Col>
-                        <Col xs={3} className="text-end">₹{(item.quantity * item.price).toFixed(2)}</Col>
-                      </Row>
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
+                <h6 style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>Items:</h6>
+                {order.items.map((item, index) => (
+                  <div key={index}>
+                    <Row className="mb-1">
+                      <Col xs={6} style={{ fontSize: '0.9rem', fontWeight: '500' }}>{item.name}</Col>
+                      <Col xs={3} className="text-center" style={{ fontSize: '0.9rem', fontWeight: '500' }}>{item.quantity}</Col>
+                      <Col xs={3} className="text-end" style={{ fontSize: '0.9rem', fontWeight: '500' }}>{(item.quantity * item.price).toFixed(2)}</Col>
+                    </Row>
+                    <hr />
+                  </div>
+                ))}
               </div>
             ))
           ) : (
