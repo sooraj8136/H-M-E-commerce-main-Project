@@ -60,7 +60,7 @@ function NewUtilitarian() {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-28px', color: 'black' }} />
+                                    <BiSolidLeftArrow style={{ marginRight: '10px', marginLeft: '-28px', color: 'black' }} />
                                     <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                                         Rs.2,299.00
                                         <br />

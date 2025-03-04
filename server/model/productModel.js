@@ -37,16 +37,6 @@ const productSchema = new mongoose.Schema(
                 "Kids", "Baby", "Kids9-14y", "Kids2-8y",
                 "accessories"]
         },
-        sizes: {
-            type: [String],
-            required: true,
-            validate: {
-                validator: function (sizes) {
-                    return sizes && sizes.length > 0;
-                },
-                message: "At least one size must be provided.",
-            },
-        },
         stock: {
             type: Number,
             required: true,

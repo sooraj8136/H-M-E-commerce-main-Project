@@ -16,39 +16,13 @@ function ProductDetailsPage() {
     const { darkMode } = useSelector((state) => state.mode);
     const { productId } = useParams();
     const [product, error] = useFetch(`/product/get-product/${productId}`);
-    const [selectedSize, setSelectedSize] = useState('');
     const [openDescription, setOpenDescription] = useState(false);
     const [openMaterials, setOpenMaterials] = useState(false);
     const [openCareGuide, setOpenCareGuide] = useState(false);
     const navigate = useNavigate();
 
-    const sizesByCategory = {
-        'accessories': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Ladies': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Preppy luxe': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'New neutrals': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Modern romance': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Activewear-by-Move': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Hot-sellers': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'New-utilitarian': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Denim': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Transitional-fits': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Kids': ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-        'Kids9-14y': ['8-9Y', '9-10Y', '10-11Y', '11-12Y', '12-13Y', '13-14Y', '14+'],
-        'Baby': ['4-6M', '6-9M', '9-12M', '11-12M', '12-18M', '1-2Y', '2-3Y', '3-4Y'],
-        'Kids2-8y': ['1-2Y', '2-3Y', '3-4Y', '4-5Y', '5-6Y', '6-7Y', '7-8Y', '8-9Y', '9-10Y']
-    };
-
-    const category = product?.category;
-    const sizes = sizesByCategory[category] || [];
-
     const handleAddToCart = async () => {
         try {
-            if (!selectedSize) {
-                toast.error("Please select a size before adding to cart.");
-                return;
-            }
-
             if (product?.stock <= 0) {
                 toast.error(`Insufficient stock for ${product.title.trim()}`);
                 return;
@@ -57,22 +31,18 @@ function ProductDetailsPage() {
             const response = await axiosInstance({
                 method: "POST",
                 url: "/cart/add-to-cart",
-                data: { productId, size: selectedSize },
+                data: { productId },
             });
             toast.success("Product added to cart");
         } catch (error) {
             console.log(error);
             if (error?.response?.status === 401) {
-                toast.error('You have to log in to add items to your shopping bag.');
+                toast.error('You have to log in to add items to your shopping bag');
                 navigate('/login');
             } else {
                 toast.error(error?.response?.data?.message || 'Failed to update wishlist');
             }
         }
-    };
-
-    const handleSizeSelect = (size) => {
-        setSelectedSize(size);
     };
 
     return (
@@ -113,31 +83,6 @@ function ProductDetailsPage() {
                                 Rs. {product?.price}.00
                             </p>
 
-                            <div className="size-selection">
-                                <p className={darkMode ? "text-black" : "text-white"}>Sizes</p>
-                                <div className="size-sec">
-                                    {sizes.map((size) => (
-                                        <button
-                                            key={size}
-                                            className={`size text-center ${selectedSize === size ? "selected" : ""
-                                                }`}
-                                            style={{
-                                                fontSize: '0.8rem',
-                                                fontWeight: '500',
-                                                border: "1px solid white",
-                                                padding: '7px',
-                                            }}
-                                            onClick={() => handleSizeSelect(size)}
-                                        >
-                                            {size}
-                                        </button>
-                                    ))}
-                                </div>
-                                <br />
-                                <p className={darkMode ? "text-black" : "text-white"}>
-                                    Delivery Time: 2-7 days
-                                </p>
-                            </div>
                             <button
                                 onClick={handleAddToCart}
                                 className="mt-3 add-to-cart border-white"
@@ -168,7 +113,6 @@ function ProductDetailsPage() {
                                     )}
                                 </span>
                             </Button>
-
                             <Collapse in={openDescription}>
                                 <div id="description-collapse-text" className="mt-3">
                                     <p
@@ -211,36 +155,6 @@ function ProductDetailsPage() {
                                 </div>
                             </Collapse>
                             <hr />
-                            <Button
-                                variant="link"
-                                className={`${darkMode ? "text-black" : "text-white"
-                                    } care-guid-btn d-flex w-100 align-items-center`}
-                                onClick={() => setOpenCareGuide(!openCareGuide)}
-                                aria-controls="careguide-collapse-text"
-                                aria-expanded={openCareGuide}
-                                style={{ marginTop: "1rem" }}
-                            >
-                                <span className={openCareGuide ? "text-danger" : "care-guid-btn"}>
-                                    Care Guide
-                                </span>
-                                <span className="ms-auto">
-                                    {openCareGuide ? (
-                                        <MdKeyboardArrowUp size={22} />
-                                    ) : (
-                                        <MdKeyboardArrowDown size={22} />
-                                    )}
-                                </span>
-                            </Button>
-                            <Collapse in={openCareGuide}>
-                                <div id="careguide-collapse-text" className="mt-3">
-                                    <p
-                                        className={darkMode ? "text-black" : "text-white"}
-                                        style={{ fontSize: "1rem", fontWeight: "400" }}
-                                    >
-                                        {product?.careguid}
-                                    </p>
-                                </div>
-                            </Collapse>
                             <AddReview />
                         </Col>
                     </Row>

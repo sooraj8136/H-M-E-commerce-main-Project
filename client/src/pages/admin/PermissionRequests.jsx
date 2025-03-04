@@ -20,8 +20,7 @@ const PendingPermissionRequests = () => {
 
     const handleUpdateRequest = async (requestId, isApproved) => {
         try {
-            const response = await axiosInstance.post(
-                `/orders/requests/${requestId}`,
+            const response = await axiosInstance.post(`/orders/requests/${requestId}`,
                 { isApproved: Boolean(isApproved) }
             );
             toast.success(response.data.message);

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 const UpdateProduct = () => {
   const { darkMode } = useSelector((state) => state.mode); 
+  
   const { id: productId } = useParams();
   const [productData, setProductData] = useState({
     image: null,
@@ -14,7 +15,6 @@ const UpdateProduct = () => {
     description: "",
     category: "",
     stock: "",
-    size: "",
     materials: "",
     careguid: "",
   });
@@ -27,8 +27,7 @@ const UpdateProduct = () => {
         price: data.price || "",
         description: data.description || "",
         category: data.category || "",
-        stock: data.stock || 0,
-        size: data.size || "",
+        stock: data.stock || "",
         materials: data.materials || "",
         careguid: data.careguid || "",
       });
@@ -166,18 +165,6 @@ const UpdateProduct = () => {
             type="number"
             name="stock"
             value={productData.stock}
-            onChange={handleChange}
-            className="w-100 pass-input mt-1"
-          />
-        </div>
-        <div className="mb-3">
-          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
-            Product Sizes (comma-separated):
-          </label>
-          <input
-            type="text"
-            name="size"
-            value={productData.size}
             onChange={handleChange}
             className="w-100 pass-input mt-1"
           />

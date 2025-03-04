@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 
 const UserResetPassword = () => {
-  const { token } = useParams(); // Get the reset token from the URL
+  const { token } = useParams();
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");

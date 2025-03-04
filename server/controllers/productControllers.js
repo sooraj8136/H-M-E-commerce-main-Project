@@ -22,19 +22,14 @@ const getAllProduct = async (req, res) => {
 
 const createProduct = async (req, res) => {
     try {
-        const { image, title, price, description, materials, careguid, stock, category, sizes } = req.body;
+        const { image, title, price, description, materials, careguid, stock, category } = req.body;
         const sellerId = req.user.id;
 
         console.log('request Body = ', req.body);
         console.log('uploaded File  = ', req.file);
 
-        let parsedSizes = sizes;
-        if (typeof sizes === 'string') {
-            parsedSizes = JSON.parse(sizes);
-        }
-
-        if (!title || !price || !description || !materials || !careguid || !stock || !category || !parsedSizes || parsedSizes.length === 0) {
-            return res.status(400).json({ message: "All fields, including sizes, are required." });
+        if (!title || !price || !description || !materials || !careguid || !stock || !category ) {
+            return res.status(400).json({ message: "All fields are required." });
         }
 
         const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path);
@@ -47,7 +42,6 @@ const createProduct = async (req, res) => {
             materials,
             careguid,
             category,
-            sizes: parsedSizes,
             image: uploadResult.url,
             stock,
             seller: sellerId,
@@ -131,9 +125,9 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const productId = req.params.id;
-        const { image, title, price, description, category, stock, size, materials, careguid } = req.body;
+        const { image, title, price, description, category, stock, materials, careguid } = req.body;
 
-        const updateFields = { image, title, price, description, category, stock, size, materials, careguid };
+        const updateFields = { image, title, price, description, category, stock, materials, careguid };
 
         // Remove undefined or empty fields
         Object.keys(updateFields).forEach((key) => {

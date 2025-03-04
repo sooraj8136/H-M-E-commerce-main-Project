@@ -11,6 +11,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 export const AddReview = () => {
   const { darkMode } = useSelector((state) => state.mode);
   const { productId } = useParams();
+  const { userData } = useSelector((state) => state.user); // Get logged-in user data
 
   const [rating, setRating] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -20,12 +21,14 @@ export const AddReview = () => {
   const [openReviews, setOpenReviews] = useState(false);
 
   const handleStarClick = (value) => setRating(value);
+
   const handleCloseModal = () => {
     setShowModal(false);
     setEditingReview(null);
     setRating(0);
     setValue("comment", "");
   };
+
   const handleShowModal = (review = null) => {
     if (review) {
       setEditingReview(review);
@@ -40,7 +43,7 @@ export const AddReview = () => {
       const response = await axiosInstance.get(`/review/get-review/${productId}`);
       setReviews(response.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching reviews:", error);
       setReviews([]);
     }
   };
@@ -51,25 +54,33 @@ export const AddReview = () => {
 
   const onSubmit = async (data) => {
     try {
+      if (!userData?._id) {
+        toast.error("You have to log in to add a review");
+        return;
+      }
+
       if (editingReview) {
-        await axiosInstance.put(`/review/update-review/${productId}`, {
+        await axiosInstance.put(`/review/update-review/${editingReview._id}`, {
           ...data,
           rating,
           productId,
+          userId: userData._id, 
         });
         toast.success("Review updated successfully!");
       } else {
-        await axiosInstance.post("/review/add-review", {
+        await axiosInstance.post("/review/add-review/", {
           ...data,
           productId,
           rating,
+          userId: userData._id, 
         });
         toast.success("Review added successfully!");
       }
+
       fetchReviews();
       handleCloseModal();
     } catch (error) {
-      console.error(error);
+      console.error("Error when submitting review:", error);
       toast.error(error.response?.data?.message || "Something went wrong!");
     }
   };
@@ -81,24 +92,34 @@ export const AddReview = () => {
       fetchReviews();
     } catch (error) {
       console.error("Error deleting review:", error);
-      toast.error(error.response?.data?.message || "Failed to delete review!");
+      toast.error(error.response?.data?.message || "Failed to delete review");
     }
   };
 
   return (
     <div className="container">
       <div className="rate-product-container text-center">
-        <button onClick={() => handleShowModal()} className="rate-product" style={{ border: "1px solid white" }}>
-          Rate product
-        </button>
+        {userData?._id && (
+          <button
+            onClick={() => handleShowModal()}
+            className="rate-product"
+            style={{ border: "1px solid white" }}
+          >
+            Rate product
+          </button>
+        )}
       </div>
 
+      {/* Review Modal */}
       <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Header closeButton>
           <h5 className="text-center w-100">{editingReview ? "Edit" : "Add"} Your Review</h5>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column gap-2 align-items-center justify-content-center">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="d-flex flex-column gap-2 align-items-center justify-content-center"
+          >
             <div className="d-flex gap-1 mb-3 justify-content-center">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
@@ -128,7 +149,6 @@ export const AddReview = () => {
           </form>
         </Modal.Body>
       </Modal>
-
       <div className="reviews-container mt-4">
         <div className="d-flex w-100">
           <Button
@@ -143,39 +163,53 @@ export const AddReview = () => {
               textDecoration: 'none'
             }}
           >
-            <span className={darkMode ? 'text-black' : 'text-white'}>
-              Customer Reviews
-            </span>
+            <span className={darkMode ? 'text-black' : 'text-white'}>Customer Reviews</span>
             <span className="ms-auto">
-              {openReviews ? <MdKeyboardArrowUp size={22} color="black" className={darkMode ? 'text-black' : 'text-white'} /> : <MdKeyboardArrowDown size={22} color="black" className={darkMode ? 'text-black' : 'text-white'} />}
+              {openReviews ? <MdKeyboardArrowUp className={darkMode ? 'text-black' : 'text-white'} size={22} /> : <MdKeyboardArrowDown className={darkMode ? 'text-black' : 'text-white'} size={22} />}
             </span>
           </Button>
         </div>
         <Collapse in={openReviews}>
           <div id="reviews-collapse-text" className="mt-3">
             {reviews.length > 0 ? (
-              reviews.map((review) => (
-                <div key={review._id} className="mb-2">
-                  <p className={darkMode ? 'text-black mb-0' : 'text-white mb-0'}>
-                    {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
-                  </p>
-                  <p className={darkMode ? 'text-black mb-1' : 'text-white mb-1'}>
-                    {review.comment}
-                  </p>
-                  <a href="#" className={darkMode ? 'text-black me-3' : 'text-white me-3'} onClick={(e) => { e.preventDefault(); handleShowModal(review); }}>
-                    Edit
-                  </a>
-                  <a href="#" className={darkMode ? 'text-black me-3' : 'text-white me-3'} onClick={(e) => { e.preventDefault(); deleteReview(review._id); }}>
-                    Delete
-                  </a>
-                </div>
-              ))
+              reviews.map((review) => {
+                console.log("Logged-in User ID:", userData?._id);
+                console.log("Review User ID:", review.userId);
+
+                return (
+                  <div key={review._id} className="mb-2">
+                    <p className={darkMode ? 'text-black mb-0' : 'text-white mb-0'}>
+                      {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                    </p>
+                    <p className={darkMode ? 'text-black mb-1' : 'text-white mb-1'}>{review.comment}</p>
+                    {userData?._id === review.userId && (
+                      <>
+                        <a
+                          href="#"
+                          className={darkMode ? 'text-black me-3' : 'text-white me-3'}
+                          onClick={(e) => { e.preventDefault(); handleShowModal(review); }}
+                        >
+                          Edit
+                        </a>
+                        <a
+                          href="#"
+                          className={darkMode ? 'text-black me-3' : 'text-white me-3'}
+                          onClick={(e) => { e.preventDefault(); deleteReview(review._id); }}
+                        >
+                          Delete
+                        </a>
+                      </>
+                    )}
+                  </div>
+                );
+              })
             ) : (
-              <p className="text-center">No reviews yet.</p>
+              <p className={darkMode ? 'text-black text-center' : 'text-white text-center'}>
+                No reviews yet.
+              </p>
             )}
           </div>
         </Collapse>
-
       </div>
     </div>
   );

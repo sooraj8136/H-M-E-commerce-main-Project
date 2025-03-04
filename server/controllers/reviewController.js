@@ -80,9 +80,7 @@ const editReview = async (req, res) => {
         });
 
         if (!existingReview) {
-            return res.status(400).json({
-                message: "You need to add a review before editing it",
-            });
+            return res.status(400).json({ message: "You have to add a review for edit this review" });
         }
 
         existingReview.rating = rating;

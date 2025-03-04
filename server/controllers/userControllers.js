@@ -116,30 +116,32 @@ const userProfile = async (req, res) => {
 
 }
 
+
 const checkUser = async (req, res) => {
     try {
+        const userId = req.user?.id;
+        if (!userId) {
+            return res.status(401).json({ message: "Unauthorized: No user ID found" });
+        }
 
-        const userId = req.user.id;
-
-        const user = await userDb.findById(userId)
-        console.log("User Id :- ", user)
-
+        const user = await userDb.findById(userId);
         if (!user) {
-            res.status(404).json({ message: "Sorry, user not found" })
+            return res.status(404).json({ message: "Sorry, user not found" });
         }
 
         if (!user.isActive) {
-            res.status(404).json({ message: "Sorry, user deactivated" })
+            return res.status(403).json({ message: "Sorry, user is deactivated" });
         }
 
-        res.status(200).json({ message: "Authorized user" })
+        console.log("User Data:", user);
+        res.status(200).json(user); 
 
     } catch (error) {
-        console.log(error);
-        res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
+        console.error("Error in checkUser:", error);
+        res.status(error.status || 500).json({ error: error.message || "Internal Server Error" });
     }
+};
 
-}
 
 const updateUserProfile = async (req, res) => {
     try {

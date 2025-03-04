@@ -20,12 +20,12 @@ const ResetPassword = () => {
 
     try {
       const response = await axiosInstance.post(
-        `/admin/admin-reset-password/${token}`, // Correct endpoint
+        `/admin/admin-reset-password/${token}`,
         { newPassword }
       );
-      setMessage(response.data.message); // Success message
+      setMessage(response.data.message); 
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong!"); // Error handling
+      setError(err.response?.data?.message || "Something went wrong!"); 
     }
   };
 

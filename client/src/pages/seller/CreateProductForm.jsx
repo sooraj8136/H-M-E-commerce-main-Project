@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreateProductForm = () => {
   const navigate = useNavigate();
-  const { darkMode } = useSelector((state) => state.mode); 
+  const { darkMode } = useSelector((state) => state.mode);
   const [productDetails, setProductDetails] = useState({
     title: "",
     price: "",
@@ -16,7 +16,6 @@ const CreateProductForm = () => {
     careguid: "",
     stock: "",
     image: null,
-    sizes: "",
   });
 
   const handleInputChange = (e) => {
@@ -45,10 +44,6 @@ const CreateProductForm = () => {
     formData.append("materials", productDetails.materials);
     formData.append("careguid", productDetails.careguid);
     formData.append("stock", productDetails.stock);
-    formData.append(
-      "sizes",
-      JSON.stringify(productDetails.sizes.split(",").map((size) => size.trim()))
-    );
     formData.append("image", productDetails.image);
 
     try {
@@ -60,7 +55,7 @@ const CreateProductForm = () => {
 
       toast.success("Product created successfully!");
       console.log("Product created:", response.data);
-      navigate("/seller/get-seller-products");
+      navigate("/seller/seller-product");
     } catch (error) {
       toast.error("Failed to create product");
       console.error("Error:", error);
@@ -71,7 +66,7 @@ const CreateProductForm = () => {
     <>
       <div className="container d-flex justify-content-center align-items-center heading-head">
         <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com /{" "}
+          HM.com /
           <span className="text-danger" style={{ fontWeight: "800" }}>
             Create Product
           </span>
@@ -176,19 +171,6 @@ const CreateProductForm = () => {
             type="number"
             name="stock"
             value={productDetails.stock}
-            onChange={handleInputChange}
-            className="w-100 pass-input mt-1"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
-            Product Sizes (comma-separated):
-          </label>
-          <input
-            type="text"
-            name="sizes"
-            value={productDetails.sizes}
             onChange={handleInputChange}
             className="w-100 pass-input mt-1"
             required

@@ -6,7 +6,9 @@ import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 
 function UpdateSellerProfile() {
+
     const { darkMode } = useSelector((state) => state.mode);
+    
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
@@ -15,7 +17,7 @@ function UpdateSellerProfile() {
         role: "",
         qualification: "",
         storeName: "",
-        address: "",
+        address: ""
     });
 
     useEffect(() => {

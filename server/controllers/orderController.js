@@ -151,7 +151,7 @@ const updatePermissionRequest = async (req, res) => {
     const { isApproved } = req.body;
 
     if (typeof isApproved !== "boolean") {
-      return res.status(400).json({ message: "Invalid isApproved value. Must be true or false." });
+      return res.status(400).json({ message: "Invalid Approved value" });
     }
 
     const permissionRequest = await PermissionRequest.findById(requestId).populate("orderId");

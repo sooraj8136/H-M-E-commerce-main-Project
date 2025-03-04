@@ -61,8 +61,7 @@ const addToCart = async (req, res) => {
         }
 
         cart.totalPrice = cart.products.reduce(
-            (sum, item) => sum + item.totalAmount,
-            0
+            (sum, item) => sum + item.totalAmount, 0
         );
 
         await cart.save();
