@@ -10,35 +10,35 @@ function DenimMen() {
                     <div
                         className="position-relative"
                         style={{
-                            maxWidth: "930px", // Matches the width of the second container
+                            maxWidth: "930px", 
                             width: "100%",
-                            height: "100%", // Added height to align with the second container
+                            height: "100%", 
                             marginTop: '27px',
                         }}>
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11e6/MS11E6-Denimroundup-3x2-v3.jpg?imwidth=1536"
+                            src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms21e1/common-ratios/MS21E1-denim-roundup-3x2-teaser.jpg?imwidth=1536"
                             className="img-fluid"
                             alt="Activewear"
                             style={{
                                 width: "100%",
-                                height: "100%", // Fills the container height
-                                objectFit: "cover", // Maintains aspect ratio
+                                height: "100%", 
+                                objectFit: "cover", 
                             }} />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column justify-content-end"
                             style={{
-                                bottom: "10%", // Aligns content at the bottom
+                                bottom: "10%", 
                                 left: "0",
                                 width: "100%",
                                 height: "100%",
-                                textAlign: "center", // Centers text and button
+                                textAlign: "center", 
                                 padding: "0 20px",
                             }}
                         >
                             <h2
                                 style={{
                                     fontWeight: "bold",
-                                    fontSize: "calc(1.5rem + 1vw)", // Responsive font size
+                                    fontSize: "calc(1.5rem + 1vw)", 
                                     marginBottom: "10px",
                                 }}
                             >
@@ -60,7 +60,7 @@ function DenimMen() {
                                         listStyleType: "none",
                                         padding: 0,
                                         margin: 0,
-                                        marginBottom: '30px', // Adjusted spacing for smaller screens
+                                        marginBottom: '30px', 
                                     }}
                                 >
                                     <li>
@@ -71,7 +71,7 @@ function DenimMen() {
                                                 color: "black",
                                                 backgroundColor: "white",
                                                 border: "1px solid white",
-                                                padding: "8px 12px", // Scalable padding
+                                                padding: "8px 12px", 
                                                 fontWeight: "bold",
                                                 fontSize: 'small',
                                                 display: "inline-block",

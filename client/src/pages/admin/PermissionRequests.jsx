@@ -10,7 +10,10 @@ const PendingPermissionRequests = () => {
 
     const fetchPendingRequests = async () => {
         try {
-            const response = await axiosInstance.get("/orders/requests");
+            const response = await axiosInstance({
+                method: "GET",
+                url: "/orders/requests"
+            });
             setRequests(response.data.requests || []);
         } catch (error) {
             console.error("Error fetching pending requests:", error);

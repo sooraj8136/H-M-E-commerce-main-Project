@@ -19,13 +19,17 @@ const UserResetPassword = () => {
     }
 
     try {
-      const response = await axiosInstance.post(
-        `/user/user-reset-password/${token}`, 
-        { newPassword }
-      );
+      const response = await axiosInstance({
+        method: "POST",
+        url: `/user/user-reset-password/${token}`,
+        data: { newPassword }
+      });
+      toast.success("Password reset successfully!");
       setMessage(response.data.message);
     } catch (err) {
+      console.log(error)
       setError(err.response?.data?.message || "Something went wrong!");
+      toast.error(err.response?.data?.message || "Something went wrong!");
     }
   };
 

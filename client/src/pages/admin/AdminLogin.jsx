@@ -22,7 +22,10 @@ const AdminLogin = () => {
     try {
       console.log("Data  :- ", data);
 
-      const response = await axiosInstance({ method: "POST", url: admin.login_api, data });
+      const response = await axiosInstance({
+        method: "POST",
+        url: admin.login_api, data
+      });
       console.log(response, "====response");
       toast.success("Admin log-in success");
       navigate("/admin/admin-dashboard");

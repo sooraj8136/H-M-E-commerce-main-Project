@@ -52,7 +52,7 @@ const Barchart = () => {
                 borderColor: darkMode ? "black" : "white",
                 backgroundColor: darkMode
                   ? "rgba(0, 0, 0, 0.7)"
-                  : "rgba(255, 255, 255, 0.7)",
+                  : "rgba(255, 255, 255, 0.71)",
                 borderWidth: 1,
               },
             ],
@@ -115,9 +115,7 @@ const Barchart = () => {
                     color: darkMode ? "black" : "white",
                   },
                   grid: {
-                    color: darkMode
-                      ? "rgba(0, 0, 0, 0.3)"
-                      : "rgba(255, 255, 255, 0.3)",
+                    color: darkMode ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.3)",
                   },
                 },
                 y: {
@@ -125,9 +123,7 @@ const Barchart = () => {
                     color: darkMode ? "black" : "white",
                   },
                   grid: {
-                    color: darkMode
-                      ? "rgba(0, 0, 0, 0.3)"
-                      : "rgba(255, 255, 255, 0.3)",
+                    color: darkMode ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.3)",
                   },
                 },
               },

@@ -15,7 +15,10 @@ function AdminSignup() {
         try {
             console.log("Data  :- ", data);
 
-            const response = await axiosInstance.post("/admin/register-admin", data);
+            const response = await axiosInstance({
+                method : "POST",
+                url : '/admin/register-admin',data
+            })
             console.log(response, "====response");
             toast.success("Admin Sign-up success! Please log in.");
             navigate("/admin/login");
@@ -55,23 +58,6 @@ function AdminSignup() {
                             className="pass-input mx-auto my-1 w-100"
                             required
                         />
-                    </div>
-                    <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-                        <label
-                            htmlFor="role"
-                            className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
-                        >
-                            Role:
-                        </label>
-                        <select
-                            {...register("role", { required: "Role is required" })}
-                            id="role"
-                            name="role"
-                            className="pass-input mx-auto my-1 w-100"
-                            required
-                        >
-                            <option value="admin">Admin</option>
-                        </select>
                     </div>
                     <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
                         <label

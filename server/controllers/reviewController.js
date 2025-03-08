@@ -4,6 +4,7 @@ const productDb = require("../model/productModel")
 
 
 const addReview = async (req, res) => {
+    
     try {
         const { productId, rating, comment } = req.body;
 
@@ -61,6 +62,7 @@ const addReview = async (req, res) => {
 
 
 const editReview = async (req, res) => {
+
     try {
         const { productId, rating, comment } = req.body;
         const userId = req.user.id;
@@ -100,6 +102,7 @@ const editReview = async (req, res) => {
 
 
 const getReviews = async (req, res) => {
+
     const { productId } = req.params;
 
     try {
@@ -118,6 +121,7 @@ const getReviews = async (req, res) => {
 
 
 const deleteReview = async (req, res) => {
+
     const { productId, reviewId } = req.params;
     const userId = req.user?.id;
 

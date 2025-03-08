@@ -62,7 +62,7 @@ function IconicGraphics() {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-26px', color: 'black' }} />
+                                    <BiSolidLeftArrow style={{ marginRight: '10px', marginLeft: '-26px', color: 'black' }} />
                                     <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                                         Rs.2,999.00
                                     </div>

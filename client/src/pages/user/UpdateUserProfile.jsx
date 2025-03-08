@@ -14,8 +14,6 @@ const UpdateProfile = () => {
         email: "",
         mobile: "",
     });
-    const [message, setMessage] = useState("");
-    const [error, setError] = useState("");
 
     useEffect(() => {
         setFormData({
@@ -33,12 +31,7 @@ const UpdateProfile = () => {
         e.preventDefault();
 
         if (!formData.name && !formData.email && !formData.mobile) {
-            toast.error(
-                error?.response?.data?.message ||
-                "At least one field (name, email, or mobile) is required to update"
-            );
-            setError("At least one field (name, email, or mobile) is required to update");
-            setMessage("");
+            toast.error("At least one field is required to update");
             return;
         }
 
@@ -48,29 +41,22 @@ const UpdateProfile = () => {
             if (formData.email) formDataToSend.append("email", formData.email);
             if (formData.mobile) formDataToSend.append("mobile", formData.mobile);
 
-            const response = await axiosInstance.put(
-                '/user/update-profile',
-                formDataToSend,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                }
-            );
+            const response = await axiosInstance({
+                method: "PUT",
+                url: "/user/update-profile",
+                data: formDataToSend,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
 
             if (response.status === 200) {
                 toast.success("Profile updated successfully!");
-                setError(""); // Clear previous errors
                 navigate("/user/profile");
             }
         } catch (err) {
             console.error(err);
-            toast.error(
-                error?.response?.data?.message ||
-                "There was an error updating your profile. Please try again."
-            );
-            setError("There was an error updating your profile. Please try again.");
-            setMessage("");
+            toast.error("There was an error updating your profile. Please try again.");
         }
     };
 
@@ -84,7 +70,8 @@ const UpdateProfile = () => {
             <Container className="text-center">
                 <h4 className={darkMode ? "text-dark" : "text-light"}
                     style={{ fontSize: "25px", fontWeight: "700" }}>
-                    EDIT MY DETAILS</h4>
+                    EDIT MY DETAILS
+                </h4>
             </Container>
 
             <Container className="d-flex justify-content-center">

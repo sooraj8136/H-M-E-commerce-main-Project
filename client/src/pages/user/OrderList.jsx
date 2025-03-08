@@ -10,7 +10,10 @@ const OrderList = () => {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
-        const response = await axiosInstance.get("/orders/get-order-by-userid");
+        const response = await axiosInstance({
+          method: "GET",
+          url: "/orders/get-order-by-userid"
+        });
         setOrders(response?.data?.data || []);
       } catch (error) {
         console.error("Error fetching orders:", error);

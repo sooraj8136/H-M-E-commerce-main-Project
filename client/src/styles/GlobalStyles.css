@@ -475,12 +475,8 @@ ul {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     overflow: hidden;
-    transition: transform 0.3s ease;
 }
 
-.user-card:hover {
-    transform: translateY(-5px);
-}
 
 .user-card-content {
     padding: 20px;
@@ -494,7 +490,6 @@ ul {
 }
 
 .user-card p {
-    color: #555;
     margin: 10px 0;
 }
 
@@ -511,26 +506,23 @@ ul {
     padding: 8px 15px;
     cursor: pointer;
     font-size: 0.9rem;
-    transition: background-color 0.3s;
 }
 
-.user-actions button:hover {
-    background-color: #454545;
-}
+
 
 .user-actions button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
 
-.dlt-btn {
+/* .dlt-btn {
     background-color: #dc3545;
     transition: background-color 0.3s;
 }
 
 .dlt-btn:hover {
     background-color: #c82333;
-}
+} */
 
 .heading {
     margin: 40px 0px;
@@ -556,7 +548,6 @@ ul {
 }
 
 .message {
-    color: blue;
     text-align: center;
     font-size: 1.1rem;
 }
@@ -973,7 +964,6 @@ ul {
     width: 100%;
     text-align: left;
     margin-bottom: 10px;
-    transition: 0.3s ease;
     border: 1px solid white;
 }
 
@@ -1021,7 +1011,6 @@ ul {
     font-size: 16px;
     width: 100%;
     text-align: center;
-    transition: 0.3s ease;
     margin-top: 20px;
 }
 
@@ -1553,4 +1542,9 @@ hr {
         padding: 5px 8px;
         color: #000;
     }
+}
+
+
+button {
+    transition: all 0.3s ease-in-out;
 }

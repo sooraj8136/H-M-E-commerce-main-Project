@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
@@ -15,14 +15,32 @@ function ProfilePage() {
   const { darkMode } = useSelector((state) => state.mode);
   console.log(darkMode);
 
-  const [profileData, error] = useFetch('/user/profile');
+  const [profileData, setProfileData] = useState();
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axiosInstance({
+          method: "GET",
+          url: "/user/profile"
+        })
+        setProfileData(response?.data?.data)
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+      }
+    }
+    fetchUserProfile()
+  }, [])
   console.log("Profile Data :- ", profileData);
 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      const response = await axiosInstance.post("/user/logout");
+      const response = await axiosInstance({
+        method: "POST",
+        url: "/user/logout"
+      });
       console.log(response, "====response");
       toast.success("Logout success");
       navigate("/login");
@@ -59,15 +77,15 @@ function ProfilePage() {
               <div className="profile-details text-start text-dark">
                 <div className="info-section">
                   <p className="label">Name:</p>
-                  <h5 className={darkMode ? "text-black" : "text-white info-text"}>{profileData?.name}</h5>
+                  <h5 className={darkMode ? "text-black" : "text-white info-text"} style={{fontSize: "1rem"}}>{profileData?.name}</h5>
                 </div>
                 <div className="info-section">
                   <p className="label">Email:</p>
-                  <h5 className={darkMode ? "text-black" : "text-white info-text"}>{profileData?.email}</h5>
+                  <h5 className={darkMode ? "text-black" : "text-white info-text"} style={{fontSize: "1rem"}}>{profileData?.email}</h5>
                 </div>
                 <div className="info-section">
                   <p className="label">Mobile:</p>
-                  <h5 className={darkMode ? "text-black" : "text-white info-text"}>{profileData?.mobile}</h5>
+                  <h5 className={darkMode ? "text-black" : "text-white info-text"} style={{fontSize: "1rem"}}>{profileData?.mobile}</h5>
                 </div>
               </div>
               <br />

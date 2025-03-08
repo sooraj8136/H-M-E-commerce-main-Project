@@ -42,7 +42,7 @@ function TransitionalFits() {
                         alt="Activewear"
                         style={{ maxWidth: '100%', height: 'auto' }}
                     />
-                    <Link to="/productDetails/67b408b99ee20c9e01b9bda8" className="position-absolute" style={{ top: '65%', left: '68%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
+                    <Link to="/productDetails/67b408b99ee20c9e01b9bda8" className="position-absolute" style={{ top: '65%', left: '72%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
                         <button
                             style={{
                                 padding: '10px 20px',
@@ -144,7 +144,7 @@ function TransitionalFits() {
                     alt="Activewear"
                     style={{ maxWidth: '100%', height: 'auto' }}
                 />
-                <Link to="/productDetails/67b409e99ee20c9e01b9bde3" className="position-absolute" style={{ top: '65%', left: '68%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
+                <Link to="/productDetails/67b409e99ee20c9e01b9bde3" className="position-absolute" style={{ top: '65%', left: '63%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
                     <button
                         style={{
                             padding: '10px 20px',

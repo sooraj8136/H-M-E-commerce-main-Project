@@ -15,7 +15,10 @@ function DenimRoundUp() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axiosInstance.get('/product/Denim');
+                const response = await axiosInstance({
+                    method: "GET",
+                    url: "/product/Denim"
+                });
                 setProducts(response.data?.data || []);
             } catch (err) {
                 console.error("Error fetching products:", error);

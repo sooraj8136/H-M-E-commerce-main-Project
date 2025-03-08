@@ -17,11 +17,8 @@ const SellerOrders = () => {
         { status }
       );
       setOrders(response.data.data);
-      toast.success("Orders fetched successfully!");
     } catch (err) {
-      toast.error(
-        err.response?.data?.message || "Failed to fetch orders."
-      );
+      toast.error(err.response?.data?.message || "Failed to fetch orders.");
     }
   };
 

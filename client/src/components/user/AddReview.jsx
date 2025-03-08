@@ -11,7 +11,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 export const AddReview = () => {
   const { darkMode } = useSelector((state) => state.mode);
   const { productId } = useParams();
-  const { userData } = useSelector((state) => state.user); // Get logged-in user data
+  const { userData } = useSelector((state) => state.user);          // Get logged-in user data
 
   const [rating, setRating] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -43,7 +43,7 @@ export const AddReview = () => {
       const response = await axiosInstance.get(`/review/get-review/${productId}`);
       setReviews(response.data);
     } catch (error) {
-      console.error("Error fetching reviews:", error);
+      console.error("Error when fetching reviews:", error);
       setReviews([]);
     }
   };
@@ -74,14 +74,14 @@ export const AddReview = () => {
           rating,
           userId: userData._id, 
         });
-        toast.success("Review added successfully!");
+        toast.success("Review added successfully");
       }
 
       fetchReviews();
       handleCloseModal();
     } catch (error) {
-      console.error("Error when submitting review:", error);
       toast.error(error.response?.data?.message || "Something went wrong!");
+      console.error("Error when submitting review:", error);
     }
   };
 
@@ -91,13 +91,13 @@ export const AddReview = () => {
       toast.success("Review deleted successfully!");
       fetchReviews();
     } catch (error) {
-      console.error("Error deleting review:", error);
+      console.error("Error when deleting review:", error);
       toast.error(error.response?.data?.message || "Failed to delete review");
     }
   };
 
   return (
-    <div className="container">
+    <div className="container">                                     {/* Rate button */}
       <div className="rate-product-container text-center">
         {userData?._id && (
           <button
@@ -110,8 +110,7 @@ export const AddReview = () => {
         )}
       </div>
 
-      {/* Review Modal */}
-      <Modal show={showModal} onHide={handleCloseModal} centered>
+      <Modal show={showModal} onHide={handleCloseModal} centered>                                 {/* Review adding area Star and Text area */}
         <Modal.Header closeButton>
           <h5 className="text-center w-100">{editingReview ? "Edit" : "Add"} Your Review</h5>
         </Modal.Header>
@@ -149,7 +148,7 @@ export const AddReview = () => {
           </form>
         </Modal.Body>
       </Modal>
-      <div className="reviews-container mt-4">
+      <div className="reviews-container mt-4">                   {/* Open review buton */}
         <div className="d-flex w-100">
           <Button
             variant="link"
@@ -169,7 +168,7 @@ export const AddReview = () => {
             </span>
           </Button>
         </div>
-        <Collapse in={openReviews}>
+        <Collapse in={openReviews}>                                                      
           <div id="reviews-collapse-text" className="mt-3">
             {reviews.length > 0 ? (
               reviews.map((review) => {
@@ -205,7 +204,7 @@ export const AddReview = () => {
               })
             ) : (
               <p className={darkMode ? 'text-black text-center' : 'text-white text-center'}>
-                No reviews yet.
+                No reviews.
               </p>
             )}
           </div>

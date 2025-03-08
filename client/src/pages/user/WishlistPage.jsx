@@ -14,7 +14,10 @@ function WishlistPage() {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const response = await axiosInstance.get('/wishlist/get-wishlist');
+        const response = await axiosInstance({
+          method: "GET",
+          url: "/wishlist/get-wishlist"
+        });
         setWishlist(response?.data?.data?.products || []);
       } catch (error) {
         console.error('Error fetching wishlist:', error);

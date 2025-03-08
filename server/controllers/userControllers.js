@@ -205,24 +205,20 @@ const deactivateUser = async (req, res) => {
         console.log("User Id :- ", userId);
         console.log("Admin Id :- ", adminId);
 
-        // Fetch the user
         const user = await userDb.findById(userId);
         if (!user) {
-            return res.status(404).json({ message: "Sorry, user not found" }); // Added return
+            return res.status(404).json({ message: "Sorry, user not found" }); 
         }
 
-        // Check if the requester is an admin
         const admin = await adminDb.findById(adminId);
         if (!admin || admin.role !== 'admin') {
-            return res.status(403).json({ message: "Sorry, only admin can access" }); // Added return
+            return res.status(403).json({ message: "Sorry, only admin can access" }); 
         }
 
-        // Check if the user is already deactivated
         if (!user.isActive) {
-            return res.status(400).json({ message: "User is already deactivated!" }); // Added return
+            return res.status(400).json({ message: "User is already deactivated!" }); 
         }
 
-        // Deactivate the user
         user.isActive = false;
         await user.save();
 

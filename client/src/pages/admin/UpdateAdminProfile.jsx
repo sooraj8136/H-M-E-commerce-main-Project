@@ -18,7 +18,10 @@ const UpdateAdminProfile = () => {
     useEffect(() => {
         const fetchAdminProfile = async () => {
             try {
-                const response = await axiosInstance.get("/admin/admin-profile");
+                const response = await axiosInstance({
+                    method: "GET",
+                    url: "/admin/admin-profile"
+                });
                 setAdminData(response.data);
             } catch (error) {
                 toast.error("Failed to fetch admin profile");
@@ -34,7 +37,11 @@ const UpdateAdminProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axiosInstance.put("/admin/update-admin-profile", adminData);
+            const response = await axiosInstance({
+                method: "PUT",
+                url: "/admin/update-admin-profile", 
+                data: adminData
+            });
             toast.success("Profile updated successfully");
             navigate("/admin/admin-profile");
         } catch (error) {

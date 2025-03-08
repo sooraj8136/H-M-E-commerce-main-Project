@@ -7,8 +7,6 @@ import toast from "react-hot-toast";
 const GetAllOrders = () => {
   const { darkMode } = useSelector((state) => state.mode);
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -16,10 +14,7 @@ const GetAllOrders = () => {
         const response = await axiosInstance.get("/orders/get-all-orders");
         setOrders(response.data);
       } catch (err) {
-        setError(err?.response?.data?.message || "Failed to fetch orders");
         toast.error(err?.response?.data?.message || "Failed to fetch orders");
-      } finally {
-        setLoading(false);
       }
     };
     fetchOrders();
@@ -37,11 +32,7 @@ const GetAllOrders = () => {
       </h1>
       <div className="cart-container">
         <div className="cart-items">
-          {loading ? (
-            <p>Loading all orders...</p>
-          ) : error ? (
-            <p className="text-danger">{error}</p>
-          ) : orders.length > 0 ? (
+          {orders.length > 0 ? (
             orders.map((order) => (
               <div key={order._id} className="p-4 rounded-lg shadow-md bg-white dark:bg-gray-800 mb-4">
                 <Row className="mb-3">

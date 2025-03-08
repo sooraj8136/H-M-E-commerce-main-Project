@@ -49,6 +49,7 @@ const registerSeller = async (req, res) => {
 
 
 const loginSeller = async (req, res) => {
+
     try {
         const { email, password } = req.body;
 
@@ -92,11 +93,9 @@ const loginSeller = async (req, res) => {
 
 
 const checkSeller = (req, res) => {
+
     try {
-
         res.status(200).json({ message: "Authorized Seller" })
-
-
     } catch (error) {
         console.error("Error during admin login:", error.message);
         res.status(500).json({ message: "Internal server error", error: error.message });
@@ -105,6 +104,7 @@ const checkSeller = (req, res) => {
 
 
 const sellerProfile = async (req, res) => {
+
     try {
         const sellerId = req.user.id
         const sellerData = await sellerDb.findById(sellerId).select("-password")
@@ -117,6 +117,7 @@ const sellerProfile = async (req, res) => {
 
 
 const updateSellerProfile = async (req, res) => {
+
     try {
         const sellerId = req.user.id;
         const { name, email, mobile, storeName, address } = req.body;
@@ -166,6 +167,7 @@ const updateSellerProfile = async (req, res) => {
 
 
 const sellerLogout = async (req, res) => {
+
     try {
         res.clearCookie("seller_token", {
             sameSite: "None",
@@ -183,6 +185,7 @@ const sellerLogout = async (req, res) => {
 }
 
 const deleteSeller = async (req, res) => {
+
     try {
 
         const { sellerId } = req.params;
@@ -205,6 +208,7 @@ const deleteSeller = async (req, res) => {
 
 
 const getAllSellers = async (req, res) => {
+
     try {
         const users = await sellerDb.find();
         res.json(users);
@@ -216,6 +220,7 @@ const getAllSellers = async (req, res) => {
 
 
 const sellerForgotPassword = async (req, res) => {
+
     const { email } = req.body;
 
     try {
@@ -262,6 +267,7 @@ const sellerForgotPassword = async (req, res) => {
 };
 
 const sellerResetPassword = async (req, res) => {
+    
     const { token } = req.params;
     const { newPassword } = req.body;
 

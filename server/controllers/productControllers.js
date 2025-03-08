@@ -3,6 +3,7 @@ const productDb = require("../model/productModel")
 const sellerDb = require("../model/sellerModel")
 
 const getAllProduct = async (req, res) => {
+
     try {
 
         const allProduct = await productDb.find().select("title price image description category ")
@@ -21,6 +22,7 @@ const getAllProduct = async (req, res) => {
 
 
 const createProduct = async (req, res) => {
+
     try {
         const { image, title, price, description, materials, careguid, stock, category } = req.body;
         const sellerId = req.user.id;
@@ -65,6 +67,7 @@ const createProduct = async (req, res) => {
 
 
 const getProduct = async (req, res) => {
+
     try {
 
         const productId = req.params.id
@@ -84,6 +87,7 @@ const getProduct = async (req, res) => {
 }
 
 const getSellerProducts = async (req, res) => {
+
     try {
         const userId = req.user.id;
 
@@ -102,6 +106,7 @@ const getSellerProducts = async (req, res) => {
 
 
 const deleteProduct = async (req, res) => {
+
     try {
 
         const productId = req.params.id
@@ -123,13 +128,14 @@ const deleteProduct = async (req, res) => {
 
 
 const updateProduct = async (req, res) => {
+
     try {
         const productId = req.params.id;
         const { image, title, price, description, category, stock, materials, careguid } = req.body;
 
         const updateFields = { image, title, price, description, category, stock, materials, careguid };
 
-        // Remove undefined or empty fields
+        // Remove undefined or empty fields  and filtering invalid fields 
         Object.keys(updateFields).forEach((key) => {
             if (!updateFields[key]) delete updateFields[key];
         });
@@ -155,6 +161,7 @@ const updateProduct = async (req, res) => {
 
 
 const productCategory = async (req, res) => {
+
     try {
         const { category } = req.params;
 

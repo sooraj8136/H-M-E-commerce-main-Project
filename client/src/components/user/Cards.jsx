@@ -13,10 +13,13 @@ function ProductCards({ product }) {
   useEffect(() => {
     const checkWishlist = async () => {
       try {
-        const response = await axiosInstance.get('/wishlist/get-wishlist');
+        const response = await axiosInstance({
+          method: "GET",
+          url: "/wishlist/get-wishlist"
+        });
         const wishlistProducts = response.data.data.products;
 
-        setIsInWishlist(wishlistProducts.some((p) => p._id === product?._id));
+        setIsInWishlist(wishlistProducts.some((p) => p._id === product?._id));      //checks if any product in the wishlist has the same _id
       } catch (error) {
         console.error('Error fetching wishlist:', error);
       }

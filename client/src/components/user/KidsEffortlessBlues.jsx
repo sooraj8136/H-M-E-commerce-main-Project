@@ -11,13 +11,12 @@ function KidsEffortlessBlues() {
                     <div
                         className="position-relative"
                         style={{
-                            maxWidth: "930px", // Matches the width of the second container
+                            maxWidth: "930px",
                             width: "100%",
-                            height: "100%", // Added height to align with the second container
+                            height: "100%", 
                             marginTop: '27px'
                         }}
                     >
-                        {/* Faded Black Overlay */}
                         <div
                             style={{
                                 position: "absolute",
@@ -36,8 +35,8 @@ function KidsEffortlessBlues() {
                             alt="Effortless Blues"
                             style={{
                                 width: "100%",
-                                height: "100%", // Fills the container height
-                                objectFit: "cover", // Maintains aspect ratio
+                                height: "100%", 
+                                objectFit: "cover", 
                                 zIndex: 0,
                             }}
                         />

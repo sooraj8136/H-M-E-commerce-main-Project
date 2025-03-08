@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCards from '../../components/user/Cards';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { useSelector } from 'react-redux';
-import { useFetch } from '../../hooks/useFetch';
+import { axiosInstance } from '../../config/axiosInstance';
 
 function ProductPage() {
 
     const { darkMode } = useSelector((state) => state.mode);
     console.log(darkMode);
 
-    const [productList, error] = useFetch("/product/get-all-products");
+    const [productList, setProductList] = useState();
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axiosInstance({
+                    method: "GET",
+                    url: "/product/get-all-products"
+                })
+                setProductList(response?.data?.data || []);
+            } catch (error) {
+                console.error("Error fetching orders:", error);
+            }
+        }
+        fetchProducts()
+    }, [])
 
     return (
         <>

@@ -5,6 +5,7 @@ const PermissionRequest = require('../model/permissionRequest');
 const { default: mongoose } = require('mongoose');
 
 const getOrdersByUserId = async (req, res) => {
+
   try {
     const userId = req.user.id;
     console.log("Fetching orders for user ID:", userId);
@@ -25,6 +26,7 @@ const getOrdersByUserId = async (req, res) => {
 };
 
 const getAllOrders = async (req, res) => {
+
   try {
 
     const orders = await OrderDb.find()
@@ -39,6 +41,7 @@ const getAllOrders = async (req, res) => {
 
 
 const getSellerOrders = async (req, res) => {
+
   try {
     const sellerId = req.user.id;
 
@@ -74,6 +77,7 @@ const getSellerOrders = async (req, res) => {
 
 
 const updateOrderStatus = async (req, res) => {
+
   try {
     const { orderId } = req.params;
     const { status } = req.body;
@@ -113,12 +117,12 @@ const updateOrderStatus = async (req, res) => {
 
 
 const sendPermissionRequestToAdmin = async (req, res) => {
+
   try {
     const { orderId, status } = req.body;
 
     console.log("Request Body:", req.body);
 
-    // Validate request data
     const validStatuses = ["processing", "transit", "out-for-delivery", "delivered"];
     if (!validStatuses.includes(status)) {
       return res.status(400).json({ message: "Invalid status provided." });
@@ -128,7 +132,6 @@ const sendPermissionRequestToAdmin = async (req, res) => {
       return res.status(400).json({ message: "Invalid Order ID provided." });
     }
 
-    // Save the permission request
     const permissionRequest = new PermissionRequest({
       orderId,
       status,
@@ -146,6 +149,7 @@ const sendPermissionRequestToAdmin = async (req, res) => {
 
 
 const updatePermissionRequest = async (req, res) => {
+
   try {
     const { requestId } = req.params;
     const { isApproved } = req.body;
@@ -181,6 +185,7 @@ const updatePermissionRequest = async (req, res) => {
 
 
 const getPendingRequests = async (req, res) => {
+
   try {
     const pendingRequests = await PermissionRequest.find({ isApproved: false }).populate("orderId");
     res.status(200).json({ message: "Pending requests fetched successfully", requests: pendingRequests });
@@ -191,6 +196,7 @@ const getPendingRequests = async (req, res) => {
 };
 
 const getSellerOrdersByStatus = async (req, res) => {
+
   try {
     const userId = req.user?.id;
     const { status } = req.body;
@@ -231,6 +237,7 @@ const getSellerOrdersByStatus = async (req, res) => {
 
 
 const updateStock = async (req, res) => {
+  
   try {
     const userId = req.user.id;
 

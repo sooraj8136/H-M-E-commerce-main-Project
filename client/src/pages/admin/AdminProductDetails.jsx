@@ -15,7 +15,10 @@ function AdminProductDetails() {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axiosInstance.get(`/product/get-product/${productId}`);
+                const response = await axiosInstance({
+                    method: "GET",
+                    url: `/product/get-product/${productId}`
+                });
                 setProduct(response.data);
             } catch (error) {
                 console.error("Failed to fetch product details:", error);

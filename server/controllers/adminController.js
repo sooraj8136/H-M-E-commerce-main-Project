@@ -4,7 +4,6 @@ const { generateToken } = require("../utils/token")
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { catchErrorHandler } = require("../utils/catchErrorHandler");
-const OrderDb = require('../model/orderModel');
 
 
 const registerAdmin = async (req, res) => {

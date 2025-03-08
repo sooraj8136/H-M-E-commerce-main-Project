@@ -14,7 +14,10 @@ function GetReview() {
 
   const fetchReviews = async () => {
     try {
-      const response = await axiosInstance.get(`/review/get-review/${productId}`);
+      const response = await axiosInstance({
+        method: "GET",
+        url: `/review/get-review/${productId}`
+      });
       setReviews(response.data);
     } catch (error) {
       console.error(error);
@@ -60,15 +63,15 @@ function GetReview() {
         </div>
   
         <Collapse in={openReviews}>
-          <div id="reviews-collapse-text" className="mt-3">
+          <div id="reviews-collapse-text" className={darkMode ? "text-black" : "text-white"}>
             {reviews.length > 0 ? (
               reviews.map((review) => (
-                <div key={review._id} className="mb-2">
+                <div key={review._id} className={darkMode ? "text-black" : "text-white"}>
                   <p className="mb-0">
                     {"★".repeat(review.rating)}
                     {"☆".repeat(5 - review.rating)}
                   </p>
-                  <p>
+                  <p className={darkMode ? "text-black" : "text-white"}>
                     {review.comment}
                   </p>
                 </div>

@@ -23,6 +23,7 @@ const getCart = async (req, res) => {
 
 
 const addToCart = async (req, res) => {
+
     try {
         const userId = req.user.id;
         const { productId } = req.body;
@@ -74,6 +75,7 @@ const addToCart = async (req, res) => {
 
 
 const updateCount = async (req, res) => {
+
     try {
         const userId = req.user.id;
         const { productId, action } = req.body; // 'action' can be 'add' or 'remove'
@@ -143,6 +145,7 @@ const updateCount = async (req, res) => {
 
 
 const removeProductFromCart = async (req, res) => {
+
     try {
         const userId = req.user.id;
         const { productId } = req.body;
@@ -175,6 +178,7 @@ const removeProductFromCart = async (req, res) => {
 
 
 const clearCart = async (req, res) => {
+    
     try {
         const userId = req.user.id;
 

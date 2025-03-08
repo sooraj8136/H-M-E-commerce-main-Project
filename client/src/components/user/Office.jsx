@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import { Container, Nav } from 'react-bootstrap'
-import { BiSolidLeftArrow } from 'react-icons/bi';
+
 
 function Office() {
     return (
@@ -12,9 +11,9 @@ function Office() {
                     <div
                         className="position-relative"
                         style={{
-                            maxWidth: "930px", // Matches the width of the second container
+                            maxWidth: "930px", 
                             width: "100%",
-                            height: "100%", // Added height to align with the second container
+                            height: "100%",
                             marginTop: '27px'
                         }}>
                             <img
@@ -23,24 +22,24 @@ function Office() {
                                 alt="Sample"
                                 style={{
                                     width: "100%",
-                                    height: "100%", // Fills the container height
-                                    objectFit: "cover", // Maintains aspect ratio
+                                    height: "100%", 
+                                    objectFit: "cover", 
                                 }}
                             />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
                             style={{
-                                top: "0", // Ensures it spans the full height
-                                left: "0", // Aligns the content to the left
+                                top: "0", 
+                                left: "0", 
                                 width: "100%",
-                                height: "100%", // Matches container height
-                                textAlign: "left", // Aligns the text to the left
-                                paddingLeft: "20px", // Adds some space from the left edge
+                                height: "100%", 
+                                textAlign: "left", 
+                                paddingLeft: "20px", 
                             }}>
                             <h2
                                 style={{
                                     fontWeight: "bold",
-                                    fontSize: "calc(1.5rem + 1vw)", // Responsive font size
+                                    fontSize: "calc(1.5rem + 1vw)", 
                                     marginBottom: "10px",
                                 }}
                             >
