@@ -11,8 +11,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 export const AddReview = () => {
   const { darkMode } = useSelector((state) => state.mode);
   const { productId } = useParams();
-  const { userData } = useSelector((state) => state.user);          // Get logged-in user data
-
+  const { userData } = useSelector((state) => state.user);   // Get logged-in user data
   const [rating, setRating] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [reviews, setReviews] = useState([]);

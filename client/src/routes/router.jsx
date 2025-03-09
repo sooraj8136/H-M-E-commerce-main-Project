@@ -47,7 +47,6 @@ import SellerResetPassword from '../pages/seller/SellerResetPassword';
 import UserForgotPassword from '../pages/user/UserForgotPassword';
 import UserResetPassword from '../pages/user/UserResetPassword';
 import PendingPermissionRequests from '../pages/admin/PermissionRequests';
-import SuccessReview from '../components/user/SuccessReview';
 import UpdateUserProfile from '../pages/user/UpdateUserProfile';
 import ProtectedRouteSeller from './ProtectedRouteSeller';
 import ProtectedRouteAdmin from './ProtectedRouteAdmin';
@@ -149,10 +148,6 @@ export const router = createBrowserRouter([
           {
             path: 'wishlist',
             element: <WishlistPage />,
-          },
-          {
-            path: 'success-review',
-            element: <SuccessReview />,
           },
           {
             path: 'update-user-profile',

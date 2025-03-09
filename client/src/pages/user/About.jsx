@@ -1,9 +1,106 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function About() {
+
+  const { darkMode } = useSelector((state) => state.mode)
+
   return (
-    <h1>About Page</h1>
-  )
+    <>
+      <div className={darkMode ? "text-black" : "text-white"}>
+        <section>
+          <div className="container  d-flex justify-content-center align-items-center heading-head">
+            <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
+              fontWeight: "700",
+            }}>About H&M Group</span> </p>
+          </div>
+          <h1 className="text" style={{ fontSize: "80px" }}>About Us</h1>
+          <div style={{ maxWidth: "100%", overflow: "hidden" }}>
+            <img
+              src="https://hmgroup.com/wp-content/uploads/2025/01/About-Us-HERO.jpg"
+              style={{ width: "100%", height: "auto", objectFit: "cover" }}
+              alt="About Us"
+            />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              maxWidth: "60%",
+              margin: "90px auto",
+            }}
+          >
+            <h2 className="text" style={{ fontSize: "32px", lineHeight: "1.4" }}>
+              H&M Group is a global fashion and design company, with over 4,000 stores in more than 75 markets and online sales in 60 markets.
+            </h2>
+            <p style={{ fontSize: "18px", lineHeight: "1.6" }}>
+              All our brands and business ventures share the same passion for making great and more sustainable fashion and design available to everyone. Each brand has its own unique identity, and together they complement each other and strengthen H&M Group – all to offer our customers unbeatable value and to enable a more circular lifestyle.
+            </p>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "20px",
+              textAlign: "center",
+              maxWidth: "80%",
+              margin: "auto",
+              padding: "40px 0"
+            }}
+          >
+            <div >
+              <h1 style={{ fontSize: "90px" }}>77</h1>
+              <p className="text">markets</p>
+            </div>
+            <div>
+              <h1 style={{ fontSize: "90px" }}>143000</h1>
+              <p className="text">employees globally (2023)</p>
+            </div>
+            <div>
+              <h1 style={{ fontSize: "90px" }}>236</h1>
+              <p className="text">billion SEK in net sales in 2023, +6% vs. 2022</p>
+            </div>
+            <div>
+              <h1 style={{ fontSize: "90px" }}>85%</h1>
+              <p className="text">recycled or sustainably sourced materials in our commercial products</p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h1 className="text" style={{ fontSize: "80px" }}>Our way</h1>
+          <div style={{ maxWidth: "100%", overflow: "hidden" }}>
+            <img
+              src="https://hmgroup.com/wp-content/uploads/2025/02/Our-Way-hero-scaled.jpg"
+              style={{ width: "100%", height: "auto", objectFit: "cover" }}
+              alt="About Us"
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              maxWidth: "60%",
+              margin: "90px auto",
+            }}
+          >
+            <h2 className="text" style={{ fontSize: "32px", lineHeight: "1.4" }}>
+              We follow all regulations in the markets where we operate and aim to do the right thing. Acting with consistency and strong ethics helps us remain a trusted company and partner. This approach builds customer trust, earns respect from society, and makes us proud of the work we do.
+            </h2>
+            <p style={{ fontSize: "18px", lineHeight: "1.6" }}>
+              The “Our way” document sums up H&M Group’s culture, values, policies and guidelines. It defines who we are, what we do and how we do it.
+            </p>
+          </div>
+        </section>
+      </div>
+    </>
+  );
 }
 
-export default About    
+export default About;

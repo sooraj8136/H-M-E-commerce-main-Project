@@ -11,7 +11,7 @@ function KidsProducts() {
                         maxWidth: "930px",
                         width: "100%",
                         height: "150px",
-                        backgroundImage: "url('https://www2.hm.com/content/dam/resell-pages/resell-mvp/curated-stores/2037-3x1-banner-CS-kids-carnival.jpg')",
+                        backgroundImage: "url('https://www2.hm.com/content/dam/TOOLBOX/PRE_SEASON/2018_s9/w11/Tck9049-w11-KIDS-SLS-3x1.jpg')",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",

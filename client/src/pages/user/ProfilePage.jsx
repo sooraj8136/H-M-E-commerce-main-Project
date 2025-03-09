@@ -128,7 +128,7 @@ function ProfilePage() {
                   <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
                   <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>Contact us</Link>
                 </div>
-                <IoIosArrowForward size={20} className={darkMode ? "text-dark" : "text-light"} />
+                <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
               </div>
               <hr style={{ width: "100%" }} />
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">

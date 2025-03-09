@@ -12,7 +12,6 @@ import { BsBag, BsPerson } from 'react-icons/bs';
 function UserHeader() {
 
     const { darkMode } = useSelector((state) => state.mode)
-    console.log(darkMode)
 
     return (
         <>
@@ -25,8 +24,8 @@ function UserHeader() {
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Sustainability
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
-                                    Customer Service
+                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
+                                    Sales
                                 </Nav.Link>
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Newsletter</Nav.Link>
@@ -119,7 +118,7 @@ function UserHeader() {
                     <div>
                         <ul className="nav justify-content-center">
                             <li className="nav-item ">
-                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Sales</Nav.Link>
+                                <Nav.Link href="/about" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>About H&M group</Nav.Link>
                             </li>
                             <li className="nav-item ">
                                 <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Ladies</Nav.Link>

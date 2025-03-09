@@ -49,7 +49,7 @@ function KidsDenim() {
                                 zIndex: 2,
                             }}
                         >
-                            <h2 className="responsive-heading" style={{ fontWeight: "bold", marginBottom: "10px" }}>
+                            <h2 className="responsive-heading text" style={{ fontWeight: "bold", marginBottom: "10px" }}>
                                 H&M Adorables
                             </h2>
                             <p className="responsive-subheading" style={{ fontSize: "small", marginBottom: "10px", fontWeight: '500' }}>

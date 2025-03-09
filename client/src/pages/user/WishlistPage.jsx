@@ -9,7 +9,6 @@ import { Row, Col } from 'react-bootstrap';
 function WishlistPage() {
   const { darkMode } = useSelector((state) => state.mode);
   const [wishlist, setWishlist] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchWishlist = async () => {
@@ -21,8 +20,6 @@ function WishlistPage() {
         setWishlist(response?.data?.data?.products || []);
       } catch (error) {
         console.error('Error fetching wishlist:', error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -31,7 +28,10 @@ function WishlistPage() {
 
   const handleRemoveFromWishlist = async (productId) => {
     try {
-      await axiosInstance.delete(`/wishlist/remove-from-wishlist/${productId}`);
+      await axiosInstance({
+        method: "DELETE",
+        url: `/wishlist/remove-from-wishlist/${productId}`
+      });
       setWishlist((prevWishlist) => prevWishlist.filter((product) => product._id !== productId));
     } catch (error) {
       console.error('Error removing item from wishlist:', error);
@@ -51,10 +51,8 @@ function WishlistPage() {
         </h2>
       </div>
 
-      {loading ? (
-        <p className="text-center">Loading wishlist...</p>
-      ) : wishlist.length === 0 ? (
-        <p className="text-center">Your wishlist is empty.</p>
+      {wishlist.length === 0 ? (
+        <p className="text-center">Your wishlist is empty</p>
       ) : (
         <Container>
           <Row className="d-flex justify-content-start">
@@ -81,15 +79,10 @@ function WishlistPage() {
                     Rs. {product.price}.00
                   </p>
                 </div>
-
                 <div className="position-absolute" style={{ top: '6px', right: '15px' }}>
                   <button
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent the Link from being triggered
-                      handleRemoveFromWishlist(product._id);
-                    }}
-                    className="btn"
-                  >
+                    onClick={() => handleRemoveFromWishlist(product._id)}
+                    className="btn">
                     <FaTrashAlt />
                   </button>
                 </div>

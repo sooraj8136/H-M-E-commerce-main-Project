@@ -11,7 +11,7 @@ function MenProducts() {
                         maxWidth: "930px",
                         width: "100%",
                         height: "150px",
-                        backgroundImage: "url('https://www2.hm.com/content/dam/TOOLBOX/LOCAL%20ACTIVITIES/w6/334896_HM_50proc_rabatt_3x1.jpg')",
+                        backgroundImage: "url('https://www2.hm.com/content/dam/men_s06/september_2022/3066-teasers---banners/3066-Banner-3x1-2-the-essentials.jpg')",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",

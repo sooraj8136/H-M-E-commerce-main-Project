@@ -24,13 +24,12 @@ function KidsEffortlessBlues() {
                                 left: 0,
                                 width: "100%",
                                 height: "100%",
-                                background: "linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))",
                                 zIndex: 1,
                             }}
                         ></div>
 
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/kids/4031b/4031B-3x2-1-effortless-blues.jpg?imwidth=1536"
+                            src="https://image.hm.com/content/dam/global_campaigns/season_01/kids/9111f/9111F-3x2-limited-edition-2025.jpg?imwidth=1536"
                             className="img-fluid"
                             alt="Effortless Blues"
                             style={{
@@ -60,7 +59,7 @@ function KidsEffortlessBlues() {
                             </p>
                             <div
                                 style={{
-                                    backgroundColor: "rgb(255, 255, 255)",
+                                    backgroundColor: "black",
                                     textAlign: "center",
                                     padding: "5px 10px",
                                     display: "inline-block",
@@ -73,7 +72,7 @@ function KidsEffortlessBlues() {
                                             style={{
                                                 fontSize: '0.9rem',
                                                 textDecoration: "none",
-                                                color: "black",
+                                                color: "white",
                                                 fontWeight: "bold",
                                                 display: "inline-block",
                                             }}>
