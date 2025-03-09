@@ -8,20 +8,26 @@ import Footer from '../components/user/Footer';
 import UserHeader from '../components/user/UserHeader';
 import UserFooter from '../components/user/UserFooter';
 
-function UserLayout() { 
+function UserLayout() {
 
     const { darkMode } = useSelector((state) => state.mode);
-    const { isUserAuth } = useSelector((state) => state.user);
-    const dispatch = useDispatch();
-
+    
     useEffect(() => {
         document.body.style.background = darkMode ? "white" : "black";
     }, [darkMode]);
+    
+    const location = useLocation();
+
+    const { isUserAuth } = useSelector((state) => state.user);
+    const dispatch = useDispatch();
 
     const checkUser = async () => {
         try {
-            const response = await axiosInstance.get("/user/check-user");
-            console.log("checkUser Response:", response.data); 
+            const response = await axiosInstance({
+                method: "GET",
+                url: "/user/check-user"
+            });
+            console.log("checkUser Response:", response.data);
             dispatch(saveUser(response.data));
         } catch (error) {
             console.error("User check failed:", error);
@@ -30,8 +36,8 @@ function UserLayout() {
     };
 
     useEffect(() => {
-        checkUser(); 
-    }, []); 
+        checkUser();
+    }, [location.pathname]);
 
     console.log("isUserAuth:", isUserAuth);
 

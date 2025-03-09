@@ -77,12 +77,14 @@ function Header() {
                     </Container>
                 </Navbar>
                 <div className="imageTag text-center">
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
-                        width="60px"
-                        className="rounded mx-auto d-block "
-                        alt="Responsive image"
-                    />
+                    <a href="/" target="home" rel="toHome">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
+                            width="60px"
+                            className="rounded mx-auto d-block"
+                            alt="H&M Logo"
+                        />
+                    </a>
                 </div>
                 <section className="navlinks">
                     <div>
@@ -98,9 +100,6 @@ function Header() {
                             </li>
                             <li className="nav-item">
                                 <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Kids</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Home</Nav.Link>
                             </li>
                             <li className="nav-item">
                                 <Nav.Link href="/contact" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Contact</Nav.Link>

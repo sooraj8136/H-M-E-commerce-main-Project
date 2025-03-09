@@ -99,9 +99,15 @@ function AdminHeader() {
                         </Navbar.Collapse>
                     </Container>
                 </Navbar>
-
                 <div className="imageTag text-center mt-4">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png" width="60px" className="rounded mx-auto d-block" alt="Responsive logo" />
+                    <a href="/admin/admin-dashboard" target="home" rel="toHome">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
+                            width="60px"
+                            className="rounded mx-auto d-block"
+                            alt="H&M Logo"
+                        />
+                    </a>
                 </div>
             </header>
         </>

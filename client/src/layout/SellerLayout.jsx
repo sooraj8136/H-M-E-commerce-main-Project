@@ -27,7 +27,6 @@ function SellerLayout() {
                 method: "GET",
                 url: "/seller/check-seller",
             });
-
             console.log(response, "=====checkSeller");
             dispatch(saveSeller());
         } catch (error) {
