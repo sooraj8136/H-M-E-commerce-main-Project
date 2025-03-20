@@ -34,6 +34,11 @@ const sellerSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        role: {
+            type: String,
+            enum: ["seller"], 
+            default: "seller"
+        },
         isActive: {
             type: Boolean,
             default: true,

@@ -1,4 +1,6 @@
 const sellerDb = require("../model/sellerModel")
+const userDb = require("../model/userModel")
+const adminDb = require("../model/adminModel")
 const bcrypt = require('bcrypt')
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
@@ -128,8 +130,13 @@ const updateSellerProfile = async (req, res) => {
 
         if (email) {
             const existingSellerEmail = await sellerDb.findOne({ email });
-            if (existingSellerEmail && existingSellerEmail._id.toString() !== sellerId) {
-                return res.status(400).json({ error: "This email is already registered with another seller" });
+            const existingUserEmail = await userDb.findOne({ email });
+            const existingAdminEmail = await adminDb.findOne({ email });
+
+            if (
+                (existingSellerEmail && existingSellerEmail._id.toString() !== sellerId) || existingUserEmail || existingAdminEmail
+            ) {
+                return res.status(400).json({ error: "This email is already registered with another Users" });
             }
         }
 
@@ -225,7 +232,7 @@ const sellerForgotPassword = async (req, res) => {
 
     try {
 
-        const seller = await sellerDb.findOne({ email, role: "seller" });
+        const seller = await sellerDb.findOne({ email:email.toLowerCase()});
 
         if (!seller) {
             return res.status(404).json({ message: "Seller not found" });
@@ -267,7 +274,7 @@ const sellerForgotPassword = async (req, res) => {
 };
 
 const sellerResetPassword = async (req, res) => {
-    
+
     const { token } = req.params;
     const { newPassword } = req.body;
 

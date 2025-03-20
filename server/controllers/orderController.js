@@ -54,7 +54,7 @@ const getSellerOrders = async (req, res) => {
     const sellerProducts = await productDb.find({ seller: sellerId }).select("_id");
 
     if (!sellerProducts.length) {
-      return res.status(404).json({ message: "No products found for this seller" });
+      return res.status(404).json({ message: "No Orders found for this seller" });
     }
 
     const productIds = sellerProducts.map((product) => product._id);
@@ -79,6 +79,7 @@ const getSellerOrders = async (req, res) => {
 const updateOrderStatus = async (req, res) => {
 
   try {
+    
     const { orderId } = req.params;
     const { status } = req.body;
 
@@ -102,16 +103,10 @@ const updateOrderStatus = async (req, res) => {
     order.orderStatus = status;
     await order.save();
 
-    res.status(200).json({
-      message: "Order status updated successfully",
-      order,
-    });
+    res.status(200).json({message: "Order status updated successfully",order});
   } catch (error) {
     console.error("Error updating order status:", error);
-    res.status(500).json({
-      message: "Internal server error",
-      error: error.message,
-    });
+    res.status(500).json({message: "Internal server error",error: error.message});
   }
 };
 
@@ -237,7 +232,7 @@ const getSellerOrdersByStatus = async (req, res) => {
 
 
 const updateStock = async (req, res) => {
-  
+
   try {
     const userId = req.user.id;
 

@@ -15,7 +15,6 @@ orderRouter.post("/requests/:requestId", adminAuth, updatePermissionRequest )
 orderRouter.post("/permission-request", sendPermissionRequestToAdmin ) 
 orderRouter.post("/update-Stock", userAuth, updateStock ) 
 
-
 orderRouter.put("/orders/:orderId/status", sellerAuth, updateOrderStatus )
 
 

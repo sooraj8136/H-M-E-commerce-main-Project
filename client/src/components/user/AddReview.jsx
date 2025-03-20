@@ -53,7 +53,7 @@ export const AddReview = () => {
 
   const onSubmit = async (data) => {
     try {
-      if (!userData?._id) {
+      if (!userData?.user?._id) {
         toast.error("You have to log in to add a review");
         return;
       }
@@ -63,7 +63,7 @@ export const AddReview = () => {
           ...data,
           rating,
           productId,
-          userId: userData._id, 
+          userId: userData?.user?._id, 
         });
         toast.success("Review updated successfully!");
       } else {
@@ -71,7 +71,7 @@ export const AddReview = () => {
           ...data,
           productId,
           rating,
-          userId: userData._id, 
+          userId: userData?.user?._id, 
         });
         toast.success("Review added successfully");
       }
@@ -98,7 +98,7 @@ export const AddReview = () => {
   return (
     <div className="container">                                     {/* Rate button */}
       <div className="rate-product-container text-center">
-        {userData?._id && (
+        {userData?.user?._id && (
           <button
             onClick={() => handleShowModal()}
             className="rate-product"
@@ -180,7 +180,7 @@ export const AddReview = () => {
                       {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                     </p>
                     <p className={darkMode ? 'text-black mb-1' : 'text-white mb-1'}>{review.comment}</p>
-                    {userData?._id === review.userId && (
+                    {userData?.user?._id === review.userId && (
                       <>
                         <a
                           href="#"

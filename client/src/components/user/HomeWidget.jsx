@@ -47,7 +47,7 @@ function HomeWidget() {
                   width: "100%",
                 }}
               >
-                <a href="/New-neutrals" style={{ textDecoration: "none" }}>
+                <a href="/Ladies" style={{ textDecoration: "none" }}>
                   <button
                     className="btn-light"
                     style={{
@@ -60,7 +60,7 @@ function HomeWidget() {
                     Ladies
                   </button>
                 </a>
-                <a href="/New-neutrals" style={{ textDecoration: "none" }}>
+                <a href="/Hot-sellers" style={{ textDecoration: "none" }}>
                   <button
                     className="btn-light"
                     style={{
@@ -73,7 +73,7 @@ function HomeWidget() {
                     Men
                   </button>
                 </a>
-                <a href="/Hot-sellers" style={{ textDecoration: "none" }}>
+                <a href="/Baby" style={{ textDecoration: "none" }}>
                   <button
                     className="btn-light"
                     style={{

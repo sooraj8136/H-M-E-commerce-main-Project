@@ -119,28 +119,28 @@ const userProfile = async (req, res) => {
 
 const checkUser = async (req, res) => {
     try {
+        console.log("Decoded User from Token:", req.user);
         const userId = req.user?.id;
+
+        console.log("User Id =======",userId)
+
         if (!userId) {
             return res.status(401).json({ message: "Unauthorized: No user ID found" });
         }
 
         const user = await userDb.findById(userId);
         if (!user) {
-            return res.status(404).json({ message: "Sorry, user not found" });
+            return res.status(404).json({ message: "User not found" });
         }
 
-        if (!user.isActive) {
-            return res.status(403).json({ message: "Sorry, user is deactivated" });
-        }
-
-        console.log("User Data:", user);
-        res.status(200).json(user); 
+        res.status(200).json({ message: "Authorized User", user });
 
     } catch (error) {
         console.error("Error in checkUser:", error);
-        res.status(error.status || 500).json({ error: error.message || "Internal Server Error" });
+        res.status(500).json({ error: "Internal Server Error" });
     }
 };
+
 
 
 const updateUserProfile = async (req, res) => {
@@ -148,7 +148,7 @@ const updateUserProfile = async (req, res) => {
         const userId = req.user.id;
         const { name, email, mobile } = req.body;
 
-        console.log("REQ.BODY = ", req.body);
+        console.log("REQ.BODY === ", req.body);
 
         if (!name && !email && !mobile) {
             return res.status(400).json({ error: "At least one field (name, email, or mobile) is required to update" });

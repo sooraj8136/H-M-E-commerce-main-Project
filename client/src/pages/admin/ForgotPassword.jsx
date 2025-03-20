@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     <div>
       <div className="container d-flex justify-content-center align-items-center heading-head mb-4">
         <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com / <span className="text-danger" style={{ fontWeight: "800" }}>User Forgot password</span>
+          HM.com / <span className="text-danger" style={{ fontWeight: "800" }}>Admin Forgot password</span>
         </p>
       </div>
       <div className={darkMode ? "text-black" : "text-white"}>

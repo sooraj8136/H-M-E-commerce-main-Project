@@ -1,37 +1,44 @@
-import React from 'react'
+import React from 'react';
 import Nav from "react-bootstrap/Nav";
-import { Container } from "react-bootstrap";
-import { useSelector } from 'react-redux'
+import { Container, Row } from "react-bootstrap";
+import { useSelector } from 'react-redux';
 
 function SellerProductCard({ product }) {
-
-    const { darkMode } = useSelector((state) => state.mode)
-    console.log(darkMode)
+  const { darkMode } = useSelector((state) => state.mode);
 
   return (
-    <>
-      <Container className="d-flex justify-content-center align-items-center my-3">
+    <Container className="my-3">
+      <Row className="justify-content-center">
         <Nav.Link href={`/seller/seller-product-details/${product?._id}`} className="text-decoration-none">
-          <div className="product-item text-center">
-            <img src={product?.image} alt={product?.title}
+          <div>
+            <img
+              src={product?.image}
+              alt={product?.title}
+              className="img-fluid"
               style={{
-                width: "300px",   
-                height: "auto",
                 objectFit: "cover",
+                maxWidth: "100%",
+                height: "auto",
                 marginBottom: "10px",
-                maxWidth: "1024px"
-              }} />
-            <h3 className={darkMode ? "text-black" : "text-white "}
-              style={{ fontSize: "1rem", marginBottom: "0.5rem", }} >
-              {product?.title}</h3>
-            <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "1rem", }} >
-              Rs.{product?.price}.00
-            </p>
+                borderRadius: "0", 
+              }}
+            />
+            <div className="d-flex flex-column align-items-start">
+              <h3
+                className={darkMode ? 'text-black' : 'text-white'}
+                style={{ fontSize: '0.8rem', fontWeight: '600', marginBottom: '0.5rem' }}
+              >
+                {product?.title}
+              </h3>
+              <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: '500' }}>
+                Rs. {product?.price}.00
+              </p>
+            </div>
           </div>
         </Nav.Link>
-      </Container>
-    </>
-  )
+      </Row>
+    </Container>
+  );
 }
 
-export default SellerProductCard
+export default SellerProductCard;

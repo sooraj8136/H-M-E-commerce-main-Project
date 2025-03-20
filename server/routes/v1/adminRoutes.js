@@ -9,7 +9,6 @@ adminRouter.post("/admin-forgot-password", adminForgotPassword )
 adminRouter.post("/admin-reset-password/:token", adminResetPassword ) 
 adminRouter.post("/admin-logout", adminAuth, adminLogout )
 
-
 adminRouter.get("/check-admin", adminAuth, checkAdmin )
 adminRouter.get("/admin-profile", adminAuth, adminProfile )
 

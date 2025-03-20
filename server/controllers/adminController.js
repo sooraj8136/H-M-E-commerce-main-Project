@@ -99,7 +99,6 @@ const checkAdmin = (req, res) => {
 
         res.status(200).json({ message: "Authorized admin" })
 
-
     } catch (error) {
         console.error("Error during admin login:", error.message);
         res.status(500).json({ message: "Internal server error", error: error.message });
@@ -144,7 +143,7 @@ const updateAdminProfile = async (req, res) => {
         if (email) {
             const existingAdminEmail = await adminDb.findOne({ email });
             if (existingAdminEmail && existingAdminEmail._id.toString() !== adminId) {
-                return res.status(400).json({ error: "This Email already registered with another seller" });
+                return res.status(400).json({ error: "This Email already registered with another Admin" });
             }
         }
 

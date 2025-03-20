@@ -2,7 +2,7 @@ const stripe = require("stripe")(process.env.Stripe_Secret_Api_Key);
 const client_domain = process.env.CLIENT_DOMAIN;
 const OrderDb = require("../model/orderModel")
 
-const reateCheckoutSession = async (req, res, next) => {
+const CreateCheckoutSession = async (req, res, next) => {
     try {
         const { products } = req.body;
 
@@ -18,7 +18,6 @@ const reateCheckoutSession = async (req, res, next) => {
             quantity: product?.quantity || 1,
         }));
 
-
         const totalAmount = products.reduce(
             (sum, product) => sum + product?.productId?.price * (product?.quantity || 1),
             0
@@ -30,7 +29,6 @@ const reateCheckoutSession = async (req, res, next) => {
             success_url: `${client_domain}/user/payment-success`,
             cancel_url: `${client_domain}/user/payment-cancel`,
         });
-
 
         const order = new OrderDb({
             userId: req.user.id,
@@ -50,9 +48,7 @@ const reateCheckoutSession = async (req, res, next) => {
         res.json({ success: true, sessionId: session.id });
     } catch (error) {
         console.error(error);
-        res
-            .status(error.status || 500)
-            .json({ error: error.message || "Internal server error" });
+        res.status(error.status || 500).json({ error: error.message || "Internal server error" });
     }
 };
 
@@ -72,4 +68,4 @@ const sessionStatus = async (req, res) => {
     }
 };
 
-module.exports = { reateCheckoutSession, sessionStatus }
+module.exports = { CreateCheckoutSession, sessionStatus }
