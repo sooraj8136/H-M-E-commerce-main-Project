@@ -90,7 +90,7 @@ function Header() {
                     <div>
                         <ul className="nav justify-content-center">
                             <li className="nav-item ">
-                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Sales</Nav.Link>
+                            <Nav.Link href="/about" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>About H&M group</Nav.Link>
                             </li>
                             <li className="nav-item ">
                                 <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Ladies</Nav.Link>

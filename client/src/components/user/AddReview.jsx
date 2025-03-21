@@ -42,7 +42,7 @@ export const AddReview = () => {
       const response = await axiosInstance.get(`/review/get-review/${productId}`);
       setReviews(response.data);
     } catch (error) {
-      console.error("Error when fetching reviews:", error);
+      console.log("Error when fetching reviews:", error);
       setReviews([]);
     }
   };
