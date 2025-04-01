@@ -1,4 +1,3 @@
-import UserLayout from '../layout/UserLayout';
 import SellerLayout from '../layout/SellerLayout';
 import Login from '../pages/shared/Login';
 import { createBrowserRouter } from "react-router-dom";
@@ -54,6 +53,7 @@ import DenimRoundUp from '../pages/user/DenimRoundUp';
 import TransitionalFits from '../pages/user/TransitionalFits';
 import UpdateSellerProfile from '../pages/seller/UpdateSellerProfile';
 import UpdateAdminProfile from '../pages/admin/UpdateAdminProfile';
+import UserLayout from '../layout/userLayout';
 
 export const router = createBrowserRouter([
   {
