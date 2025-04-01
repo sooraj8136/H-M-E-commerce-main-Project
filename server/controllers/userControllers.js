@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
 const { cloudinaryInstance } = require("../config/cloudinaryConfig")
+const NODE_ENV = process.env.NODE_ENV;
 
 
 const register = async (req, res) => {
@@ -77,9 +78,9 @@ const login = async (req, res) => {
         console.log(token, "=======token")
 
         res.cookie("token", token, {
-            sameSite: "None",
-            secure: true,
-            httpOnly: true
+            sameSite: NODE_ENV === "production" ? "None" : "Lax",
+            secure: NODE_ENV === "production",
+            httpOnly: NODE_ENV === "production"
         });
 
         {
@@ -122,7 +123,7 @@ const checkUser = async (req, res) => {
         console.log("Decoded User from Token:", req.user);
         const userId = req.user?.id;
 
-        console.log("User Id =======",userId)
+        console.log("User Id =======", userId)
 
         if (!userId) {
             return res.status(401).json({ message: "Unauthorized: No user ID found" });
@@ -207,16 +208,16 @@ const deactivateUser = async (req, res) => {
 
         const user = await userDb.findById(userId);
         if (!user) {
-            return res.status(404).json({ message: "Sorry, user not found" }); 
+            return res.status(404).json({ message: "Sorry, user not found" });
         }
 
         const admin = await adminDb.findById(adminId);
         if (!admin || admin.role !== 'admin') {
-            return res.status(403).json({ message: "Sorry, only admin can access" }); 
+            return res.status(403).json({ message: "Sorry, only admin can access" });
         }
 
         if (!user.isActive) {
-            return res.status(400).json({ message: "User is already deactivated!" }); 
+            return res.status(400).json({ message: "User is already deactivated!" });
         }
 
         user.isActive = false;
