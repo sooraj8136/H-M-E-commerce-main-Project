@@ -12,16 +12,21 @@ const PaymentSuccess = () => {
     useEffect(() => {
         const handlePostPayment = async () => {
             try {
-                await axiosInstance({
+                console.log("Attempting to clear cart...");
+                const clearCartResponse = await axiosInstance({
                     method: "DELETE",
                     url: "/cart/clear-cart"
                 });
-                toast.success('Your payment successful');
+                console.log("Clear Cart Response:", clearCartResponse);
+                toast.success('Your payment was successful');
 
+                console.log("Attempting to update stock...");
                 const response = await axiosInstance({
                     method: "POST",
                     url: "/orders/update-stock"
                 });
+                console.log("Stock Update Response:", response);
+
                 if (response.status === 200) {
                     toast.success('Stock updated successfully!');
                 } else {
@@ -29,12 +34,13 @@ const PaymentSuccess = () => {
                 }
             } catch (error) {
                 toast.error('Something went wrong');
-                console.error(error);
+                console.error("API Error:", error);
             }
         };
 
         handlePostPayment();
     }, []);
+
 
     const handleDoneClick = () => {
         navigate('/user/orders');

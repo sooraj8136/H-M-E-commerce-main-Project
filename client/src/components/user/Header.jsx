@@ -24,8 +24,8 @@ function Header() {
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Sustainability
                                 </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
-                                    Customer Service
+                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
+                                    Sales
                                 </Nav.Link>
                                 <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
                                     Newsletter</Nav.Link>

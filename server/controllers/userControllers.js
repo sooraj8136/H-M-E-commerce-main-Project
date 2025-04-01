@@ -180,7 +180,7 @@ const userLogout = async (req, res) => {
 
         const user = await userDb.findById(userId)
         if (!user.isActive) {
-            res.status(404).json({ message: "Sorry, you can not logout, because your account has been deactivated!" })
+            res.status(404).json({ message: "Sorry, you can't logout, because your account has been deactivated!" })
         }
 
         res.clearCookie("token", {
