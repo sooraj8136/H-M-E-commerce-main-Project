@@ -10,18 +10,21 @@ const PaymentSuccess = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const verifyUser = async () => {
+            try {
+                await axiosInstance.get('/user/check-user'); // Verify user session
+            } catch (error) {
+                console.error("User verification failed", error);
+                navigate('/login'); // Redirect to login if user is not authenticated
+            }
+        };
+
         const handlePostPayment = async () => {
             try {
-                await axiosInstance({
-                    method: "DELETE",
-                    url: "/cart/clear-cart"
-                });
-                toast.success('Your payment successful');
+                await axiosInstance.delete("/cart/clear-cart");
+                toast.success('Your payment was successful');
 
-                const response = await axiosInstance({
-                    method: "POST",
-                    url: "/orders/update-stock"
-                });
+                const response = await axiosInstance.post("/orders/update-stock");
                 if (response.status === 200) {
                     toast.success('Stock updated successfully!');
                 } else {
@@ -33,8 +36,9 @@ const PaymentSuccess = () => {
             }
         };
 
-        handlePostPayment();
-    }, []);
+        verifyUser();  // First, verify if user is authenticated
+        handlePostPayment();  // Then, process the post-payment actions
+    }, [navigate]);
 
     const handleDoneClick = () => {
         navigate('/user/orders');
