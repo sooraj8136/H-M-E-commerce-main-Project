@@ -1,5 +1,5 @@
 const stripe = require("stripe")(process.env.Stripe_Secret_Api_Key);
-const client_domain = process.env.CLIENT_DOMAIN;
+const client_domain = process.env.CORS;
 const OrderDb = require("../model/orderModel")
 
 const CreateCheckoutSession = async (req, res, next) => {
@@ -26,7 +26,7 @@ const CreateCheckoutSession = async (req, res, next) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
-            success_url: `${process.env.CORS}/user/payment-success`,
+            success_url: `${client_domain}/user/payment-success`,
         });
 
         const order = new OrderDb({
