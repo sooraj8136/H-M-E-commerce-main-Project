@@ -51,19 +51,64 @@ const CreateCheckoutSession = async (req, res, next) => {
 };
 
 
+// const sessionStatus = async (req, res) => {
+//     try {
+//         const sessionId = req.query.session_id;
+//         const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+//         res.send({
+//             status: session?.status,
+//             customer_email: session?.customer_details?.email,
+//             session_data: session,
+//         });
+//     } catch (error) {
+//         res.status(error?.statusCode || 500).json(error.message || "internal server error");
+//     }
+// };
+
 const sessionStatus = async (req, res) => {
     try {
         const sessionId = req.query.session_id;
+
+        if (!sessionId) {
+            return res.status(400).json({ error: "Session ID is required" });
+        }
+
+        // Retrieve session details from Stripe
         const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-        res.send({
+        if (!session) {
+            return res.status(404).json({ error: "Session not found" });
+        }
+
+        // Check if payment was successful
+        if (session.payment_status !== "paid") {
+            return res.status(400).json({ error: "Payment was not successful" });
+        }
+
+        // Send back relevant session data
+        res.status(200).json({
             status: session?.status,
+            payment_status: session?.payment_status,
             customer_email: session?.customer_details?.email,
-            session_data: session,
+            session_data: {
+                id: session.id,
+                amount_total: session.amount_total,
+                currency: session.currency,
+                customer_email: session?.customer_details?.email,
+                line_items: session?.line_items,
+            },
         });
+
     } catch (error) {
-        res.status(error?.statusCode || 500).json(error.message || "internal server error");
+        console.error(error);
+        res.status(error?.statusCode || 500).json({ error: error.message || "Internal server error" });
     }
 };
+
+
+
+
+
 
 module.exports = { CreateCheckoutSession, sessionStatus }

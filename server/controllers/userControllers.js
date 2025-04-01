@@ -48,102 +48,51 @@ const register = async (req, res) => {
     }
 }
 
-// const login = async (req, res) => {
-//     try {
-//         const { email, password } = req.body;
-
-//         if (!email || !password) {
-//             return res.status(400).json({ error: "All feilds are required" });
-//         }
-
-//         const user = await userDb.findOne({ email })
-
-//         if (!user) {
-//             return res.status(400).json({ error: "User not found" });
-//         }
-
-//         if (!user.isActive) {
-//             res.status(404).json({ message: "Sorry, you can not login, because your account has been deactivated! Contact Admin..." })
-//         }
-
-//         const passwordMatch = await bcrypt.compare(password, user.password);
-//         console.log(passwordMatch, "passwordMatch");
-
-//         if (!passwordMatch) {
-//             return res.status(400).json({ error: "Incorrect password" });
-//         }
-
-//         const token = generateToken(user, "user");
-//         console.log(token, "=======token")
-
-//         res.cookie("token", token, {
-//             sameSite: "None",
-//             secure: true,
-//             httpOnly: true
-//         });
-
-//         {
-//             const { password, ...userWithoutPassword } = user._doc;
-
-//             res.status(200).json({ message: "login successfully", data: userWithoutPassword });
-//         }
-
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ error: error.message || "Internal server error" });
-//     }
-// };
-
-
-
-
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).json({ error: "All fields are required" });
+            return res.status(400).json({ error: "All feilds are required" });
         }
 
-        const user = await userDb.findOne({ email });
+        const user = await userDb.findOne({ email })
 
         if (!user) {
             return res.status(400).json({ error: "User not found" });
         }
 
         if (!user.isActive) {
-            return res.status(403).json({ message: "Account deactivated! Contact Admin." });
+            res.status(404).json({ message: "Sorry, you can not login, because your account has been deactivated! Contact Admin..." })
         }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
+        console.log(passwordMatch, "passwordMatch");
+
         if (!passwordMatch) {
             return res.status(400).json({ error: "Incorrect password" });
         }
 
         const token = generateToken(user, "user");
+        console.log(token, "=======token")
 
         res.cookie("token", token, {
             sameSite: "None",
-            secure: process.env.NODE_ENV === "production", // Use HTTPS only in production
-            httpOnly: true,
-            path: "/"
+            secure: true,
+            httpOnly: true
         });
+
         {
             const { password, ...userWithoutPassword } = user._doc;
-            res.status(200).json({ message: "Login successful", data: userWithoutPassword });
+
+            res.status(200).json({ message: "login successfully", data: userWithoutPassword });
         }
 
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal server error" });
+        console.log(error);
+        res.status(500).json({ error: error.message || "Internal server error" });
     }
 };
-
-
-
-
-
-
 
 
 const userProfile = async (req, res) => {
@@ -173,7 +122,7 @@ const checkUser = async (req, res) => {
         console.log("Decoded User from Token:", req.user);
         const userId = req.user?.id;
 
-        console.log("User Id =======", userId)
+        console.log("User Id =======",userId)
 
         if (!userId) {
             return res.status(401).json({ message: "Unauthorized: No user ID found" });
@@ -224,70 +173,29 @@ const updateUserProfile = async (req, res) => {
 
 
 
-// const userLogout = async (req, res) => {
-//     try {
-
-//         const userId = req.user.id
-
-//         const user = await userDb.findById(userId)
-//         if (!user.isActive) {
-//             res.status(404).json({ message: "Sorry, you can't logout, because your account has been deactivated!" })
-//         }
-
-//         res.clearCookie("token", {
-//             sameSite: "None",
-//             secure: true,
-//             httpOnly: true
-//         });
-
-//         res.status(200).json({ message: "User logout successfull" })
-//     } catch (error) {
-//         console.log(error);
-//         res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
-//     }
-
-// }
-
-
-
 const userLogout = async (req, res) => {
     try {
-        const userId = req.user.id;
 
-        const user = await userDb.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
+        const userId = req.user.id
 
+        const user = await userDb.findById(userId)
         if (!user.isActive) {
-            return res.status(403).json({ message: "Account deactivated! You cannot logout." });
+            res.status(404).json({ message: "Sorry, you can't logout, because your account has been deactivated!" })
         }
 
         res.clearCookie("token", {
             sameSite: "None",
-            secure: process.env.NODE_ENV === "production",
-            httpOnly: true,
-            path: "/"
+            secure: true,
+            httpOnly: true
         });
 
-        res.status(200).json({ message: "User logout successful" });
-
+        res.status(200).json({ message: "User logout successfull" })
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal server Error" });
+        console.log(error);
+        res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
     }
-};
 
-
-
-
-
-
-
-
-
-
-
+}
 
 const deactivateUser = async (req, res) => {
     try {
@@ -299,16 +207,16 @@ const deactivateUser = async (req, res) => {
 
         const user = await userDb.findById(userId);
         if (!user) {
-            return res.status(404).json({ message: "Sorry, user not found" });
+            return res.status(404).json({ message: "Sorry, user not found" }); 
         }
 
         const admin = await adminDb.findById(adminId);
         if (!admin || admin.role !== 'admin') {
-            return res.status(403).json({ message: "Sorry, only admin can access" });
+            return res.status(403).json({ message: "Sorry, only admin can access" }); 
         }
 
         if (!user.isActive) {
-            return res.status(400).json({ message: "User is already deactivated!" });
+            return res.status(400).json({ message: "User is already deactivated!" }); 
         }
 
         user.isActive = false;
