@@ -12,26 +12,29 @@ const PaymentSuccess = () => {
     useEffect(() => {
         const handlePostPayment = async () => {
             try {
-                await axiosInstance.delete("/cart/clear-cart");
-                toast.success("Your payment was successful!");
+                await axiosInstance({
+                    method: "DELETE",
+                    url: "/cart/clear-cart"
+                });
+                toast.success('Your payment successful');
 
-                const response = await axiosInstance.post("/orders/update-stock");
+                const response = await axiosInstance({
+                    method: "POST",
+                    url: "/orders/update-stock"
+                });
                 if (response.status === 200) {
-                    toast.success("Stock updated successfully!");
+                    toast.success('Stock updated successfully!');
                 } else {
-                    toast.error("Failed to update stock.");
+                    toast.error('Failed to update stock.');
                 }
             } catch (error) {
-                toast.error("Something went wrong");
+                toast.error('Something went wrong');
                 console.error(error);
             }
         };
 
-        setTimeout(() => {
-            handlePostPayment();
-        }, 1000); // Small delay to allow userAuth to update
+        handlePostPayment();
     }, []);
-
 
     const handleDoneClick = () => {
         navigate('/user/orders');
