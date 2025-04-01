@@ -11,27 +11,13 @@ connectDB()
 
 app.use(express.json())
 
-// app.use(
-//     cors({
-//         origin: ["http://localhost:5173", "https://h-m-e-commerce-main-project-client.vercel.app"],
-//         credentials: true, 
-//         methods: ["GET", "POST", "PUT", "DELETE"] 
-//     })
-// );
-const cors = require("cors");
-
 app.use(
     cors({
-        origin: [
-            "http://localhost:5173", // Local frontend
-            "https://h-m-e-commerce-main-project-client.vercel.app" // Deployed frontend
-        ],
-        credentials: true, // Allow cookies & authentication
-        methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-        allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
+        origin: ["http://localhost:5173", "https://h-m-e-commerce-main-project-client.vercel.app"],
+        credentials: true, 
+        methods: ["GET", "POST", "PUT", "DELETE"] 
     })
 );
-
 
 app.use(cookieParser())
 
