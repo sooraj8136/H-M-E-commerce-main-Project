@@ -126,6 +126,10 @@ export const router = createBrowserRouter([
         element: <UserResetPassword />,
       },
       {
+        path: 'payment-success',
+        element: <PaymentSuccess />,
+      },
+      {
         element: <ProtectedRoute />,
         path: 'user',
         children: [
@@ -141,10 +145,10 @@ export const router = createBrowserRouter([
             path: 'orders',
             element: <OrderList />,
           },
-          {
-            path: 'payment-success',
-            element: <PaymentSuccess />,
-          },
+          // {
+          //   path: 'payment-success',
+          //   element: <PaymentSuccess />,
+          // },
           {
             path: 'wishlist',
             element: <WishlistPage />,
