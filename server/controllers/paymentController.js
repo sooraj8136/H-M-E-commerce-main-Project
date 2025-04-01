@@ -27,7 +27,6 @@ const CreateCheckoutSession = async (req, res, next) => {
             line_items: lineItems,
             mode: "payment",
             success_url: `${client_domain}/user/payment-success`,
-            cancel_url: `${client_domain}/user/payment-cancel`,
         });
 
         const order = new OrderDb({
