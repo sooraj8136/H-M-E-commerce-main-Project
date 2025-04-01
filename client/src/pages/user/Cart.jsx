@@ -208,7 +208,7 @@ function Cart() {
         return;
       }
 
-      navigate('/user/payment-success');
+      navigate('/payment-success');
 
     } catch (error) {
       toast.error('Failed to complete payment');
