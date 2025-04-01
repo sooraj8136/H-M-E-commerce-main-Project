@@ -53,7 +53,7 @@ import DenimRoundUp from '../pages/user/DenimRoundUp';
 import TransitionalFits from '../pages/user/TransitionalFits';
 import UpdateSellerProfile from '../pages/seller/UpdateSellerProfile';
 import UpdateAdminProfile from '../pages/admin/UpdateAdminProfile';
-import UserLayout from '../layout/userLayout';
+import UserLayout from '../layout/UserLayout';
 
 export const router = createBrowserRouter([
   {
