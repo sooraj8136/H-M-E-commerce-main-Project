@@ -24,11 +24,6 @@ const orderSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
-    paymentStatus: {
-      type: String,
-      enum: ["completed"],
-      default: "completed",
-    },
     orderStatus: {
       type: String,
       enum: ["processing", "transit", "out-for-delivery", "delivered"],

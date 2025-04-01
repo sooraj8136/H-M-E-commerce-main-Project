@@ -52,29 +52,6 @@ const CreateCheckoutSession = async (req, res, next) => {
     }
 };
 
-const handlePaymentComplete = async (req, res) => {
-    try {
-        const userId = req.user.id;
-
-        const order = await OrderDb.findOne({ userId: userId }).sort({
-            createdAt: -1,
-        });
-
-        if (!order) {
-            return res.status(404).json({ message: "No orders found for this user" });
-        }
-
-        order.paymentStatus = "completed";
-
-        await order.save();
-
-        return res
-            .status(200)
-            .json({ message: "Payment completed, order status updated" });
-    } catch (error) {
-        res.status(error?.statusCode || 500).json(error.message || "internal server error");
-    }
-};
 
 const sessionStatus = async (req, res) => {
     try {
@@ -91,4 +68,4 @@ const sessionStatus = async (req, res) => {
     }
 };
 
-module.exports = { CreateCheckoutSession, sessionStatus, handlePaymentComplete }
+module.exports = { CreateCheckoutSession, sessionStatus }
