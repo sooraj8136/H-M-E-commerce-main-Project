@@ -12,21 +12,23 @@ const PaymentSuccess = () => {
     useEffect(() => {
         const handlePostPayment = async () => {
             try {
-                await axiosInstance({
+                const clearCart = await axiosInstance({
                     method: "DELETE",
                     url: "/cart/clear-cart"
                 });
+                console.log(clearCart);
                 toast.success('Your payment successful');
 
-                const response = await axiosInstance({
+                const updateStock = await axiosInstance({
                     method: "POST",
                     url: "/orders/update-stock"
                 });
-                if (response.status === 200) {
-                    toast.success('Stock updated successfully!');
-                } else {
-                    toast.error('Failed to update stock.');
-                }
+                console.log(updateStock);
+                const updatedPaymentStatus = await axiosInstance({
+                    method: "PUT",
+                    url: "/payment/payment-completed",
+                });
+                console.log(updatedPaymentStatus);
             } catch (error) {
                 toast.error('Something went wrong');
                 console.error(error);
