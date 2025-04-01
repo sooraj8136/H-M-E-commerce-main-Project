@@ -77,7 +77,6 @@ const orderSchema = new mongoose.Schema(
     },
     stripeSessionId: { 
       type: String, 
-      required: true, // Optional, you can set this after payment is initiated
     },
     paymentStatus: {
       type: String,
