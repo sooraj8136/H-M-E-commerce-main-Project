@@ -16,4 +16,4 @@ adminRouter.put("/update-admin-profile", adminAuth, updateAdminProfile )
 
 
 
-module.exports = adminRouter    
+module.exports = adminRouter     
