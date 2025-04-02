@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY);
+const stripe = require("stripe")(process.env.Stripe_Secret_Api_Key);
 const OrderDb = require("../model/orderModel")
 
 const CreateCheckoutSession = async (req, res, next) => {
