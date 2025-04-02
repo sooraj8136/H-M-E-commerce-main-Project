@@ -3,12 +3,7 @@ const OrderDb = require("../model/orderModel")
 
 const CreateCheckoutSession = async (req, res, next) => {
     try {
-        const { products } = req.body;
-        console.log("Authorization Header:", req.headers.authorization); // Debugging log
-
-        if (!req.user) {
-            return res.status(401).json({ message: "Token not provided" });
-        }
+        const { products } = req.body;  
 
         const lineItems = products.map((product) => ({
             price_data: {
@@ -31,6 +26,7 @@ const CreateCheckoutSession = async (req, res, next) => {
             line_items: lineItems,
             mode: "payment",
             success_url: `${process.env.CLIENT_DOMAIN}/user/payment_success`,
+            success_url: `${process.env.CLIENT_DOMAIN}/user/payment_cancel`,
         });
 
         const order = new OrderDb({
