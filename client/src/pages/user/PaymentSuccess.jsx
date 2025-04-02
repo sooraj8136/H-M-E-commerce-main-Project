@@ -37,7 +37,7 @@ const PaymentSuccess = () => {
     }, []);
 
     const handleDoneClick = () => {
-        navigate('/user/payment_success');
+        navigate('/user/cart');
     };
 
     return (

@@ -55,7 +55,7 @@ function TransitionalFits() {
                                 justifyContent: 'center',
                             }}
                         >
-                            <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-28px', color: 'black' }} />
+                            <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-28px'}} />
                             <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                                 Rs.2,699.00
                                 <br />

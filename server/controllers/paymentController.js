@@ -4,6 +4,11 @@ const OrderDb = require("../model/orderModel")
 const CreateCheckoutSession = async (req, res, next) => {
     try {
         const { products } = req.body;
+        console.log("Authorization Header:", req.headers.authorization); // Debugging log
+
+        if (!req.user) {
+            return res.status(401).json({ message: "Token not provided" });
+        }
 
         const lineItems = products.map((product) => ({
             price_data: {
