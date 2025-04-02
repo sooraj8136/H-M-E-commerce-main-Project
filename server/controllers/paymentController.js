@@ -3,7 +3,7 @@ const OrderDb = require("../model/orderModel")
 
 const CreateCheckoutSession = async (req, res, next) => {
     try {
-        const { products } = req.body;  
+        const { products } = req.body;
 
         const lineItems = products.map((product) => ({
             price_data: {
@@ -21,6 +21,9 @@ const CreateCheckoutSession = async (req, res, next) => {
             (sum, product) => sum + product?.productId?.price * (product?.quantity || 1),
             0
         );
+
+        const token = generateToken(user, "user");
+        console.log(token, "=======token")
 
         res.cookie("token", token, {
             httpOnly: true,
