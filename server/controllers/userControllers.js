@@ -77,10 +77,15 @@ const login = async (req, res) => {
         const token = generateToken(user, "user");
         console.log(token, "=======token")
 
+        // res.cookie("token", token, {
+        //     sameSite: NODE_ENV === "production" ? "None" : "Lax",
+        //     secure: NODE_ENV === "production",
+        //     httpOnly: NODE_ENV === "production"
+        // });
         res.cookie("token", token, {
-            sameSite: NODE_ENV === "production" ? "None" : "Lax",
-            secure: NODE_ENV === "production",
-            httpOnly: NODE_ENV === "production"
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+            secure: process.env.NODE_ENV === "production",
+            httpOnly: process.env.NODE_ENV === "production"
         });
 
         {
