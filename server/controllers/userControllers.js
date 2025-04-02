@@ -77,11 +77,18 @@ const login = async (req, res) => {
         const token = generateToken(user, "user");
         console.log(token, "=======token")
 
+        // res.cookie("token", token, {
+        //     sameSite: NODE_ENV === "production" ? "None" : "Lax",
+        //     secure: NODE_ENV === "production",
+        //     httpOnly: NODE_ENV === "production"
+        // });
+
         res.cookie("token", token, {
-            sameSite: NODE_ENV === "production" ? "None" : "Lax",
-            secure: NODE_ENV === "production",
-            httpOnly: NODE_ENV === "production"
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "None",
         });
+
 
         {
             const { password, ...userWithoutPassword } = user._doc;
