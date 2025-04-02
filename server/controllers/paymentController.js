@@ -1,5 +1,6 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY);
 const OrderDb = require("../model/orderModel")
+const { generateToken } = require("../utils/token")
 
 const CreateCheckoutSession = async (req, res, next) => {
     try {
