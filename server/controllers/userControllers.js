@@ -184,17 +184,11 @@ const userLogout = async (req, res) => {
             res.status(404).json({ message: "Sorry, you can't logout, because your account has been deactivated!" })
         }
 
-        // res.clearCookie("token", {
-        //     sameSite: "None",
-        //     secure: true,
-        //     httpOnly: true
-        // });
         res.clearCookie("token", {
-            sameSite: NODE_ENV === "production" ? "None" : "Lax",
-            secure: NODE_ENV === "production",
-            httpOnly: NODE_ENV === "production"
+            sameSite: "None",
+            secure: true,
+            httpOnly: true
         });
-
 
         res.status(200).json({ message: "User logout successfull" })
     } catch (error) {
