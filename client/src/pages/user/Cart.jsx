@@ -148,13 +148,11 @@ import { axiosInstance } from '../../config/axiosInstance';
 import { loadStripe } from '@stripe/stripe-js';
 import { CartCards } from '../../components/user/Cards';
 import { Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const [productDetails, isLoading, error, refreshData] = useFetch('/cart/get-cart');
   const { darkMode } = useSelector((state) => state.mode);
   const [cartData, setCartData] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (productDetails?.products) {
@@ -190,8 +188,6 @@ function Cart() {
 
       refreshData();
 
-      navigate('/user/cart');
-
     } catch (error) {
       console.error(error);
       toast.error('Failed to update cart');
@@ -211,8 +207,6 @@ function Cart() {
         toast.error(result.error.message);
         return;
       }
-
-
 
     } catch (error) {
       toast.error('Failed to complete payment');
