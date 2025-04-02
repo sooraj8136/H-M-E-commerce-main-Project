@@ -54,7 +54,6 @@ import TransitionalFits from '../pages/user/TransitionalFits';
 import UpdateSellerProfile from '../pages/seller/UpdateSellerProfile';
 import UpdateAdminProfile from '../pages/admin/UpdateAdminProfile';
 import UserLayout from '../layout/UserLayout';
-import PaymentCancel from '../pages/user/PaymentCancel';
 
 export const router = createBrowserRouter([
   {
@@ -145,10 +144,6 @@ export const router = createBrowserRouter([
           {
             path: 'payment_success',
             element: <PaymentSuccess />,
-          },
-          {
-            path: 'payment_cancel',
-            element: <PaymentCancel />,
           },
           {
             path: 'wishlist',
