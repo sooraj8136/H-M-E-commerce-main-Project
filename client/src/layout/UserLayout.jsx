@@ -27,8 +27,8 @@ function UserLayout() {
                 method: "GET",
                 url: "/user/check-user"
             });
-            console.log("checkUser Response:", response.data);
-            dispatch(saveUser(response.data));
+            console.log("checkUser Response", response?.data);
+            dispatch(saveUser(response?.data));
         } catch (error) {
             console.error("User check failed:", error);
             dispatch(clearUser());
