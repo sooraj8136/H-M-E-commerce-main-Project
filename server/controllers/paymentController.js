@@ -1,10 +1,12 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY);
 const OrderDb = require("../model/orderModel")
 const { generateToken } = require("../utils/token")
+const userDb = require("../model/userModel")
 
 const CreateCheckoutSession = async (req, res, next) => {
     try {
         const { products } = req.body;
+        const user = await userDb.findOne({ email })
 
         const lineItems = products.map((product) => ({
             price_data: {
