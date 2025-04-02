@@ -21,6 +21,13 @@ const CreateCheckoutSession = async (req, res, next) => {
             (sum, product) => sum + product?.productId?.price * (product?.quantity || 1),
             0
         );
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "None",
+        });
+
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             line_items: lineItems,
