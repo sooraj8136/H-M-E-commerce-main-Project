@@ -1,12 +1,9 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY);
 const OrderDb = require("../model/orderModel")
-const { generateToken } = require("../utils/token")
-const userDb = require("../model/userModel")
 
 const CreateCheckoutSession = async (req, res, next) => {
     try {
-        const { products,email } = req.body;
-        const user = await userDb.findOne({ email })
+        const { products } = req.body;  
 
         const lineItems = products.map((product) => ({
             price_data: {
@@ -24,16 +21,6 @@ const CreateCheckoutSession = async (req, res, next) => {
             (sum, product) => sum + product?.productId?.price * (product?.quantity || 1),
             0
         );
-
-        const token = generateToken(user, "user");
-        console.log(token, "=======token")
-
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "None",
-        });
-
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             line_items: lineItems,
