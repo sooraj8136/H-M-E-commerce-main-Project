@@ -153,7 +153,6 @@ function Cart() {
   const [productDetails, isLoading, error, refreshData] = useFetch('/cart/get-cart');
   const { darkMode } = useSelector((state) => state.mode);
   const [cartData, setCartData] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (productDetails?.products) {
@@ -189,8 +188,6 @@ function Cart() {
 
       refreshData();
 
-      navigate('/user/orders');
-
     } catch (error) {
       console.error(error);
       toast.error('Failed to update cart');
@@ -211,7 +208,7 @@ function Cart() {
         return;
       }
 
-
+      
 
     } catch (error) {
       toast.error('Failed to complete payment');
