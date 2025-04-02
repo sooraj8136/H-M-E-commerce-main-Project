@@ -5,7 +5,7 @@ const userDb = require("../model/userModel")
 
 const CreateCheckoutSession = async (req, res, next) => {
     try {
-        const { products } = req.body;
+        const { products,email } = req.body;
         const user = await userDb.findOne({ email })
 
         const lineItems = products.map((product) => ({
