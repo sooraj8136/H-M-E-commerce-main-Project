@@ -22,11 +22,11 @@ function Home() {
                         }}>Home</span></p>
                     </div>
                 </div>
-                <HomeWidget/>
+                <HomeWidget />
                 <PreppyUniform />
-                <NewUtilitarian/>
-                <KidsDenim/>
-                <Office/>
+                <NewUtilitarian />
+                <KidsDenim />
+                <Office />
             </Container>
         </>
     )
