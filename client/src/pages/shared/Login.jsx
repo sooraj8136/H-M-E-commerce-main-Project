@@ -45,7 +45,7 @@ const Login = () => {
       toast.success("Log-in success");
 
       // 🔹 Fetch user data immediately after login to check if the token is sent
-      const userResponse = await fetch("http://localhost:4000", {
+      const userResponse = await fetch("https://h-m-e-commerce-main-project-server.vercel.app", {
         method: "GET",
         credentials: "include", // Ensures cookies are sent
         headers: {
