@@ -5,7 +5,6 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
 const { cloudinaryInstance } = require("../config/cloudinaryConfig")
-const NODE_ENV = process.env.NODE_ENV;
 
 
 const register = async (req, res) => {
@@ -78,9 +77,9 @@ const login = async (req, res) => {
         console.log(token, "=======token")
 
         res.cookie("token", token, {
-            sameSite: NODE_ENV === "production" ? "None" : "Lax",
-            secure: NODE_ENV === "production",
-            httpOnly: NODE_ENV === "production"
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+            secure: process.env.NODE_ENV === "production",
+            httpOnly: process.env.NODE_ENV === "production"
         });
 
         {
@@ -171,31 +170,21 @@ const updateUserProfile = async (req, res) => {
     }
 };
 
-
-
 const userLogout = async (req, res) => {
     try {
-
-        const userId = req.user.id
-
-        const user = await userDb.findById(userId)
-        if (!user.isActive) {
-            res.status(404).json({ message: "Sorry, you can't logout, because your account has been deactivated!" })
-        }
-
         res.clearCookie("token", {
-            sameSite: "None",
-            secure: true,
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+            secure: process.env.NODE_ENV === "production",
             httpOnly: true
         });
 
-        res.status(200).json({ message: "User logout successfull" })
+        res.status(200).json({ message: "User logout successful" });
+
     } catch (error) {
         console.log(error);
-        res.status(error.status || 500).json({ error: error.message || "Internal server Error" })
+        res.status(error.status || 500).json({ error: error.message || "Internal server Error" });
     }
-
-}
+};
 
 const deactivateUser = async (req, res) => {
     try {
