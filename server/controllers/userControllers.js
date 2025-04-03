@@ -5,7 +5,6 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
 const { cloudinaryInstance } = require("../config/cloudinaryConfig")
-const NODE_ENV = process.env.NODE_ENV;
 
 
 const register = async (req, res) => {

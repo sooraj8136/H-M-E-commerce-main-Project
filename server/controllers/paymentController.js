@@ -25,7 +25,8 @@ const CreateCheckoutSession = async (req, res, next) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
-            success_url: `${process.env.CLIENT_DOMAIN}/user/payment_success`,
+            // success_url: `${process.env.CLIENT_DOMAIN}/user/payment_success`,
+            success_url: `${process.env.CLIENT_DOMAIN}/user/payment_success?token=${token}`,
         });
 
         const order = new OrderDb({
