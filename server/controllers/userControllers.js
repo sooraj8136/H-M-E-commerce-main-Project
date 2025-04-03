@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
 const { cloudinaryInstance } = require("../config/cloudinaryConfig")
-const NODE_ENV = process.env.NODE_ENV;
+// const NODE_ENV = process.env.NODE_ENV;
 
 
 const register = async (req, res) => {
@@ -110,36 +110,36 @@ const login = async (req, res) => {
         }
 
         if (!user.isActive) {
-            return res.status(403).json({ message: "Your account has been deactivated. Contact Admin." });
+            return res.status(404).json({ message: "Sorry, you cannot login, because your account has been deactivated! Contact Admin..." });
         }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
+        console.log(passwordMatch, "passwordMatch");
 
         if (!passwordMatch) {
             return res.status(400).json({ error: "Incorrect password" });
         }
 
-        // ✅ Generate Token with Expiration
         const token = generateToken(user, "user");
+        console.log(token, "=======token");
 
-        // ✅ Set Secure Cookie
+        // Set the cookie BEFORE sending the response
         res.cookie("token", token, {
-            sameSite: NODE_ENV === "production" ? "None" : "Lax",
-            secure: NODE_ENV === "production",
-            httpOnly: true, // Prevent XSS attacks
-            maxAge: process.env.TOKEN_EXPIRATION * 60 * 1000 // Convert minutes to milliseconds
+            httpOnly: process.env.NODE_ENV === "production",  // 1. Security first
+            secure: process.env.NODE_ENV === "production",   // 2. Secure in production
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax"
         });
 
-        // ✅ Remove password before sending user data
+        // Send response after setting the cookie
         const { password: _, ...userWithoutPassword } = user._doc;
-
         res.status(200).json({ message: "Login successful", data: userWithoutPassword });
 
     } catch (error) {
-        console.error("Login Error:", error);
-        res.status(500).json({ error: error.message || "Internal Server Error" });
+        console.log(error);
+        res.status(500).json({ error: error.message || "Internal server error" });
     }
 };
+
 
 
 
@@ -225,17 +225,10 @@ const updateUserProfile = async (req, res) => {
 const userLogout = async (req, res) => {
     try {
 
-        const userId = req.user.id
-
-        const user = await userDb.findById(userId)
-        if (!user.isActive) {
-            res.status(404).json({ message: "Sorry, you can't logout, because your account has been deactivated!" })
-        }
-
-        res.clearCookie("token", {
-            sameSite: "None",
-            secure: true,
-            httpOnly: true
+        res.cookie("token", token, {
+            httpOnly: process.env.NODE_ENV === "production",  // 1. Security first
+            secure: process.env.NODE_ENV === "production",   // 2. Secure in production
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax"
         });
 
         res.status(200).json({ message: "User logout successfull" })
