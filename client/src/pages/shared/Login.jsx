@@ -12,21 +12,59 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const user = { login_api: "/user/login", profile_route: "/user/profile", signup_route: "/signup" };
 
+  // const onSubmit = async (data) => {
+  //   try {
+  //     console.log("Data  :- ", data);
+  //     const response = await axiosInstance({
+  //       method: "POST",
+  //       url: user.login_api, data
+  //     });
+  //     console.log(response, "====response");
+  //     toast.success("Log-in success");
+  //     navigate(user.profile_route);
+  //   } catch (error) {
+  //     toast.error("Log-in failed");
+  //     console.log(error);
+  //   }
+  // };
+
   const onSubmit = async (data) => {
     try {
       console.log("Data  :- ", data);
+
+      // Login request
       const response = await axiosInstance({
         method: "POST",
-        url: user.login_api, data
+        url: user.login_api,
+        data,
+        withCredentials: true // Ensures cookies are sent and received
       });
+
       console.log(response, "====response");
+
       toast.success("Log-in success");
+
+      // 🔹 Fetch user data immediately after login to check if the token is sent
+      const userResponse = await fetch("http://localhost:4000", {
+        method: "GET",
+        credentials: "include", // Ensures cookies are sent
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const userData = await userResponse.json();
+      console.log("User Data:", userData); // Verify if token is working
+
       navigate(user.profile_route);
     } catch (error) {
       toast.error("Log-in failed");
       console.log(error);
     }
   };
+
+
+
 
   return (
     <>

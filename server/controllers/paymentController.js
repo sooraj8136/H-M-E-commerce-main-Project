@@ -1,11 +1,9 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY);
 const OrderDb = require("../model/orderModel")
-const { generateToken } = require("../utils/token")
 
 const CreateCheckoutSession = async (req, res, next) => {
     try {
         const { products } = req.body;  
-        const token = generateToken(req.user, "user");
 
         const lineItems = products.map((product) => ({
             price_data: {
@@ -27,8 +25,7 @@ const CreateCheckoutSession = async (req, res, next) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
-            // success_url: `${process.env.CLIENT_DOMAIN}/user/payment_success`,
-            success_url: `${process.env.CLIENT_DOMAIN}/user/payment_success?token=${token}`,
+            success_url: `${process.env.CLIENT_DOMAIN}/user/payment_success`,
         });
 
         const order = new OrderDb({
