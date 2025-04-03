@@ -49,51 +49,99 @@ const register = async (req, res) => {
     }
 }
 
+// const login = async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+
+//         if (!email || !password) {
+//             return res.status(400).json({ error: "All feilds are required" });
+//         }
+
+//         const user = await userDb.findOne({ email })
+
+//         if (!user) {
+//             return res.status(400).json({ error: "User not found" });
+//         }
+
+//         if (!user.isActive) {
+//             res.status(404).json({ message: "Sorry, you can not login, because your account has been deactivated! Contact Admin..." })
+//         }
+
+//         const passwordMatch = await bcrypt.compare(password, user.password);
+//         console.log(passwordMatch, "passwordMatch");
+
+//         if (!passwordMatch) {
+//             return res.status(400).json({ error: "Incorrect password" });
+//         }
+
+//         const token = generateToken(user, "user");
+//         console.log(token, "=======token")
+
+//         res.cookie("token", token, {
+//             sameSite: NODE_ENV === "production" ? "None" : "Lax",
+//             secure: NODE_ENV === "production",
+//             httpOnly: NODE_ENV === "production"
+//         });
+
+//         {
+//             const { password, ...userWithoutPassword } = user._doc;
+
+//             res.status(200).json({ message: "login successfully", data: userWithoutPassword });
+//         }
+
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json({ error: error.message || "Internal server error" });
+//     }
+// };
+
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).json({ error: "All feilds are required" });
+            return res.status(400).json({ error: "All fields are required" });
         }
 
-        const user = await userDb.findOne({ email })
+        const user = await userDb.findOne({ email });
 
         if (!user) {
             return res.status(400).json({ error: "User not found" });
         }
 
         if (!user.isActive) {
-            res.status(404).json({ message: "Sorry, you can not login, because your account has been deactivated! Contact Admin..." })
+            return res.status(403).json({ message: "Your account has been deactivated. Contact Admin." });
         }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
-        console.log(passwordMatch, "passwordMatch");
 
         if (!passwordMatch) {
             return res.status(400).json({ error: "Incorrect password" });
         }
 
+        // ✅ Generate Token with Expiration
         const token = generateToken(user, "user");
-        console.log(token, "=======token")
 
+        // ✅ Set Secure Cookie
         res.cookie("token", token, {
             sameSite: NODE_ENV === "production" ? "None" : "Lax",
             secure: NODE_ENV === "production",
-            httpOnly: NODE_ENV === "production"
+            httpOnly: true, // Prevent XSS attacks
+            maxAge: process.env.TOKEN_EXPIRATION * 60 * 1000 // Convert minutes to milliseconds
         });
 
-        {
-            const { password, ...userWithoutPassword } = user._doc;
+        // ✅ Remove password before sending user data
+        const { password: _, ...userWithoutPassword } = user._doc;
 
-            res.status(200).json({ message: "login successfully", data: userWithoutPassword });
-        }
+        res.status(200).json({ message: "Login successful", data: userWithoutPassword });
 
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: error.message || "Internal server error" });
+        console.error("Login Error:", error);
+        res.status(500).json({ error: error.message || "Internal Server Error" });
     }
 };
+
+
 
 
 const userProfile = async (req, res) => {
