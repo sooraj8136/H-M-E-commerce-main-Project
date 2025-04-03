@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { generateToken } = require("../utils/token")
 const { cloudinaryInstance } = require("../config/cloudinaryConfig")
+const NODE_ENV = process.env.NODE_ENV;
 
 
 const register = async (req, res) => {
@@ -48,48 +49,44 @@ const register = async (req, res) => {
     }
 }
 
-const login = async (req, res) => {
+const login = async (req, res) => {  
     try {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).json({ error: "All feilds are required" });
+            return res.status(400).json({ error: "All fields are required" });
         }
 
-        const user = await userDb.findOne({ email })
+        const user = await userDb.findOne({ email });
 
         if (!user) {
             return res.status(400).json({ error: "User not found" });
         }
 
         if (!user.isActive) {
-            res.status(404).json({ message: "Sorry, you can not login, because your account has been deactivated! Contact Admin..." })
+            return res.status(404).json({ message: "Sorry, you cannot login because your account has been deactivated! Contact Admin..." });
         }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
-        console.log(passwordMatch, "passwordMatch");
-
         if (!passwordMatch) {
             return res.status(400).json({ error: "Incorrect password" });
         }
 
         const token = generateToken(user, "user");
-        console.log(token, "=======token")
 
         res.cookie("token", token, {
             sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
             secure: process.env.NODE_ENV === "production",
-            httpOnly: process.env.NODE_ENV === "production"
+            httpOnly: true
         });
 
-        {
-            const { password: _, ...userWithoutPassword } = user._doc;
-            res.status(200).json({ message: "Login successful", data: userWithoutPassword });
-        }
+        const { password: _, ...userWithoutPassword } = user.toObject ? user.toObject() : user;
+
+        return res.status(200).json({ message: "Login successful", data: userWithoutPassword });
 
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: error.message || "Internal server error" });
+        console.error(error);
+        return res.status(500).json({ error: error.message || "Internal server error" });
     }
 };
 
@@ -178,11 +175,11 @@ const userLogout = async (req, res) => {
             httpOnly: true
         });
 
-        res.status(200).json({ message: "User logout successful" });
+        return res.status(200).json({ message: "User logout successful" });
 
     } catch (error) {
-        console.log(error);
-        res.status(error.status || 500).json({ error: error.message || "Internal server Error" });
+        console.error(error);
+        return res.status(error.status || 500).json({ error: error.message || "Internal server error" });
     }
 };
 
