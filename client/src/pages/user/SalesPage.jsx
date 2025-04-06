@@ -11,13 +11,13 @@ function SalesPage() {
     return (
         <>
             <Container>
-                <div className="container  d-flex justify-content-center align-items-center heading-head">
-                    <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
-                        fontWeight: "700",
-                    }}>Sale</span></p>
+                <div className="container d-flex justify-content-center align-items-center heading-head">
+                    <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
+                        HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Sales</span>
+                    </p>
                 </div>
                 <div className='text-center mt-3'>
-                    <h1 className={darkMode ? "text-black" : "text-white "}>H&M Sale</h1>
+                    <h1 className={darkMode ? "text-black" : "text-white "}>H&M Sales</h1>
                 </div>
                 <HomeWidget />
                 <div className='sales-text' >

@@ -13,11 +13,11 @@ function KidsPage() {
     return (
         <>
             <Container>
-                <div className="container  d-flex justify-content-center align-items-center heading-head">
-                    <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
-                        fontWeight: "700",
-                    }}>Kids</span> </p>
-                </div>
+            <div className="container d-flex justify-content-center align-items-center heading-head">
+              <p className={darkMode ? "text-black" : "text-white"}style={{ fontWeight: "600" }}>
+                HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Kids</span>
+              </p>
+            </div>
                 <KidsDenim/>
                 <KidsProducts />
                 <KidsEffortlessBlues />

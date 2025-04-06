@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { useSelector } from 'react-redux';
 import { axiosInstance } from '../../config/axiosInstance';
+import { Spinner } from 'react-bootstrap';
 
 function ProductPage() {
 
@@ -12,6 +13,7 @@ function ProductPage() {
     console.log(darkMode);
 
     const [productList, setProductList] = useState();
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -20,7 +22,10 @@ function ProductPage() {
                     method: "GET",
                     url: "/product/get-all-products"
                 })
-                setProductList(response?.data?.data || []);
+                setTimeout(() => {
+                    setProductList(response?.data?.data || []);
+                    setLoading(false)
+                })
             } catch (error) {
                 console.error("Error fetching orders:", error);
             }
@@ -30,20 +35,29 @@ function ProductPage() {
 
     return (
         <>
-            <div className="container  d-flex justify-content-center align-items-center heading-head mb-5">
-                <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
-                    fontWeight: "700",
-                }}>Products</span></p>
-            </div>
-            <Container>
-                <Row>
-                    {productList?.map((value) => (
-                        <Col key={value._id} xs={12} sm={6} md={6} lg={4} xl={3} xxl={3}>
-                            <ProductCards product={value} />
-                        </Col>
-                    ))}
-                </Row>
-            </Container>
+            {loading ? (
+                <div className="d-flex justify-content-center align-items-center">
+                    <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
+                    <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading products...</span>
+                </div>
+            ) : (
+                <>
+                    <div className="container d-flex justify-content-center align-items-center heading-head">
+                        <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
+                            HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>All Products</span>
+                        </p>
+                    </div>
+                    <Container>
+                        <Row>
+                            {productList?.map((value) => (
+                                <Col key={value._id} xs={12} sm={6} md={6} lg={4} xl={3} xxl={3}>
+                                    <ProductCards product={value} />
+                                </Col>
+                            ))}
+                        </Row>
+                    </Container>
+                </>
+            )}
         </>
     );
 }

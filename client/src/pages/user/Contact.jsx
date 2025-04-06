@@ -10,10 +10,10 @@ function Contact() {
   return (
     <>
       <Container>
-        <div className="container  d-flex justify-content-center align-items-center heading-head">
-          <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
-            fontWeight: "700",
-          }}>contact</span></p>
+        <div className="container d-flex justify-content-center align-items-center heading-head">
+          <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
+            HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Contact</span>
+          </p>
         </div>
         <div className='container mt-4 d-flex justify-content-center align-items-center'>
           <div className="position-relative" style={{ maxWidth: "930px", width: "100%" }}>

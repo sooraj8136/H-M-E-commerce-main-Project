@@ -54,7 +54,7 @@ function ProductCards({ product }) {
             </p>
           </div>
         </Link>
-        <div className="position-absolute" style={{ top: '-15px', right: '-1px' }}>
+        <div className="position-absolute" style={{ top: '-13px', right: '-1px' }}>
           <WishlistButton productId={product?._id} isInWishlist={isInWishlist} setIsInWishlist={setIsInWishlist} />
         </div>
       </div>

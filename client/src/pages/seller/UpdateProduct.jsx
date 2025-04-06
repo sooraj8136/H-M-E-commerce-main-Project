@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const UpdateProduct = () => {
   const { darkMode } = useSelector((state) => state.mode); 
-  
   const { id: productId } = useParams();
+  const navigate = useNavigate();
   const [productData, setProductData] = useState({
     image: null,
     title: "",
@@ -15,6 +15,7 @@ const UpdateProduct = () => {
     description: "",
     category: "",
     stock: "",
+    size: "",
     materials: "",
     careguid: "",
   });
@@ -27,7 +28,8 @@ const UpdateProduct = () => {
         price: data.price || "",
         description: data.description || "",
         category: data.category || "",
-        stock: data.stock || "",
+        stock: data.stock || 0,
+        size: data.size || "",
         materials: data.materials || "",
         careguid: data.careguid || "",
       });
@@ -68,6 +70,7 @@ const UpdateProduct = () => {
       });
 
       toast.success(response.data.message);
+      navigate("/seller/seller-product");
     } catch (error) {
       console.error("Error when updating product:", error);
       toast.error("Failed to update product");
@@ -165,6 +168,18 @@ const UpdateProduct = () => {
             type="number"
             name="stock"
             value={productData.stock}
+            onChange={handleChange}
+            className="w-100 pass-input mt-1"
+          />
+        </div>
+        <div className="mb-3">
+          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
+            Product Sizes (comma-separated):
+          </label>
+          <input
+            type="text"
+            name="size"
+            value={productData.size}
             onChange={handleChange}
             className="w-100 pass-input mt-1"
           />

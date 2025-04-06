@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 const UpdateProfile = () => {
     const { darkMode } = useSelector((state) => state.mode);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -16,11 +17,14 @@ const UpdateProfile = () => {
     });
 
     useEffect(() => {
-        setFormData({
-            name: "",
-            email: "",
-            mobile: "",
-        });
+        setTimeout(() => {
+            setFormData({
+                name: "",
+                email: "",
+                mobile: "",
+            });
+            setLoading(false);
+        }, 1000);
     }, []);
 
     const handleChange = (e) => {
@@ -60,99 +64,73 @@ const UpdateProfile = () => {
         }
     };
 
+
+
     return (
         <>
-            <div className="container d-flex justify-content-center align-items-center heading-head">
-                <p className={darkMode ? "text-black" : "text-white "}>
-                    HM.com / My Account / <span className="text-danger" style={{ fontWeight: "800" }}>EDIT MY DETAILS</span>
-                </p>
-            </div>
-            <Container className="text-center">
-                <h4 className={darkMode ? "text-dark" : "text-light"}
-                    style={{ fontSize: "25px", fontWeight: "700" }}>
-                    EDIT MY DETAILS
-                </h4>
-            </Container>
-
-            <Container className="d-flex justify-content-center">
-                <div className="p-4" style={{ maxWidth: "400px", width: "90%" }}>
-                    <form onSubmit={handleSubmit} style={{ border: "none", padding: "0" }}>
-                        <div className="mb-3">
-                            <label className={darkMode ? "text-dark" : "text-light"} htmlFor="name">
-                                Name
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                style={{
-                                    width: "100%",
-                                    padding: "10px",
-                                    border: "1px solid",
-                                    outline: "none",
-                                    fontSize: "16px",
-                                }}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className={darkMode ? "text-dark" : "text-light"} htmlFor="email">
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                style={{
-                                    width: "100%",
-                                    padding: "10px",
-                                    border: "1px solid",
-                                    outline: "none",
-                                    fontSize: "16px",
-                                }}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className={darkMode ? "text-dark" : "text-light"} htmlFor="mobile">
-                                Mobile
-                            </label>
-                            <input
-                                type="text"
-                                id="mobile"
-                                name="mobile"
-                                value={formData.mobile}
-                                onChange={handleChange}
-                                style={{
-                                    width: "100%",
-                                    padding: "10px",
-                                    border: "1px solid",
-                                    outline: "none",
-                                    fontSize: "16px",
-                                }}
-                            />
-                        </div>
-
-                        <div className="justify-content-center mt-3">
-                            <button className="update-prof-btn" style={{ textDecoration: "none" }}>
-                                Save
-                            </button>
-                        </div>
-                    </form>
-
-                    <div className="justify-content-center mt-3">
-                        <button className="update-prof-cancel-btn">
-                            <Link to="/user/profile" style={{ textDecoration: "none", color: "inherit" }}>
-                                Cancel
-                            </Link>
-                        </button>
-                    </div>
+            {loading ? (
+                <div className="d-flex justify-content-center align-items-center">
+                    <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
+                    <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
                 </div>
-            </Container>
+            ) :
+                (
+                    <>
+                        <div className="container d-flex justify-content-center align-items-center heading-head">
+                            <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
+                                HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>EDIT MY DETAILS</span>
+                            </p>
+                        </div>
+                        <Container className="text-center">
+                            <h4 className={darkMode ? "text-dark" : "text-light"}
+                                style={{ fontSize: "25px", fontWeight: "700" }}>
+                                EDIT MY DETAILS
+                            </h4>
+                        </Container>
+
+                        <Container className="d-flex justify-content-center">
+                            <div className="p-4" style={{ maxWidth: "400px", width: "90%" }}>
+                                <form onSubmit={handleSubmit}>
+                                    {["name", "email", "mobile"].map((field) => (
+                                        <div className="mb-3" key={field}>
+                                            <label className={darkMode ? "text-dark" : "text-light"} htmlFor={field}>
+                                                {field.charAt(0).toUpperCase() + field.slice(1)}
+                                            </label>
+                                            <input
+                                                type={field === "email" ? "email" : "text"}
+                                                id={field}
+                                                name={field}
+                                                value={formData[field]}
+                                                onChange={handleChange}
+                                                style={{
+                                                    width: "100%",
+                                                    padding: "10px",
+                                                    border: "1px solid",
+                                                    outline: "none",
+                                                    fontSize: "16px",
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+
+                                    <div className="text-center mt-3">
+                                        <button type="submit" className="update-prof-btn" style={{ textDecoration: "none" }}>
+                                            Save
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <div className="justify-content-center mt-3">
+                                    <button className="update-prof-cancel-btn">
+                                        <Link to="/user/profile" style={{ textDecoration: "none", color: "inherit" }}>
+                                            Cancel
+                                        </Link>
+                                    </button>
+                                </div>
+                            </div>
+                        </Container>
+                    </>
+                )}
         </>
     );
 };

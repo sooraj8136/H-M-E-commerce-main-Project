@@ -88,7 +88,7 @@ const PendingPermissionRequests = () => {
                         </Col>
                     ))
                 ) : (
-                    <p className="text-center mt-4">No pending requests!</p>
+                    <p className="text-center mt-4" style={{fontWeight: '600'}}>No pending requests!</p>
                 )}
             </Row>
         </Container>

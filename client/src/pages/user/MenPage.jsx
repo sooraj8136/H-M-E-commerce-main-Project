@@ -11,20 +11,18 @@ function MenPage() {
 
     const { darkMode } = useSelector((state) => state.mode)
     console.log(darkMode)
-    
+
     return (
         <>
-            <div style={{fontWeight: '600'}}>
-                <div className="container  d-flex justify-content-center align-items-center heading-head">
-                    <p className={darkMode ? "text-black" : "text-white "}>HM.com /<span className='text-danger' style={{
-                            fontWeight: "700",
-                        }}>Men</span></p>
-                </div>
+            <div className="container d-flex justify-content-center align-items-center heading-head">
+                <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
+                    HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Men</span>
+                </p>
             </div>
-            <NewUtilitarian/>
+            <NewUtilitarian />
             <MenProducts />
-            <DenimMen/>
-            <IconicGraphics/>
+            <DenimMen />
+            <IconicGraphics />
             <Container>
                 <div className='ladies-clothing-cap'>
                     <div className="container mt-4 d-flex justify-content-center align-items-center">

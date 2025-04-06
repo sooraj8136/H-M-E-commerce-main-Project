@@ -18,6 +18,6 @@ userRouter.get("/get-all-user", adminAuth, getAllUsers)
 userRouter.put("/update-profile",upload.single("profilePic"), userAuth, updateUserProfile)
 userRouter.put("/deactivate-user/:userId", adminAuth, deactivateUser)
 userRouter.put("/activate-user/:userId", adminAuth, activateUser) 
-userRouter.delete("/delete-user/:userId", adminAuth, deleteUser)
+userRouter.delete("/delete-user/:userId", deleteUser)
 
 module.exports = userRouter
