@@ -79,7 +79,6 @@ function ProfilePage() {
               You can manage your account and subscriptions here
             </p>
           </div>
-
           <Container data-theme={darkMode ? "dark" : "light"}>
             <div className="d-flex justify-content-center flex-column flex-lg-row align-items-center" style={{ gap: "20px" }}>
               <Container data-theme={darkMode ? "dark" : "light"}>
@@ -104,7 +103,6 @@ function ProfilePage() {
                   </div>
                 </div>
               </Container>
-
               <div className="profile-container p-4" style={{ flex: "1 1 auto" }}>
                 <div className="m-4">
                   <div className="profile-details text-start text-dark">
@@ -122,9 +120,7 @@ function ProfilePage() {
                     </div>
                   </div>
                 </div>
-
                 <div className="lines-container">
-                  {/* Orders */}
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <Link to="/user/orders" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600", display: "flex", alignItems: "center", marginRight: "120px" }}>
@@ -135,8 +131,6 @@ function ProfilePage() {
                     <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
-
-                  {/* Edit profile */}
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <Link to="/user/update-user-profile" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>
@@ -147,8 +141,6 @@ function ProfilePage() {
                     <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
-
-                  {/* Contact us */}
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
@@ -157,8 +149,6 @@ function ProfilePage() {
                     <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
-
-                  {/* Delete account */}
                   <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={() => setShowConfirmModal(true)}>
@@ -169,8 +159,6 @@ function ProfilePage() {
                     <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
-
-                  {/* Logout */}
                   <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={handleLogout}>
@@ -184,14 +172,12 @@ function ProfilePage() {
               </div>
             </div>
           </Container>
-
-          {/* Confirmation Modal */}
           <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
             <Modal.Header closeButton>
               <Modal.Title>Confirm Deletion</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              Are you sure you want to delete your account? This action cannot be undone.
+              Are you sure you want to delete your account?
             </Modal.Body>
             <Modal.Footer>
               <button
