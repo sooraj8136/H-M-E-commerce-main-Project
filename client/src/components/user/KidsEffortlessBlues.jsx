@@ -51,10 +51,10 @@ function KidsEffortlessBlues() {
                                 color: "white",
                             }}
                         >
-                            <h2 className="responsive-heading" style={{ fontWeight: "bold", marginBottom: "10px" }}>
-                                Effortless blues
+                            <h2 className="responsive-heading" style={{ fontWeight: "bold", marginBottom: "10px", color:"black"}}>
+                            Georgia Beaumont H&M
                             </h2>
-                            <p className="responsive-subheading hide-on-small" style={{ fontSize: "small", marginBottom: "10px", fontWeight: '500' }}>
+                            <p className="responsive-subheading hide-on-small" style={{ fontSize: "small", marginBottom: "10px", fontWeight: '500', color:"black" }}>
                                 western-inspired denim staples
                             </p>
                             <div

@@ -18,7 +18,7 @@ function NewUtilitarian() {
                             marginTop: '27px'
                         }}>
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11lh5/MS11LH5-athleisure-teaser-3x2.jpg?imwidth=1536"
+                            src="https://image.hm.com/content/dam/hm/TOOLBOX/Local%20Activities/2024_s09/febraury_2025/W11-EAS-MS21C1-3x2.jpg?imwidth=1536"
                             className="img-fluid"
                             alt="Sample"
                             style={{
@@ -40,6 +40,7 @@ function NewUtilitarian() {
                             }}>
                             <h2
                                 style={{
+                                    color:"black",
                                     fontWeight: "bold",
                                     fontSize: "calc(1.5rem + 1vw)",
                                     marginBottom: "10px",
@@ -67,7 +68,7 @@ function NewUtilitarian() {
                                     </div>
                                 </button>
                             </Link>
-                            <p style={{ fontSize: "small", marginBottom: "6px", fontWeight: '500' }}>Fresh staples with functional details and sporty appeal.</p>
+                            <p style={{ fontSize: "small", marginBottom: "6px", fontWeight: '500', color:"black" }}>Fresh staples with functional details and sporty appeal.</p>
                             <div>
                                 <ul
                                     className="preppy-btn d-flex justify-content-start flex-wrap"
@@ -83,9 +84,9 @@ function NewUtilitarian() {
                                             href="/New-utilitarian"
                                             style={{
                                                 textDecoration: "none",
-                                                color: "black",
-                                                backgroundColor: "white",
-                                                border: "1px solid white",
+                                                color: "white",
+                                                backgroundColor: "black",
+                                                border: "1px solid black",
                                                 padding: "6px 8px",
                                                 fontWeight: "bold",
                                                 fontSize: 'small'

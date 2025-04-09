@@ -16,7 +16,7 @@ function HomeWidget() {
             }}
           >
             <img
-              src="https://image.hm.com/content/dam/global_campaigns/season_07/divided/5017a/5017A-3x2-baggy-fit-denim.jpg?imwidth=1536"
+              src="https://image.hm.com/content/dam/global_campaigns/season_01/women/ws21g/WS21G-new-3x2_2.jpg?imwidth=1536"
               className="img-fluid"
               alt="Sample"
               style={{

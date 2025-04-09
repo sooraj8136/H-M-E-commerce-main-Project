@@ -214,7 +214,7 @@ function ProductDetailsPage() {
                     </Col>
                 </Row>
             ) : (
-                <p>No product found.</p>
+                <p className="text-center" style={{fontWeight:"600"}}>No product found!</p>
             )}
         </Container>
     );

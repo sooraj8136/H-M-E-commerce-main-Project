@@ -79,7 +79,7 @@ const getSellerOrders = async (req, res) => {
 const updateOrderStatus = async (req, res) => {
 
   try {
-    
+
     const { orderId } = req.params;
     const { status } = req.body;
 
@@ -103,10 +103,10 @@ const updateOrderStatus = async (req, res) => {
     order.orderStatus = status;
     await order.save();
 
-    res.status(200).json({message: "Order status updated successfully",order});
+    res.status(200).json({ message: "Order status updated successfully", order });
   } catch (error) {
     console.error("Error updating order status:", error);
-    res.status(500).json({message: "Internal server error",error: error.message});
+    res.status(500).json({ message: "Internal server error", error: error.message });
   }
 };
 
@@ -279,6 +279,25 @@ const updateStock = async (req, res) => {
   }
 };
 
+const cancellOrder = async (req, res) => {
+  try {
+    const orderId = req.params.orderId;
+    console.log("Order ID from params:", orderId);
+    const order = await OrderDb.findById(orderId);
 
+    if (!order) return res.status(404).json({ message: 'Order not found' });
 
-module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin, getSellerOrdersByStatus, updateStock };
+    if (order.orderStatus === 'cancelled') {
+      return res.status(400).json({ message: 'Order already cancelled' });
+    }
+
+    order.orderStatus = 'cancelled';
+    await order.save();
+
+    res.json({ message: 'Order cancelled successfully', order });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+}
+
+module.exports = { getOrdersByUserId, getAllOrders, updateOrderStatus, getSellerOrders, updatePermissionRequest, getPendingRequests, sendPermissionRequestToAdmin, getSellerOrdersByStatus, updateStock, cancellOrder };

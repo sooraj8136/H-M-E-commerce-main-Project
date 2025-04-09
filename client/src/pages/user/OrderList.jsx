@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useSelector } from "react-redux";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
+import CancelOrderButton from "../../components/user/CancelOrderButton";
 
 const OrderList = () => {
   const { darkMode } = useSelector((state) => state.mode);
@@ -77,7 +78,9 @@ const OrderList = () => {
                           <hr />
                         </div>
                       ))}
+                      <CancelOrderButton orderId={order._id} />
                     </div>
+
                   ))
                 ) : (
                   <div className={darkMode ? 'text-black' : 'text-white'}>
