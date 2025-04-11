@@ -61,6 +61,7 @@ const SellerOrders = () => {
           <option value="transit">Transit</option>
           <option value="out-for-delivery">Out for Delivery</option>
           <option value="delivered">Delivered</option>
+          <option value="cancelled">Cancelled</option>
         </select>
       </div>
       <div className="cart-container">

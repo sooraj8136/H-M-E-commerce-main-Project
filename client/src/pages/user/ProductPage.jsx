@@ -36,7 +36,7 @@ function ProductPage() {
     return (
         <>
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "80px" }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "40px" }}>
                     <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
                     <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading products...</span>
                 </div>

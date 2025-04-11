@@ -79,7 +79,7 @@ function ProductDetailsPage() {
     return (
         <Container className="my-5">
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" >
+                <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "180px" }}>
                     <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
                     <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
                 </div>
