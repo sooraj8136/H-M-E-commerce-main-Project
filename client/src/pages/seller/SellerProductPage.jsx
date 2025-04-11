@@ -28,20 +28,22 @@ function ProductPage() {
 
     return (
         <Container>
-            <div className="container py-5 text-center">
-                <div className={darkMode ? "text-black" : "text-white"}>
-                    <h2 className="display-4 fw-bold" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)' }}>
-                        Manage Your Products
-                    </h2>
-                    <p className="lead" style={{ fontSize: '1rem', fontWeight:'500' }}>
-                        View, add, update, and delete your products with ease. Manage your inventory with just a few clicks! Keep your store updated and your customers happy.
-                    </p>
-                </div>
-            </div>
-            <div className="container d-flex justify-content-center align-items-center heading-head">
-                <p className={darkMode ? "text-black" : "text-white"}>
-                    H&M / <span className='text-danger' style={{ fontWeight: "700" }}>All products</span>
+            <div
+                className="container d-flex justify-content-start align-items-start heading-head"
+                style={{ marginTop: "140px" }}>
+                <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                    HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>YOUR PRODUCTS</span>
                 </p>
+            </div>
+            <div className="container py-5 text-center">
+                <div className={darkMode ? "text-black" : "text-white"} >
+                    <div
+                        className="container d-flex justify-content-start align-items-start heading-head">
+                        <p style={{ fontSize: "20px", fontWeight: "600" }}>
+                            YOU CAN MANAGE YOUR PRODUCTS
+                        </p>
+                    </div>
+                </div>
             </div>
             {loading ? (
                 <p className="text-center">Loading products...</p>

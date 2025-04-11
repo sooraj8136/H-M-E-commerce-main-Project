@@ -28,28 +28,12 @@ function SellerSignup() {
 
   return (
     <>
-      <div className="container  d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white "}>
-          HM.com /{" "}
-          <span
-            className="text-danger"
-            style={{
-              fontWeight: "800",
-            }}
-          >
-            Seller Register
-          </span>{" "}
+      <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0 auto", textAlign: "left" }}>
+        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
+          BECOME AN H&M SELLER
         </p>
       </div>
       <br />
-      <div
-        className={darkMode ? "text-black" : "text-white"}
-        style={{ fontSize: "15px", fontWeight: "500" }}
-      >
-        <p className="text-center">
-          Become a seller and start your business with us today!
-        </p>
-      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-sec">
           <div
@@ -203,7 +187,7 @@ function SellerSignup() {
           style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
         >
           <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
-            Sign up
+          BECOME AN H&M SELLER
           </button>
         </div>
       </form>
@@ -212,9 +196,9 @@ function SellerSignup() {
         <p className="text-center">
           <Link
             to="/seller/login"
-            className={darkMode ? "text-black" : "text-white forgot-password"}
+            className={`login-text {darkMode ? "text-black" : "text-white forgot-password"}`} style={{fontSize:".8rem", color:"black"}}
           >
-            Back to sign in
+            BACK TO LOGIN
           </Link>
         </p>
       </div>

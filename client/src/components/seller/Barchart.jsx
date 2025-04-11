@@ -78,14 +78,12 @@ const Barchart = () => {
         borderRadius: "10px",
       }}
     >
-      <h1
-        className="text-center"
-        style={{
-          color: darkMode ? "black" : "white",
-        }}
-      >
-        Sales Analyse & Order Statistics
-      </h1>
+      <div
+        className="container d-flex justify-content-start align-items-start heading-head">
+        <p style={{ fontSize: "20px", fontWeight: "600" }}>
+        SALES ANALYSIS & ORDER STATISTICS
+        </p>
+      </div>
       {isDataAvailable ? (
         chart ? (
           <Bar

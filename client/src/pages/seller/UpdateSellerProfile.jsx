@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 function UpdateSellerProfile() {
 
     const { darkMode } = useSelector((state) => state.mode);
-    
+
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
@@ -52,17 +52,13 @@ function UpdateSellerProfile() {
 
     return (
         <>
-            <div className="container d-flex justify-content-center align-items-center heading-head">
-                <p className={darkMode ? "text-black" : "text-white "}>
-                    HM.com / My Account / <span className="text-danger" style={{ fontWeight: "800" }}>EDIT MY DETAILS</span>
+            <div
+                className="container d-flex justify-content-start align-items-start heading-head"
+                style={{ marginTop: "140px" }}>
+                <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                    HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>EDIT MY PROFILE</span>
                 </p>
             </div>
-            <Container className="text-center">
-                <h4 className={darkMode ? "text-dark" : "text-light"}
-                    style={{ fontSize: "25px", fontWeight: "700" }}>
-                    EDIT MY DETAILS
-                </h4>
-            </Container>
 
             <Container className="d-flex justify-content-center">
                 <div className="p-4" style={{ maxWidth: "400px", width: "90%" }}>

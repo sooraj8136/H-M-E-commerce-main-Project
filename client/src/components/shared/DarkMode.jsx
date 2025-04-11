@@ -76,9 +76,9 @@ export const DarkMode = () => {
       onClick={() => setDark((prev) => !prev)}
     >
       {dark ? (
-        <FaMoon size={16} style={{ marginRight: "4px" }} />
+        <FaMoon size={14} style={{ marginRight: "4px" }} />
       ) : (
-        <FaSun size={16} style={{ marginRight: "4px" }} />
+        <FaSun size={14} style={{ marginRight: "4px" }} />
       )}
     </span>
   );

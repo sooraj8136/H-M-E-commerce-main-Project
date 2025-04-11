@@ -73,16 +73,18 @@ function DenimRoundUp() {
                                         <div style={{ color: 'white', fontSize: 'small', fontWeight: '700', textAlign: 'left' }}>
                                             Rs.1,499.00
                                             <br />
-                                            <div></div>
-                                            Baggy Jeans
+                                            <div>
+                                                Baggy Jeans
+                                            </div>
                                         </div>
                                     </button>
                                 </Link>
                             </div>
 
                             <div className={darkMode ? "text-black" : "text-white"}>
-                                <p style={{ fontSize: '1rem', fontWeight: '600', textAlign: 'left', marginTop: '20px', marginLeft: '8px' }}> Baggy </p>
-                                <h1 className="alata-regular" style={{ fontSize: '4vw', textAlign: 'left', lineHeight: '1.2', marginLeft: '8px' }}>
+                                <p className={`text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: '1rem', fontWeight: '600', textAlign: 'left', marginTop: '20px', marginLeft: '8px' }}> Baggy </p>
+
+                                <h1 className="text" style={{ fontSize: '4vw', textAlign: 'left', lineHeight: '1.2', marginLeft: '8px' }}>
                                     The Baggy jeans have a relaxed wide-leg fit, dropped crotch, and a mid-rise waist.
                                 </h1>
                             </div>
@@ -102,10 +104,12 @@ function DenimRoundUp() {
                                 style={{ maxWidth: '100%', height: 'auto' }}
                             />
                             <div className={darkMode ? "text-black" : "text-white "}>
-                                <p style={{ fontSize: '1rem', fontWeight: '600', textAlign: 'left', marginTop: '20px', marginLeft: '8px' }}>Loose</p>
-                                <h1 className="alata-regular" style={{ fontSize: '4vw', textAlign: 'left', lineHeight: '1.2', marginLeft: '8px' }}>
+                                <p className={`text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: '1rem', fontWeight: '600', textAlign: 'left', marginTop: '20px', marginLeft: '8px' }}>Loose</p>
+
+                                <h1 className="text" style={{ fontSize: '4vw', textAlign: 'left', lineHeight: '1.2', marginLeft: '8px' }}>
                                     The Loose jeans have an easy fit through the thigh and knee, a mid-rise waist, and either a tapered or straight leg.
                                 </h1>
+
                             </div>
                             <div className="text-center py-4 position-relative">
                                 <img
@@ -137,8 +141,9 @@ function DenimRoundUp() {
                                 </Link>
                             </div>
                             <div className={darkMode ? "text-black" : "text-white "}>
-                                <p style={{ fontSize: '1rem', fontWeight: '600', textAlign: 'left', marginTop: '20px', marginLeft: '8px' }}>Straight Regular</p>
-                                <h1 className="alata-regular" style={{ fontSize: '4vw', textAlign: 'left', lineHeight: '1.2', marginLeft: '8px' }}>
+                                <p className={`text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: '1rem', fontWeight: '600', textAlign: 'left', marginTop: '20px', marginLeft: '8px' }}>Straight Regular</p>
+
+                                <h1 className="text" style={{ fontSize: '4vw', textAlign: 'left', lineHeight: '1.2', marginLeft: '8px' }}>
                                     The Straight Regular jeans have a straight fit from waist to hem, a mid-rise waist, and slight stretch for added comfort.
                                 </h1>
                             </div>

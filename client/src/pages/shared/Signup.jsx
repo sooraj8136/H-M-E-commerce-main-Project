@@ -30,16 +30,12 @@ function Signup() {
 
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white"}>HM.com / <span className='text-danger' style={{ fontWeight: "800" }}>Register</span></p>
-      </div>
-      <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "20px", fontWeight: "700" }}>
-        <p className="text-center">Become a H&M member</p>
+      <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0 auto", textAlign: "left" }}>
+        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
+          BECOME AN H&M MEMBER
+        </p>
       </div>
       <br />
-      <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "15px", fontWeight: "500" }}>
-        <p className="text-center">Become a member-Join us today and enjoy exclusive benefits, offers, and rewards!</p>
-      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-sec">
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
@@ -81,13 +77,13 @@ function Signup() {
           </p>
         </div>
         <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-          <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>Become an H&M member</button>
+          <button className="login-text signup-btn w-100" style={{ maxWidth: "400px" }}>BECOME AN H&M MEMBER</button>
         </div>
       </form>
 
       <div className="d-flex justify-content-center mt-2">
-        <p className="text-center">
-          <Link to={user.login_route} className={darkMode ? "text-black" : "text-white forgot-password"}>Back to Log in</Link>
+        <p className=" text-center">
+          <Link to={user.login_route} className={`login-text {darkMode ? "text-black" : "text-white forgot-password"}`} style={{fontSize:".8rem", color:"black"}}>BACK TO LOGIN</Link>
         </p>
       </div>
     </>

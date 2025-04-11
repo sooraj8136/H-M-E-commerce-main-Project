@@ -52,11 +52,16 @@ const UpdateOrderStatus = () => {
 
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white"}>
-          H&M / <span className='text-danger' style={{ fontWeight: "700" }}>Update ordre status</span>
-        </p>
-      </div>
+      <div className="container py-5 text-center">
+          <div className={darkMode ? "text-black" : "text-white"} >
+            <div
+              className="container d-flex justify-content-start align-items-start heading-head">
+              <p style={{ fontSize: "20px", fontWeight: "600", marginTop: "100px" }}>
+                UPDATE ORDER STATUS
+              </p>
+            </div>
+          </div>
+        </div>
       <div className="update-order-status-container">
         {orders.length > 0 && (
           <ul className="order-list">

@@ -29,7 +29,7 @@ function ProductCards({ product }) {
   }, [product]);
 
   return (
-    <Container className="d-flex flex-wrap justify-content-center">
+    <Container className="d-flex flex-wrap justify-content-center" style={{ marginTop: "20px" }}>
       <div className="text-center position-relative mx-1 text-start">
         <Link to={`/productDetails/${product?._id}`} className="text-decoration-none">
           <img

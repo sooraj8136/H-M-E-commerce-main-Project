@@ -86,9 +86,11 @@ function Cart() {
       ) : (
         <>
           <Container data-theme={darkMode ? "dark" : "light"}>
-            <div className="container d-flex justify-content-center align-items-center heading-head">
-              <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
-                HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Shoping bag</span>
+            <div
+              className="container d-flex justify-content-start align-items-start heading-head"
+              style={{ marginTop: "120px" }}>
+              <p style={{ fontSize: "40px", fontWeight: "600" }}>
+                SHOPPING BAG
               </p>
             </div>
             <div className="cart-container" >
@@ -120,15 +122,17 @@ function Cart() {
                     <div><h2>Total</h2></div>
                     <div><h2>Rs. {productDetails?.totalPrice}.00</h2></div>
                   </div>
-                  <button className="mt-3 add-to-cart" onClick={makePayment} style={{ backgroundColor: "black" }}>
-                    Continue to Place Order
+                  <button className="mt-3 add-to-cart" onClick={makePayment} style={{ backgroundColor: "black",fontWeight:"500" }}>
+                    PLACE ORDER
                   </button>
                 </div>
               ) : (
-                <div className={darkMode ? 'text-black' : 'text-white'}>
-                  <h1 className="text-center" style={{ fontWeight: '700', fontSize: 'xx-large' }}>
-                    Your Shopping Bag is empty!
-                  </h1>
+                <div className={`w-100 ${darkMode ? 'text-black' : 'text-white'}`}>
+                  <div className="d-flex justify-content-start align-items-start">
+                    <h1 style={{ fontWeight: '500', fontSize: '1rem' }}>
+                      YOUR SHOPPING BAG IS EMPTY!
+                    </h1>
+                  </div>
                 </div>
               )}
             </div>

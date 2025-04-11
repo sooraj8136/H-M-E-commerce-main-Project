@@ -30,12 +30,12 @@ function Home() {
             ) : (
                 <>
                     <Container>
-                        <div>
-                            <div className="container  d-flex justify-content-center align-items-center heading-head">
-                                <p className={darkMode ? "text-black" : "text-white "}>HM.com/ <span className='text-danger' style={{
-                                    fontWeight: "700",
-                                }}>Home</span></p>
-                            </div>
+                        <div
+                            className="container d-flex justify-content-start align-items-start heading-head"
+                            style={{ marginTop: "140px" }}>
+                            <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                                HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>HOME</span>
+                            </p>
                         </div>
                         <HomeWidget />
                         <PreppyUniform />

@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 function HomeWidget() {
   return (
     <>
-      <Container className="d-flex justify-content-center align-items-center" style={{ maxWidth: "100%" }}>
+      <Container className="d-flex justify-content-center align-items-center mt-4" style={{ maxWidth: "100%" }}>
         <section>
           <div
             className="position-relative"

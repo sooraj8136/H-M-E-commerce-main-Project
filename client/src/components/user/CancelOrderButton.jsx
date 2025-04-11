@@ -32,9 +32,9 @@ function CancelOrderButton({ orderId, status }) {
                 <button
                     onClick={handleCancelOrder}
                     disabled={loading  || isCancelled}
-                    style={{ backgroundColor: "black", color: "white", fontSize: ".9rem" }}
+                    style={{ backgroundColor: "black", color: "white", fontSize: ".9rem", border:"0px" }}
                 >
-                    Cancel Order
+                    CANCEL ORDER
                 </button>
             )}
             {message && (

@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -29,14 +29,18 @@ function SellerProfile() {
 
   return (
     <>
-      <div className="heading-head d-flex justify-content-center align-items-center mb-3">
-        <p className={darkMode ? "text-black" : "text-white"}>HM.com / <span className="text-danger fw-bold">My Account</span></p>
+      <div
+        className="container d-flex justify-content-start align-items-start heading-head"
+        style={{ marginTop: "140px" }}>
+        <p style={{ fontSize: "40px", fontWeight: "600" }}>
+          ACCOUNTS & REWARDS
+        </p>
       </div>
-      <div className="heading-head d-flex justify-content-center align-items-center">
-        <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "30px", fontWeight: "600" }}>My Account</p>
-      </div>
-      <div className="d-flex justify-content-center align-items-center mb-3">
-        <p className={`${darkMode ? "text-black" : "text-white"} responsive-text`} style={{ fontSize: "clamp(12px, 2vw, 15px)", fontWeight: "400", textAlign: "center" }}>You can manage your account and subscriptions here</p>
+      <div
+        className="container d-flex justify-content-start align-items-start heading-head">
+        <p tyle={{ fontSize: "clamp(12px, 2vw, 15px)", fontWeight: "400" }}>
+          YOU CAN MANAGE YOUR ACCOUNT AND SUBSCRIPTION HERE
+        </p>
       </div>
       <Container data-theme={darkMode ? "dark" : "light"}>
         <div className="d-flex justify-content-center flex-column flex-lg-row align-items-center" style={{ gap: "20px" }}>
@@ -83,10 +87,6 @@ function SellerProfile() {
                     Edit my profile
                   </Link>
                 </div>
-                <IoIosArrowForward
-                  className={darkMode ? "text-dark" : "text-light"}
-                  style={{ transition: "color 0.3s ease" }}
-                />
               </div>
 
               <hr style={{ width: "100%" }} />
@@ -95,7 +95,6 @@ function SellerProfile() {
                   <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
                   <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>Contact us</Link>
                 </div>
-                <IoIosArrowForward size={20} className={darkMode ? "text-dark" : "text-light"} />
               </div>
               <hr style={{ width: "100%" }} />
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
@@ -105,7 +104,6 @@ function SellerProfile() {
                     Sign out
                   </span>
                 </div>
-                <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
               </div>
             </div>
           </div>

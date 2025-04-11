@@ -52,15 +52,19 @@ function WishlistPage() {
       ) : (
         <>
           <Container className="mt-2">
-            <div className="container d-flex justify-content-center align-items-center heading-head">
-              <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
-                HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Favourites</span>
+            <div
+              className="container d-flex justify-content-start align-items-start heading-head"
+              style={{ marginTop: "140px" }}>
+              <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>FAVOURITES</span>
               </p>
             </div>
-            <div className='text-center mb-5 mt-3'>
-              <h2 className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: "40px", fontWeight: "700" }}>
-                Favourites
-              </h2>
+            <div
+              className="container d-flex justify-content-start align-items-start heading-head"
+              style={{ marginTop: "40px" }}>
+              <p style={{ fontSize: "40px", fontWeight: "600" }}>
+              FAVOURITES
+              </p>
             </div>
 
             {wishlist.length === 0 ? (

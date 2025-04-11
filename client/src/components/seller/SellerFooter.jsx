@@ -14,108 +14,103 @@ function SellerFooter() {
                 <section className="footer py-4">
                     <div className="row text-center text-md-start">
                         <div className="col-md-3 mb-4">
-                            <h6 className={darkMode ? "text-black" : "text-white footer-title"}>Shop</h6>
+                            <h6 className={darkMode ? "text-black" : "text-white footer-title"} style={{ fontSize: "0.8rem", fontWeight: "700" }}>Shop</h6>
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/ladies-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Ladies
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        LADIES
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/men-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Men
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        MEN
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/kids-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Kids
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        KIDS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Home
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        HOME
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Magazine
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Seller Help
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        MAGAZINE
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
                         <div className="col-md-3 mb-4">
-                            <h6 className={darkMode ? "text-black" : "text-white footer-title footer-text footer-title"}>Corporate Info</h6>
+                            <h6 className={darkMode ? "text-black" : "text-white footer-title footer-text footer-title"} style={{ fontSize: "0.8rem", fontWeight: "700" }}>Corporate Info</h6>
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"}>
-                                        Career at H&M
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none" }}>
+                                        CAREER AT H&M
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"}>
-                                        Sustainability H&M Group
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none" }}>
+                                        SUSTAINABILITY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"}>
-                                        Press
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none" }}>
+                                        PRESS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"}>
-                                        Investor relations
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none" }}>
+                                        INVESTOR RELATIONS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"}>
-                                        Corporate governance
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none" }}>
+                                        CORPORATE GOVERNACE
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"}>
-                                        Contact
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none" }}>
+                                        CONTACT
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
                         <div className="col-md-3 mb-4">
-                            <h6 className={darkMode ? "text-black" : "text-white footer-title footer-text footer-title"}>Help</h6>
+                            <h6 className={darkMode ? "text-black" : "text-white footer-title footer-text footer-title"} style={{ fontSize: "0.8rem", fontWeight: "700" }}>Help</h6>
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Customer Service
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        CUSTOMER SERVICES
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        About H&M group
+                                    <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        ABOUT H&M GROUP
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Find a store
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        FIND A STORE
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Legal & privacy
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        LEGAL AND PRIVACY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Contact
+                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        CONTACT
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"}>
-                                        Secure shopping
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
+                                        SECURE SHOPING
                                     </a>
                                 </li>
                             </ul>
@@ -126,8 +121,8 @@ function SellerFooter() {
                                 Sign up now and be the first to know about exclusive offers,
                                 <br /> latest fashion news & style tips!
                             </p>
-                            <a href="/read-more" className={darkMode ? "text-black" : "text-white read-more-text"}>
-                                Read More
+                            <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white read-more-text"} >
+                                READ MORE
                             </a>
                         </div>
                     </div>
@@ -215,12 +210,13 @@ function SellerFooter() {
                         </div>
                     </div>
                     <div className="footer-final-text-1">
-                        <p className={darkMode ? "text-black" : "text-white "}>
+                        <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "0.7rem" }}>
                             The content of this site is copyright-protected and is the
                             property of H & M Hennes & Mauritz AB.
                         </p>
                     </div>
                     <div>
+
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
                             width="35px"
@@ -229,7 +225,7 @@ function SellerFooter() {
                         />
                     </div>
                     <div className="footer-final-text-2">
-                        <h5 className={darkMode ? "text-black" : "text-white "}>INDIA | Rs.</h5>
+                        <h5 className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "0.9rem", fontWeight: "600" }}>INDIA (Rs.)</h5>
                     </div>
                 </section>
             </div>

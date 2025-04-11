@@ -59,31 +59,31 @@ function SellerProductDetails() {
               className={darkMode ? 'text-black' : 'text-white'}
               style={{ fontSize: '0.9rem', fontWeight: '500' }}
             >
-              <strong style={{fontWeight: 'bold'}}>Stock  :</strong> {product?.stock}
+              <strong style={{ fontWeight: 'bold' }}>Stock  :</strong> {product?.stock}
             </p>
             <p
               className={darkMode ? 'text-black' : 'text-white'}
               style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
             >
-              <strong style={{fontWeight: 'bold'}}>Description : </strong>{product?.description}
+              <strong style={{ fontWeight: 'bold' }}>Description : </strong>{product?.description}
             </p>
             <p
               className={darkMode ? 'text-black' : 'text-white'}
               style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
             >
-              <strong style={{fontWeight: 'bold'}}> Category : </strong>{product?.category}
+              <strong style={{ fontWeight: 'bold' }}> Category : </strong>{product?.category}
             </p>
             <p
               className={darkMode ? 'text-black' : 'text-white'}
               style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
             >
-              <strong style={{fontWeight: 'bold'}}>Careguid : </strong>{product?.careguid}
+              <strong style={{ fontWeight: 'bold' }}>Careguid : </strong>{product?.careguid}
             </p>
             <p
               className={darkMode ? 'text-black' : 'text-white'}
               style={{ fontSize: '1rem', marginBottom: '1.5rem' }}
             >
-             <strong style={{fontWeight: 'bold'}}> Materials :</strong>{product?.materials}
+              <strong style={{ fontWeight: 'bold' }}> Materials :</strong>{product?.materials}
             </p>
             <GetReview />
 
@@ -92,7 +92,7 @@ function SellerProductDetails() {
                 className="bg-black signin-btn"
                 style={{ maxWidth: '400px', width: '90%' }}
               >
-                Update Product
+                UPDATE PRODUCT
               </button>
             </Link>
 
@@ -101,17 +101,23 @@ function SellerProductDetails() {
               className="bg-black signin-btn mt-3"
               style={{ maxWidth: '400px', width: '90%' }}
             >
-              Delete Product
+              DELETE PRODUCT
             </button>
           </Col>
         </Row>
       ) : (
-        <p>No product found.</p>
+        <div className={`w-100 ${darkMode ? 'text-black' : 'text-white'}`}>
+          <div className="d-flex justify-content-start align-items-start">
+            <h1 style={{ fontWeight: '500', fontSize: '1rem' }}>
+              NO PRODUCT FOUND!
+            </h1>
+          </div>
+        </div>
       )}
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Confirm Deletion</Modal.Title>
+          <Modal.Title style={{fontSize:"1rem"}}>CONFIRM DELETATION</Modal.Title>
         </Modal.Header>
         <Modal.Body className='text-center'>
           Are you sure you want to delete this product?
@@ -122,14 +128,14 @@ function SellerProductDetails() {
             style={{ maxWidth: '400px', width: '90%' }}
             onClick={() => setShowModal(false)}
           >
-            Cancel
+            CANCEL
           </button>
           <button
             className="bg-black signin-btn"
             style={{ maxWidth: '400px', width: '90%' }}
             onClick={handleDeleteProduct}
           >
-            Confirm Delete
+            CONFIRM DELETE
           </button>
         </Modal.Footer>
       </Modal>

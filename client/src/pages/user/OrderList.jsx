@@ -37,18 +37,19 @@ const OrderList = () => {
       ) : (
         <>
           <Container data-theme={darkMode ? "dark" : "light"} className="py-5">
-            <div className="container d-flex justify-content-center align-items-center heading-head">
-              <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
-                HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Orders</span>
+            <div
+              className="container d-flex justify-content-start align-items-start heading-head"
+              style={{ marginTop: "80px" }}>
+              <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>ORDERS</span>
               </p>
             </div>
-            <div className="empty-cart">
-              <p className={darkMode ? 'text-black' : 'text-white'}>Free shipping above Rs.1999</p>
-              <p className={darkMode ? 'text-black' : 'text-white'}>Free & flexible 15 days return</p>
-              <p className={darkMode ? 'text-black' : 'text-white'}>Estimated delivery time: 2-7 days</p>
-            </div>
-            <div className='shopping-bag-head'>
-              <h3 className={darkMode ? 'text-black' : 'text-white'}>Your Orders</h3>
+            <div
+              className="container d-flex justify-content-start align-items-start heading-head"
+              style={{ marginTop: "40px" }}>
+              <p style={{ fontSize: "40px", fontWeight: "600" }}>
+                YOUR ORDERS
+              </p>
             </div>
             <div className="cart-container">
               <div className="cart-items">

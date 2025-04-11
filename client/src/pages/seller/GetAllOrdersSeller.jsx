@@ -30,14 +30,13 @@ const SellerOrders = () => {
 
   return (
     <Container data-theme={darkMode ? "dark" : "light"} className="py-5">
-      <div className="container d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com / <span className="text-danger" style={{ fontWeight: "700" }}>Orders</span>
+      <div
+        className="container d-flex justify-content-start align-items-start heading-head"
+        style={{ marginTop: "140px" }}>
+        <p style={{ fontWeight: "400", fontSize: "3rem", color: "black" }}>
+          ORDERS
         </p>
-      </div>
-      <div className="shopping-bag-head">
-        <h3 className={darkMode ? "text-black" : "text-white"}>Your Orders</h3>
-      </div>
+      </div>  
       <div className="mb-4">
         <label
           htmlFor="status"

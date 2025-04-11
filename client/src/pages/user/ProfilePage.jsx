@@ -64,19 +64,17 @@ function ProfilePage() {
         </div>
       ) : (
         <>
-          <div className="container d-flex justify-content-center align-items-center heading-head">
-            <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
-              HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>My Account</span>
+          <div
+            className="container d-flex justify-content-start align-items-start heading-head"
+            style={{ marginTop: "140px" }}>
+            <p style={{ fontSize: "40px", fontWeight: "600" }}>
+              ACCOUNTS & REWARDS
             </p>
           </div>
-
-          <div className="heading-head d-flex justify-content-center align-items-center">
-            <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "30px", fontWeight: "600" }}>My Account</p>
-          </div>
-
-          <div className="d-flex justify-content-center align-items-center mb-3">
-            <p className={`${darkMode ? "text-black" : "text-white"} responsive-text`} style={{ fontSize: "clamp(12px, 2vw, 15px)", fontWeight: "400", textAlign: "center" }}>
-              You can manage your account and subscriptions here
+          <div
+            className="container d-flex justify-content-start align-items-start heading-head">
+            <p tyle={{ fontSize: "clamp(12px, 2vw, 15px)", fontWeight: "400" }}>
+              YOU CAN MANAGE YOUR ACCOUNT AND SUBSCRIPTION HERE
             </p>
           </div>
           <Container data-theme={darkMode ? "dark" : "light"}>
@@ -107,15 +105,15 @@ function ProfilePage() {
                 <div className="m-4">
                   <div className="profile-details text-start text-dark">
                     <div className="info-section">
-                      <p className="label">Name:</p>
+                      <p className="label">NAME:</p>
                       <h5 className={darkMode ? "text-black" : "text-white info-text"} style={{ fontSize: "1rem" }}>{profileData?.name}</h5>
                     </div>
                     <div className="info-section">
-                      <p className="label">Email:</p>
+                      <p className="label">EMAIL:</p>
                       <h5 className={darkMode ? "text-black" : "text-white info-text"} style={{ fontSize: "1rem" }}>{profileData?.email}</h5>
                     </div>
                     <div className="info-section">
-                      <p className="label">Mobile:</p>
+                      <p className="label">MOBILE:</p>
                       <h5 className={darkMode ? "text-black" : "text-white info-text"} style={{ fontSize: "1rem" }}>{profileData?.mobile}</h5>
                     </div>
                   </div>
@@ -124,49 +122,39 @@ function ProfilePage() {
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <Link to="/user/orders" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600", display: "flex", alignItems: "center", marginRight: "120px" }}>
-                        <PiCubeLight size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                        Orders
+                        ORDERS
                       </Link>
                     </div>
-                    <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <Link to="/user/update-user-profile" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>
-                        <PiNotePencilLight size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                        Edit my profile
+                        EDIT MY PROFILE
                       </Link>
                     </div>
-                    <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                      <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                      <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>Contact us</Link>
+                      <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>CONTACT US</Link>
                     </div>
-                    <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
                   <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                       <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={() => setShowConfirmModal(true)}>
-                        <VscTrash size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                        Delete Account
+                        DELETE ACCOUNT
                       </span>
                     </div>
-                    <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                   <hr />
                   <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                      <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={handleLogout}>
-                        <VscLinkExternal size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                        Sign out
+                      <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "400" }} onClick={handleLogout}>
+                        SIGN OUT
                       </span>
                     </div>
-                    <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
                   </div>
                 </div>
               </div>

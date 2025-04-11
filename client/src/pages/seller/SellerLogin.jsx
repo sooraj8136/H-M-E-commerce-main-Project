@@ -9,7 +9,7 @@ const SellerLogin = () => {
   const { darkMode } = useSelector((state) => state.mode);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
 
   const seller = {
     login_api: "/seller/login-seller",
@@ -33,35 +33,23 @@ const SellerLogin = () => {
 
   return (
     <>
-      <div className="container  d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white "}>
-          HM.com /{" "}
-          <span
-            className="text-danger"
-            style={{
-              fontWeight: "800",
-            }}
-          >
-            seller login
-          </span>{" "}
-        </p>
-      </div>
-      <div className={darkMode ? "text-black" : "text-white"}>
-        <h1
-          className="text-center"
-          style={{ fontSize: "20px", fontWeight: "bold" }}
-        >
-          Seller Sign in{" "}
-        </h1>
+      <div className="d-flex justify-content-center">
+        <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
+          <p className="login-text" style={{ fontSize: "40px", fontWeight: "600" }}>
+            WELCOME
+          </p>
+          <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+            SELLER LOGIN
+          </p>
+        </div>
       </div>
       <br />
-      <div
-        className={darkMode ? "text-black" : "text-white"}
-        style={{ fontSize: "15px", fontWeight: "500" }}
-      >
-        <p className="text-center">
-          Access your seller account and start managing your store today.
-        </p>
+      <div className="d-flex justify-content-center">
+        <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left" }}>
+          <p style={{ fontSize: "13px", fontWeight: "700"}}>
+          ACCESS YOUR SELLER ACCOUNT AND START MANAGING YOUR STORE TODAY.
+          </p>
+        </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-sec">
@@ -71,11 +59,10 @@ const SellerLogin = () => {
           >
             <label
               htmlFor="email"
-              className={`d-block ${
-                darkMode
-                  ? "text-black"
-                  : "text-white nav-sec-1 fs-10 fw-normal"
-              }`}
+              className={`d-block ${darkMode
+                ? "text-black"
+                : "text-white nav-sec-1 fs-10 fw-normal"
+                }`}
             >
               Email:
             </label>
@@ -94,11 +81,10 @@ const SellerLogin = () => {
           >
             <label
               htmlFor="password"
-              className={`d-block ${
-                darkMode
-                  ? "text-black"
-                  : "text-white nav-sec-1 fs-10 fw-normal"
-              }`}
+              className={`d-block ${darkMode
+                ? "text-black"
+                : "text-white nav-sec-1 fs-10 fw-normal"
+                }`}
             >
               Password:
             </label>
@@ -111,7 +97,7 @@ const SellerLogin = () => {
               required
             />
             <span
-              onClick={() => setShowPassword(!showPassword)} 
+              onClick={() => setShowPassword(!showPassword)}
               style={{
                 position: "absolute",
                 right: "10px",
@@ -127,12 +113,10 @@ const SellerLogin = () => {
             </span>
           </div>
         </div>
-        <div className="text-center mb-4">
+        <div className="mb-4" style={{ maxWidth: "400px", width: "90%", margin: "10px auto 0 auto", textAlign: "left" }}>
           <Link
             to="/seller/seller-forgot-password"
-            className={`${
-              darkMode ? "text-black" : "text-white"
-            } forgot-password no-underline`}
+            className={`${darkMode ? "text-black" : "text-white"} forgot-password no-underline`} style={{ fontSize: "13px", fontWeight: "600" }}
           >
             Forgot password?
           </Link>
@@ -142,7 +126,7 @@ const SellerLogin = () => {
             className="bg-black signin-btn"
             style={{ maxWidth: "400px", width: "90%" }}
           >
-            Sign in
+            COUNTINUE
           </button>
         </div>
         <br />
@@ -162,7 +146,7 @@ const SellerLogin = () => {
             className={darkMode ? "text-black" : "text-black"}
             style={{ textDecoration: "none" }}
           >
-            Become an H&M seller
+            BECOME AN H&M SELLER
           </Link>
         </button>
       </div>

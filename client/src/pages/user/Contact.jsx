@@ -9,48 +9,54 @@ function Contact() {
 
   return (
     <>
-      <Container>
-        <div className="container d-flex justify-content-center align-items-center heading-head">
-          <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
-            HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>Contact</span>
+      <Container >
+        <div
+          className="container d-flex justify-content-start align-items-start heading-head"
+          style={{ marginTop: "140px" }}>
+          <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+            HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>CONTACT</span>
           </p>
         </div>
         <div className='container mt-4 d-flex justify-content-center align-items-center'>
           <div className="position-relative" style={{ maxWidth: "930px", width: "100%" }}>
-            <div className='text-center mb-4'>
-              <h1 className={darkMode ? "text-black" : "text-white "}>WE’D LOVE TO HEAR FROM YOU</h1>
+            <div
+              className="container d-flex justify-content-start align-items-start heading-head"
+              style={{ marginTop: "40px" }}>
+              <p style={{ fontSize: "40px", fontWeight: "600" }}>
+                WE’D LOVE TO HEAR FROM YOU
+              </p>
             </div>
-            <div className='text-center'>
+            <div>
               <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "small", fontWeight: "500" }}>You can chat with our Virtual assistant 24/7 for answers to frequently asked questions. You’ll be put through to a live agent if you need more help, during below opening hours.</p>
             </div>
-            <div className='text-center '>
+            <div>
               <h4 className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "medium", fontWeight: "700" }}>Call us</h4>
             </div>
-            <div className='text-center '>
+            <div >
               <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "small", fontWeight: "500" }}>1800-889-8000<br />Free of charge</p>
             </div>
-            <div className='text-center '>
+            <div >
               <h4 className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "medium", fontWeight: "700" }}>Opening Hours</h4>
             </div>
-            <div className='text-center '>
+            <div >
               <h4 className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "medium", fontWeight: "700" }}>Phone</h4>
             </div>
-            <div className='text-center'>
+            <div >
               <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "small", fontWeight: "500" }}>Monday – Sunday: 8.00 – 22.00</p>
             </div>
-            <div className='text-center '>
+            <div >
               <h4 className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "medium", fontWeight: "700" }}>Chat</h4>
             </div>
-            <div className='text-center'>
+            <div >
               <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "small", fontWeight: "500" }}>Monday – Sunday: 8.00 – 22.00</p>
             </div>
-            <div className='text-center '>
+            <div >
               <h4 className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "medium", fontWeight: "700" }}>Email</h4>
             </div>
-            <div className='text-center'>
+            <div >
               <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "small", fontWeight: "500" }}>customerservice.in@hm.com</p>
             </div>
-            <div className='text-center'>
+            <div >
               <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "small", fontWeight: "500" }}>When you contact Customer Service your personal data will be processed in accordance with our Privacy Notice.</p>
             </div>
             <div className="responsive-img-container">
