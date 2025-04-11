@@ -22,7 +22,7 @@ function Contact() {
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
               style={{ marginTop: "40px" }}>
-              <p style={{ fontSize: "40px", fontWeight: "600" }}>
+              <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
                 WE’D LOVE TO HEAR FROM YOU
               </p>
             </div>

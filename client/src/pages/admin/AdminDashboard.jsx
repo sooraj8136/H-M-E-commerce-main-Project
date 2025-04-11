@@ -11,20 +11,6 @@ function AdminDashboard() {
         className="dashboard container-fluid"
         style={{ display: "flex", flexDirection: "column", padding: "20px" }}
       >
-        <div className="container d-flex justify-content-center align-items-center heading-head mt-4 text-center">
-          <p className={darkMode ? "text-black" : "text-white"}>
-            HM.com /{" "}
-            <span
-              className="text-danger"
-              style={{
-                fontWeight: "800",
-              }}
-            >
-              Admin Dashboard
-            </span>
-          </p>
-        </div>
-
         <div className="w-100 mt-4">
           <AdminBarchart />
         </div>

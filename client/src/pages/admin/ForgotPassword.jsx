@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../../config/axiosInstance";
+import { Container } from "react-bootstrap";
 
 const ForgotPassword = () => {
   const { darkMode } = useSelector((state) => state.mode);
@@ -28,38 +29,39 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div>
-      <div className="container d-flex justify-content-center align-items-center heading-head mb-4">
-        <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com / <span className="text-danger" style={{ fontWeight: "800" }}>Admin Forgot password</span>
-        </p>
-      </div>
-      <div className={darkMode ? "text-black" : "text-white"}>
-        <h2 className="text-center">Forgot Password</h2>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className="input-sec">
-          <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="pass-input w-100 mt-1"
-              required
-            />
+    <Container>
+      <div>
+        <div className="d-flex justify-content-center">
+          <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
+            <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+              ADMIN FORGOT PASSWORD
+            </p>
           </div>
         </div>
-        <div className="d-flex justify-content-center">
-          <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }} type="submit">
-            Submit
-          </button>
-        </div>
-        <div className="text-center mt-3">
-          {message && <p style={{ color: message.includes("wrong") ? "red" : "green" }}>{message}</p>}
-        </div>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit}>
+          <div className="input-sec">
+            <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="pass-input w-100 mt-1"
+                required
+              />
+            </div>
+          </div>
+          <div className="d-flex justify-content-center">
+            <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }} type="submit">
+              Submit
+            </button>
+          </div>
+          <div className="text-center mt-3">
+            {message && <p style={{ color: message.includes("wrong") ? "red" : "green" }}>{message}</p>}
+          </div>
+        </form>
+      </div>
+    </Container>
   );
 };
 

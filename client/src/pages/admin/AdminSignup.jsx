@@ -16,8 +16,8 @@ function AdminSignup() {
             console.log("Data  :- ", data);
 
             const response = await axiosInstance({
-                method : "POST",
-                url : '/admin/register-admin',data
+                method: "POST",
+                url: '/admin/register-admin', data
             })
             console.log(response, "====response");
             toast.success("Admin Sign-up success! Please log in.");
@@ -30,17 +30,12 @@ function AdminSignup() {
 
     return (
         <>
-            <div className="container  d-flex justify-content-center align-items-center heading-head">
-                <p className={darkMode ? "text-black" : "text-white "}>HM.com / <span className='text-danger' style={{
-                    fontWeight: "800"
-                }}>Admin Register</span> </p>
-            </div>
-            <br />
-            <div className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "15px", fontWeight: "500" }}>
-                <p className="text-center">
-                    Join us as an admin to manage the platform's content and users!
+            <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0 auto", textAlign: "left" }}>
+                <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
+                    ADMIN SIGN UP
                 </p>
             </div>
+            <br />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-sec">
                     <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
@@ -125,7 +120,7 @@ function AdminSignup() {
                 </div>
                 <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
                     <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
-                        Sign up
+                        SIGN UP
                     </button>
                 </div>
             </form>
@@ -133,9 +128,9 @@ function AdminSignup() {
                 <p className="text-center">
                     <Link
                         to="/admin/login"
-                        className={darkMode ? "text-black" : "text-white forgot-password"}
+                        className={`login-text {darkMode ? "text-black" : "text-white forgot-password"}`} style={{fontSize:".8rem", color:"black"}}
                     >
-                        Back to sign in
+                        BACK TO SIGN IN
                     </Link>
                 </p>
             </div>

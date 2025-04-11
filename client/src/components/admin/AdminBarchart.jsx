@@ -63,9 +63,13 @@ const AdminBarhart = () => {
                 borderRadius: "10px",
             }}
         >
-            <h1 className="text-center" style={{ color: darkMode ? "black" : "white", fontSize:'x-large', fontWeight:'600'}}>
-                Sales Analyse
-            </h1>
+            <div
+                className="container d-flex justify-content-start align-items-start heading-head"
+                style={{ marginTop: "50px" }}>
+                <p style={{ fontSize: "40px", fontWeight: "600" }}>
+                    ADMIN DASHBOARD
+                </p>
+            </div>
             {isDataAvailable ? (
                 chart ? (
                     <Bar

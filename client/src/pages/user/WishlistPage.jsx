@@ -62,28 +62,29 @@ function WishlistPage() {
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
               style={{ marginTop: "40px" }}>
-              <p style={{ fontSize: "40px", fontWeight: "600" }}>
-              FAVOURITES
+              <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
+                FAVOURITES
               </p>
             </div>
 
             {wishlist.length === 0 ? (
-              <>
-                <p className="text-center mb-1" style={{ fontSize: "0.8rem", fontWeight: "800" }}>
+              <div className="container d-flex flex-column justify-content-start align-items-start heading-head mt-4">
+                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "0.8rem", fontWeight: "800" }}>
                   SAVE YOUR FAVOURITE ITEMS
                 </p>
-                <p className="text-center mb-1" style={{ fontSize: "0.8rem", fontWeight: "500", marginTop: 20 }}>
+                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "0.8rem", fontWeight: "500", marginTop: 20 }}>
                   Want to save the items that you love? Just click on the
                 </p>
-                <p className="text-center" style={{ fontSize: "0.8rem", fontWeight: "500" }}>
+                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "0.8rem", fontWeight: "500" }}>
                   heart symbol beside the item and it will show up here.
                 </p>
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-start">
                   <button className="brows-now mt-3">
                     <a href='/' style={{ textDecoration: "none", color: 'white' }}>Browse now</a>
                   </button>
                 </div>
-              </>
+              </div>
+
 
             ) : (
               <Container>

@@ -22,14 +22,13 @@ const GetAllOrders = () => {
 
   return (
     <Container data-theme={darkMode ? "dark" : "light"} className="py-5">
-      <div className="container d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com / <span className="text-danger" style={{ fontWeight: "700" }}>Orders</span>
+      <div
+        className="container d-flex justify-content-start align-items-start heading-head"
+        style={{ marginTop: "120px" }}>
+        <p  className={darkMode ? "text-dark" : "text-white"}  style={{ fontSize: "40px", fontWeight: "600" }}>
+          ALL ORDERS
         </p>
       </div>
-      <h1 className="text-center mt-4 mb-4" style={{ color: darkMode ? "black" : "white", fontSize: 'x-large', fontWeight: '600' }}>
-        All Orders
-      </h1>
       <div className="cart-container">
         <div className="cart-items">
           {orders.length > 0 ? (

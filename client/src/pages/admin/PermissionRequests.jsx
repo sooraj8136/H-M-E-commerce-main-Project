@@ -40,14 +40,13 @@ const PendingPermissionRequests = () => {
 
     return (
         <Container className="d-flex flex-column align-items-center py-5">
-            <div className="container  d-flex justify-content-center align-items-center heading-head  mt-4">
-                <p className={darkMode ? "text-black" : "text-white"}>HM.com / <span className='text-danger' style={{
-                    fontWeight: "800"
-                }}>Pending requests</span> </p>
+            <div
+                className="container d-flex justify-content-start align-items-start heading-head"
+                style={{ marginTop: "120px" }}>
+                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
+                    PENDING REQUESTS
+                </p>
             </div>
-            <h1 className="text-center mt-4 mb-4" style={{ color: darkMode ? "black" : "white", fontSize: 'x-large', fontWeight: '600' }}>
-                Pending requests
-            </h1>
             <Row className="w-100 d-flex flex-column align-items-center">
                 {requests.length > 0 ? (
                     requests.map((request) => (
@@ -88,7 +87,9 @@ const PendingPermissionRequests = () => {
                         </Col>
                     ))
                 ) : (
-                    <p className="text-center mt-4" style={{fontWeight: '600'}}>No pending requests!</p>
+                    <div  className={darkMode ? "text-dark" : "text-white"} >
+                        <p className="text-start mt-4" style={{ fontWeight: '600' }}>NO PENDING REQUESTS!</p>
+                    </div>
                 )}
             </Row>
         </Container>

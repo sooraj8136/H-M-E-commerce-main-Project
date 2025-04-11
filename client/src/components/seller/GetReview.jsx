@@ -41,12 +41,12 @@ function GetReview() {
             aria-expanded={openReviews}
             style={{
               marginTop: "1rem",
-              fontWeight: "500",
+              fontWeight: "600",
               textDecoration: "none",
             }}
           >
             <span className={darkMode ? "text-black" : "text-white"}>
-              Customer Reviews
+              CUSTOMER REWIES
             </span>
             {openReviews ? (
               <MdKeyboardArrowUp

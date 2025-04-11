@@ -13,8 +13,8 @@ const GetAllUsers = () => {
         const fetchUsers = async () => {
             try {
                 const response = await axiosInstance({
-                    method : "GET",
-                    url : "/user/get-all-user"
+                    method: "GET",
+                    url: "/user/get-all-user"
                 });
                 setUsers(response.data);
             } catch (error) {
@@ -49,7 +49,7 @@ const GetAllUsers = () => {
             setModal({ show: false, action: '', userId: '' });
         }
     };
-    
+
 
     const handleModal = (action, userId) => {
         setModal({ show: true, action, userId });
@@ -57,22 +57,21 @@ const GetAllUsers = () => {
 
     return (
         <div className="container">
-            <div className="d-flex justify-content-center align-items-center heading-head mt-4">
-                <p className={darkMode ? "text-black" : "text-white"}>
-                    HM.com / <span className='text-danger' style={{ fontWeight: "800" }}>All users</span>
+            <div
+                className="container d-flex justify-content-start align-items-start heading-head"
+                style={{ marginTop: "120px" }}>
+                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
+                    ALL USERS
                 </p>
             </div>
-            <h1 className="text-center mt-4 mb-4" style={{ color: darkMode ? "black" : "white", fontSize: 'x-large', fontWeight: '600' }}>
-                All Users
-            </h1>
             {users.length === 0 ? (
                 <p className="text-center">No users found.</p>
             ) : (
                 <div className="d-flex flex-column align-items-center w-100">
                     {users.map((user) => (
-                        <div 
-                            className="user-card w-100 p-3 mb-3  d-flex justify-content-between align-items-center" 
-                            key={user._id} 
+                        <div
+                            className="user-card w-100 p-3 mb-3  d-flex justify-content-between align-items-center"
+                            key={user._id}
                             style={{ backgroundColor: darkMode ? "white" : "black", color: darkMode ? "#000" : "#fff" }}
                         >
                             <div className="user-details">
@@ -80,7 +79,7 @@ const GetAllUsers = () => {
                                 <p>{user.email}</p>
                                 <p>{user.mobile}</p>
                                 <p className="card-text">
-                                    <strong>Status:</strong> 
+                                    <strong>Status:</strong>
                                     {user.isActive ? (
                                         <span className="text-success"> Active</span>
                                     ) : (
@@ -89,13 +88,13 @@ const GetAllUsers = () => {
                                 </p>
                             </div>
                             <div className="user-actions d-flex flex-column align-items-end gap-2">
-                                <button className=" w-100" onClick={() => handleModal('activate', user._id)} style={{border: '1px solid white'}}>
+                                <button className=" w-100" onClick={() => handleModal('activate', user._id)} style={{ border: '1px solid white' }}>
                                     Activate
                                 </button>
-                                <button className=" w-100" onClick={() => handleModal('deactivate', user._id)} style={{border: '1px solid white'}}>
+                                <button className=" w-100" onClick={() => handleModal('deactivate', user._id)} style={{ border: '1px solid white' }}>
                                     Deactivate
                                 </button>
-                                <button className=" w-100" onClick={() => handleModal('delete', user._id)} style={{border: '1px solid white'}}>
+                                <button className=" w-100" onClick={() => handleModal('delete', user._id)} style={{ border: '1px solid white' }}>
                                     Delete
                                 </button>
                             </div>
@@ -123,7 +122,7 @@ const GetAllUsers = () => {
             </Modal>
         </div>
     );
-    
+
 };
 
 export default GetAllUsers;

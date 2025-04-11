@@ -33,7 +33,7 @@ const SellerOrders = () => {
       <div
         className="container d-flex justify-content-start align-items-start heading-head"
         style={{ marginTop: "140px" }}>
-        <p style={{ fontWeight: "400", fontSize: "3rem", color: "black" }}>
+        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontWeight: "400", fontSize: "3rem", color: "black" }}>
           ORDERS
         </p>
       </div>  

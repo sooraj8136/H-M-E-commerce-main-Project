@@ -51,15 +51,14 @@ const UpdateAdminProfile = () => {
 
     return (
         <>
-            <div className="container d-flex justify-content-center align-items-center heading-head">
-                <p className={darkMode ? "text-black" : "text-white"}>
-                    HM.com / My Account / <span className="text-danger" style={{ fontWeight: "800" }}>EDIT MY DETAILS</span>
+            <Container className="text-center">
+            <div
+                className="container d-flex justify-content-start align-items-start heading-head"
+                style={{ marginTop: "140px" }}>
+                <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                    HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>EDIT MY PROFILE</span>
                 </p>
             </div>
-            <Container className="text-center">
-                <h4 className={darkMode ? "text-dark" : "text-light"} style={{ fontSize: "25px", fontWeight: "700" }}>
-                    EDIT MY DETAILS
-                </h4>
             </Container>
 
             <Container className="d-flex justify-content-center">
@@ -86,13 +85,13 @@ const UpdateAdminProfile = () => {
                         </div>
 
                         <div className="justify-content-center mt-3">
-                            <button className="update-prof-btn" style={{ textDecoration: "none" }}>Save</button>
+                            <button className="update-prof-btn" style={{ textDecoration: "none" }}>SAVE</button>
                         </div>
                     </form>
 
                     <div className="justify-content-center mt-3">
                         <button className="update-prof-cancel-btn">
-                            <Link to="/admin/admin-profile" style={{ textDecoration: "none", color: "inherit" }}>Cancel</Link>
+                            <Link to="/admin/admin-profile" style={{ textDecoration: "none", color: "inherit" }}>CANCEL</Link>
                         </button>
                     </div>
                 </div>

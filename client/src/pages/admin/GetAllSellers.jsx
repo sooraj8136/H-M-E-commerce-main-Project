@@ -14,8 +14,8 @@ const GetAllSellers = () => {
     const fetchSellers = async () => {
       try {
         const response = await axiosInstance({
-          method : "GET",
-          url : "/seller/get-all-sellers"
+          method: "GET",
+          url: "/seller/get-all-sellers"
         });
         setSellers(response.data);
       } catch (err) {
@@ -44,15 +44,13 @@ const GetAllSellers = () => {
 
   return (
     <Container className="my-5">
-      <div className="container d-flex justify-content-center align-items-center heading-head mt-4">
-        <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com / <span className='text-danger' style={{ fontWeight: "800" }}>All Sellers</span>
+      <div
+        className="container d-flex justify-content-start align-items-start heading-head"
+        style={{ marginTop: "120px" }}>
+        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
+          ALL SELLERS
         </p>
       </div>
-      <h1 className="text-center mt-4 mb-4" style={{ color: darkMode ? "black" : "white", fontSize: 'x-large', fontWeight: '600' }}>
-        All Sellers
-      </h1>
-
       {sellers.length === 0 ? (
         <p className="text-center">Sorry, No sellers found.</p>
       ) : (
@@ -72,7 +70,7 @@ const GetAllSellers = () => {
 
               {/* Delete Button on the Right */}
               <div className="user-actions d-flex flex-column align-items-end">
-                <button className=" w-100" onClick={() => handleModal('delete', seller._id)} style={{border: '1px solid white'}}>
+                <button className=" w-100" onClick={() => handleModal('delete', seller._id)} style={{ border: '1px solid white' }}>
                   Delete
                 </button>
               </div>

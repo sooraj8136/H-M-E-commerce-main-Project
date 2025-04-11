@@ -165,7 +165,7 @@ function UpdateSellerProfile() {
 
                         <div className="justify-content-center mt-3">
                             <button className="update-prof-btn" style={{ textDecoration: "none" }}>
-                                Save
+                                SAVE
                             </button>
                         </div>
                     </form>
@@ -173,7 +173,7 @@ function UpdateSellerProfile() {
                     <div className="justify-content-center mt-3">
                         <button className="update-prof-cancel-btn">
                             <Link to="/seller/profile" style={{ textDecoration: "none", color: "inherit" }}>
-                                Cancel
+                                CANCEL
                             </Link>
                         </button>
                     </div>

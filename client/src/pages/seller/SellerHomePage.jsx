@@ -10,7 +10,7 @@ function SellerHomePage() {
       <div
         className="container d-flex justify-content-start align-items-start heading-head"
         style={{ marginTop: "50px" }}>
-        <p style={{ fontSize: "40px", fontWeight: "600" }}>
+        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
           SELLER DASHBOARD
         </p>
       </div>

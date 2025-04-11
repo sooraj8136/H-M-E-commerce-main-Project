@@ -26,16 +26,12 @@ function AdminProductPage() {
 
     return (
         <Container>
-            <div className="container py-2 text-center">
-                <p className="lead" style={{ fontSize: 'clamp(1rem, 3vw, 1.5rem)' }}>
+            <div
+                className="container d-flex justify-content-start align-items-start heading-head"
+                style={{ marginTop: "120px" }}>
+                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
+                    ALL PRODUCTS
                 </p>
-            </div>
-            <div>
-                <div className="container  d-flex justify-content-center align-items-center heading-head  mt-4">
-                    <p className={darkMode ? "text-black" : "text-white"}>HM.com / <span className='text-danger' style={{
-                        fontWeight: "800"
-                    }}>All Products</span> </p>
-                </div>
             </div>
             <Row>
                 {productList.length > 0 ? (

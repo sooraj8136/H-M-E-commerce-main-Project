@@ -89,7 +89,7 @@ function Cart() {
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
               style={{ marginTop: "120px" }}>
-              <p style={{ fontSize: "40px", fontWeight: "600" }}>
+              <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
                 SHOPPING BAG
               </p>
             </div>

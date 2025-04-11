@@ -37,13 +37,15 @@ const AdminLogin = () => {
 
   return (
     <>
-      <div className="container d-flex justify-content-center align-items-center heading-head">
-        <p className={darkMode ? "text-black" : "text-white "}>
-          HM.com / <span className='text-danger' style={{ fontWeight: "800" }}>Admin Sign in</span>
-        </p>
-      </div>
-      <div className={darkMode ? "text-black" : "text-white"}>
-        <h1 className="text-center" style={{ fontSize: "20px", fontWeight: "bold" }}>Admin Sign in</h1>
+      <div className="d-flex justify-content-center">
+        <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
+          <p className="login-text" style={{ fontSize: "40px", fontWeight: "600" }}>
+            WELCOME
+          </p>
+          <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+            ADMIN LOGIN
+          </p>
+        </div>
       </div>
       <br />
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,36 +98,28 @@ const AdminLogin = () => {
             </span>
           </div>
         </div>
-        <div className="text-center mb-4">
+        <div className="mb-4" style={{ maxWidth: "400px", width: "90%", margin: "10px auto 0 auto", textAlign: "left" }}>
           <Link
             to="/admin/admin-forgot-password"
-            className={darkMode ? "text-black forgot-password" : "text-white forgot-password"}
+            className={`${darkMode ? "text-black" : "text-white"} forgot-password no-underline`} style={{ fontSize: "13px", fontWeight: "600" }}
           >
             Forgot password?
           </Link>
         </div>
         <div className="d-flex justify-content-center">
-          <button className="signin-btn" style={{ maxWidth: "400px", width: "90%", fontWeight: "700" }}>
-            Sign in
+          <button className="signin-btn" style={{ maxWidth: "400px", width: "90%", fontWeight: "500" }}>
+            COUNTINUE
           </button>
         </div>
         <br />
         <div className="d-flex justify-content-center mt-2">
-          <button className="signup-first-btn text-center my-1 w-90"
-            style={{
-              maxWidth: "400px",
-              width: "90%",
-              fontWeight: "700",
-              backgroundColor: "white"
-            }}>
             <Link
               to={admin.signup_route}
-              className={darkMode ? "text-black" : "text-black"}
-              style={{ textDecoration: "none" }}
+              className={darkMode ? "text-dark" : "text-white"}
+              style={{ fontWeight: "600" }}
             >
-              Register Admin
+              REGISTER ADMIN
             </Link>
-          </button>
         </div>
       </form>
     </>

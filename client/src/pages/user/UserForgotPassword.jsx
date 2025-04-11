@@ -29,14 +29,13 @@ const UserForgotPassword = () => {
 
   return (
     <div>
-      <div className="container d-flex justify-content-center align-items-center heading-head mb-4">
-        <p className={darkMode ? "text-black" : "text-white "}>
-          HM.com / <span className="text-danger" style={{ fontWeight: "800" }}>User Forgot password</span>
-        </p>
-      </div>
-      <div className={darkMode ? "text-black" : "text-white"}>
-        <h2 className="text-center">Forgot Password</h2>
-      </div>
+      <div className="d-flex justify-content-center">
+          <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
+            <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+              USER FORGOT PASSWORD
+            </p>
+          </div>
+        </div>
       <form onSubmit={handleSubmit}>
         <div className="input-sec">
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>

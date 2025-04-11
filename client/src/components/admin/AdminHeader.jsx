@@ -6,111 +6,104 @@ import Navbar from "react-bootstrap/Navbar";
 import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
 import { MdDashboard } from "react-icons/md";
-import { BsPerson, BsBag } from 'react-icons/bs';
+import { BsPerson, BsShopWindow } from 'react-icons/bs';
 import { IoCartOutline, IoPersonCircleOutline } from "react-icons/io5";
-import { BsShopWindow } from "react-icons/bs";
 import { VscMenu } from 'react-icons/vsc';
-import { Form } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function AdminHeader() {
     const { darkMode } = useSelector((state) => state.mode);
 
     return (
-        <>
-            <header>
-                <Navbar expand="lg" className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black"}
-                    style={{ paddingBottom: '40px', marginTop: '20px' }}>
-                    <Container fluid>
-                        <Navbar.Toggle aria-controls="navbarScroll" />
-                        <Navbar.Collapse id="navbarScroll">
-                            <Nav className="navbar-nav me-auto mb-2 mb-lg-0" navbarScroll>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.9rem' }}>Sustainability</Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.9rem' }}>Customer Service</Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.9rem' }}>Newsletter</Nav.Link>
-                            </Nav>
+        <header>
+            <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`}>
+                <Container fluid className="px-4 p-3">
+                    <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
+                        <div className="d-flex align-items-center gap-3">
+                            <a href="/admin/admin-dashboard">
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
+                                    width="44px"
+                                    className="rounded"
+                                    alt="H&M Logo"
+                                    style={{ marginTop: '-3px', marginRight: "40px" }}
+                                />
+                            </a>
+                        </div>
 
-                            <Form className="d-flex align-items-center">
-                                <div className="nav-sec-2">
-                                    <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/admin-dashboard" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`
-                                        } style={{ fontSize: '0.9rem' }}>
-                                            <MdDashboard className="me-2" />
-                                            Dashboard
-                                        </Nav.Link>
-                                    </div>
-                                    <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/get-all-users" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                            style={{ fontSize: '0.9rem' }}>
-                                            <BsPerson className="me-2" style={{ fontSize: "20px" }} />
-                                            Users
-                                        </Nav.Link>
-                                    </div>
-                                    <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/get-sellers" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} 
-                                        style={{ fontSize: '0.9rem' }}>
-                                            <BsShopWindow className="me-2" />
-                                            Sellers
-                                        </Nav.Link>
-                                    </div>
-                                    <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/admin-products" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                            style={{ fontSize: '0.9rem' }}>
-                                            <VscMenu className="me-2" />
-                                            Products
-                                        </Nav.Link>
-                                    </div>
-                                    <Dropdown>
-                                        <Dropdown.Toggle variant="transparent" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} 
-                                        style={{ border: 'none', background: 'none', fontSize: '0.9rem' }}>
-                                            <IoCartOutline className="me-2" style={{ fontSize: "20px" }} />
-                                            Orders
-                                        </Dropdown.Toggle>
+                        <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                            <Nav.Link
+                                as={Link}
+                                to="/admin/admin-dashboard"
+                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                style={{ fontSize: '1rem' }}
+                            >
+                                <MdDashboard />
+                            </Nav.Link>
 
-                                        <Dropdown.Menu>
-                                            <Dropdown.Item href="/admin/get-all-orders" style={{ fontSize: '0.9rem' }}>All Orders</Dropdown.Item>
-                                            <Dropdown.Item href="/admin/pending-requests" style={{ fontSize: '0.9rem' }}>Pending Requests</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
-                                    <div className="d-flex align-items-center">
-                                        <Nav.Link href="/admin/admin-profile" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                        style={{ fontSize: '0.8rem' }}>
-                                            <IoPersonCircleOutline className="me-2" style={{ fontSize: "1.2rem" }} />
-                                            My Account
-                                        </Nav.Link>
-                                    </div>
-                                </div>
-                            </Form>
+                            <Nav.Link
+                                as={Link}
+                                to="/admin/get-all-users"
+                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                style={{ fontSize: '1rem' }}
+                            >
+                                <BsPerson />
+                            </Nav.Link>
 
-                            <div className="search">
-                                <div className="search-container d-flex align-items-center">
-                                    <input className={`search-input ${darkMode ? "text-black" : "text-white"}`} placeholder="Search" aria-label="Search" type="search" />
-                                    <button className="search-button" aria-label="Submit Search">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="search-icon" viewBox="0 0 16 16">
-                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1.007 1.007 0 0 0-.115-.098zm-5.242 1.1a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
+                            <Nav.Link
+                                as={Link}
+                                to="/admin/get-sellers"
+                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                style={{ fontSize: '1rem' }}
+                            >
+                                <BsShopWindow />
+                            </Nav.Link>
 
-                            <span>
-                                <DarkMode />
-                            </span>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
-                <div className="imageTag text-center mt-4">
-                    <a href="/admin/admin-dashboard" target="home" rel="toHome">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
-                            width="60px"
-                            className="rounded mx-auto d-block"
-                            alt="H&M Logo"
-                        />
-                    </a>
-                </div>
-            </header>
-        </>
+                            <Dropdown align="end">
+                                <Dropdown.Toggle
+                                    as="div"
+                                    className={`nav-link dropdown-toggle p-0 ${darkMode ? "text-black" : "text-white"}`}
+                                    role="button"
+                                    style={{ fontSize: '1rem', cursor: 'pointer' }}
+                                >
+                                    <VscMenu />
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item as={Link} to="/admin/admin-products">Products</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Dropdown align="end">
+                                <Dropdown.Toggle
+                                    as="div"
+                                    className={`nav-link dropdown-toggle p-0 ${darkMode ? "text-black" : "text-white"}`}
+                                    role="button"
+                                    style={{ fontSize: '1rem', cursor: 'pointer' }}
+                                >
+                                    <IoCartOutline />
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item as={Link} to="/admin/get-all-orders">All Orders</Dropdown.Item>
+                                    <Dropdown.Item as={Link} to="/admin/pending-requests">Pending Requests</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Nav.Link
+                                as={Link}
+                                to="/admin/admin-profile"
+                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                style={{ fontSize: '1rem' }}
+                            >
+                                <IoPersonCircleOutline />
+                            </Nav.Link>
+
+                            <DarkMode />
+                        </div>
+                    </div>
+                </Container>
+            </Navbar>
+        </header>
     );
 }
 

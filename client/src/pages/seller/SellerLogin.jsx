@@ -132,23 +132,12 @@ const SellerLogin = () => {
         <br />
       </form>
       <div className="d-flex justify-content-center mt-2">
-        <button
-          className="signup-first-btn text-center my-1 w-90"
-          style={{
-            maxWidth: "400px",
-            width: "90%",
-            fontWeight: "700",
-            backgroundColor: "white",
-          }}
-        >
           <Link
             to={seller.signup_route}
             className={darkMode ? "text-black" : "text-black"}
-            style={{ textDecoration: "none" }}
           >
             BECOME AN H&M SELLER
           </Link>
-        </button>
       </div>
     </>
   );

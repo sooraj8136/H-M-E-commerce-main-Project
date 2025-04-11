@@ -17,7 +17,7 @@ function AdminProfile() {
     const fetchAdminProfile = async () => {
       try {
         const response = await axiosInstance({
-          method : "GET",
+          method: "GET",
           url: '/admin/admin-profile'
         })
         setProfileData(response.data);
@@ -32,7 +32,7 @@ function AdminProfile() {
     try {
       await axiosInstance({
         method: 'POST',
-        url : '/admin/admin-logout'
+        url: '/admin/admin-logout'
       })
       toast.success('Logout successful');
       navigate('/login');
@@ -44,14 +44,14 @@ function AdminProfile() {
 
   return (
     <Container data-theme={darkMode ? "dark" : "light"}>
-      <div className="heading-head d-flex justify-content-center align-items-center mt-5">
-        <p className={darkMode ? "text-black" : "text-white"}>
-          HM.com / <span className="text-danger fw-bold">Admin Account</span>
+      <div className="container d-flex justify-content-start align-items-start heading-head" style={{ marginTop: "120px" }}>
+        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
+          ACCOUNTS & REWARDS
         </p>
       </div>
-      <div className="heading-head d-flex justify-content-center align-items-center mt-5">
-        <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "25px", fontWeight: "600" }}>
-          Admin Account
+      <div className="container d-flex justify-content-start align-items-start heading-head">
+        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "clamp(12px, 2vw, 15px)", fontWeight: "400" }}>
+          YOU CAN MANAGE YOUR ACCOUNT AND SUBSCRIPTION HERE
         </p>
       </div>
       <div className="d-flex justify-content-center flex-column flex-lg-row align-items-center" style={{ gap: "20px" }}>
@@ -96,7 +96,6 @@ function AdminProfile() {
                   Edit my profile
                 </Link>
               </div>
-              <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
             </div>
             <hr style={{ width: "100%" }} />
             <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
@@ -106,7 +105,6 @@ function AdminProfile() {
                   Sign out
                 </span>
               </div>
-              <IoIosArrowForward className={darkMode ? "text-dark" : "text-light"} />
             </div>
           </div>
         </div>
