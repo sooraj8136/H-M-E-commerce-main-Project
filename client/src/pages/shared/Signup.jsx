@@ -83,7 +83,7 @@ function Signup() {
 
       <div className="d-flex justify-content-center mt-2">
         <p className=" text-center">
-          <Link to={user.login_route} className={`login-text {darkMode ? "text-black" : "text-white forgot-password"}`} style={{fontSize:".8rem", color:"black"}}>BACK TO LOGIN</Link>
+          <Link to={user.login_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{fontSize:".8rem", color:"black"}}>BACK TO LOGIN</Link>
         </p>
       </div>
     </>

@@ -46,7 +46,7 @@ function Header() {
                                                 padding: '0 4px',
                                                 marginLeft: "15px",
                                                 textDecoration: 'none',
-                                                fontWeight: '550'
+                                                fontWeight: '400'
                                             }}
                                         >
                                             {link.replace('-page', '').toUpperCase()}

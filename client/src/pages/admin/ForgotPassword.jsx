@@ -52,8 +52,8 @@ const ForgotPassword = () => {
             </div>
           </div>
           <div className="d-flex justify-content-center">
-            <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }} type="submit">
-              Submit
+            <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%", fontWeight:"500" }} type="submit">
+              SUBMIT
             </button>
           </div>
           <div className="text-center mt-3">
