@@ -12,7 +12,7 @@ function KidsPage() {
 
     return (
         <>
-            <Container>
+            <div style={{marginTop:"110px"}}>
                 <KidsDenim />
                 <KidsProducts />
                 <KidsEffortlessBlues />
@@ -34,7 +34,7 @@ function KidsPage() {
                         HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>KIDS</span>
                     </p>
                 </div>
-            </Container>
+            </div>
         </>
     )
 }

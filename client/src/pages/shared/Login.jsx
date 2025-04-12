@@ -72,7 +72,7 @@ const Login = () => {
           </div>
         </form>
         <div className="d-flex justify-content-center mt-3">
-            <Link to={user.signup_route} className={`login-text {darkMode ? "text-black" : "text-black "}`} style={{fontSize:".8rem", color:"black"}}>
+            <Link to={user.signup_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{fontSize:".8rem", color:"black"}}>
               BECOME AN H&M MEMBER
             </Link>
         </div>

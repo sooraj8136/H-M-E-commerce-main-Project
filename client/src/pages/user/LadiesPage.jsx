@@ -14,8 +14,7 @@ function LadiesPage() {
 
     return (
         <>
-
-            <Container>
+            <div style={{ marginTop: "110px" }}>
                 <Office />
                 <LadiesProducts />
                 <Accessories />
@@ -35,11 +34,11 @@ function LadiesPage() {
                 <div
                     className="container d-flex justify-content-start align-items-start heading-head"
                     style={{ marginTop: "80px" }}>
-                    <p style={{ fontWeight: "400" , fontSize:"0.9rem", color:"#a0a0a0"}}>
-                        HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize:"0.9rem", color:"black" }}>LADIES</span>
+                    <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                        HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>LADIES</span>
                     </p>
                 </div>
-            </Container>
+            </div>
         </>
     )
 }
