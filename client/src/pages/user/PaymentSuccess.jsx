@@ -23,7 +23,6 @@ const PaymentSuccess = () => {
                     url: "/orders/update-stock"
                 });
                 if (response.status === 200) {
-                    toast.success('Stock updated successfully!');
                 } else {
                     toast.error('Failed to update stock.');
                 }
@@ -43,9 +42,8 @@ const PaymentSuccess = () => {
     return (
         <div
             className={`text-center d-flex flex-column align-items-center justify-content-center ${darkMode ? 'text-black' : 'text-white'}`} >
-            <div className="text-center d-flex flex-column align-items-center justify-content-center">
-                <p style={{ fontWeight: '700', fontSize: 'x-large', }}>Thank you for your purchase</p>
-                <p style={{ fontWeight: '500', }}>Happy shopping!</p>
+            <div className="text-center d-flex flex-column align-items-center justify-content-center" style={{marginTop:"120px"}}>
+                <p style={{ fontWeight: '700', fontSize: 'x-large', }}>THANK YOU FOR PURCHASE</p>
 
                 <div className="d-flex justify-content-center my-3">
                     <LiaThumbsUpSolid

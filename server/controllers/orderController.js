@@ -111,20 +111,60 @@ const updateOrderStatus = async (req, res) => {
 };
 
 
-const sendPermissionRequestToAdmin = async (req, res) => {
+// const sendPermissionRequestToAdmin = async (req, res) => {
 
+//   try {
+//     const { orderId, status } = req.body;
+
+//     console.log("Request Body:", req.body);
+
+//     const validStatuses = ["processing", "transit", "out-for-delivery", "delivered", "cancelled"];
+//     if (!validStatuses.includes(status)) {
+//       return res.status(400).json({ message: "Invalid status provided." });
+//     }
+
+//     if (!mongoose.isValidObjectId(orderId)) {
+//       return res.status(400).json({ message: "Invalid Order ID provided." });
+//     }
+
+//     const permissionRequest = new PermissionRequest({
+//       orderId,
+//       status,
+//       createdAt: new Date(),
+//     });
+
+//     await permissionRequest.save();
+
+//     res.status(200).json({ message: "Permission request sent successfully." });
+//   } catch (error) {
+//     console.error("Error handling permission request:", error);
+//     res.status(500).json({ message: "Failed to send permission request." });
+//   }
+// };
+
+
+const sendPermissionRequestToAdmin = async (req, res) => {
   try {
     const { orderId, status } = req.body;
 
     console.log("Request Body:", req.body);
 
-    const validStatuses = ["processing", "transit", "out-for-delivery", "delivered"];
+    const validStatuses = ["processing", "transit", "out-for-delivery", "delivered", "cancelled"];
     if (!validStatuses.includes(status)) {
       return res.status(400).json({ message: "Invalid status provided." });
     }
 
     if (!mongoose.isValidObjectId(orderId)) {
       return res.status(400).json({ message: "Invalid Order ID provided." });
+    }
+
+    const order = await OrderDb.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found." });
+    }
+
+    if (order.orderStatus === "cancelled") {
+      return res.status(400).json({ message: "Order is already cancelled.Requests are not allowed." });
     }
 
     const permissionRequest = new PermissionRequest({
@@ -141,6 +181,7 @@ const sendPermissionRequestToAdmin = async (req, res) => {
     res.status(500).json({ message: "Failed to send permission request." });
   }
 };
+
 
 
 const updatePermissionRequest = async (req, res) => {
