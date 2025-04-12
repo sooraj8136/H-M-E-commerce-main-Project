@@ -136,7 +136,7 @@ const Barchart = () => {
             fontSize: "18px",
           }}
         >
-          No Orders available for you
+          NO ORDERS AVAILABLE FOR YOU!
         </p>
       )}
     </div>

@@ -1,10 +1,20 @@
-import React from 'react'
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Barchart from '../../components/seller/Barchart';
 import { useSelector } from 'react-redux';
 
 function SellerHomePage() {
   const { darkMode } = useSelector((state) => state.mode);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Container className="p-5" style={{ minHeight: 450 }}>
       <div
@@ -14,13 +24,21 @@ function SellerHomePage() {
           SELLER DASHBOARD
         </p>
       </div>
-      <Row className="d-flex justify-content-center align-items-center">
-        <Col>
-          <Barchart role="seller" />
-        </Col>
-      </Row>
+
+      {loading ? (
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
+          <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
+          <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+        </div>
+      ) : (
+        <Row className="d-flex justify-content-center align-items-center">
+          <Col>
+            <Barchart role="seller" />
+          </Col>
+        </Row>
+      )}
     </Container>
-  )
+  );
 }
 
-export default SellerHomePage
+export default SellerHomePage;

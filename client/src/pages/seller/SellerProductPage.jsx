@@ -5,24 +5,28 @@ import Container from 'react-bootstrap/Container';
 import { useSelector } from 'react-redux';
 import SellerProductCard from '../../components/seller/SellerProductCard';
 import { axiosInstance } from '../../config/axiosInstance';
+import { Spinner } from 'react-bootstrap';
 
 function ProductPage() {
     const { darkMode } = useSelector((state) => state.mode);
     const [productList, setProductList] = useState([]);
-    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProducts = async () => {
-            try {
-                const response = await axiosInstance.get("/product/get-seller-products");
-                setProductList(response.data.data.products || []);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
+            setLoading(true);
+            setTimeout(async () => {
+                try {
+                    const response = await axiosInstance.get("/product/get-seller-products");
+                    setProductList(response.data.data.products || []);
+                } catch (err) {
+                    console.error("Error fetching products:", err.message);
+                } finally {
+                    setLoading(false);
+                }
+            }, 1200); // ⏱️ 1.2 second delay
         };
+
         fetchProducts();
     }, []);
 
@@ -30,25 +34,34 @@ function ProductPage() {
         <Container>
             <div
                 className="container d-flex justify-content-start align-items-start heading-head"
-                style={{ marginTop: "140px" }}>
+                style={{ marginTop: "140px" }}
+            >
                 <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-                    HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>YOUR PRODUCTS</span>
+                    HM.COM /{" "}
+                    <span
+                        className={darkMode ? "text-black" : "text-white"}
+                        style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}
+                    >
+                        YOUR PRODUCTS
+                    </span>
                 </p>
             </div>
+
             <div className="container py-5 text-center">
-                <div className={darkMode ? "text-black" : "text-white"} >
-                    <div
-                        className="container d-flex justify-content-start align-items-start heading-head">
+                <div className={darkMode ? "text-black" : "text-white"}>
+                    <div className="container d-flex justify-content-start align-items-start heading-head">
                         <p style={{ fontSize: "20px", fontWeight: "600" }}>
                             YOU CAN MANAGE YOUR PRODUCTS
                         </p>
                     </div>
                 </div>
             </div>
+
             {loading ? (
-                <p className="text-center">Loading products...</p>
-            ) : error ? (
-                <p className="text-danger text-center">Error: {error}</p>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: '100px' }}>
+                    <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
+                    <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+                </div>
             ) : productList.length > 0 ? (
                 <Row>
                     {productList.map((value) => (

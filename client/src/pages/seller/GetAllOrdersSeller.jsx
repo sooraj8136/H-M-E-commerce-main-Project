@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, ListGroup, Spinner } from "react-bootstrap";
 import { axiosInstance } from "../../config/axiosInstance";
 import { useSelector } from "react-redux";
 
@@ -8,24 +8,34 @@ const SellerOrders = () => {
   const { darkMode } = useSelector((state) => state.mode);
   const [orders, setOrders] = useState([]);
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false); 
 
   const fetchOrders = async () => {
     try {
+      setLoading(true);
       setOrders([]);
-      const response = await axiosInstance.post(
-        "/orders/get-seller-orders-by-status",
-        { status }
-      );
-      setOrders(response.data.data);
+  
+      setTimeout(async () => {
+        try {
+          const response = await axiosInstance.post(
+            "/orders/get-seller-orders-by-status",
+            { status }
+          );
+          setOrders(response.data.data);
+        } catch (err) {
+          toast.error(err.response?.data?.message || "Failed to fetch orders.");
+        } finally {
+          setLoading(false);
+        }
+      }, 1500);
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to fetch orders.");
+      setLoading(false);
+      toast.error("Unexpected error occurred.");
     }
-  };
+  };  
 
   useEffect(() => {
-    if (status !== undefined) {
-      fetchOrders();
-    }
+    fetchOrders();
   }, [status]);
 
   return (
@@ -33,10 +43,11 @@ const SellerOrders = () => {
       <div
         className="container d-flex justify-content-start align-items-start heading-head"
         style={{ marginTop: "140px" }}>
-        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontWeight: "400", fontSize: "3rem", color: "black" }}>
+        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontWeight: "400", fontSize: "3rem" }}>
           ORDERS
         </p>
-      </div>  
+      </div>
+
       <div className="mb-4">
         <label
           htmlFor="status"
@@ -64,9 +75,15 @@ const SellerOrders = () => {
           <option value="cancelled">Cancelled</option>
         </select>
       </div>
+
       <div className="cart-container">
         <div className="cart-items">
-          {orders.length === 0 ? (
+          {loading ? (
+            <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
+              <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
+              <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading orders...</span>
+            </div>
+          ) : orders.length === 0 ? (
             <div className={darkMode ? "text-black" : "text-white"}>
               <h1 className="text-center" style={{ fontWeight: "700", fontSize: "xx-large" }}>
                 You have no orders yet!
@@ -93,7 +110,7 @@ const SellerOrders = () => {
                     <ListGroup.Item key={index}>
                       <Row>
                         <Col xs={6}>{item.name}</Col>
-                        <Col xs={3} className="text-center"> {item.quantity}</Col>
+                        <Col xs={3} className="text-center">{item.quantity}</Col>
                         <Col xs={3} className="text-end">₹{(item.quantity * item.price).toFixed(2)}</Col>
                       </Row>
                     </ListGroup.Item>
