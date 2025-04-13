@@ -23,7 +23,7 @@
 
 .home {
     text-align: center;
-    margin-top: 150px;
+    margin-top: 150px; 
 }
 
 .login {
@@ -204,6 +204,17 @@ ul {
     border: 1px solid white;
     color: white;
     background-color: #000000de;
+    font-size: 0.9rem;
+}
+
+.register-btn{
+    max-width: 400px;
+    width: 200px;
+    padding: 12px 22px;
+    margin: 0 auto;
+    border: 1px solid rgb(108, 108, 108);
+    color: white;
+    background-color: transparent;
     font-size: 0.9rem;
 }
 

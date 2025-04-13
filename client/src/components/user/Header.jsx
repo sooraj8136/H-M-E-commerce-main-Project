@@ -79,7 +79,7 @@ function Header() {
                                         }}
                                     />
                                 )}
-                                <button
+                                {/* <button
                                     className="btn d-flex align-items-center justify-content-center p-1"
                                     onClick={() => setShowSearch(!showSearch)}
                                     aria-label="Toggle Search"
@@ -102,7 +102,7 @@ function Header() {
                                         1.415-1.415l-3.85-3.85zm-5.242 
                                         1.1a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
                                     </svg>
-                                </button>
+                                </button> */}
 
                                 <Nav.Link
                                     href="/login"

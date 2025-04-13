@@ -34,14 +34,11 @@ const Login = () => {
       <Container>
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
-          <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+            <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
               USER LOGIN
             </p>
-            <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
-              Sign in with your email or sign up to become an S&M member.
-            </p>
             <p style={{ fontSize: "13px", fontWeight: "500", marginTop: "20px" }}>
-            This is a demo site made by a developer for practice. Not an official H&M website.
+              This is a demo site made by a developer for practice. Not an official H&M website.
             </p>
           </div>
         </div>
@@ -51,23 +48,23 @@ const Login = () => {
               <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
                 Email:
               </label>
-              <input type="email" {...register("email")} id="email" name="email" className="pass-input w-100 mt-1"  style={{ border: "1px solid gray" }} required />
+              <input type="email" {...register("email")} id="email" name="email" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
             </div>
             <div className="mb-3 position-relative" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
               <label htmlFor="password" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
                 Password:
               </label>
-              <input type={showPassword ? "text" : "password"} {...register("password")} id="password" name="password" className="pass-input w-100 mt-1"  style={{ border: "1px solid gray" }} required />
+              <input type={showPassword ? "text" : "password"} {...register("password")} id="password" name="password" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
               <span onClick={() => setShowPassword(!showPassword)} style={{ position: "absolute", right: "10px", top: "68%", transform: "translateY(-50%)", cursor: "pointer", fontSize: "0.8rem", fontWeight: '600' }}>
                 {showPassword ? "HIDE" : "SHOW"}
               </span>
             </div>
           </div>
           <div className="mb-4" style={{ maxWidth: "400px", width: "90%", margin: "10px auto 0 auto", textAlign: "left" }}>
-          <Link to="/user/user-forgot-password" className={`${darkMode ? "text-black" : "text-white"} forgot-password no-underline`} style={{ fontSize: "13px", fontWeight: "600" }}>
-            Forgot password?
-          </Link>
-        </div>
+            <Link to="/user/user-forgot-password" className={`${darkMode ? "text-black" : "text-white"} forgot-password no-underline`} style={{ fontSize: "13px", fontWeight: "600" }}>
+              Forgot password?
+            </Link>
+          </div>
           <div className="d-flex justify-content-center">
             <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }}>
               SIGN IN
@@ -75,9 +72,11 @@ const Login = () => {
           </div>
         </form>
         <div className="d-flex justify-content-center mt-3">
-            <Link to={user.signup_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{fontSize:".8rem", color:"black"}}>
-              BECOME AN S&M MEMBER
+          <button className=" register-btn" style={{ maxWidth: "400px", width: "90%" }}>
+            <Link to={user.signup_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{ fontSize: ".8rem", color: "black" }}>
+              REGISTER
             </Link>
+          </button>
         </div>
       </Container>
     </>
