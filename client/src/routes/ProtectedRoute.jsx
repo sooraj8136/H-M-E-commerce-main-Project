@@ -9,7 +9,7 @@ function ProtectedRoute() {
     const navigate = useNavigate();
 
     if (!isUserAuth) {
-        navigate("/login");
+        navigate("/");
         return;
     }
 
