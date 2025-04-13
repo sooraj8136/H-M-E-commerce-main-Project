@@ -32,29 +32,29 @@ function Signup() {
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0 auto", textAlign: "left" }}>
         <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
-          BECOME AN S&M MEMBER
+          REGISTER YOUR ACCOUNT
         </p>
       </div>
       <br />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-sec">
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-            <label htmlFor="name" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Name:</label>
+            <label htmlFor="name" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Name</label>
             <input type="text" {...register("name", { required: "Name is required" })} id="name" name="name" className="pass-input mx-auto my-1 w-100" style={{ maxWidth: "400px", width: "90%" }} required />
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-            <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Email:</label>
+            <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Email adress</label>
             <input type="email" {...register("email", { required: "Email is required" })} id="email" name="email" className="pass-input mx-auto my-1 w-100" style={{ maxWidth: "400px", width: "90%" }} required />
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-            <label htmlFor="mobile" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Mobile:</label>
+            <label htmlFor="mobile" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Mobile</label>
             <input type="tel" {...register("mobile", { required: "Mobile number is required" })} id="mobile" name="mobile" className="pass-input mx-auto my-1 w-100" style={{ maxWidth: "400px", width: "90%" }} required />
           </div>
 
           <div className="mb-3 position-relative" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-            <label htmlFor="password" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Password:</label>
+            <label htmlFor="password" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Password</label>
             <input type={showPassword ? "text" : "password"} {...register("password", { required: "Password is required" })} id="password" name="password" className="pass-input mx-auto my-1 w-100" style={{ maxWidth: "400px", width: "90%" }} required />
             <span onClick={() => setShowPassword(!showPassword)} style={{ position: "absolute", right: "10px", top: "65%", transform: "translateY(-50%)", cursor: "pointer", fontSize: "0.8rem", fontWeight: '600' }}>
               {showPassword ? "HIDE" : "SHOW"}
@@ -74,7 +74,7 @@ function Signup() {
           </p>
         </div>
         <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-          <button className="login-text signup-btn w-100" style={{ maxWidth: "400px" }}>BECOME AN S&M MEMBER</button>
+          <button className="login-text signup-btn w-100" style={{ maxWidth: "400px" }}>SIGN UP</button>
         </div>
       </form>
 

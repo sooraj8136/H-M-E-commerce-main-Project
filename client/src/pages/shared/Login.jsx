@@ -46,13 +46,13 @@ const Login = () => {
           <div className="input-sec">
             <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
               <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
-                Email:
+                Email adress
               </label>
               <input type="email" {...register("email")} id="email" name="email" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
             </div>
             <div className="mb-3 position-relative" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
               <label htmlFor="password" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
-                Password:
+                Password
               </label>
               <input type={showPassword ? "text" : "password"} {...register("password")} id="password" name="password" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
               <span onClick={() => setShowPassword(!showPassword)} style={{ position: "absolute", right: "10px", top: "68%", transform: "translateY(-50%)", cursor: "pointer", fontSize: "0.8rem", fontWeight: '600' }}>
@@ -74,7 +74,7 @@ const Login = () => {
         <div className="d-flex justify-content-center mt-3">
           <button className=" register-btn" style={{ maxWidth: "400px", width: "90%" }}>
             <Link to={user.signup_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{ fontSize: ".8rem", color: "black" }}>
-              REGISTER
+              CREATE ACCOUNT
             </Link>
           </button>
         </div>

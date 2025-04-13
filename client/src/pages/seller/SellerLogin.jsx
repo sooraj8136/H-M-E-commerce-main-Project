@@ -63,7 +63,7 @@ const SellerLogin = () => {
                   : "text-white nav-sec-1 fs-10 fw-normal"
                   }`}
               >
-                Email:
+                Email adress
               </label>
               <input
                 type="email"
@@ -85,7 +85,7 @@ const SellerLogin = () => {
                   : "text-white nav-sec-1 fs-10 fw-normal"
                   }`}
               >
-                Password:
+                Password
               </label>
               <input
                 type={showPassword ? "text" : "password"}
@@ -135,7 +135,7 @@ const SellerLogin = () => {
             to={seller.signup_route}
             className={darkMode ? "text-black" : "text-black"}
           >
-            BECOME AN S&M SELLER
+            CREATE SELLER ACCOUNT
           </Link>
         </div>
       </Container>

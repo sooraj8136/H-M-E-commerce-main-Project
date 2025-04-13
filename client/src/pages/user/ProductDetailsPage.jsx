@@ -104,7 +104,6 @@ function ProductDetailsPage() {
                                 </span>
                             )}
                         </p>
-                        <p className="dull-title">MRP inclusive of all taxes</p>
                         <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "1.2rem", fontWeight: "600" }}>
                             Rs. {product?.price}.00
                         </p>

@@ -49,20 +49,13 @@ function SellerProfile() {
         className="container d-flex justify-content-start align-items-start heading-head"
         style={{ marginTop: "140px" }}>
         <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
-          ACCOUNT
+          SELLER ACCOUNT
         </p>
       </div>
       <Container data-theme={darkMode ? "dark" : "light"}>
         <div className="d-flex justify-content-center flex-column flex-lg-row align-items-center" style={{ gap: "20px" }}>
-          <Container data-theme={darkMode ? "dark" : "light"}>
-            <div className="d-flex justify-content-center align-items-center mt-4" style={{ position: "relative", width: "100%", flex: "1 1 auto" }}>
-              <img src="https://static.independent.co.uk/2023/03/24/10/24091937-0f50c800-9d2d-4d83-8456-c784314ffd1f.jpg" alt="Profile" style={{ width: "100%", maxWidth: "600px", objectFit: "cover" }} />
-              <div style={{ position: "absolute", top: "20%", left: "50%", transform: "translate(-50%, -20%)", color: "white", textAlign: "center", padding: "10px", width: "90%", maxWidth: "500px" }}>
-                <p style={{ fontSize: "18px", fontWeight: "600", marginBottom: "5px", lineHeight: "1.2" }}>Hello our Seller</p>
-                <p style={{ fontSize: "14px", fontWeight: "400", lineHeight: "1.5" }}>Unleash Your Style</p>
-              </div>
-            </div>
-          </Container>
+
+          {/* Left Side: Profile Content */}
           <div className="profile-container p-4" style={{ flex: "1 1 auto" }}>
             <div className="m-4">
               <div className="profile-details text-start text-dark">
@@ -96,7 +89,6 @@ function SellerProfile() {
                   </Link>
                 </div>
               </div>
-
               <hr style={{ width: "100%" }} />
               <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
@@ -115,6 +107,13 @@ function SellerProfile() {
               </div>
             </div>
           </div>
+    
+          <Container data-theme={darkMode ? "dark" : "light"}>
+            <div className="d-flex justify-content-center align-items-center mt-4" style={{ position: "relative", width: "100%", flex: "1 1 auto" }}>
+              <div style={{ position: "absolute", top: "20%", left: "50%", transform: "translate(-50%, -20%)", color: "white", textAlign: "center", padding: "10px", width: "90%", maxWidth: "500px" }}>
+              </div>
+            </div>
+          </Container>
         </div>
       </Container>
     </>

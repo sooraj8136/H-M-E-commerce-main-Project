@@ -15,18 +15,23 @@ function Footer() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/ladies-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/ladies-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         help
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/men-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/men-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         My purchases
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/kids-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/kids-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         Returns
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/seller/login" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
+                                        seller login
                                     </a>
                                 </li>
                             </ul>
@@ -35,18 +40,23 @@ function Footer() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         company
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         work for company
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         press
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/login" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
+                                        admin login
                                     </a>
                                 </li>
                             </ul>
@@ -55,17 +65,17 @@ function Footer() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         contact
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         about
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1.1rem" }}>
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
                                         brand outlet
                                     </a>
                                 </li>
@@ -171,18 +181,6 @@ function Footer() {
                             Built by Sooraj as a MERN Stack demo Copyright © 2025 All rights reserved.
                         </p>
                     </div>
-                    {/* <div>
-
-                        <img
-                            src="https://i.pinimg.com/736x/03/27/64/032764fb3dc829bcf1e969ea7c67f44b.jpg"
-                            width="35px"
-                            className="footer-img rounded mx-auto d-block "
-                            alt="Responsive image"
-                        />
-                    </div> */}
-                    {/* <div className="footer-final-text-2">
-                        <h5 className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "0.9rem", fontWeight: "600" }}>INDIA (Rs.)</h5>
-                    </div> */}
                 </section>
             </div>
         </footer>

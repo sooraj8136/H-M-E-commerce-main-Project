@@ -30,7 +30,7 @@ function SellerSignup() {
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0 auto", textAlign: "left" }}>
         <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
-          BECOME AN H&M SELLER
+          REGISTER SELLER ACCOUNT
         </p>
       </div>
       <br />
@@ -45,7 +45,7 @@ function SellerSignup() {
               className={`d-block ${darkMode ? "text-black" : "text-white"
                 } nav-sec-1 fs-10 fw-normal`}
             >
-              Name:
+              Name
             </label>
             <input
               type="text"
@@ -66,7 +66,7 @@ function SellerSignup() {
               className={`d-block ${darkMode ? "text-black" : "text-white"
                 } nav-sec-1 fs-10 fw-normal`}
             >
-              Email:
+              Email adress
             </label>
             <input
               type="email"
@@ -87,7 +87,7 @@ function SellerSignup() {
               className={`d-block ${darkMode ? "text-black" : "text-white"
                 } nav-sec-1 fs-10 fw-normal`}
             >
-              Mobile:
+              Mobile
             </label>
             <input
               type="tel"
@@ -108,7 +108,7 @@ function SellerSignup() {
               className={`d-block ${darkMode ? "text-black" : "text-white"
                 } nav-sec-1 fs-10 fw-normal`}
             >
-              Store Name:
+              Store Name
             </label>
             <input
               type="text"
@@ -129,7 +129,7 @@ function SellerSignup() {
               className={`d-block ${darkMode ? "text-black" : "text-white"
                 } nav-sec-1 fs-10 fw-normal`}
             >
-              Store Address:
+              Store Address
             </label>
             <input
               type="text"
@@ -154,7 +154,7 @@ function SellerSignup() {
               className={`d-block ${darkMode ? "text-black" : "text-white"
                 } nav-sec-1 fs-10 fw-normal`}
             >
-              Password:
+              Password
             </label>
             <input
               type={showPassword ? "text" : "password"}

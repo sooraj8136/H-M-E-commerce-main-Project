@@ -5,10 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
-import { MdDashboard } from "react-icons/md";
-import { BsPerson, BsShopWindow } from 'react-icons/bs';
-import { IoCartOutline, IoPersonCircleOutline } from "react-icons/io5";
-import { VscMenu } from 'react-icons/vsc';
 import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -17,90 +13,94 @@ function AdminHeader() {
 
     return (
         <header>
-            <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`}>
+            <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`} collapseOnSelect>
                 <Container fluid className="px-4 p-3">
-                    <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
-                        <div className="d-flex align-items-center gap-3">
-                            <a href="/admin/admin-dashboard">
-                                <img
-                                    src="https://i.pinimg.com/736x/03/27/64/032764fb3dc829bcf1e969ea7c67f44b.jpg"
-                                    width="44px"
-                                    className="rounded"
-                                    alt="H&M Logo"
-                                    style={{ marginTop: '-3px', marginRight: "40px" }}
-                                />
-                            </a>
-                        </div>
+                    <Navbar.Toggle aria-controls="admin-navbar-nav" className="border-0" />
+                    <Navbar.Collapse id="admin-navbar-nav">
+                        <div className="d-flex justify-content-between align-items-center w-100">
 
-                        <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-                            <Nav.Link
-                                as={Link}
-                                to="/admin/admin-dashboard"
-                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                style={{ fontSize: '1rem' }}
-                            >
-                                <MdDashboard />
-                            </Nav.Link>
+                            {/* Left Side: Navigation Links */}
+                            <div className="d-flex flex-wrap gap-3">
+                                <ul className="nav mb-0">
+                                    <li className="nav-item">
+                                        <Link
+                                            to="/admin/admin-dashboard"
+                                            className={`nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                            style={{ fontSize: '0.82rem', padding: '0 4px', fontWeight: '400' }}
+                                        >
+                                            Dashboard
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            to="/admin/get-all-users"
+                                            className={`nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                            style={{ fontSize: '0.82rem', padding: '0 4px', fontWeight: '400' }}
+                                        >
+                                            Users
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            to="/admin/get-sellers"
+                                            className={`nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                            style={{ fontSize: '0.82rem', padding: '0 4px', fontWeight: '400' }}
+                                        >
+                                            Sellers
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
 
-                            <Nav.Link
-                                as={Link}
-                                to="/admin/get-all-users"
-                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                style={{ fontSize: '1rem' }}
-                            >
-                                <BsPerson />
-                            </Nav.Link>
+                            {/* Right Side: Dropdowns + Profile + DarkMode */}
+                            <div className="d-flex align-items-center gap-2 gap-md-3 mt-3 mt-lg-0">
 
-                            <Nav.Link
-                                as={Link}
-                                to="/admin/get-sellers"
-                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                style={{ fontSize: '1rem' }}
-                            >
-                                <BsShopWindow />
-                            </Nav.Link>
+                                {/* Products Dropdown */}
+                                <Dropdown align="end">
+                                    <Dropdown.Toggle
+                                        as="div"
+                                        className={`nav-link dropdown-toggle p-0 ${darkMode ? "text-black" : "text-white"}`}
+                                        role="button"
+                                        style={{ fontSize: '0.8rem', cursor: 'pointer' }}
+                                    >
+                                        Products
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item as={Link} to="/admin/admin-products">All Products</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
 
-                            <Dropdown align="end">
-                                <Dropdown.Toggle
-                                    as="div"
-                                    className={`nav-link dropdown-toggle p-0 ${darkMode ? "text-black" : "text-white"}`}
-                                    role="button"
-                                    style={{ fontSize: '1rem', cursor: 'pointer' }}
+                                {/* Orders Dropdown */}
+                                <Dropdown align="end">
+                                    <Dropdown.Toggle
+                                        as="div"
+                                        className={`nav-link dropdown-toggle p-0 ${darkMode ? "text-black" : "text-white"}`}
+                                        role="button"
+                                        style={{ fontSize: '0.8rem', cursor: 'pointer' }}
+                                    >
+                                        Orders
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item as={Link} to="/admin/get-all-orders">All Orders</Dropdown.Item>
+                                        <Dropdown.Item as={Link} to="/admin/pending-requests">Pending Requests</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+
+                                {/* Profile Link */}
+                                <Nav.Link
+                                    as={Link}
+                                    to="/admin/admin-profile"
+                                    className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                    style={{ fontSize: '0.8rem' }}
                                 >
-                                    <VscMenu />
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item as={Link} to="/admin/admin-products">Products</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                                    Profile
+                                </Nav.Link>
 
-                            <Dropdown align="end">
-                                <Dropdown.Toggle
-                                    as="div"
-                                    className={`nav-link dropdown-toggle p-0 ${darkMode ? "text-black" : "text-white"}`}
-                                    role="button"
-                                    style={{ fontSize: '1rem', cursor: 'pointer' }}
-                                >
-                                    <IoCartOutline />
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item as={Link} to="/admin/get-all-orders">All Orders</Dropdown.Item>
-                                    <Dropdown.Item as={Link} to="/admin/pending-requests">Pending Requests</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-
-                            <Nav.Link
-                                as={Link}
-                                to="/admin/admin-profile"
-                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                style={{ fontSize: '1rem' }}
-                            >
-                                <IoPersonCircleOutline />
-                            </Nav.Link>
-
-                            <DarkMode />
+                                {/* Dark Mode Toggle */}
+                                <DarkMode />
+                            </div>
                         </div>
-                    </div>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </header>

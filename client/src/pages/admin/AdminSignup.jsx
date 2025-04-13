@@ -43,7 +43,7 @@ function AdminSignup() {
                             htmlFor="name"
                             className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
                         >
-                            Name:
+                            Name
                         </label>
                         <input
                             type="text"
@@ -59,7 +59,7 @@ function AdminSignup() {
                             htmlFor="email"
                             className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
                         >
-                            Email:
+                            Email adress
                         </label>
                         <input
                             type="email"
@@ -75,7 +75,7 @@ function AdminSignup() {
                             htmlFor="mobile"
                             className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
                         >
-                            Mobile:
+                            Mobile
                         </label>
                         <input
                             type="tel"
@@ -91,7 +91,7 @@ function AdminSignup() {
                             htmlFor="qualification"
                             className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
                         >
-                            Qualification:
+                            Qualification
                         </label>
                         <input
                             type="text"
@@ -106,7 +106,7 @@ function AdminSignup() {
                             htmlFor="password"
                             className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}
                         >
-                            Password:
+                            Password
                         </label>
                         <input
                             type="password"

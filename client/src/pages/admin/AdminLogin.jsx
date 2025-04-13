@@ -54,7 +54,7 @@ const AdminLogin = () => {
                 htmlFor="email"
                 className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}
               >
-                Email:
+                Email adress
               </label>
               <input
                 type="email"
@@ -70,7 +70,7 @@ const AdminLogin = () => {
                 htmlFor="password"
                 className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}
               >
-                Password:
+                Password
               </label>
               <input
                 type={showPassword ? "text" : "password"}  // Fix: Toggle input type based on showPassword state
