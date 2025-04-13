@@ -45,14 +45,14 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="input-sec">
             <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-              <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
-                Email:
+              <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-1 fw-normal"}`}>
+                EMAIL:
               </label>
               <input type="email" {...register("email")} id="email" name="email" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
             </div>
             <div className="mb-3 position-relative" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
               <label htmlFor="password" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
-                Password:
+                PASSWORD:
               </label>
               <input type={showPassword ? "text" : "password"} {...register("password")} id="password" name="password" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
               <span onClick={() => setShowPassword(!showPassword)} style={{ position: "absolute", right: "10px", top: "68%", transform: "translateY(-50%)", cursor: "pointer", fontSize: "0.8rem", fontWeight: '600' }}>
