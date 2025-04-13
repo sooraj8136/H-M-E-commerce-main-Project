@@ -28,7 +28,7 @@ function About() {
       <section>
         <div className="container d-flex justify-content-center align-items-center heading-head">
           <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
-            HM.com / <span className='text-danger' style={{ fontWeight: "700" }}>About H&M Group</span>
+            SM.com / <span className='text-danger' style={{ fontWeight: "700" }}>About H&M Group</span>
           </p>
         </div>
         <h1 className="text" style={{ fontSize: "80px" }}>About Us</h1>

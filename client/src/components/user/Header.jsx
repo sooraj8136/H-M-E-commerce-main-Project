@@ -19,22 +19,25 @@ function Header() {
         <>
             <header>
                 <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`}>
-                    <Container fluid className="px-4 p-3">
+                    <Container fluid className="px-4 p-3 position-relative">
                         <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
 
+                            {/* Logo (Left side) */}
                             <div className="d-flex align-items-center gap-3">
                                 <a href="/" target="home" rel="toHome">
                                     <img
-                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
+                                        src="https://i.pinimg.com/736x/03/27/64/032764fb3dc829bcf1e969ea7c67f44b.jpg"
                                         width="44px"
                                         className="rounded"
                                         alt="H&M Logo"
                                         style={{ marginTop: '-3px', marginRight: "40px" }}
                                     />
                                 </a>
+                            </div>
 
-                                {/* Desktop Nav Links */}
-                                <ul className="nav d-none d-lg-flex gap-2 mb-0">
+                            {/* Centered Nav Links */}
+                            <div className="position-absolute start-50 translate-middle-x d-none d-lg-block">
+                                <ul className="nav gap-3 mb-0">
                                     {navLinks.map((link, i) => {
                                         const path = `/${link}`;
                                         const linkClasses = `nav-link ${darkMode ? "text-black" : "text-white"}`;
@@ -47,7 +50,6 @@ function Header() {
                                                     style={{
                                                         fontSize: '0.82rem',
                                                         padding: '0 4px',
-                                                        marginLeft: "15px",
                                                         textDecoration: 'none',
                                                         fontWeight: '400'
                                                     }}
@@ -60,7 +62,7 @@ function Header() {
                                 </ul>
                             </div>
 
-                            {/* Right Side Controls */}
+                            {/* Right Controls */}
                             <div className="d-flex align-items-center gap-2 gap-md-2 mt-3 mt-lg-0">
                                 {showSearch && (
                                     <input

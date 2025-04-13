@@ -32,7 +32,7 @@ function Signup() {
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0 auto", textAlign: "left" }}>
         <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
-          BECOME AN H&M MEMBER
+          BECOME AN S&M MEMBER
         </p>
       </div>
       <br />
@@ -69,15 +69,12 @@ function Signup() {
               Yes, email me offers, style updates, and special invites to sales and events.<br />
             </label>
           </div>
-          <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "12px", fontWeight: "500" }}>
-            Wish your inbox was more stylish? No problem, just subscribe to our newsletter. Find out what's hot and happening in the world of fashion, beauty, and home decor. Plus, you'll get bonus vouchers, birthday offers, and special invites to sales and events – straight to your inbox!
-          </p>
           <p className="terms-n-cond" style={{ fontSize: "12px", fontWeight: "500" }}>
-            By clicking ‘Become a member’, I agree to the H&M Membership Terms and conditions.
+            By clicking ‘Become a member’, I agree to the S&M Terms and conditions.
           </p>
         </div>
         <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-          <button className="login-text signup-btn w-100" style={{ maxWidth: "400px" }}>BECOME AN H&M MEMBER</button>
+          <button className="login-text signup-btn w-100" style={{ maxWidth: "400px" }}>BECOME AN S&M MEMBER</button>
         </div>
       </form>
 

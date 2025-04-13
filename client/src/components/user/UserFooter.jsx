@@ -50,7 +50,7 @@ function UserFooter() {
                             <ul className="list list-unstyled">
                                 <li>
                                     <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none" }}>
-                                        CAREER AT H&M
+                                        CAREER AT S&M
                                     </a>
                                 </li>
                                 <li>
@@ -91,7 +91,7 @@ function UserFooter() {
                                 </li>
                                 <li>
                                     <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none" }}>
-                                        ABOUT H&M GROUP
+                                        ABOUT S&M GROUP
                                     </a>
                                 </li>
                                 <li>
@@ -212,8 +212,11 @@ function UserFooter() {
                     </div>
                     <div className="footer-final-text-1">
                         <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "0.7rem" }}>
-                            The content of this site is copyright-protected and is the
-                            property of H & M Hennes & Mauritz AB.
+                            <br />
+                            <p>
+                                ⚠️ This is a student project. This website is not affiliated with or endorsed by S&M. No real customer data is collected. Built for learning purposes only.
+                            </p>
+                            Built by Sooraj as a MERN Stack demo Copyright © 2025 All rights reserved.
                         </p>
                     </div>
                     <div>

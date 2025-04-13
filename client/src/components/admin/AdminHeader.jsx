@@ -23,7 +23,7 @@ function AdminHeader() {
                         <div className="d-flex align-items-center gap-3">
                             <a href="/admin/admin-dashboard">
                                 <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
+                                    src="https://i.pinimg.com/736x/03/27/64/032764fb3dc829bcf1e969ea7c67f44b.jpg"
                                     width="44px"
                                     className="rounded"
                                     alt="H&M Logo"

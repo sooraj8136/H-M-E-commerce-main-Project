@@ -39,15 +39,15 @@ const OrderList = () => {
           <Container data-theme={darkMode ? "dark" : "light"} className="py-5">
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
-              style={{ marginTop: "80px" }}>
-              <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-                HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>ORDERS</span>
+              style={{ marginTop: "100px" }}>
+              <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>ORDERS</span>
               </p>
             </div>
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
               style={{ marginTop: "40px" }}>
-              <p style={{ fontSize: "40px", fontWeight: "600" }}>
+              <p className={darkMode ? "text-black" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
                 YOUR ORDERS
               </p>
             </div>

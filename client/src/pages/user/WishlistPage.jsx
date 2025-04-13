@@ -54,9 +54,9 @@ function WishlistPage() {
           <Container className="mt-2">
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
-              style={{ marginTop: "140px" }}>
-              <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-                HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>FAVOURITES</span>
+              style={{ marginTop: "100px" }}>
+              <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>FAVOURITES</span>
               </p>
             </div>
             <div
@@ -71,12 +71,6 @@ function WishlistPage() {
               <div className="container d-flex flex-column justify-content-start align-items-start heading-head mt-4">
                 <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "0.8rem", fontWeight: "800" }}>
                   SAVE YOUR FAVOURITE ITEMS
-                </p>
-                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "0.8rem", fontWeight: "500", marginTop: 20 }}>
-                  Want to save the items that you love? Just click on the
-                </p>
-                <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "0.8rem", fontWeight: "500" }}>
-                  heart symbol beside the item and it will show up here.
                 </p>
                 <div className="d-flex justify-content-start">
                   <button className="brows-now mt-3">

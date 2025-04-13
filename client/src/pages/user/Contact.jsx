@@ -13,8 +13,8 @@ function Contact() {
         <div
           className="container d-flex justify-content-start align-items-start heading-head"
           style={{ marginTop: "140px" }}>
-          <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-            HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>CONTACT</span>
+          <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+            SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>CONTACT</span>
           </p>
         </div>
         <div className='container mt-4 d-flex justify-content-center align-items-center'>

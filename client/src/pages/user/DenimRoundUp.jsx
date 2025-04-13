@@ -45,7 +45,7 @@ function DenimRoundUp() {
                             <div style={{ fontWeight: '600' }}>
                                 <div className="container d-flex justify-content-center align-items-center heading-head">
                                     <p className={darkMode ? "text-black" : "text-white "}>
-                                        HM.com / Men / <span className="text-danger" style={{ fontWeight: "700" }}>THE DENIM ROUNDUP</span>
+                                        SM.com / Men / <span className="text-danger" style={{ fontWeight: "700" }}>THE DENIM ROUNDUP</span>
                                     </p>
                                 </div>
                             </div>

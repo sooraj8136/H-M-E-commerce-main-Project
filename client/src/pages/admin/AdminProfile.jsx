@@ -49,12 +49,7 @@ function AdminProfile() {
     <Container data-theme={darkMode ? "dark" : "light"}>
       <div className="container d-flex justify-content-start align-items-start heading-head" style={{ marginTop: "120px" }}>
         <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
-          ACCOUNTS & REWARDS
-        </p>
-      </div>
-      <div className="container d-flex justify-content-start align-items-start heading-head">
-        <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "clamp(12px, 2vw, 15px)", fontWeight: "400" }}>
-          YOU CAN MANAGE YOUR ACCOUNT AND SUBSCRIPTION HERE
+          ACCOUNT
         </p>
       </div>
 

@@ -79,12 +79,12 @@ const UpdateProfile = () => {
                         <div
                             className="container d-flex justify-content-start align-items-start heading-head"
                             style={{ marginTop: "140px" }}>
-                            <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-                                HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>EDIT MY PROFILE</span>
+                            <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                                SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>EDIT PROFILE</span>
                             </p>
                         </div>
 
-                        <Container className="d-flex justify-content-center">
+                        <div className="d-flex justify-content-center">
                             <div className="p-4" style={{ maxWidth: "400px", width: "90%" }}>
                                 <form onSubmit={handleSubmit}>
                                     {["name", "email", "mobile"].map((field) => (
@@ -110,7 +110,7 @@ const UpdateProfile = () => {
                                     ))}
 
                                     <div className="text-center mt-3">
-                                        <button type="submit" className="update-prof-btn" style={{ textDecoration: "none", fontWeight:"500" }}>
+                                        <button type="submit" className="update-prof-btn" style={{ textDecoration: "none", fontWeight: "500" }}>
                                             SAVE
                                         </button>
                                     </div>
@@ -118,13 +118,13 @@ const UpdateProfile = () => {
 
                                 <div className="justify-content-center mt-3">
                                     <button className="update-prof-cancel-btn">
-                                        <Link to="/user/profile" style={{ textDecoration: "none", color: "inherit", fontWeight:"500" }}>
+                                        <Link to="/user/profile" style={{ textDecoration: "none", color: "inherit", fontWeight: "500" }}>
                                             CANCEL
                                         </Link>
                                     </button>
                                 </div>
                             </div>
-                        </Container>
+                        </div>
                     </>
                 )}
         </>

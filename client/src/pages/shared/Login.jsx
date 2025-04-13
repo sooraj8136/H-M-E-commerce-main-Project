@@ -34,11 +34,14 @@ const Login = () => {
       <Container>
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
-            <p className="login-text" style={{ fontSize: "40px", fontWeight: "600" }}>
-              WELCOME
+          <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+              USER LOGIN
             </p>
             <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
-              Sign in with your email or sign up to become an H&M member.
+              Sign in with your email or sign up to become an S&M member.
+            </p>
+            <p style={{ fontSize: "13px", fontWeight: "500", marginTop: "20px" }}>
+            This is a demo site made by a developer for practice. Not an official H&M website.
             </p>
           </div>
         </div>
@@ -67,13 +70,13 @@ const Login = () => {
         </div>
           <div className="d-flex justify-content-center">
             <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }}>
-              COUNTINUE
+              SIGN IN
             </button>
           </div>
         </form>
         <div className="d-flex justify-content-center mt-3">
             <Link to={user.signup_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{fontSize:".8rem", color:"black"}}>
-              BECOME AN H&M MEMBER
+              BECOME AN S&M MEMBER
             </Link>
         </div>
       </Container>

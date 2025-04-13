@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -20,22 +20,25 @@ function Header() {
     return (
         <header>
             <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`}>
-                <Container fluid className="px-4 p-3">
+                <Container fluid className="px-4 p-3 position-relative">
                     <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
 
-                        {/* Logo + Nav Links */}
-                        <div className="d-flex align-items-center gap-3">
+                        {/* Left: Logo */}
+                        <div className="d-flex align-items-center">
                             <a href="/" target="home" rel="toHome">
                                 <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1064px-H%26M-Logo.svg.png"
+                                    src="https://i.pinimg.com/736x/03/27/64/032764fb3dc829bcf1e969ea7c67f44b.jpg"
                                     width="44px"
                                     className="rounded"
                                     alt="H&M Logo"
-                                    style={{ marginTop: '-3px', marginRight: "40px" }}
+                                    style={{ marginTop: '-3px' }}
                                 />
                             </a>
+                        </div>
 
-                            <ul className="nav d-none d-lg-flex gap-2 mb-0">
+                        {/* Center: Nav Links (absolutely centered) */}
+                        <div className="d-none d-lg-flex position-absolute start-50 translate-middle-x">
+                            <ul className="nav gap-2 mb-0">
                                 {navLinks.map((link, i) => (
                                     <li className="nav-item" key={i}>
                                         <Link
@@ -56,9 +59,8 @@ function Header() {
                             </ul>
                         </div>
 
-                        {/* Search + Nav Icons + DarkMode */}
+                        {/* Right: Search + Icons + DarkMode */}
                         <div className="d-flex align-items-center gap-2 gap-md-2 mt-3 mt-lg-0">
-
                             {showSearch && (
                                 <input
                                     className={`search-input ${darkMode ? "text-black" : "text-white"}`}
@@ -100,7 +102,6 @@ function Header() {
                                 </svg>
                             </button>
 
-                            {/* Wishlist, Cart, Profile Icons */}
                             <Form className="d-flex align-items-center">
                                 <div className="d-flex">
                                     <Nav.Link

@@ -34,7 +34,7 @@ function Home() {
                             className="container d-flex justify-content-start align-items-start heading-head"
                             style={{ marginTop: "140px" }}>
                             <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-                                HM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>HOME</span>
+                                SM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>HOME</span>
                             </p>
                         </div>
                         <HomeWidget />

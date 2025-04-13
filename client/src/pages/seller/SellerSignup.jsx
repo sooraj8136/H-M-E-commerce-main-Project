@@ -187,7 +187,7 @@ function SellerSignup() {
           style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
         >
           <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
-          BECOME AN H&M SELLER
+          SIGN UP
           </button>
         </div>
       </form>
