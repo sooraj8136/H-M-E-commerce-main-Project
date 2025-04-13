@@ -16,7 +16,7 @@ sellerRouter.get("/get-all-sellers", adminAuth, getAllSellers )
 sellerRouter.get("/check-seller", sellerAuth, checkSeller )
 sellerRouter.get("/seller-profile", sellerAuth, sellerProfile )
 
-sellerRouter.delete("/delete-seller/:sellerId", adminAuth, deleteSeller )
+sellerRouter.delete("/delete-seller/:sellerId", deleteSeller )
 
 
 module.exports = sellerRouter

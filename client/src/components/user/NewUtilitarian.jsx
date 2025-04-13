@@ -48,26 +48,6 @@ function NewUtilitarian() {
                             >
                                 New utilitarian
                             </h2>
-                            <Link to="/productDetails/67b3c127f569ac154c4214d9" className="position-absolute" style={{ top: '65%', left: '68%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
-                                <button
-                                    style={{
-                                        padding: '10px 20px',
-                                        backgroundColor: 'rgb(0, 0, 0)',
-                                        fontSize: '16px',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <BiSolidLeftArrow style={{ marginRight: '10px', marginLeft: '-28px', color: 'black' }} />
-                                    <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
-                                        Rs.2,299.00
-                                        <br />
-                                    </div>
-                                </button>
-                            </Link>
                             <p style={{ fontSize: "small", marginBottom: "6px", fontWeight: '500', color:"black" }}>Fresh staples with functional details and sporty appeal.</p>
                             <div>
                                 <ul

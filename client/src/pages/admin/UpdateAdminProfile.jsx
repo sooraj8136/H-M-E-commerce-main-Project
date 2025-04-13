@@ -85,7 +85,7 @@ const UpdateAdminProfile = () => {
                         </div>
 
                         <div className="justify-content-center mt-3">
-                            <button className="update-prof-btn" style={{ textDecoration: "none" }}>SAVE</button>
+                            <button className="update-prof-btn" style={{ textDecoration: "none", fontWeight:"500" }}>SAVE</button>
                         </div>
                     </form>
 

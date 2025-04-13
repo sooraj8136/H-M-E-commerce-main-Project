@@ -92,7 +92,7 @@ function ProfilePage() {
                 <div className="lines-container">
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                      <Link to="/user/orders" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600", display: "flex", alignItems: "center" }}>
+                      <Link to="/user/orders" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600", display: "flex", alignItems: "center", letterSpacing: "1px" }}>
                         ORDERS
                       </Link>
                     </div>
@@ -100,7 +100,7 @@ function ProfilePage() {
                   <hr />
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                      <Link to="/user/update-user-profile" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>
+                      <Link to="/user/update-user-profile" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600", letterSpacing: "1px" }}>
                         EDIT MY PROFILE
                       </Link>
                     </div>
@@ -108,7 +108,7 @@ function ProfilePage() {
                   <hr />
                   <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                      <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>
+                      <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600",letterSpacing: "1px" }}>
                         CONTACT US
                       </Link>
                     </div>
@@ -116,7 +116,7 @@ function ProfilePage() {
                   <hr />
                   <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                     <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                      <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={() => setShowConfirmModal(true)}>
+                      <span  style={{ cursor: "pointer", fontWeight: "600", letterSpacing: "1px", color:"#970000"}} onClick={() => setShowConfirmModal(true)}>
                         DELETE ACCOUNT
                       </span>
                     </div>

@@ -32,7 +32,7 @@ function CategoryCard({ product }) {
     return (
         <>
             <Container className="d-flex justify-content-center align-items-center">
-                <div className="text-center position-relative mx-1">
+                <div className="text-center position-relative mx-1" style={{marginTop:"90px"}}>
                     <Link
                         key={product._id}
                         to={`/productDetails/${product._id}`}

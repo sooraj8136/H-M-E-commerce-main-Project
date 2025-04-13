@@ -80,7 +80,7 @@ const Barchart = () => {
     >
       <div
         className="container d-flex justify-content-start align-items-start heading-head">
-        <p style={{ fontSize: "20px", fontWeight: "600" }}>
+        <p style={{ fontSize: "15px", fontWeight: "500" }}>
         SALES ANALYSIS & ORDER STATISTICS
         </p>
       </div>

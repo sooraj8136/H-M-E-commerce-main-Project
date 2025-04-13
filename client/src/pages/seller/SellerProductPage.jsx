@@ -34,7 +34,7 @@ function ProductPage() {
         <Container>
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
-              style={{ marginTop: "100px" }}>
+              style={{ marginTop: "12   0px" }}>
               <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
                 SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>YOUR PRODUCTS</span>
               </p>

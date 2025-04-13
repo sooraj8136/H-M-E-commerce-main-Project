@@ -15,48 +15,23 @@ function Footer() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/ladies-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        help
+                                    <a href="/ladies-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        HELP
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/men-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        My purchases
+                                    <a href="/men-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        MY PURCHASES
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/kids-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        Returns
+                                    <a href="/kids-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        RETURNS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/seller/login" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        seller login
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="col-md-3 mb-4">
-                            <ul className="list list-unstyled">
-                                <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        company
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        work for company
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        press
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/admin/login" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        admin login
+                                    <a href="/seller/login" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        SELLER LOGIN
                                     </a>
                                 </li>
                             </ul>
@@ -65,18 +40,48 @@ function Footer() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        contact
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        COMPANY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        about
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        WORK FOR COMPANY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"1rem" }}>
-                                        brand outlet
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        PRESS
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/login" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        ADMIN LOGIN
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="col-md-3 mb-4">
+                            <ul className="list list-unstyled">
+                                <li>
+                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        CONTACT
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        ABOUT
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        BRAND OUTLET
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize:"0.8rem",fontWeight:"bold" }}>
+                                        SUSTAINABILITY
                                     </a>
                                 </li>
                             </ul>

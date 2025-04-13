@@ -39,12 +39,18 @@ function TransitionalFits() {
                 <>
                     <Container className="d-flex flex-wrap justify-content-center">
                         <div className="text-center position-relative mx-1">
-                            <div style={{ fontWeight: '600' }}>
-                                <div className="container d-flex justify-content-center align-items-center heading-head">
-                                    <p className={darkMode ? "text-black" : "text-white "}>
-                                        HM.com / Men / <span className="text-danger" style={{ fontWeight: "700" }}>Transitional fits</span>
-                                    </p>
-                                </div>
+                        <div
+                                className="container d-flex justify-content-start align-items-start heading-head"
+                                style={{ marginTop: "140px" }}>
+                                <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                                    SM.COM /
+                                    <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red", marginLeft: "4px" }}>
+                                        MEN
+                                    </span>
+                                    <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red", marginLeft: "6px" }}>
+                                        / TRANSITIONAL FITS
+                                    </span>
+                                </p>
                             </div>
 
                             <div className="text-center py-4 position-relative">
@@ -53,7 +59,7 @@ function TransitionalFits() {
                                     alt="Activewear"
                                     style={{ maxWidth: '100%', height: 'auto' }}
                                 />
-                                <Link to="/productDetails/67b408b99ee20c9e01b9bda8" className="position-absolute" style={{ top: '65%', left: '72%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
+                                <Link to="/productDetails/67b408b99ee20c9e01b9bda8" className="position-absolute" style={{ top: '65%', left: '72%', transform: 'translate(-50%, -50%)', textDecoration: 'none'}}>
                                     <button
                                         style={{
                                             padding: '10px 20px',
@@ -66,7 +72,7 @@ function TransitionalFits() {
                                             justifyContent: 'center',
                                         }}
                                     >
-                                        <BiSolidLeftArrow style={{ marginRight: '10px', color: 'white', marginLeft: '-28px' }} />
+                                        <BiSolidLeftArrow style={{ marginRight: '10px', color: 'black', marginLeft: '-28px' }} />
                                         <div style={{ color: 'white', fontSize: 'x-small', fontWeight: '600', textAlign: 'left' }}>
                                             Rs.2,699.00
                                             <br />

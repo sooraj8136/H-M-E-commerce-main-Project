@@ -4,9 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../config/axiosInstance';
 import toast from 'react-hot-toast';
 import { Container, Spinner } from 'react-bootstrap';
-import { PiNotePencilLight } from 'react-icons/pi';
-import { IoIosArrowForward } from 'react-icons/io';
-import { VscLinkExternal } from 'react-icons/vsc';
+import { PiNotePencilLight } from 'react-icons/pi'; // Importing the Edit icon
+import { VscLinkExternal } from 'react-icons/vsc'; // Importing the Sign out icon
 
 function AdminProfile() {
   const { darkMode } = useSelector((state) => state.mode);
@@ -49,7 +48,7 @@ function AdminProfile() {
     <Container data-theme={darkMode ? "dark" : "light"}>
       <div className="container d-flex justify-content-start align-items-start heading-head" style={{ marginTop: "120px" }}>
         <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
-         ADMIN ACCOUNT
+          ADMIN ACCOUNT
         </p>
       </div>
 
@@ -60,24 +59,22 @@ function AdminProfile() {
         </div>
       ) : (
         <div className="d-flex flex-column flex-lg-row justify-content-center align-items-start" style={{ gap: "20px" }}>
-
-          {/* Profile Container - Left Side */}
           <div className="profile-container p-4" style={{ flex: "1 1 auto", maxWidth: "450px" }}>
             <div className="profile-details text-start text-dark">
               <div className="info-section d-flex flex-column">
-                <p className="label mb-1">Name:</p>
+                <p className="label mb-1">NAME:</p>
                 <h5 className={`info-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "16px", wordBreak: "break-word" }}>
                   {profileData?.data.name}
                 </h5>
               </div>
               <div className="info-section d-flex flex-column mt-2">
-                <p className="label mb-1">Email:</p>
+                <p className="label mb-1">EMAIL:</p>
                 <h5 className={`info-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "16px", wordBreak: "break-word" }}>
                   {profileData?.data.email}
                 </h5>
               </div>
               <div className="info-section d-flex flex-column mt-2">
-                <p className="label mb-1">Mobile:</p>
+                <p className="label mb-1">MOBILE:</p>
                 <h5 className={`info-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "16px", wordBreak: "break-word" }}>
                   {profileData?.data.mobile}
                 </h5>
@@ -85,9 +82,10 @@ function AdminProfile() {
             </div>
 
             <div className="lines-container mt-4">
-              <div className="edit-nav line-section d-flex align-items-center justify-content-between my-2">
+              <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                   <Link to="/admin/update-admin-profile" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>
+                    <PiNotePencilLight size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
                     Edit my profile
                   </Link>
                 </div>
@@ -96,6 +94,7 @@ function AdminProfile() {
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                   <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={handleLogout}>
+                    <VscLinkExternal size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
                     Sign out
                   </span>
                 </div>
@@ -103,7 +102,6 @@ function AdminProfile() {
             </div>
           </div>
 
-          {/* Greeting Container - Right Side */}
           <Container data-theme={darkMode ? "dark" : "light"} className="mt-4" style={{ flex: "1 1 auto" }}>
             <div className="d-flex justify-content-center align-items-center" style={{ position: "relative", width: "100%" }}>
               <div style={{
@@ -116,8 +114,7 @@ function AdminProfile() {
                 padding: "10px",
                 width: "90%",
                 maxWidth: "500px"
-              }}>
-              </div>
+              }} />
             </div>
           </Container>
         </div>

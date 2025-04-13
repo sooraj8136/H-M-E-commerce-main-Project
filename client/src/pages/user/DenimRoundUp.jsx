@@ -42,12 +42,18 @@ function DenimRoundUp() {
                 <>
                     <Container className="d-flex flex-wrap justify-content-center">
                         <div className="text-center position-relative mx-1">
-                            <div style={{ fontWeight: '600' }}>
-                                <div className="container d-flex justify-content-center align-items-center heading-head">
-                                    <p className={darkMode ? "text-black" : "text-white "}>
-                                        SM.com / Men / <span className="text-danger" style={{ fontWeight: "700" }}>THE DENIM ROUNDUP</span>
-                                    </p>
-                                </div>
+                            <div
+                                className="container d-flex justify-content-start align-items-start heading-head"
+                                style={{ marginTop: "140px" }}>
+                                <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+                                    SM.COM /
+                                    <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red", marginLeft: "4px" }}>
+                                        MEN
+                                    </span>
+                                    <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red", marginLeft: "6px" }}>
+                                        / THE DENIM ROUNDUP
+                                    </span>
+                                </p>
                             </div>
 
                             <div className="text-center py-4 position-relative">

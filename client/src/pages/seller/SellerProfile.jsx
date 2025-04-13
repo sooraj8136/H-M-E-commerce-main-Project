@@ -8,6 +8,7 @@ import { Container, Spinner } from 'react-bootstrap';
 import { CiHeadphones } from "react-icons/ci";
 import { PiNotePencilLight } from 'react-icons/pi';
 import { VscLinkExternal } from 'react-icons/vsc';
+import { AiFillDelete } from "react-icons/ai"; // Import the alternative delete icon
 
 function SellerProfile() {
   const { darkMode } = useSelector((state) => state.mode);
@@ -18,7 +19,7 @@ function SellerProfile() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200); // 1.2 seconds loading simulation
+    }, 1200); 
 
     return () => clearTimeout(timer);
   }, []);
@@ -31,6 +32,21 @@ function SellerProfile() {
     } catch (err) {
       toast.error('Logout failed');
       console.error('Logout error:', err.response?.data || err.message);
+    }
+  };
+
+  // Handle delete account
+  const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete your seller account? This action cannot be undone.");
+    if (confirmDelete) {
+      try {
+        const response = await axiosInstance.delete(`/seller/delete-seller/${profileData._id}`);
+        toast.success(response?.data?.message || "Account deleted successfully");
+        navigate('/login');
+      } catch (err) {
+        toast.error("Failed to delete account");
+        console.error("Delete error:", err.response?.data || err.message);
+      }
     }
   };
 
@@ -105,9 +121,9 @@ function SellerProfile() {
                   </span>
                 </div>
               </div>
+              <hr style={{ width: "100%" }} />
             </div>
           </div>
-    
           <Container data-theme={darkMode ? "dark" : "light"}>
             <div className="d-flex justify-content-center align-items-center mt-4" style={{ position: "relative", width: "100%", flex: "1 1 auto" }}>
               <div style={{ position: "absolute", top: "20%", left: "50%", transform: "translate(-50%, -20%)", color: "white", textAlign: "center", padding: "10px", width: "90%", maxWidth: "500px" }}>

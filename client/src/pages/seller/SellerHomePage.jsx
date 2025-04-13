@@ -19,6 +19,13 @@ function SellerHomePage() {
     <Container className="p-5" style={{ minHeight: 450 }}>
       <div
         className="container d-flex justify-content-start align-items-start heading-head"
+        style={{ marginTop: "40px" }}>
+        <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
+          SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>DASHBOARD</span>
+        </p>
+      </div>
+      <div
+        className="container d-flex justify-content-start align-items-start heading-head"
         style={{ marginTop: "50px" }}>
         <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
           SELLER DASHBOARD
