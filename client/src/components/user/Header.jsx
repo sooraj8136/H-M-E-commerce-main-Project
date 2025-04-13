@@ -1,146 +1,136 @@
-import React from 'react'
+import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
-import { CiHeart } from "react-icons/ci";
-import { BsBag, BsPerson } from 'react-icons/bs';
+import { BsPerson } from 'react-icons/bs';
+import { Link, useLocation } from 'react-router-dom';
+import { FiMenu, FiX } from 'react-icons/fi'; // Menu icons
 
-function UserHeader() {
+function Header() {
+    const { darkMode } = useSelector((state) => state.mode);
+    const [showSearch, setShowSearch] = useState(false);
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const location = useLocation();
 
-    const { darkMode } = useSelector((state) => state.mode)
+    const navLinks = [
+        { path: '/ladies-page', label: 'Women' },
+        { path: '/men-page', label: 'Men' },
+        { path: '/kids-page', label: 'Kids' },
+        { path: '/product', label: 'All Products' }
+    ];
+
+    const toggleMenu = () => setShowMobileMenu(!showMobileMenu);
 
     return (
-        <>
-            <header>
-                <Navbar expand="lg" className={darkMode ? "navbar navbar-expand-lg navbar-light bg-black-200" : "navbar navbar-expand-lg navbar-light bg-black mb-4"} style={{ paddingBottom: '40px', marginTop: '20px' }}>
-                    <Container fluid>
-                        <Navbar.Toggle aria-controls="navbarScroll" />
-                        <Navbar.Collapse id="navbarScroll">
-                            <Nav className="navbar-nav me-auto mb-2 mb-lg-0" navbarScroll>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
-                                    Sustainability
-                                </Nav.Link>
-                                <Nav.Link href="/sales-page" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
-                                    Sales
-                                </Nav.Link>
-                                <Nav.Link href="" className={darkMode ? "text-black" : "text-white nav-sec-1"} style={{ fontSize: '0.8rem' }}>
-                                    Newsletter</Nav.Link>
-                            </Nav>
-                            <Form className="d-flex align-items-center">
-                                <div className="nav-sec-2">
-                                    <div className="d-flex align-items-center nav-item-section">
-                                        <Nav.Link href="/user/wishlist" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`} aria-label="Favourites" style={{ fontSize: '0.8rem' }}>
-                                            <CiHeart
-                                                style={{
-                                                    fontSize: "1.6rem",
-                                                    marginRight: "4px",
-                                                    color: darkMode ? "#000" : "#fff"
-                                                }}
-                                            />
-                                        </Nav.Link>
-                                    </div>
-                                    <div className="d-flex align-items-center nav-item-section">
-                                        <Nav.Link href="/user/cart" className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                            aria-label="Shopping bag" style={{ fontSize: '0.8rem' }}>
-                                            <BsBag
-                                                style={{
-                                                    fontSize: "1.1rem",
-                                                    marginRight: "4px",
-                                                    color: darkMode ? "#000" : "#fff"
-                                                }}
-                                            />
-                                        </Nav.Link>
-                                    </div>
-                                    <div className="d-flex align-items-center">
-                                        <Nav.Link
-                                            href="/user/profile"
-                                            className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                            aria-label="Profile"
-                                            style={{ fontSize: '0.8rem' }}>
-                                            <BsPerson
-                                                style={{
-                                                    fontSize: "1.3rem",
-                                                    marginRight: "8px",
-                                                    color: darkMode ? "#000" : "#fff",
-                                                }}
-                                            />
-                                        </Nav.Link>
-                                    </div>
-                                </div>
-                            </Form>
+        <header>
+            <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`}>
+                <Container fluid className="px-4 p-3">
+                    <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
 
-                            <div className="search">
-                                <div className=" search-container ">
-                                    <input
-                                        className={`search-input ${darkMode ? "text-black" : "text-white"}`}
-                                        placeholder="Search"
-                                        aria-label="Search"
-                                        type="search"
-                                    />
-                                    <button className="search-button" aria-label="Submit Search">
-                                        <div className={darkMode ? "text-black" : "text-white"}>
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                fill="currentColor"
-                                                className="search-icon"
-                                                viewBox="0 0 16 16"
-                                            >
-                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1.007 1.007 0 0 0-.115-.098zm-5.242 1.1a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                            <span>
-                                <DarkMode />
-                            </span>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
-                <div className="imageTag text-center">
-                    <a href="/" target="home" rel="toHome">
-                        <img
-                            src="https://i.pinimg.com/736x/03/27/64/032764fb3dc829bcf1e969ea7c67f44b.jpg"
-                            width="60px"
-                            alt="Logo"
-                        />
-                    </a>
-                </div>
-                <section className="navlinks">
-                    <div>
-                        <ul className="nav justify-content-center">
-                            <li className="nav-item ">
-                                <Nav.Link href="/about" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>About H&M group</Nav.Link>
-                            </li>
-                            <li className="nav-item ">
-                                <Nav.Link href="/ladies-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Ladies</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/men-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Men</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/kids-page" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Kids</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/contact" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Contact</Nav.Link>
-                            </li>
-                            <li className="nav-item">
-                                <Nav.Link href="/product" className={darkMode ? "text-black" : "text-white nav-link"} style={{ fontSize: '0.9rem' }}>Products</Nav.Link>
-                            </li>
-                        </ul>
+                        {/* Left Side - Nav Links (Desktop) */}
+                        <div className="d-none d-lg-flex align-items-center gap-3 flex-grow-1">
+                            <ul className="nav gap-3 mb-0">
+                                {navLinks.map((link, i) => (
+                                    <li className="nav-item" key={i}>
+                                        <Link
+                                            to={link.path}
+                                            className={`nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                            style={{
+                                                fontSize: '0.82rem',
+                                                padding: '0 4px',
+                                                textDecoration: 'none',
+                                                fontWeight: '400'
+                                            }}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Center - Logo */}
+                        <div className="position-absolute top-50 start-50 translate-middle">
+                            <a href="/" target="home" rel="toHome">
+                                <img
+                                    src="https://download.logo.wine/logo/Mango_(retailer)/Mango_(retailer)-Logo.wine.png"
+                                    width="130px"
+                                    className="rounded"
+                                    alt="Site Logo"
+                                    style={{ marginTop: '-3px' }}
+                                />
+                            </a>
+                        </div>
+
+                        {/* Right Side - Controls */}
+                        <div className="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                            {/* Toggle Menu Icon (Mobile Only) */}
+                            <button
+                                className="btn d-lg-none"
+                                onClick={toggleMenu}
+                                style={{ fontSize: '1.3rem', color: darkMode ? '#000' : '#fff' }}
+                            >
+                                {showMobileMenu ? <FiX /> : <FiMenu />}
+                            </button>
+
+                            {showSearch && (
+                                <input
+                                    className={`search-input ${darkMode ? "text-black" : "text-white"}`}
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                    type="search"
+                                    style={{
+                                        width: '140px',
+                                        fontSize: '0.75rem',
+                                        height: '28px',
+                                        backgroundColor: darkMode ? "#fff" : "#343a40",
+                                        border: 'none'
+                                    }}
+                                />
+                            )}
+
+                            <Nav.Link
+                                href="/login"
+                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                                style={{ fontSize: '0.75rem', marginLeft: "15px", marginRight: "15px" }}
+                            >
+                                <BsPerson style={{ fontSize: "1.1rem", color: darkMode ? "#000" : "#fff" }} />
+                            </Nav.Link>
+
+                            <DarkMode />
+                        </div>
                     </div>
-                </section>
-            </header>
-        </>
-    )
+
+                    {/* Mobile Nav Links (Shown When Toggled) */}
+                    {showMobileMenu && (
+                        <div className="d-lg-none mt-3">
+                            <ul className="nav d-flex flex-column ps-3 gap-2">
+                                {navLinks.map((link, i) => (
+                                    <li className="nav-item" key={i}>
+                                        <Link
+                                            to={link.path}
+                                            className={`nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                            style={{
+                                                fontSize: '0.9rem',
+                                                textDecoration: 'none',
+                                                fontWeight: 'normal'
+                                            }}
+                                            onClick={() => setShowMobileMenu(false)} // auto-close on nav click
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </Container>
+            </Navbar>
+        </header>
+    );
 }
 
-export default UserHeader
-
-
+export default Header;
