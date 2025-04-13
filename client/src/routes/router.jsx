@@ -1,5 +1,5 @@
 import SellerLayout from '../layout/SellerLayout';
-import Login from '../pages/shared/Login';
+// import Login from '../pages/shared/Login';
 import { createBrowserRouter } from "react-router-dom";
 import Home from '../pages/user/Home';
 import About from '../pages/user/About';
