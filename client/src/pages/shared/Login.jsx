@@ -37,8 +37,8 @@ const Login = () => {
             <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
               USER LOGIN
             </p>
-            <p style={{ fontSize: "13px", fontWeight: "500", marginTop: "20px" }}>
-              This is a demo site made by a developer for practice. Not an official H&M website.
+            <p style={{ fontSize: "12px" }}>
+              This site is for educational purposes only. No brand affiliation. No actual data is collected.
             </p>
           </div>
         </div>

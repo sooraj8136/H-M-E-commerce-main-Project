@@ -29,7 +29,7 @@ function Header() {
                                         src="https://i.pinimg.com/736x/03/27/64/032764fb3dc829bcf1e969ea7c67f44b.jpg"
                                         width="44px"
                                         className="rounded"
-                                        alt="H&M Logo"
+                                        alt="Site Logo"
                                         style={{ marginTop: '-3px', marginRight: "40px" }}
                                     />
                                 </a>
