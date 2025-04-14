@@ -24,7 +24,7 @@ function SellerHeader() {
                                     className="logo-font logo-font rounded"
                                     style={{
                                         fontSize: '1.5rem',
-                                        // color: darkMode ? 'black' : 'white',
+                                        color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,
@@ -97,8 +97,8 @@ function SellerHeader() {
                             <h6
                                 className="logo-font rounded"
                                 style={{
-                                    fontSize: '1.5rem',
-                                    // color: darkMode ? 'black' : 'white',
+                                    fontSize: '1.8rem',
+                                    color: darkMode ? 'black' : 'white',
                                     fontWeight: "700",
                                     letterSpacing: "2px",
                                     marginBottom: 0,

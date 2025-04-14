@@ -34,14 +34,14 @@ function UserHeader() {
                 <Container fluid className="px-4 p-3">
                     <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
 
-                        {/* Logo for Mobile - Left Aligned */}
+                        {/* Logo for Mobile - Left  */}
                         <div className="d-flex d-lg-none align-items-center">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
                                     className="logo-font rounded logo-font"
                                     style={{
                                         fontSize: '1.5rem',
-                                        // color: darkMode ? 'black' : 'white',
+                                        color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,
@@ -73,14 +73,14 @@ function UserHeader() {
                             </ul>
                         </div>
 
-                        {/* Logo - Desktop Centered */}
+                        {/* Logo - Desktop  */}
                         <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
                                     className="logo-font rounded logo-font"
                                     style={{
-                                        fontSize: '1.5rem',
-                                        // color: darkMode ? 'black' : 'white',
+                                        fontSize: '1.8rem',
+                                        color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,

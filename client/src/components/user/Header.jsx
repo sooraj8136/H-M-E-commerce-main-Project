@@ -34,7 +34,7 @@ function Header() {
                                     className="logo-font rounded "
                                     style={{
                                         fontSize: '1.5rem',
-                                        // color: darkMode ? 'black' : 'white',
+                                        color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,
@@ -67,14 +67,14 @@ function Header() {
                             </ul>
                         </div>
 
-                        {/* Desktop logo - centered */}
+                        {/* Desktop logo  */}
                         <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
                                     className="logo-font rounded logo-font"
                                     style={{
-                                        fontSize: '1.5rem',
-                                        // color: darkMode ? 'black' : 'white',
+                                        fontSize: '1.8rem',
+                                        color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,
