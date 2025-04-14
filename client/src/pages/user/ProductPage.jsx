@@ -53,7 +53,7 @@ function ProductPage() {
                     </Container>
                     <Row>
                         {productList?.map((value) => (
-                            <Col key={value._id} xs={12} sm={6} md={6} lg={4} xl={3} xxl={3}>
+                            <Col key={value._id} xs="12" sm="6" md="4" lg="4" xl="3" xxl="3">
                                 <ProductCards product={value} />
                             </Col>
                         ))}

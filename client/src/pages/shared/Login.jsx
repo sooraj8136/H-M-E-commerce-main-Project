@@ -11,7 +11,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const user = { login_api: "/user/login", profile_route: "/user/profile", signup_route: "/signup" };
+  const user = { login_api: "/user/login", profile_route: "/", signup_route: "/signup" };
 
   const onSubmit = async (data) => {
     try {
@@ -33,7 +33,7 @@ const Login = () => {
     <>
       <Container>
         <div className="d-flex justify-content-center">
-          <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
+          <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "130px" }}>
             <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
               USER LOGIN
             </p>
@@ -46,7 +46,7 @@ const Login = () => {
           <div className="input-sec">
             <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
               <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
-                Email adress
+                Email
               </label>
               <input type="email" {...register("email")} id="email" name="email" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
             </div>
@@ -72,11 +72,9 @@ const Login = () => {
           </div>
         </form>
         <div className="d-flex justify-content-center mt-3">
-          <button className=" register-btn" style={{ maxWidth: "400px", width: "90%" }}>
             <Link to={user.signup_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{ fontSize: ".8rem", color: "black" }}>
               CREATE ACCOUNT
             </Link>
-          </button>
         </div>
       </Container>
     </>

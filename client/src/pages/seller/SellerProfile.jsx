@@ -76,15 +76,15 @@ function SellerProfile() {
             <div className="m-4">
               <div className="profile-details text-start text-dark">
                 <div className="info-section">
-                  <p className="label">Name:</p>
+                  <p className={`label ${darkMode ? "text-black" : "text-white"}`}>Name:</p>
                   <h5 className={darkMode ? "text-black" : "text-white info-text"}>{profileData?.name}</h5>
                 </div>
                 <div className="info-section">
-                  <p className="label">Email:</p>
+                  <p className={`label ${darkMode ? "text-black" : "text-white"}`}>Email:</p>
                   <h5 className={darkMode ? "text-black" : "text-white info-text"}>{profileData?.email}</h5>
                 </div>
                 <div className="info-section">
-                  <p className="label">Mobile:</p>
+                  <p className={`label ${darkMode ? "text-black" : "text-white"}`}>Mobile:</p>
                   <h5 className={darkMode ? "text-black" : "text-white info-text"}>{profileData?.mobile}</h5>
                 </div>
               </div>
@@ -101,7 +101,7 @@ function SellerProfile() {
                       size={24}
                       style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }}
                     />
-                    Edit my profile
+                    EDIT MY PROFILE
                   </Link>
                 </div>
               </div>
@@ -109,15 +109,15 @@ function SellerProfile() {
               <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                   <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                  <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>Contact us</Link>
+                  <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>CONTACT US</Link>
                 </div>
               </div>
               <hr style={{ width: "100%" }} />
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={handleLogout}>
+                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "500" }} onClick={handleLogout}>
                     <VscLinkExternal size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                    Sign out
+                    SIGN OUT
                   </span>
                 </div>
               </div>

@@ -17,22 +17,22 @@ function AdminFooter() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/ladies-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/ladies-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         HELP
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/men-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/men-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         MY PURCHASES
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/kids-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/kids-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         RETURNS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/kids-page" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/kids-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         ADMIN HELP
                                     </a>
                                 </li>
@@ -42,22 +42,22 @@ function AdminFooter() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         COMPANY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         WORK FOR COMPANY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         PRESS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         YOUR STORE
                                     </a>
                                 </li>
@@ -67,22 +67,22 @@ function AdminFooter() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ fontSize: "0.8rem", }}>
                                         CONTACT
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/about" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/about" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         ABOUT
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         BRAND OUTLET
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={darkMode ? "text-black" : "text-white footer-title footer-text"} style={{ textDecoration: "none", fontSize: "0.8rem", fontWeight: "bold" }}>
+                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         SUSTAINABILITY
                                     </a>
                                 </li>
@@ -91,7 +91,7 @@ function AdminFooter() {
 
 
                         <div className="col-md-3 mb-4">
-                            <a href="/read-more" className={darkMode ? "text-black" : "text-white read-more-text"} >
+                            <a href="/" className={darkMode ? "text-black" : "text-white read-more-text"} >
                                 READ MORE
                             </a>
                         </div>
@@ -183,10 +183,25 @@ function AdminFooter() {
                         <p className={darkMode ? "text-black" : "text-white "} style={{ fontSize: "0.7rem" }}>
                             <br />
                             <p>
-                                ⚠️ This is a student project. This website is not affiliated with or endorsed by S&M. No real customer data is collected. Built for learning purposes only.
+                                ⚠️ This is a student project. This website is not affiliated with or endorsed by S&J. No real customer data is collected. Built for learning purposes only.
                             </p>
                             Built by Sooraj as a MERN Stack demo Copyright © 2025 All rights reserved.
                         </p>
+                    </div>
+                    <div className="text-center logo-font mb-3">
+                        <a href="/" style={{ textDecoration: "none" }}>
+                            <h6
+                                style={{
+                                    fontSize: '1.1rem',
+                                    color: darkMode ? '#000' : '#fff',
+                                    fontWeight: "700",
+                                    letterSpacing: "1px",
+                                    marginBottom: "5px"
+                                }}
+                            >
+                                S&J
+                            </h6>
+                        </a>
                     </div>
                 </section>
             </div>

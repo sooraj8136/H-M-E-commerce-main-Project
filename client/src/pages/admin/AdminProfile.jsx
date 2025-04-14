@@ -62,19 +62,19 @@ function AdminProfile() {
           <div className="profile-container p-4" style={{ flex: "1 1 auto", maxWidth: "450px" }}>
             <div className="profile-details text-start text-dark">
               <div className="info-section d-flex flex-column">
-                <p className="label mb-1">NAME:</p>
+                <p className={`label mb-1 ${darkMode ? "text-black" : "text-white"}`} >NAME:</p>
                 <h5 className={`info-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "16px", wordBreak: "break-word" }}>
                   {profileData?.data.name}
                 </h5>
               </div>
               <div className="info-section d-flex flex-column mt-2">
-                <p className="label mb-1">EMAIL:</p>
+                <p className={`label mb-1 ${darkMode ? "text-black" : "text-white"}`}>EMAIL:</p>
                 <h5 className={`info-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "16px", wordBreak: "break-word" }}>
                   {profileData?.data.email}
                 </h5>
               </div>
               <div className="info-section d-flex flex-column mt-2">
-                <p className="label mb-1">MOBILE:</p>
+                <p className={`label mb-1 ${darkMode ? "text-black" : "text-white"}`}>MOBILE:</p>
                 <h5 className={`info-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "16px", wordBreak: "break-word" }}>
                   {profileData?.data.mobile}
                 </h5>
@@ -86,16 +86,16 @@ function AdminProfile() {
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                   <Link to="/admin/update-admin-profile" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>
                     <PiNotePencilLight size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                    Edit my profile
+                    EDIT MY PROFILE
                   </Link>
                 </div>
               </div>
               <hr style={{ width: "100%" }} />
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "600" }} onClick={handleLogout}>
+                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "500" }} onClick={handleLogout}>
                     <VscLinkExternal size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                    Sign out
+                    SIGN OUT
                   </span>
                 </div>
               </div>

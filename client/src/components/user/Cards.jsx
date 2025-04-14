@@ -19,7 +19,7 @@ function ProductCards({ product }) {
         });
         const wishlistProducts = response.data.data.products;
 
-        setIsInWishlist(wishlistProducts.some((p) => p._id === product?._id));      //checks if any product in the wishlist has the same _id
+        setIsInWishlist(wishlistProducts.some((p) => p._id === product?._id));  
       } catch (error) {
         console.error('Error fetching wishlist:', error);
       }
@@ -39,7 +39,7 @@ function ProductCards({ product }) {
               objectFit: 'cover',
               marginBottom: '6px',
               maxWidth: '1024px',
-              width: '265px',
+              width: '270px',
             }}
           />
           <div className="d-flex flex-column align-items-start">

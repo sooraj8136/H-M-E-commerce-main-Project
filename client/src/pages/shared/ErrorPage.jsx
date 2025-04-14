@@ -31,16 +31,16 @@ function ErrorPage({ role = "user" }) {
         <>
             <Header />
             <Container className="my-5">
-                <div>
+                <div style={{marginTop:"140px"}}>
                     <h1 className="fw-bold">PAGE NOT FOUND</h1>
                 </div>
                 <div className="mt-3">
                     <p className="fw-medium">
-                        We're sorry, but the page you're looking for is currently unavailable.
+                        WE'RE SORRY, BUT THE PAGE YOU'RE LOOKING FOR IS CURRENTLY UNAVAILABLE.
                     </p>
                     <br />
                     <Link onClick={handleNavigation} className="text-black fw-semibold">
-                        Return to Home
+                        BACK TO HOME
                     </Link>
                 </div>
             </Container>

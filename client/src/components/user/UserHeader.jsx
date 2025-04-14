@@ -7,7 +7,7 @@ import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
-import { FiShoppingBag } from 'react-icons/fi'; // New shopping bag icon
+import { FiShoppingBag } from 'react-icons/fi';
 
 function UserHeader() {
     const { darkMode } = useSelector((state) => state.mode);
@@ -18,7 +18,8 @@ function UserHeader() {
         { path: '/ladies-page', label: 'WOMEN' },
         { path: '/men-page', label: 'MEN' },
         { path: '/kids-page', label: 'KIDS' },
-        { path: '/product', label: 'PRODUCTS' }
+        { path: '/about', label: 'ABOUT' },
+        { path: '/contact', label: 'CONTACT' },
     ];
 
     const iconStyle = {
@@ -33,18 +34,35 @@ function UserHeader() {
                 <Container fluid className="px-4 p-3">
                     <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
 
-                        {/* Left Side - Nav Links */}
+                        {/* Logo for Mobile - Left Aligned */}
+                        <div className="d-flex d-lg-none align-items-center">
+                            <a href="/" style={{ textDecoration: "none" }}>
+                                <h6
+                                    className="rounded logo-font"
+                                    style={{
+                                        fontSize: '1.5rem',
+                                        color: darkMode ? 'black' : 'white',
+                                        fontWeight: "700",
+                                        letterSpacing: "2px",
+                                        marginBottom: 0,
+                                    }}
+                                >
+                                    S&J
+                                </h6>
+                            </a>
+                        </div>
+
+                        {/* Nav Links - Desktop */}
                         <div className="d-flex align-items-center gap-3 flex-grow-1">
                             <ul className="nav gap-3 mb-0 d-none d-lg-flex">
                                 {navLinks.map((link, i) => (
                                     <li className="nav-item" key={i}>
                                         <Link
                                             to={link.path}
-                                            className={`nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                            className={`nav-link nav-link-hover ${darkMode ? "text-black" : "text-white"}`}
                                             style={{
                                                 fontSize: '0.82rem',
                                                 padding: '0 4px',
-                                                textDecoration: 'none',
                                                 fontWeight: '400'
                                             }}
                                         >
@@ -55,7 +73,25 @@ function UserHeader() {
                             </ul>
                         </div>
 
-                        {/* Right Side - Icons + DarkMode */}
+                        {/* Logo - Desktop Centered */}
+                        <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
+                            <a href="/" style={{ textDecoration: "none" }}>
+                                <h6
+                                    className="rounded logo-font"
+                                    style={{
+                                        fontSize: '1.5rem',
+                                        color: darkMode ? 'black' : 'white',
+                                        fontWeight: "700",
+                                        letterSpacing: "2px",
+                                        marginBottom: 0,
+                                    }}
+                                >
+                                    S&J
+                                </h6>
+                            </a>
+                        </div>
+
+                        {/* Right Side Icons */}
                         <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
                             {showSearch && (
                                 <input
@@ -96,9 +132,9 @@ function UserHeader() {
                                 <li className="nav-item" key={i}>
                                     <Link
                                         to={link.path}
-                                        className={`nav-link p-0 ${darkMode ? "text-black" : "text-white"}`}
+                                        className={`nav-link p-0 nav-link-hover ${darkMode ? "text-black" : "text-white"}`}
                                         style={{
-                                            fontSize: '0.9rem',
+                                            fontSize: '0.7rem',
                                             textDecoration: 'none',
                                             fontWeight: 'normal'
                                         }}

@@ -54,14 +54,7 @@ function WishlistPage() {
           <Container className="mt-2">
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
-              style={{ marginTop: "100px" }}>
-              <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-                SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>FAVOURITES</span>
-              </p>
-            </div>
-            <div
-              className="container d-flex justify-content-start align-items-start heading-head"
-              style={{ marginTop: "40px" }}>
+              style={{ marginTop: "160px" }}>
               <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
                 FAVOURITES
               </p>

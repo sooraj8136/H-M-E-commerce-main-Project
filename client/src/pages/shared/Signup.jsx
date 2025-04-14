@@ -44,7 +44,7 @@ function Signup() {
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-            <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Email adress</label>
+            <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Email</label>
             <input type="email" {...register("email", { required: "Email is required" })} id="email" name="email" className="pass-input mx-auto my-1 w-100" style={{ maxWidth: "400px", width: "90%" }} required />
           </div>
 

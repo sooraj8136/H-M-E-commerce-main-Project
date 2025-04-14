@@ -41,7 +41,7 @@ const AdminLogin = () => {
       <Container>
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
-            <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+            <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "50px" }}>
               ADMIN LOGIN
             </p>
           </div>
@@ -54,7 +54,7 @@ const AdminLogin = () => {
                 htmlFor="email"
                 className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}
               >
-                Email adress
+                Email
               </label>
               <input
                 type="email"
@@ -115,7 +115,7 @@ const AdminLogin = () => {
             <Link
               to={admin.signup_route}
               className={darkMode ? "text-dark" : "text-white"}
-              style={{ fontWeight: "600" }}
+              style={{ fontWeight: "500" }}
             >
               REGISTER ADMIN
             </Link>

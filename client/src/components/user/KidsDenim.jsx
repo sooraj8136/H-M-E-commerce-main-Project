@@ -50,7 +50,7 @@ function KidsDenim() {
                             }}
                         >
                             <h2 className="responsive-heading text" style={{ fontWeight: "bold", marginBottom: "10px" }}>
-                                H&M Adorables
+                                S&J Adorables
                             </h2>
                             <p className="responsive-subheading" style={{ fontSize: "small", marginBottom: "10px", fontWeight: '500' }}>
                                 S/S 2025

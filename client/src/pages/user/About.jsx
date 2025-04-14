@@ -16,9 +16,9 @@ function About() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" >
+      <div className="d-flex justify-content-center align-items-center"style={{marginTop:"180px"}}>
         <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-        <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+        <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`} >Loading...</span>
       </div>
     );
   }
@@ -26,12 +26,7 @@ function About() {
   return (
     <div className={darkMode ? "text-black" : "text-white"}>
       <section>
-        <div className="container d-flex justify-content-center align-items-center heading-head">
-          <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600" }}>
-            SM.com / <span className='text-danger' style={{ fontWeight: "700" }}>About H&M Group</span>
-          </p>
-        </div>
-        <h1 className="text" style={{ fontSize: "80px" }}>About Us</h1>
+        <h1 className="text" style={{ fontSize: "80px",marginTop:"120px" }}>About Us</h1>
         <div style={{ maxWidth: "100%", overflow: "hidden" }}>
           <img
             src="https://hmgroup.com/wp-content/uploads/2025/01/About-Us-HERO.jpg"

@@ -6,6 +6,7 @@ import NewUtilitarian from '../../components/user/NewUtilitarian';
 import KidsDenim from '../../components/user/KidsDenim';
 import Office from '../../components/user/Office';
 import HomeWidget from '../../components/user/HomeWidget';
+import Carousel from '../../components/user/Carousel';
 
 function Home() {
 
@@ -29,14 +30,8 @@ function Home() {
                 </div>
             ) : (
                 <>
+                    <Carousel />
                     <Container>
-                        <div
-                            className="container d-flex justify-content-start align-items-start heading-head"
-                            style={{ marginTop: "140px" }}>
-                            <p style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-                                SM.COM / <span className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "600", fontSize: "0.9rem", color: "black" }}>HOME</span>
-                            </p>
-                        </div>
                         <HomeWidget />
                         <PreppyUniform />
                         <NewUtilitarian />

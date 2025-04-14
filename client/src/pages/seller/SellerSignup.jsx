@@ -66,7 +66,7 @@ function SellerSignup() {
               className={`d-block ${darkMode ? "text-black" : "text-white"
                 } nav-sec-1 fs-10 fw-normal`}
             >
-              Email adress
+              Email
             </label>
             <input
               type="email"

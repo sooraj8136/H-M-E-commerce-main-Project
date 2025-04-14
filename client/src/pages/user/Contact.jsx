@@ -10,19 +10,12 @@ function Contact() {
   return (
     <>
       <Container >
-        <div
-          className="container d-flex justify-content-start align-items-start heading-head"
-          style={{ marginTop: "140px" }}>
-          <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
-            SM.COM / <span style={{ fontWeight: "600", fontSize: "0.9rem", color: "red" }}>CONTACT</span>
-          </p>
-        </div>
         <div className='container mt-4 d-flex justify-content-center align-items-center'>
           <div className="position-relative" style={{ maxWidth: "930px", width: "100%" }}>
             <div
               className="container d-flex justify-content-start align-items-start heading-head"
               style={{ marginTop: "40px" }}>
-              <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
+              <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600",marginTop:"100px" }}>
                 WE’D LOVE TO HEAR FROM YOU
               </p>
             </div>
