@@ -17,7 +17,7 @@ function AdminHeader() {
                 <Container fluid className="px-4 p-3">
                     <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center w-100">
 
-                        {/* Mobile logo  Left  */}
+                        {/* mobile logo left  */}
                         <div className="d-flex d-lg-none align-items-center mb-2 w-100">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
@@ -35,7 +35,7 @@ function AdminHeader() {
                             </a>
                         </div>
 
-                        {/* Left Side Nav Links */}
+                        {/* ledt side nav links */}
                         <div className="d-flex justify-content-center justify-content-lg-start align-items-center gap-3 flex-wrap mb-3 mb-lg-0">
                             <Link
                                 to="/admin/admin-dashboard"
@@ -91,7 +91,7 @@ function AdminHeader() {
                             </Dropdown>
                         </div>
 
-                        {/* Right Side: Account & Dark Mode */}
+                        {/* right side account and darkmode */}
                         <div className="d-flex align-items-center gap-2 gap-md-3">
                             <Nav.Link
                                 as={Link}
@@ -106,7 +106,7 @@ function AdminHeader() {
                         </div>
                     </div>
 
-                    {/* Desktop logo - Centered */}
+                    {/* desktop logo center */}
                     <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
                         <a href="/" style={{ textDecoration: "none" }}>
                             <h6

@@ -21,7 +21,7 @@ function WishlistPage() {
         setTimeout(() => {
           setWishlist(response?.data?.data?.products || []);
           setLoading(false)
-        }, 1000)
+        }, 1500)
       } catch (error) {
         console.error('Error fetching wishlist:', error);
       }

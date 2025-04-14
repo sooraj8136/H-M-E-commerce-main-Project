@@ -34,7 +34,7 @@ function UserHeader() {
                 <Container fluid className="px-4 p-3">
                     <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
 
-                        {/* Logo for Mobile - Left  */}
+                        {/* logo for mobile left  */}
                         <div className="d-flex d-lg-none align-items-center">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
@@ -52,7 +52,7 @@ function UserHeader() {
                             </a>
                         </div>
 
-                        {/* Nav Links - Desktop */}
+                        {/* nav links desktop */}
                         <div className="d-flex align-items-center gap-3 flex-grow-1">
                             <ul className="nav gap-3 mb-0 d-none d-lg-flex">
                                 {navLinks.map((link, i) => (
@@ -73,7 +73,7 @@ function UserHeader() {
                             </ul>
                         </div>
 
-                        {/* Logo - Desktop  */}
+                        {/* logo desktop */}
                         <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
@@ -91,7 +91,7 @@ function UserHeader() {
                             </a>
                         </div>
 
-                        {/* Right Side Icons */}
+                        {/* right side icons */}
                         <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
                             {showSearch && (
                                 <input
@@ -125,7 +125,7 @@ function UserHeader() {
                         </div>
                     </div>
 
-                    {/* Mobile Nav Links */}
+                    {/* mobile nav links */}
                     <div className="d-lg-none mt-3">
                         <ul className="nav d-flex justify-content-start gap-3 ps-3">
                             {navLinks.map((link, i) => (

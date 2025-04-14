@@ -55,7 +55,7 @@ const PaymentSuccess = () => {
             </div>
             ) : (
                 <div className="text-center d-flex flex-column align-items-center justify-content-center" style={{ marginTop: "120px" }}>
-                    <p style={{ fontWeight: '700', fontSize: 'x-large' }}>THANK YOU FOR PURCHASE</p>
+                    <p style={{ fontWeight: '500', fontSize: 'large' }}>THANK YOU FOR PURCHASE</p>
 
                     <div className="d-flex justify-content-center my-3">
                         <LiaThumbsUpSolid
