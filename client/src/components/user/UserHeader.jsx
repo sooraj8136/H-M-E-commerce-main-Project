@@ -38,10 +38,10 @@ function UserHeader() {
                         <div className="d-flex d-lg-none align-items-center">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
-                                    className="rounded logo-font"
+                                    className="logo-font rounded logo-font"
                                     style={{
                                         fontSize: '1.5rem',
-                                        color: darkMode ? 'black' : 'white',
+                                        // color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,
@@ -77,10 +77,10 @@ function UserHeader() {
                         <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
-                                    className="rounded logo-font"
+                                    className="logo-font rounded logo-font"
                                     style={{
                                         fontSize: '1.5rem',
-                                        color: darkMode ? 'black' : 'white',
+                                        // color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,

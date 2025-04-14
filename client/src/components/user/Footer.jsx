@@ -69,6 +69,7 @@ function Footer() {
                                     letterSpacing: "1px",
                                     marginBottom:"5px"
                                 }}
+                                className='logo-font'
                             >
                                 S&J
                             </h6>

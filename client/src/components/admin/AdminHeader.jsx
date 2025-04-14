@@ -24,7 +24,7 @@ function AdminHeader() {
                                     className="logo-font rounded"
                                     style={{
                                         fontSize: '1.5rem',
-                                        color: darkMode ? 'black' : 'white',
+                                        // color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,
@@ -113,7 +113,7 @@ function AdminHeader() {
                                 className="logo-font rounded"
                                 style={{
                                     fontSize: '1.5rem',
-                                    color: darkMode ? 'black' : 'white',
+                                    // color: darkMode ? 'black' : 'white',
                                     fontWeight: "700",
                                     letterSpacing: "2px",
                                     marginBottom: 0,

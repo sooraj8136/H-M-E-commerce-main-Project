@@ -47,7 +47,7 @@ function About() {
           }}
         >
           <h2 className="text" style={{ fontSize: "32px", lineHeight: "1.4" }}>
-            H&M Group is a global fashion and design company, with over 4,000 stores in more than 75 markets and online sales in 60 markets.
+            S&J Group is a global fashion and design company, with over 4,000 stores in more than 75 markets and online sales in 60 markets.
           </h2>
           <p style={{ fontSize: "18px", lineHeight: "1.6" }}>
             All our brands and business ventures share the same passion for making great and more sustainable fashion and design available to everyone...
@@ -109,7 +109,7 @@ function About() {
             We follow all regulations in the markets where we operate and aim to do the right thing...
           </h2>
           <p style={{ fontSize: "18px", lineHeight: "1.6" }}>
-            The “Our way” document sums up H&M Group’s culture, values, policies and guidelines.
+            The “Our way” document sums up S&J Group’s culture, values, policies and guidelines.
           </p>
         </div>
       </section>

@@ -21,10 +21,10 @@ function SellerHeader() {
                         <div className="d-flex d-lg-none align-items-center mb-2 w-100">
                             <a href="/" style={{ textDecoration: "none" }}>
                                 <h6
-                                    className="logo-font rounded"
+                                    className="logo-font logo-font rounded"
                                     style={{
                                         fontSize: '1.5rem',
-                                        color: darkMode ? 'black' : 'white',
+                                        // color: darkMode ? 'black' : 'white',
                                         fontWeight: "700",
                                         letterSpacing: "2px",
                                         marginBottom: 0,
@@ -98,7 +98,7 @@ function SellerHeader() {
                                 className="logo-font rounded"
                                 style={{
                                     fontSize: '1.5rem',
-                                    color: darkMode ? 'black' : 'white',
+                                    // color: darkMode ? 'black' : 'white',
                                     fontWeight: "700",
                                     letterSpacing: "2px",
                                     marginBottom: 0,

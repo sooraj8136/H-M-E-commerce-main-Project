@@ -52,7 +52,7 @@ function SellerProfile() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ marginTop: '100px' }}>
+      <div className="d-flex justify-content-center align-items-center" style={{ marginTop: '190px' }}>
         <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
         <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
       </div>
@@ -96,7 +96,7 @@ function SellerProfile() {
                   <Link
                     to="/seller/update-seller-profile"
                     className={darkMode ? "text-dark" : "text-light"}
-                    style={{ textDecoration: "none", fontWeight: "600" }}>
+                    style={{ textDecoration: "none", fontWeight: "600",fontSize:".9rem"  }}>
                     <PiNotePencilLight
                       size={24}
                       style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }}
@@ -109,13 +109,13 @@ function SellerProfile() {
               <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                   <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                  <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600" }}>CONTACT US</Link>
+                  <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600",fontSize:".9rem" }}>CONTACT US</Link>
                 </div>
               </div>
               <hr style={{ width: "100%" }} />
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "500" }} onClick={handleLogout}>
+                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "500",fontSize:".9rem"  }} onClick={handleLogout}>
                     <VscLinkExternal size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
                     SIGN OUT
                   </span>
