@@ -19,7 +19,7 @@ function SellerHeader() {
 
                         {/* mobile logo left */}
                         <div className="d-flex d-lg-none align-items-center mb-2 w-100">
-                            <a href="/" style={{ textDecoration: "none" }}>
+                            <a href="/seller/seller-home" style={{ textDecoration: "none" }}>
                                 <h6
                                     className="logo-font logo-font rounded"
                                     style={{
@@ -93,7 +93,7 @@ function SellerHeader() {
 
                     {/* desktop logo center */}
                     <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
-                        <a href="/" style={{ textDecoration: "none" }}>
+                        <a href="/seller/seller-home" style={{ textDecoration: "none" }}>
                             <h6
                                 className="logo-font rounded"
                                 style={{

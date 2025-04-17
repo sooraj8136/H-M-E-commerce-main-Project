@@ -16,22 +16,22 @@ function SellerFooter() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/ladies-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         HELP
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/men-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         MY PURCHASES
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/kids-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         RETURNS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/kids-page" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         SELLER HELP
                                     </a>
                                 </li>
@@ -41,22 +41,22 @@ function SellerFooter() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         COMPANY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         WORK FOR COMPANY
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         PRESS
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         YOUR STORE
                                     </a>
                                 </li>
@@ -66,13 +66,13 @@ function SellerFooter() {
                         <div className="col-md-3 mb-4">
                             <ul className="list list-unstyled">
                                 <li>
-                                    <a href="/contact" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ fontSize: "0.8rem", }}>
-                                        CONTACT
+                                    <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white footer-title footer-text footer-text"} style={{ fontSize: "0.8rem", }}>
+                                        SELLER CONTACT
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/about" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
-                                        ABOUT
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                        STORE
                                     </a>
                                 </li>
                                 <li>
@@ -81,7 +81,7 @@ function SellerFooter() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
+                                    <a href="/seller/seller-home" className={`footer-link ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "0.8rem", }}>
                                         SUSTAINABILITY
                                     </a>
                                 </li>
@@ -90,7 +90,7 @@ function SellerFooter() {
 
 
                         <div className="col-md-3 mb-4">
-                            <a href="/" className={darkMode ? "text-black" : "text-white read-more-text"} >
+                            <a href="/seller/seller-home" className={darkMode ? "text-black" : "text-white read-more-text"} >
                                 READ MORE
                             </a>
                         </div>
@@ -188,7 +188,7 @@ function SellerFooter() {
                         </p>
                     </div>
                     <div className="text-center logo-font mb-3">
-                        <a href="/" style={{ textDecoration: "none" }}>
+                        <a href="/seller/seller-home" style={{ textDecoration: "none" }}>
                             <h6
                                 style={{
                                     fontSize: '1.1rem',
