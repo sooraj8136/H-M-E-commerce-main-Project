@@ -10,7 +10,7 @@ function SellerSignup() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false); 
 
   const onSubmit = async (data) => {
     try {

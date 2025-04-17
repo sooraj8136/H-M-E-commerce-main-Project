@@ -23,7 +23,7 @@ const sellerSchema = new mongoose.Schema(
         password: {
             type: String,
             required: true,
-            minLength: 8,
+            minLength: [8, 'Password must be at least 8 characters long']
         },
         storeName: {
             type: String,

@@ -15,6 +15,15 @@ const register = async (req, res) => {
             return res.status(400).json({ error: "All fields are required" })
         }
 
+        if (password.length < 8) {
+            return res.status(400).json({ error: "Password must be at least 8 characters long" });
+        }
+
+        const mobileValidation = /^[0-9]{10,15}$/;  // Only numbers, 10-15 digits
+        if (!mobileValidation.test(mobile)) {
+            return res.status(400).json({ error: "Mobile number must be between 10 and 15 digits" });
+        }
+
         const userAlreadyExistWithEmail = await userDb.findOne({ email })
 
         if (userAlreadyExistWithEmail) {
@@ -48,7 +57,7 @@ const register = async (req, res) => {
     }
 }
 
-const login = async (req, res) => {  
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 

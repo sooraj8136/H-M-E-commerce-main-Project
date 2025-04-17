@@ -18,16 +18,31 @@ const Login = () => {
       console.log("Data  :- ", data);
       const response = await axiosInstance({
         method: "POST",
-        url: user.login_api, data
+        url: user.login_api,
+        data
       });
       console.log(response, "====response");
       toast.success("Log-in success");
       navigate(user.profile_route);
     } catch (error) {
-      toast.error("Log-in failed");
       console.log(error);
+  
+      if (error.response && error.response.data && error.response.data.error) {
+        const errorMessage = error.response.data.error;
+        
+        if (errorMessage === "Incorrect password") {
+          toast.error("Incorrect password. Please try again.");
+        } else if (errorMessage === "User not found") {
+          toast.error("User not found. Please check your email.");
+        } else {
+          toast.error(errorMessage);  // show any other error from backend
+        }
+      } else {
+        toast.error("Log-in failed. Please try again.");
+      }
     }
   };
+  
 
   return (
     <>

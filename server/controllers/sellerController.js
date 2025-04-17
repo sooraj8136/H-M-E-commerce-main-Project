@@ -14,11 +14,18 @@ const registerSeller = async (req, res) => {
 
         const { name, email, mobile, role, password, storeName, address } = req.body
 
-
         if (!name && !email && !mobile && !role && !password && !storeName && !address) {
             res.status(400).json({ message: "All fields are required" })
         }
 
+        if (password.length < 8) {
+            return res.status(400).json({ error: "Password must be at least 8 characters long" });
+        }
+
+        const mobileValidation = /^[0-9]{10,15}$/;  // Only numbers, 10-15 digits
+        if (!mobileValidation.test(mobile)) {
+            return res.status(400).json({ error: "Mobile number must be between 10 and 15 digits" });
+        }
 
         const sellerEmailExist = await sellerDb.findOne({ email }).select("-password");
 
@@ -38,9 +45,7 @@ const registerSeller = async (req, res) => {
             name, email, mobile, role, password: sellerHashedPassword, storeName, address
         })
 
-
         const savedSeller = await newSeller.save()
-
 
         res.status(200).json({ message: "Seller registered successfully", data: savedSeller })
     } catch (error) {
