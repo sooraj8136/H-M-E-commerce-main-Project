@@ -14,7 +14,7 @@ function Header() {
     const location = useLocation();
 
     const navLinks = [
-        { path: '/ladies-page', label: 'WOMEN' },
+        { path: '/ladies-page', label: 'LADIES' },
         { path: '/men-page', label: 'MEN' },
         { path: '/kids-page', label: 'KIDS' },
         { path: '/about', label: 'ABOUT' },
