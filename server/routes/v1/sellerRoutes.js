@@ -10,13 +10,12 @@ sellerRouter.post("/seller-forgot-password", sellerForgotPassword )
 sellerRouter.post("/seller-reset-password/:token", sellerResetPassword )
 sellerRouter.post("/seller-logout", sellerAuth, sellerLogout )
 
-sellerRouter.put("/update-seller-profile", sellerAuth, updateSellerProfile )
-
 sellerRouter.get("/get-all-sellers", adminAuth, getAllSellers )
 sellerRouter.get("/check-seller", sellerAuth, checkSeller )
 sellerRouter.get("/seller-profile", sellerAuth, sellerProfile )
 
-sellerRouter.delete("/delete-seller/:sellerId", deleteSeller )
+sellerRouter.put("/update-seller-profile", sellerAuth, updateSellerProfile )
 
+sellerRouter.delete("/delete-seller/:sellerId", deleteSeller )
 
 module.exports = sellerRouter

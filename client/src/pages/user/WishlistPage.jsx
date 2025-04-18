@@ -5,6 +5,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { axiosInstance } from '../../config/axiosInstance';
 import { useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
+import toast from "react-hot-toast";
 
 function WishlistPage() {
   const { darkMode } = useSelector((state) => state.mode);
@@ -21,9 +22,11 @@ function WishlistPage() {
         setTimeout(() => {
           setWishlist(response?.data?.data?.products || []);
           setLoading(false)
+          toast.success("Fetched favourites");
         }, 1500)
       } catch (error) {
-        console.error('Error fetching wishlist:', error);
+        console.error('Error fetching favourites:', error);
+        toast.error("Filed to Fetched favourites");
       }
     };
 

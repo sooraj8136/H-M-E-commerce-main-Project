@@ -198,7 +198,6 @@ const updateAdminProfile = async (req, res) => {
 }
 
 
-
 const adminProfile = async (req, res) => {
     try {
         const adminId = req.user.id
@@ -289,7 +288,6 @@ const adminResetPassword = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
-
 
 
 module.exports = { registerAdmin, loginAdmin, checkAdmin, adminLogout, updateAdminProfile, adminProfile, adminResetPassword, adminForgotPassword }

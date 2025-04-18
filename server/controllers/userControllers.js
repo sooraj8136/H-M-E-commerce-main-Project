@@ -146,7 +146,6 @@ const checkUser = async (req, res) => {
 };
 
 
-
 const updateUserProfile = async (req, res) => {
     try {
         const userId = req.user.id;
@@ -228,7 +227,6 @@ const deactivateUser = async (req, res) => {
             .json({ error: error.message || "Internal Server Error" });
     }
 };
-
 
 
 const activateUser = async (req, res) => {
@@ -332,9 +330,9 @@ const userForgotPassword = async (req, res) => {
         });
 
         await transporter.sendMail({
-            from: `"H&M" <${process.env.EMAIL_USER}>`,
+            from: `"S&J" <${process.env.EMAIL_USER}>`,
             to: email,
-            subject: "Reset your H&M User Password",
+            subject: "Reset your S&J User Password",
             text: `We have received a password reset request for your account. 
                 If you did not request this, you can safely ignore this email. 
 

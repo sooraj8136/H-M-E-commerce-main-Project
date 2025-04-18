@@ -317,5 +317,4 @@ const sellerResetPassword = async (req, res) => {
 };
 
 
-
 module.exports = { registerSeller, loginSeller, checkSeller, sellerProfile, updateSellerProfile, sellerLogout, deleteSeller, getAllSellers, sellerForgotPassword, sellerResetPassword }
