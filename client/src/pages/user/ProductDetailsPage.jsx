@@ -150,7 +150,7 @@ function ProductDetailsPage() {
                             style={{ marginTop: "1rem", fontWeight: "700" }}
                         >
                             <span className={openDescription ? "text-danger" : "description-btn"}>
-                                Description & Fit
+                                DESCRIPTION & FIT
                             </span>
                             <span className="ms-auto">
                                 {openDescription ? <MdKeyboardArrowUp size={22} /> : <MdKeyboardArrowDown size={22} />}
@@ -173,7 +173,7 @@ function ProductDetailsPage() {
                             style={{ marginTop: "1rem", fontWeight: "700" }}
                         >
                             <span className={openMaterials ? "text-danger" : "materials-btn"}>
-                                Materials
+                                MATERIALS
                             </span>
                             <span className="ms-auto">
                                 {openMaterials ? <MdKeyboardArrowUp size={22} /> : <MdKeyboardArrowDown size={22} />}
@@ -196,7 +196,7 @@ function ProductDetailsPage() {
                             style={{ marginTop: "1rem" }}
                         >
                             <span className={openCareGuide ? "text-danger" : "care-guid-btn"}>
-                                Care Guide
+                                CARE GUIDE
                             </span>
                             <span className="ms-auto">
                                 {openCareGuide ? <MdKeyboardArrowUp size={22} /> : <MdKeyboardArrowDown size={22} />}
