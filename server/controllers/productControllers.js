@@ -20,51 +20,6 @@ const getAllProduct = async (req, res) => {
     }
 }
 
-
-// const createProduct = async (req, res) => {
-
-//     try {
-//         const { image, title, price, description, materials, careguid, stock, category } = req.body;
-//         const sellerId = req.user.id;
-
-//         console.log('request Body = ', req.body);
-//         console.log('uploaded File  = ', req.file);
-
-//         if (!title || !price || !description || !materials || !careguid || !stock || !category ) {
-//             return res.status(400).json({ message: "All fields are required." });
-//         }
-
-//         const uploadResult = await cloudinaryInstance.uploader.upload(req.file.path);
-//         console.log('Uploaded File:', uploadResult);
-
-//         const newProduct = new productDb({
-//             title,
-//             price,
-//             description,
-//             materials,
-//             careguid,
-//             category,
-//             image: uploadResult.url,
-//             stock,
-//             seller: sellerId,
-//         });
-
-//         const savedProduct = await newProduct.save();
-
-//         await sellerDb.findOneAndUpdate(
-//             { _id: sellerId },
-//             { $push: { products: savedProduct._id } },
-//             { new: true }
-//         );
-
-//         res.status(200).json({ message: "New product created successfully", data: savedProduct });
-//     } catch (error) {
-//         console.log(error);
-//         res.status(error.status || 500).json({ error: error.message || "Internal server error" });
-//     }
-// };
-
-
 const createProduct = async (req, res) => {
     try {
         const { image, title, price, description, materials, careguid, stock, category, sizes } = req.body;
@@ -92,7 +47,7 @@ const createProduct = async (req, res) => {
             materials,
             careguid,
             category,
-            sizes: parsedSizes,
+            sizes: parsedSizes,  //parsedSizes	Sizes that have been processed into a clean and structured format.
             image: uploadResult.url,
             stock,
             seller: sellerId,
@@ -157,7 +112,6 @@ const getSellerProducts = async (req, res) => {
 const deleteProduct = async (req, res) => {
 
     try {
-
         const productId = req.params.id
 
         const deleteProduct = await productDb.findByIdAndDelete(productId, req.body)
@@ -168,13 +122,11 @@ const deleteProduct = async (req, res) => {
 
         res.status(200).json({ message: "Product deleted successfully" })
 
-
     } catch (error) {
         console.log(error)
         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
     }
 }
-
 
 const updateProduct = async (req, res) => {
 

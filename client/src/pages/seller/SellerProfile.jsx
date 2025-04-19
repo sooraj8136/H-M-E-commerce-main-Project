@@ -96,7 +96,7 @@ function SellerProfile() {
                   <Link
                     to="/seller/update-seller-profile"
                     className={darkMode ? "text-dark" : "text-light"}
-                    style={{ textDecoration: "none", fontWeight: "600",fontSize:".9rem"  }}>
+                    style={{ textDecoration: "none",fontSize:".9rem"  }}>
                     <PiNotePencilLight
                       size={24}
                       style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }}
@@ -109,7 +109,7 @@ function SellerProfile() {
               <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                   <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                  <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600",fontSize:".9rem" }}>CONTACT US</Link>
+                  <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none",fontSize:".9rem" }}>CONTACT US</Link>
                 </div>
               </div>
               <hr style={{ width: "100%" }} />

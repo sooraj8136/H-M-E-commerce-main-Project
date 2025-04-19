@@ -86,7 +86,7 @@ const OrderList = () => {
                 ) : (
                   <div className={darkMode ? 'text-black' : 'text-white'}>
                     <h1 className="text-center" style={{ fontWeight: '700', fontSize: 'xx-large' }}>
-                      You have no orders yet!
+                      YOU HAVE NO ORDERS YET!
                     </h1>
                   </div>
                 )}

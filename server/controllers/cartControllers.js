@@ -78,7 +78,7 @@ const updateCount = async (req, res) => {
 
     try {
         const userId = req.user.id;
-        const { productId, action } = req.body; // 'action' can be 'add' or 'remove'
+        const { productId, action } = req.body; 
 
         if (!productId || !action) {
             return res.status(400).json({ message: "Please provide productId and action" });

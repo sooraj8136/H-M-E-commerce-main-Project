@@ -8,15 +8,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Special+Gothic+Expanded+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Gruppo&family=Orbitron:wght@400..900&family=Sofia&family=Special+Gothic+Expanded+One&family=Yeseva+One&display=swap');
+
+.navlink-font{
+    font-family: "Gruppo", sans-serif;
+    font-weight: 800;
+}
+
 .logo-font {
     font-family: "Cinzel", serif;
     color: rgb(202, 3, 3);
 }
 
 @media (max-width: 767px) {
-  .logo-mobile-fix {
-    top: 43% !important;
-  }
+    .logo-mobile-fix {
+        top: 43% !important;
+    }
 }
 
 .text {
@@ -1640,9 +1647,9 @@ button {
 .nav-link-hover {
     position: relative;
     transition: color 0.2s ease;
-  }
-  
-  .nav-link-hover::after {
+}
+
+.nav-link-hover::after {
     content: "";
     position: absolute;
     width: 0;
@@ -1651,9 +1658,27 @@ button {
     bottom: -2px;
     background-color: currentColor;
     transition: width 0.3s ease;
-  }
-  
-  .nav-link-hover:hover::after {
+}
+
+.nav-link-hover:hover::after {
     width: 100%;
-  }
-  
+}
+
+.link-underline {
+    position: relative;
+    text-decoration: none;
+}
+
+.link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 1px;
+    background-color: currentColor;
+}
+
+.link-underline:hover::after {
+    width: 100%;
+}
