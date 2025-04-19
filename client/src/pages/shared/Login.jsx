@@ -26,23 +26,24 @@ const Login = () => {
       navigate(user.profile_route);
     } catch (error) {
       console.log(error);
-  
-      if (error.response && error.response.data && error.response.data.error) {
-        const errorMessage = error.response.data.error;
-        
+
+      if (error.response && error.response.data) {
+        const errorMessage = error.response.data.error || error.response.data.message;
+
         if (errorMessage === "Incorrect password") {
           toast.error("Incorrect password. Please try again.");
         } else if (errorMessage === "User not found") {
           toast.error("User not found. Please check your email.");
+        } else if (errorMessage === "User is already deactivated!") {
+          toast.error("Sorry, your account has been deactivated. Contact admin.");
         } else {
-          toast.error(errorMessage);  // show any other error from backend
+          toast.error(errorMessage || "Log-in failed. Please try again.");
         }
       } else {
         toast.error("Log-in failed. Please try again.");
       }
     }
   };
-  
 
   return (
     <>
@@ -63,14 +64,41 @@ const Login = () => {
               <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
                 Email
               </label>
-              <input type="email" {...register("email")} id="email" name="email" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
+              <input
+                type="email"
+                {...register("email")}
+                id="email"
+                name="email"
+                className="pass-input w-100 mt-1"
+                style={{ border: "1px solid gray" }}
+                required
+              />
             </div>
             <div className="mb-3 position-relative" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
               <label htmlFor="password" className={`d-block ${darkMode ? "text-black" : "text-white nav-sec-1 fs-10 fw-normal"}`}>
                 Password
               </label>
-              <input type={showPassword ? "text" : "password"} {...register("password")} id="password" name="password" className="pass-input w-100 mt-1" style={{ border: "1px solid gray" }} required />
-              <span onClick={() => setShowPassword(!showPassword)} style={{ position: "absolute", right: "10px", top: "68%", transform: "translateY(-50%)", cursor: "pointer", fontSize: "0.8rem", fontWeight: '600' }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                {...register("password")}
+                id="password"
+                name="password"
+                className="pass-input w-100 mt-1"
+                style={{ border: "1px solid gray" }}
+                required
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "68%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  fontSize: "0.8rem",
+                  fontWeight: '600'
+                }}
+              >
                 {showPassword ? "HIDE" : "SHOW"}
               </span>
             </div>
@@ -87,9 +115,13 @@ const Login = () => {
           </div>
         </form>
         <div className="d-flex justify-content-center mt-3">
-            <Link to={user.signup_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{ fontSize: ".8rem", color: "black" }}>
-              CREATE ACCOUNT
-            </Link>
+          <Link
+            to={user.signup_route}
+            className={`login-text ${darkMode ? "text-black" : "text-white"}`}
+            style={{ fontSize: ".8rem", color: "black" }}
+          >
+            CREATE ACCOUNT
+          </Link>
         </div>
       </Container>
     </>

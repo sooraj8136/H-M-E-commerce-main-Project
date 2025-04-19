@@ -17,7 +17,7 @@ const GetAllUsers = () => {
                 setTimeout(() => {
                     setUsers(response.data);
                     setLoading(false);
-                }, 1000); // simulate loading delay
+                }, 1000); 
             } catch (error) {
                 toast.error('Failed to fetch users');
                 console.error('Error fetching users:', error.response?.data?.message || error.message);
@@ -45,14 +45,31 @@ const GetAllUsers = () => {
                 setUsers(users.map(user => user._id === userId ? { ...user, isActive: false } : user));
             }
         } catch (error) {
-            toast.error(`Failed to ${action} user`);
+            toast.error(error.response?.data?.message || `Failed to ${action} user`);
             console.error(`Error when ${action}:`, error.response?.data?.message || error.message);
         } finally {
-            setModal({ show: false, action: '', userId: '' });
+            setModal({ show: false, action: '', userId: '' });   //Resets modal back to default without no action pending.
         }
     };
 
     const handleModal = (action, userId) => {
+        const user = users.find(u => u._id === userId);
+        
+        if (!user) {
+            toast.error("User not found!");
+            return;
+        }
+
+        if (action === 'activate' && user.isActive) {
+            toast.error('User is already activated!');
+            return;
+        }
+
+        if (action === 'deactivate' && !user.isActive) {
+            toast.error('User is already deactivated!');
+            return;
+        }
+
         setModal({ show: true, action, userId });
     };
 
@@ -96,13 +113,25 @@ const GetAllUsers = () => {
                                 </p>
                             </div>
                             <div className="user-actions d-flex flex-column align-items-end gap-2">
-                                <button className="w-100" onClick={() => handleModal('activate', user._id)} style={{ border: '1px solid white' }}>
+                                <button
+                                    className="w-100"
+                                    onClick={() => handleModal('activate', user._id)}
+                                    style={{ border: '1px solid white' }}
+                                >
                                     Activate
                                 </button>
-                                <button className="w-100" onClick={() => handleModal('deactivate', user._id)} style={{ border: '1px solid white' }}>
+                                <button
+                                    className="w-100"
+                                    onClick={() => handleModal('deactivate', user._id)}
+                                    style={{ border: '1px solid white' }}
+                                >
                                     Deactivate
                                 </button>
-                                <button className="w-100" onClick={() => handleModal('delete', user._id)} style={{ border: '1px solid white' }}>
+                                <button
+                                    className="w-100"
+                                    onClick={() => handleModal('delete', user._id)}
+                                    style={{ border: '1px solid white' }}
+                                >
                                     Delete
                                 </button>
                             </div>
