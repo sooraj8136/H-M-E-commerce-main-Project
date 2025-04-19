@@ -146,17 +146,17 @@
 // export default Cart;
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; 
 import { useFetch } from '../../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { axiosInstance } from '../../config/axiosInstance';
 import { loadStripe } from '@stripe/stripe-js';
 import { CartCards } from '../../components/user/Cards';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 function Cart() {
-  const [productDetails, isLoading, error, refreshData] = useFetch('/cart/get-cart');
+  const [productDetails, , error, refreshData] = useFetch('/cart/get-cart'); // removed isLoading
   const { darkMode } = useSelector((state) => state.mode);
   const [cartData, setCartData] = useState([]);
 
@@ -216,15 +216,6 @@ function Cart() {
       toast.error('Failed to complete payment');
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "180px" }}>
-        <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-        <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
-      </div>
-    );
-  }
 
   return (
     <Container data-theme={darkMode ? "dark" : "light"}>
