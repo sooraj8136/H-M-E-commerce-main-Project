@@ -5,11 +5,11 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const UpdateProduct = () => {
-  const { darkMode } = useSelector((state) => state.mode); 
+  const { darkMode } = useSelector((state) => state.mode);
   const { id: productId } = useParams();
   const navigate = useNavigate();
+
   const [productData, setProductData] = useState({
-    image: null,
     title: "",
     price: "",
     description: "",
@@ -48,26 +48,10 @@ const UpdateProduct = () => {
     setProductData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setProductData((prev) => ({ ...prev, image: file }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      for (const key in productData) {
-        if (productData[key]) {
-          formData.append(key, productData[key]);
-        }
-      }
-
-      const response = await axiosInstance.put(`/product/update-product/${productId}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axiosInstance.put(`/product/update-product/${productId}`, productData);
 
       toast.success(response.data.message);
       navigate("/seller/seller-product");
@@ -87,12 +71,15 @@ const UpdateProduct = () => {
           </span>
         </p>
       </div>
+
       <div className={darkMode ? "text-black" : "text-white"}>
         <h1 className="text-center" style={{ fontSize: "20px", fontWeight: "bold" }}>
           Update Your Product
         </h1>
       </div>
+
       <br />
+
       <div
         className={darkMode ? "text-black" : "text-white"}
         style={{ fontSize: "0.9rem", fontWeight: "500" }}
@@ -101,18 +88,8 @@ const UpdateProduct = () => {
           Update your product details
         </p>
       </div>
+
       <form onSubmit={handleSubmit} className="p-4" style={{ maxWidth: "400px", margin: "0 auto" }}>
-        <div className="mb-3">
-          <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
-            Product Image:
-          </label>
-          <input
-            type="file"
-            name="image"
-            onChange={handleImageChange}
-            className="w-100 pass-input mt-1"
-          />
-        </div>
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Product Title:
@@ -125,6 +102,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           />
         </div>
+
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Product Price:
@@ -137,6 +115,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           />
         </div>
+
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Product Description:
@@ -148,6 +127,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           ></textarea>
         </div>
+
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Product Category:
@@ -160,6 +140,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           />
         </div>
+
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Product Stock:
@@ -172,6 +153,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           />
         </div>
+
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Product Sizes (comma-separated):
@@ -184,6 +166,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           />
         </div>
+
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Product Materials:
@@ -196,6 +179,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           />
         </div>
+
         <div className="mb-3">
           <label className={`d-block ${darkMode ? "text-black" : "text-white"} fw-normal`}>
             Care Guidelines:
@@ -207,6 +191,7 @@ const UpdateProduct = () => {
             className="w-100 pass-input mt-1"
           ></textarea>
         </div>
+
         <div className="d-flex justify-content-center">
           <button
             type="submit"
