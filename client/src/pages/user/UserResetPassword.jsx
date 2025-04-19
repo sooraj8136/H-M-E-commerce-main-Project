@@ -38,13 +38,8 @@ const UserResetPassword = () => {
 
   return (
     <div>
-      <div className="container d-flex justify-content-center align-items-center heading-head mb-4">
-        <p className={darkMode ? "text-black" : "text-white "}>
-          HM.com / <span className="text-danger" style={{ fontWeight: "800", marginTop: "120px" }}>User Reset Password</span>
-        </p>
-      </div>
       <div className={darkMode ? "text-black" : "text-white"}>
-        <h2 className="text-center">Reset Password</h2>
+        <h2 className="text-center" style={{ marginTop: "120px" }}>Reset Password</h2>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="input-sec">
