@@ -11,7 +11,6 @@ const adminSchema = new mongoose.Schema(
             required: true,
             unique: true,
             lowercase: true,
-            maxLength: 60
         },
         mobile: {
             type: String,
