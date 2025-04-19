@@ -24,7 +24,14 @@ function Signup() {
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      toast.error("Sign-up failed. Please try again.");
+      if (error.response && error.response.data.error === "User with this mobile number already exists") {
+        toast.error("User with this mobile number already exists.");
+      }
+      else if (error.response && error.response.data.error === "User with this email already exists") {
+        toast.error("User with this email already exists.");
+      } else {
+        toast.error("Sign-up failed. Please try again.");
+      }
     }
   };
 
@@ -49,7 +56,7 @@ function Signup() {
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
-            {errors.name && <p className="text-danger">{errors.name.message}</p>} {/* Show error if name is required */}
+            {errors.name && <p className="text-danger">{errors.name.message}</p>} 
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
@@ -83,7 +90,7 @@ function Signup() {
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
-            {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>} 
+            {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
           </div>
 
           <div className="mb-3 position-relative" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
@@ -134,7 +141,7 @@ function Signup() {
               Yes, email me offers, style updates, and special invites to sales and events.<br />
             </label>
           </div>
-          {errors.terms && <p className="text-danger">{errors.terms.message}</p>} 
+          {errors.terms && <p className="text-danger">{errors.terms.message}</p>}
           <p className="terms-n-cond" style={{ fontSize: "12px", fontWeight: "500" }}>
             By clicking ‘Become a member’, I agree to the S&M Terms and conditions.
           </p>
