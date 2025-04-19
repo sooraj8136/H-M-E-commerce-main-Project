@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema(
             required: true,
             unique: true,
             lowercase: true,
-            maxLength: 30,
         },
         mobile: {
             type: String,
