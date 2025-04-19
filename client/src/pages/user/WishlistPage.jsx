@@ -127,7 +127,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Spinner, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
 import { axiosInstance } from '../../config/axiosInstance';
@@ -137,6 +137,7 @@ import toast from "react-hot-toast";
 function WishlistPage() {
   const { darkMode } = useSelector((state) => state.mode);
   const [wishlist, setWishlist] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchWishlist = async () => {
@@ -146,6 +147,8 @@ function WishlistPage() {
       } catch (error) {
         console.error('Error fetching favourites:', error);
         toast.error("Failed to fetch favourites");
+      } finally {
+        setIsLoading(false); 
       }
     };
 
@@ -162,6 +165,15 @@ function WishlistPage() {
       toast.error("Failed to remove item");
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+        <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
+        <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+      </div>
+    );
+  }
 
   return (
     <Container className="mt-2">
