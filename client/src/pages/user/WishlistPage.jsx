@@ -21,12 +21,13 @@ function WishlistPage() {
         });
         setTimeout(() => {
           setWishlist(response?.data?.data?.products || []);
-          setLoading(false)
+          setLoading(false);
           toast.success("Fetched favourites");
-        }, 1500)
+        }, 1500);
       } catch (error) {
         console.error('Error fetching favourites:', error);
-        toast.error("Filed to Fetched favourites");
+        setLoading(false); // <-- ADD THIS
+        toast.error("Failed to fetch favourites"); // Optional toast for better UX
       }
     };
 
