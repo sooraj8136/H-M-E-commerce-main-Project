@@ -130,7 +130,7 @@ const GetAllUsers = () => {
                                 <button
                                     className="w-100"
                                     onClick={() => handleModal('delete', user._id)}
-                                    style={{ border: '1px solid white' }}
+                                    style={{ border: '1px solid white', backgroundColor:"red" }}
                                 >
                                     Delete
                                 </button>

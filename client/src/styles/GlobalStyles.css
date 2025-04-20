@@ -10,7 +10,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Gruppo&family=Orbitron:wght@400..900&family=Sofia&family=Special+Gothic+Expanded+One&family=Yeseva+One&display=swap');
 
-.navlink-font{
+.navlink-font {
     font-family: "Gruppo", sans-serif;
     font-weight: 800;
 }
@@ -1681,4 +1681,12 @@ button {
 
 .link-underline:hover::after {
     width: 100%;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.custom-nav-link:hover {
+    background-color: transparent !important;
 }

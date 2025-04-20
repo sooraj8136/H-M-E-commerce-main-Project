@@ -45,23 +45,23 @@ function AdminHeader() {
                                 DASHBOARD
                             </Link>
 
-                            <Link
+                            {/* <Link
                                 to="/admin/get-all-users"
                                 className={`d-flex align-items-center custom-nav-link ${darkMode ? "text-black" : "text-white"}`}
                                 style={{ fontSize: '0.82rem', padding: '0 4px' }}
                             >
                                 USERS
-                            </Link>
+                            </Link> */}
 
-                            <Link
+                            {/* <Link
                                 to="/admin/get-sellers"
                                 className={`d-flex align-items-center custom-nav-link ${darkMode ? "text-black" : "text-white"}`}
                                 style={{ fontSize: '0.82rem', padding: '0 4px' }}
                             >
                                 SELLERS
-                            </Link>
+                            </Link> */}
 
-                            <Dropdown align="start">
+                            {/* <Dropdown align="start">
                                 <Dropdown.Toggle
                                     as="div"
                                     className={`d-flex align-items-center custom-nav-link ${darkMode ? "text-black" : "text-white"}`}
@@ -73,9 +73,9 @@ function AdminHeader() {
                                 <Dropdown.Menu>
                                     <Dropdown.Item as={Link} to="/admin/admin-products">All Products</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> */}
 
-                            <Dropdown align="start">
+                            {/* <Dropdown align="start">
                                 <Dropdown.Toggle
                                     as="div"
                                     className={`d-flex align-items-center custom-nav-link ${darkMode ? "text-black" : "text-white"}`}
@@ -88,11 +88,27 @@ function AdminHeader() {
                                     <Dropdown.Item as={Link} to="/admin/get-all-orders">All Orders</Dropdown.Item>
                                     <Dropdown.Item as={Link} to="/admin/pending-requests">Pending Requests</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> */}
                         </div>
 
                         {/* right side account and darkmode */}
                         <div className="d-flex align-items-center gap-2 gap-md-3">
+                            <Nav.Link
+                                as={Link}
+                                to="/admin/admin-contact"
+                                className={`d-flex align-items-center custom-nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                style={{ fontSize: '0.8rem', fontWeight: '600' }}
+                            >
+                                CONTACT
+                            </Nav.Link>
+                            <Nav.Link
+                                as={Link}
+                                to="/admin/admin-about"
+                                className={`d-flex align-items-center custom-nav-link ${darkMode ? "text-black" : "text-white"}`}
+                                style={{ fontSize: '0.8rem', fontWeight: '600' }}
+                            >
+                                ABOUT
+                            </Nav.Link>
                             <Nav.Link
                                 as={Link}
                                 to="/admin/admin-profile"

@@ -120,7 +120,7 @@ const Login = () => {
             className={`login-text ${darkMode ? "text-black" : "text-white"}`}
             style={{ fontSize: ".8rem", color: "black" }}
           >
-            CREATE ACCOUNT
+            BECOME AN S&J MEMBER
           </Link>
         </div>
       </Container>

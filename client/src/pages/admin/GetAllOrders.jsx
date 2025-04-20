@@ -53,7 +53,7 @@ const GetAllOrders = () => {
                 >
                   <Row className="mb-3">
                     <Col xs={12} sm={6}>
-                      <h6 className="mb-0">Order ID: {order._id}</h6>
+                      <h6 className="mb-0">ORDER ID: {order._id}</h6>
                     </Col>
                     <Col xs={12} sm={6} className="text-sm-end mt-2 mt-sm-0">
                       <span
@@ -65,13 +65,13 @@ const GetAllOrders = () => {
                     </Col>
                   </Row>
                   <p>
-                    <strong>User Name:</strong> {order.userId?.name}
+                    <strong>USER NAME:</strong> {order.userId?.name}
                   </p>
                   <p>
-                    <strong>User Email:</strong> {order.userId?.email}
+                    <strong>USER EMAIL:</strong> {order.userId?.email}
                   </p>
                   <p>
-                    <strong>Total Amount:</strong> ₹
+                    <strong>TOTAL AMOUNT:</strong> ₹
                     {order.items
                       .reduce(
                         (total, item) =>

@@ -45,7 +45,7 @@ function SellerHeader() {
                                 DASHBOARD
                             </Link>
 
-                            <Dropdown align="start">
+                            {/* <Dropdown align="start">
                                 <Dropdown.Toggle
                                     as="div"
                                     className={`nav-link custom-nav-link ${darkMode ? "text-black" : "text-white"}`}
@@ -58,9 +58,9 @@ function SellerHeader() {
                                     <Dropdown.Item as={Link} to="/seller/seller-product">Manage Products</Dropdown.Item>
                                     <Dropdown.Item as={Link} to="/seller/create-product">Create Product</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> */}
 
-                            <Dropdown align="start">
+                            {/* <Dropdown align="start">
                                 <Dropdown.Toggle
                                     as="div"
                                     className={`nav-link custom-nav-link dropdown-toggle p-0 ${darkMode ? "text-black" : "text-white"}`}
@@ -73,7 +73,7 @@ function SellerHeader() {
                                     <Dropdown.Item as={Link} to="/seller/get-orders-seller">View Orders</Dropdown.Item>
                                     <Dropdown.Item as={Link} to="/seller/update-order-status">Update Orders</Dropdown.Item>
                                 </Dropdown.Menu>
-                            </Dropdown>
+                            </Dropdown> */}
                         </div>
 
                         {/* right side account and darkmode */}
@@ -86,7 +86,6 @@ function SellerHeader() {
                             >
                                 ACCOUNT
                             </Nav.Link>
-
                             <DarkMode />
                         </div>
                     </div>

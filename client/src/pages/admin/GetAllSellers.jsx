@@ -75,6 +75,9 @@ const GetAllSellers = () => {
                 <h3>{seller.name}</h3>
                 <p>{seller.email}</p>
                 <p>{seller.mobile}</p>
+                <p>{seller.storeName}</p>
+                <p>{seller.address}</p>
+                <p>{seller.role}</p>
               </div>
               <div className="user-actions d-flex flex-column align-items-end">
                 <button className="w-100" onClick={() => handleModal('delete', seller._id)} style={{ border: '1px solid white' }}>

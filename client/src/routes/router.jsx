@@ -54,6 +54,8 @@ import TransitionalFits from '../pages/user/TransitionalFits';
 import UpdateSellerProfile from '../pages/seller/UpdateSellerProfile';
 import UpdateAdminProfile from '../pages/admin/UpdateAdminProfile';
 import UserLayout from '../layout/UserLayout';
+import AdminAbout from '../pages/admin/AdminAbout';
+import AdminContact from '../pages/admin/AdminContact';
 
 export const router = createBrowserRouter([
   {
@@ -250,6 +252,14 @@ export const router = createBrowserRouter([
           {
             path: 'admin-dashboard',
             element: <AdminDashboard />,
+          },
+          {
+            path: 'admin-about',
+            element: <AdminAbout />,
+          },
+          {
+            path: 'admin-contact',
+            element: <AdminContact />,
           },
           {
             path: 'get-all-users',

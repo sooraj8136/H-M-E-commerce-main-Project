@@ -14,7 +14,7 @@ const SellerOrders = () => {
     try {
       setLoading(true);
       setOrders([]);
-  
+
       setTimeout(async () => {
         try {
           const response = await axiosInstance.post(

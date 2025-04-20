@@ -82,19 +82,30 @@ function AdminProfile() {
             </div>
 
             <div className="lines-container mt-4">
-              <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
-                <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <Link to="/admin/update-admin-profile" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none", fontWeight: "600",fontSize:".9rem"  }}>
-                    <PiNotePencilLight size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
+              <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
+                <div className={`${darkMode ? "text-dark" : "text-light"}`}>
+                  <Link to="/admin/update-admin-profile" className={`${darkMode ? "text-dark" : "text-light"} link-underline `} style={{ textDecoration: "none",fontWeight:"500", fontSize:"1rem"  }}>
                     EDIT MY PROFILE
                   </Link>
                 </div>
               </div>
-              <hr style={{ width: "100%" }} />
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
-                <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "500",fontSize:".9rem"  }} onClick={handleLogout}>
-                    <VscLinkExternal size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
+                <div className={`${darkMode ? "text-dark" : "text-light"}`}>
+                  <Link to="/admin/admin-contact" className={`${darkMode ? "text-dark" : "text-light"} link-underline `} style={{ textDecoration: "none",fontWeight:"500", fontSize:"1rem"  }}>
+                    CONTACT
+                  </Link>
+                </div>
+              </div>
+              <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
+                <div className={`${darkMode ? "text-dark" : "text-light"}`}>
+                  <Link to="/admin/admin-about" className={`${darkMode ? "text-dark" : "text-light"} link-underline `} style={{ textDecoration: "none",fontWeight:"500", fontSize:"1rem"  }}>
+                    ABOUT
+                  </Link>
+                </div>
+              </div>
+              <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
+                <div className={`${darkMode ? "text-dark" : "text-light"}`}>
+                  <span className={`${darkMode ? "text-dark" : "text-light"} link-underline `} style={{ cursor: "pointer", fontWeight: "500",fontSize:"1rem"  }} onClick={handleLogout}>
                     SIGN OUT
                   </span>
                 </div>

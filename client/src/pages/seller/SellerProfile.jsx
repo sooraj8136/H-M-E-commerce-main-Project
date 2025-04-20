@@ -91,37 +91,28 @@ function SellerProfile() {
               <br />
             </div>
             <div className="lines-container">
-              <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
+              <div className=" line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
                   <Link
                     to="/seller/update-seller-profile"
-                    className={darkMode ? "text-dark" : "text-light"}
-                    style={{ textDecoration: "none",fontSize:".9rem"  }}>
-                    <PiNotePencilLight
-                      size={24}
-                      style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }}
-                    />
+                    className={`${darkMode ? "text-dark" : "text-light"} link-underline`}
+                    style={{ textDecoration: "none",fontSize:"1rem"  }}>
                     EDIT MY PROFILE
                   </Link>
                 </div>
               </div>
-              <hr style={{ width: "100%" }} />
-              <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
+              <div className=" line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <CiHeadphones size={24} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
-                  <Link to="/contact" className={darkMode ? "text-dark" : "text-light"} style={{ textDecoration: "none",fontSize:".9rem" }}>CONTACT US</Link>
+                  <Link to="/contact" className={`${darkMode ? "text-dark" : "text-light"} link-underline`} style={{ textDecoration: "none",fontSize:"1rem" }}>CONTACT US</Link>
                 </div>
               </div>
-              <hr style={{ width: "100%" }} />
-              <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
+              <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <span className={darkMode ? "text-dark" : "text-light"} style={{ cursor: "pointer", fontWeight: "500",fontSize:".9rem"  }} onClick={handleLogout}>
-                    <VscLinkExternal size={21} style={{ marginRight: "10px", color: darkMode ? "#000000" : "#ffffff" }} />
+                  <span className={`${darkMode ? "text-dark" : "text-light"} link-underline`} style={{ cursor: "pointer", fontWeight: "500",fontSize:"1rem"  }} onClick={handleLogout}>
                     SIGN OUT
                   </span>
                 </div>
               </div>
-              <hr style={{ width: "100%" }} />
             </div>
           </div>
           <Container data-theme={darkMode ? "dark" : "light"}>

@@ -66,8 +66,8 @@ const AdminBarhart = () => {
             <div
                 className="container d-flex justify-content-start align-items-start heading-head"
                 style={{ marginTop: "50px" }}>
-                <p style={{ fontSize: "40px", fontWeight: "600" }}>
-                    ADMIN DASHBOARD
+                <p className="navlink-font" style={{ fontSize: "40px", fontWeight: "600" }}>
+                Admin Data Insights: Monthly Trends
                 </p>
             </div>
             {isDataAvailable ? (
