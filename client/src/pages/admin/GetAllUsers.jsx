@@ -77,7 +77,7 @@ const GetAllUsers = () => {
         <div className="container">
             <div
                 className="container d-flex justify-content-start align-items-start heading-head"
-                style={{ marginTop: "120px" }}
+                style={{ marginTop: "160px" }}
             >
                 <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
                     ALL USERS
@@ -100,8 +100,8 @@ const GetAllUsers = () => {
                             style={{ backgroundColor: darkMode ? "white" : "black", color: darkMode ? "#000" : "#fff" }}
                         >
                             <div className="user-details">
-                                <h3>{user.name}</h3>
-                                <p>{user.email}</p>
+                                <h3 style={{fontSize:"1rem"}}>{user.name}</h3>
+                                <p style={{fontSize:"0.8rem"}}>{user.email}</p>
                                 <p>{user.mobile}</p>
                                 <p className="card-text">
                                     <strong>Status:</strong>

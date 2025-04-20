@@ -46,7 +46,7 @@ function AdminProfile() {
 
   return (
     <Container data-theme={darkMode ? "dark" : "light"}>
-      <div className="container d-flex justify-content-start align-items-start heading-head" style={{ marginTop: "120px" }}>
+      <div className="container d-flex justify-content-start align-items-start heading-head" style={{ marginTop: "140px" }}>
         <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
           ADMIN ACCOUNT
         </p>
