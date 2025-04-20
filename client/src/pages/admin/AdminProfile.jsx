@@ -80,7 +80,6 @@ function AdminProfile() {
                 </h5>
               </div>
             </div>
-
             <div className="lines-container mt-4">
               <div className="line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className={`${darkMode ? "text-dark" : "text-light"}`}>
@@ -112,7 +111,6 @@ function AdminProfile() {
               </div>
             </div>
           </div>
-
           <Container data-theme={darkMode ? "dark" : "light"} className="mt-4" style={{ flex: "1 1 auto" }}>
             <div className="d-flex justify-content-center align-items-center" style={{ position: "relative", width: "100%" }}>
               <div style={{

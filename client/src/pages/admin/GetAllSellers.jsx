@@ -55,7 +55,6 @@ const GetAllSellers = () => {
           ALL SELLERS
         </p>
       </div>
-
       {loading ? (
         <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "140px" }}>
           <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
@@ -88,7 +87,6 @@ const GetAllSellers = () => {
           ))}
         </div>
       )}
-
       <Modal show={modal.show} onHide={() => setModal({ show: false, action: '', sellerId: '' })}>
         <Modal.Header closeButton>
           <Modal.Title> {modal.action.charAt(0).toUpperCase() + modal.action.slice(1)}</Modal.Title>
