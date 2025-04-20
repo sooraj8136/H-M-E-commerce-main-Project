@@ -1683,10 +1683,6 @@ button {
     width: 100%;
 }
 
-.nav-link:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
 .custom-nav-link:hover {
     background-color: transparent !important;
 }
