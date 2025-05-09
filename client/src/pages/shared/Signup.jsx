@@ -6,9 +6,8 @@ import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 
 function Signup() {
-
   const { darkMode } = useSelector((state) => state.mode);
-  const { register, handleSubmit, formState: { errors } } = useForm();  // Access errors from react-hook-form
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -20,19 +19,25 @@ function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Data  :- ", data);
-      const response = await axiosInstance.post(
-        user.signup_api,
-        data,
-      );
-      console.log(response, "====response");
+      const response = await axiosInstance.post(user.signup_api, data);
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      console.log(error);
-      toast.error("Sign-up failed. Please try again.");
+      if (
+        error.response &&
+        error.response.data.error === "User with this mobile number already exists"
+      ) {
+        toast.error("User with this mobile number already exists.");
+      } else if (
+        error.response &&
+        error.response.data.error === "User with this email already exists"
+      ) {
+        toast.error("User with this email already exists.");
+      } else {
+        toast.error("Please try again.");
+      }
     }
-  };  
+  };
 
   return (
     <>
@@ -53,7 +58,6 @@ function Signup() {
               name="name"
               className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
-              required
             />
             {errors.name && <p className="text-danger">{errors.name.message}</p>}
           </div>
@@ -67,9 +71,8 @@ function Signup() {
               name="email"
               className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
-              required
             />
-            {errors.email && <p className="text-danger">{errors.email.message}</p>} {/* Show error if email is required */}
+            {errors.email && <p className="text-danger">{errors.email.message}</p>}
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
@@ -87,7 +90,6 @@ function Signup() {
               name="mobile"
               className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
-              required
             />
             {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
           </div>
@@ -107,9 +109,8 @@ function Signup() {
               name="password"
               className="pass-input mx-auto my-1 w-100"
               style={{ maxWidth: "400px", width: "90%" }}
-              required
             />
-            {errors.password && <p className="text-danger">{errors.password.message}</p>} {/* Show error for password length */}
+            {errors.password && <p className="text-danger">{errors.password.message}</p>}
             <span
               onClick={() => setShowPassword(!showPassword)}
               style={{
@@ -134,7 +135,6 @@ function Signup() {
               id="terms"
               {...register("terms", { required: "You must agree to the terms and conditions" })}
               className="form-check-input custom-checkbox"
-              required
             />
             <label htmlFor="terms" className={`form-check-label ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "12px", fontWeight: "500" }}>
               Yes, email me offers, style updates, and special invites to sales and events.<br />
@@ -153,7 +153,7 @@ function Signup() {
 
       <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
-          <Link to={user.login_route} className={`login-text ${darkMode ? "text-black" : "text-white "}`} style={{ fontSize: ".8rem", color: "black" }}>
+          <Link to={user.login_route} className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
             BACK TO LOGIN
           </Link>
         </p>
