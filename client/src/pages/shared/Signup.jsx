@@ -24,7 +24,6 @@ function Signup() {
       const response = await axiosInstance.post(
         user.signup_api,
         data,
-        { withCredentials: true }
       );
       console.log(response, "====response");
       toast.success("Sign-up success! Please log in.");
