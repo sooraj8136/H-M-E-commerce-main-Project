@@ -11,7 +11,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const user = { login_api: "/user/login", profile_route: "/", signup_route: "/signup" };
+  const user = { login_api: "/user/login", profile_route: "/user/profile", signup_route: "/signup" };
 
   const onSubmit = async (data) => {
     try {
