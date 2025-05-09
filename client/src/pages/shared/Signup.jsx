@@ -21,18 +21,19 @@ function Signup() {
   const onSubmit = async (data) => {
     try {
       console.log("Data  :- ", data);
-      const response = await axiosInstance({
-        method: "POST",
-        url: user.signup_api, data
-      });
+      const response = await axiosInstance.post(
+        user.signup_api,
+        data,
+        { withCredentials: true }
+      );
       console.log(response, "====response");
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error("Sign-up failed. Please try again.");
     }
-  };
+  };  
 
   return (
     <>
