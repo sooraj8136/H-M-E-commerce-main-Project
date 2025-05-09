@@ -29,6 +29,7 @@ function Signup() {
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
+      console.log(error)
       toast.error("Sign-up failed. Please try again.");
     }
   };
