@@ -10,9 +10,9 @@ const registerAdmin = async (req, res) => {
 
     try {
 
-        const { name, email, mobile, role, password, qualification } = req.body
+        const { name, email, mobile, password, qualification } = req.body
 
-        if (!name || !email || !mobile || !role || !password || !qualification) {
+        if (!name || !email || !mobile || !password || !qualification) {
             res.status(400).json({ message: "All fields are required" })
         }
 
@@ -32,7 +32,7 @@ const registerAdmin = async (req, res) => {
         const salt = await bcrypt.genSalt()
         const adminHashedPassword = await bcrypt.hash(password, salt)
         const newAdmin = new adminDb({
-            name, email, mobile, role, password: adminHashedPassword, qualification
+            name, email, mobile, password: adminHashedPassword, qualification
         })
 
         const savedAdmin = await newAdmin.save()
