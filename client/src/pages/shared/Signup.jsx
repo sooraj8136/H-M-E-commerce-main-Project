@@ -20,18 +20,16 @@ function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance({ method: "POST", url: user.signup_api, data });
+      console.log("Data  :- ", data);
+      const response = await axiosInstance({
+        method: "POST",
+        url: user.signup_api, data
+      });
+      console.log(response, "====response");
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      if (error.response && error.response.data.error === "User with this mobile number already exists") {
-        toast.error("User with this mobile number already exists.");
-      }
-      else if (error.response && error.response.data.error === "User with this email already exists") {
-        toast.error("User with this email already exists.");
-      } else {
-        toast.error("Sign-up failed. Please try again.");
-      }
+      toast.error("Sign-up failed. Please try again.");
     }
   };
 
@@ -56,7 +54,7 @@ function Signup() {
               style={{ maxWidth: "400px", width: "90%" }}
               required
             />
-            {errors.name && <p className="text-danger">{errors.name.message}</p>} 
+            {errors.name && <p className="text-danger">{errors.name.message}</p>}
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
