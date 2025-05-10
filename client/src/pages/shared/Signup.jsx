@@ -19,8 +19,13 @@ function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstance.post(user.signup_api, { ...data, _ts: Date.now() });
+      const response = await axiosInstance({
+        method: "POST",
+        url: signup_api,
+        data: { ...data, _ts: Date.now() }
+      });
       toast.success("Sign-up success! Please log in.");
+      console.log(response)
       navigate(user.login_route);
     } catch (error) {
       if (

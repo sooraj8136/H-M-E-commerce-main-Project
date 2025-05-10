@@ -10,13 +10,15 @@ function SellerSignup() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (data) => {
     try {
       console.log("Data  :- ", data);
-
-      const response = await axiosInstance.post("/seller/register-seller", data);
+      const response = await axiosInstance({
+        method: "POST",
+        url: "/seller/register-seller", data
+      });
       console.log(response, "====response");
       toast.success("Seller Sign-up success! Please log in.");
       navigate("/seller/login");
@@ -187,7 +189,7 @@ function SellerSignup() {
           style={{ maxWidth: "400px", width: "90%", margin: "auto" }}
         >
           <button className="signup-btn w-100" style={{ maxWidth: "400px" }}>
-          SIGN UP
+            SIGN UP
           </button>
         </div>
       </form>
@@ -196,7 +198,7 @@ function SellerSignup() {
         <p className="text-center">
           <Link
             to="/seller/login"
-            className={`login-text {darkMode ? "text-black" : "text-white forgot-password"}`} style={{fontSize:".8rem", color:"black"}}
+            className={`login-text {darkMode ? "text-black" : "text-white forgot-password"}`} style={{ fontSize: ".8rem", color: "black" }}
           >
             BACK TO LOGIN
           </Link>

@@ -14,7 +14,6 @@ function AdminSignup() {
     const onSubmit = async (data) => {
         try {
             console.log("Data  :- ", data);
-
             const response = await axiosInstance({
                 method: "POST",
                 url: '/admin/register-admin', data
