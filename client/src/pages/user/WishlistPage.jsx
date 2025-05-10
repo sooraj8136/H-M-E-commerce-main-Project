@@ -17,7 +17,7 @@ function WishlistPage() {
         const response = await axiosInstance.get("/wishlist/get-wishlist");
         setWishlist(response?.data?.data?.products || []);
       } catch (error) {
-        console.error('Error fetching favourites:', error);
+        console.error('Try again to fetch favourites:', error);
       } finally {
         setIsLoading(false); 
       }
