@@ -19,7 +19,7 @@ function WishlistPage() {
       } catch (error) {
         console.error('Try again to fetch favourites:', error);
       } finally {
-        setIsLoading(false); 
+        setIsLoading(false);
       }
     };
 
@@ -29,7 +29,9 @@ function WishlistPage() {
   const handleRemoveFromWishlist = async (productId) => {
     try {
       await axiosInstance.delete(`/wishlist/remove-from-wishlist/${productId}`);
-      setWishlist((prevWishlist) => prevWishlist.filter((product) => product._id !== productId));
+      setWishlist((prevWishlist) =>
+        prevWishlist.filter((product) => product._id !== productId)
+      );
       toast.success("Removed from favourites");
     } catch (error) {
       console.error('Error removing item from wishlist:', error);
@@ -70,38 +72,41 @@ function WishlistPage() {
       ) : (
         <Container>
           <Row className="d-flex justify-content-start">
-            {wishlist.map((product) => (
-              <Col xs={12} sm={6} md={4} lg={3} key={product._id} className="text-center position-relative mb-4">
-                <Link to={`/productDetails/${product._id}`} className="text-decoration-none">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      objectFit: 'cover',
-                      marginBottom: '10px',
-                      maxWidth: '1024px',
-                    }}
-                  />
-                </Link>
-                <div className="d-flex flex-column align-items-start">
-                  <h3 className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '1rem', fontWeight: "600", marginBottom: '0.5rem' }}>
-                    {product.title}
-                  </h3>
-                  <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: "500" }}>
-                    Rs. {product.price}.00
-                  </p>
-                </div>
-                <div className="position-absolute" style={{ top: '6px', right: '15px' }}>
-                  <button
-                    onClick={() => handleRemoveFromWishlist(product._id)}
-                    className="btn">
-                    <FaTrashAlt />
-                  </button>
-                </div>
-              </Col>
-            ))}
+            {wishlist.map((product) => {
+              const secureImage = product.image?.replace(/^http:\/\//i, 'https://');
+              return (
+                <Col xs={12} sm={6} md={4} lg={3} key={product._id} className="text-center position-relative mb-4">
+                  <Link to={`/productDetails/${product._id}`} className="text-decoration-none">
+                    <img
+                      src={secureImage}
+                      alt={product.title}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'cover',
+                        marginBottom: '10px',
+                        maxWidth: '1024px',
+                      }}
+                    />
+                  </Link>
+                  <div className="d-flex flex-column align-items-start">
+                    <h3 className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '1rem', fontWeight: "600", marginBottom: '0.5rem' }}>
+                      {product.title}
+                    </h3>
+                    <p className={darkMode ? 'text-black' : 'text-white'} style={{ fontSize: '0.8rem', fontWeight: "500" }}>
+                      Rs. {product.price}.00
+                    </p>
+                  </div>
+                  <div className="position-absolute" style={{ top: '6px', right: '15px' }}>
+                    <button
+                      onClick={() => handleRemoveFromWishlist(product._id)}
+                      className="btn">
+                      <FaTrashAlt />
+                    </button>
+                  </div>
+                </Col>
+              );
+            })}
           </Row>
         </Container>
       )}
