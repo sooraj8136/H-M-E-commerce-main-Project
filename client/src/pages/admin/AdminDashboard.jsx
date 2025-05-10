@@ -94,7 +94,7 @@ function AdminDashboard() {
             <Button variant={darkMode ? "outline-light" : "outline-dark"}>Manage Users</Button>
           </div>
 
-          <Row className="gy-4">
+          <Row className="gy-4" style={{marginTop:"50px"}}>
             <Col xs={12} sm={6} md={3}>
               <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{borderRadius:"0px" }}>
                 <Card.Body>
