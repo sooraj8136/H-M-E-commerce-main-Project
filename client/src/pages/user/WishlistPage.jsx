@@ -18,7 +18,6 @@ function WishlistPage() {
         setWishlist(response?.data?.data?.products || []);
       } catch (error) {
         console.error('Error fetching favourites:', error);
-        toast.error("Failed to fetch favourites");
       } finally {
         setIsLoading(false); 
       }
