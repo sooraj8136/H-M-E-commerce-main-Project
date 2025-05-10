@@ -21,7 +21,7 @@ function SellerSignup() {
       toast.success("Seller Sign-up success! Please log in.");
       navigate("/seller/login");
     } catch (error) {
-      toast.error("Sign-up failed. Please try again.");
+      toast.error("Please try again.");
       console.log(error);
     }
   };
