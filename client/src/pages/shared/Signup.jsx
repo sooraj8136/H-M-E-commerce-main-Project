@@ -25,11 +25,9 @@ function Signup() {
         data: { ...data, _ts: Date.now() }
       });
       toast.success("Sign-up success! Please log in.");
-      console.log("Signup response:", response);
+      console.log(response)
       navigate(user.login_route);
     } catch (error) {
-      console.error("Signup error:", error);
-
       if (
         error.response &&
         error.response.data.error === "User with this mobile number already exists"
@@ -40,15 +38,7 @@ function Signup() {
         error.response.data.error === "User with this email already exists"
       ) {
         toast.error("User with this email already exists.");
-      } else if (error.response) {
-        console.error("Server responded with:", error.response.data);
-        toast.error(error.response.data.error || "Something went wrong.");
-      } else if (error.request) {
-        console.error("No response received:", error.request);
-        toast.error("No response from server. Please try again later.");
       } else {
-        console.error("Error setting up the request:", error.message);
-        toast.error("An unexpected error occurred.");
       }
     }
   };
