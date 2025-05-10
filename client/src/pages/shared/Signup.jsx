@@ -21,7 +21,7 @@ function Signup() {
     try {
       const response = await axiosInstance({
         method: "POST",
-        url: signup_api,
+        url: user.signup_api,  
         data: { ...data, _ts: Date.now() }
       });
       console.log(response)
@@ -58,6 +58,7 @@ function Signup() {
             />
             {errors.name && <p className="text-danger">{errors.name.message}</p>}
           </div>
+
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Email</label>
             <input
@@ -69,6 +70,7 @@ function Signup() {
             />
             {errors.email && <p className="text-danger">{errors.email.message}</p>}
           </div>
+
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="mobile" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Mobile</label>
             <input
@@ -86,6 +88,7 @@ function Signup() {
             />
             {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
           </div>
+
           <div className="mb-3 position-relative" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="password" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Password</label>
             <input
@@ -118,6 +121,7 @@ function Signup() {
             {errors.password && <p className="text-danger">{errors.password.message}</p>}
           </div>
         </div>
+
         <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
           <div className="form-check">
             <input
@@ -135,10 +139,12 @@ function Signup() {
             By clicking ‘Become a member’, I agree to the S&M Terms and conditions.
           </p>
         </div>
+
         <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
           <button type="submit" className="login-text signup-btn w-100" style={{ maxWidth: "400px" }}>SIGN UP</button>
         </div>
       </form>
+
       <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
           <Link to={user.login_route} className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
