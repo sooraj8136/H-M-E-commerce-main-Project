@@ -34,7 +34,6 @@ function Signup() {
         toast.error("User with this email already exists.");
       } else {
         console.log(error)
-        toast.error("Signup failed, Please try again")
       }
     }
   };
