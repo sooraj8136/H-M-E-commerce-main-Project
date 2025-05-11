@@ -1,49 +1,40 @@
-const express = require('express');
+const express = require('express')
+const connectDB = require('./config/db')
+const apiRouter = require('./routes')
+var cookieParser = require('cookie-parser')
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const connectDB = require('./config/db');
-const apiRouter = require('./routes');
-require('dotenv').config();
+require('dotenv').config()
 
-const app = express();
+const app = express()
 
-// Connect to DB
-connectDB();
+connectDB()
 
-// ✅ Setup CORS first
-app.use(cors({
-  origin: ["http://localhost:5173", "https://h-m-e-commerce-main-project-client.vercel.app"],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
+app.use(
+    cors({
+        origin: ["http://localhost:5173", "https://h-m-e-commerce-main-project-client.vercel.app"],
+        credentials: true, 
+        methods: ["GET", "POST", "PUT", "DELETE"] 
+    })
+);
 
-// ✅ Handle preflight requests
-app.options('*', cors());
+app.use(express.json())
 
-// ✅ Log all incoming request headers
-app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] Incoming Request Headers:`, req.headers);
-  next();
+app.use(cookieParser())
+
+app.get("/", (req, res, next) => {
+    res.json("hello world");
 });
 
-// Parse JSON and cookies
-app.use(express.json());
-app.use(cookieParser());
+app.use("/api", apiRouter)
 
-// Default route
-app.get('/', (req, res) => {
-  res.json('Hello World');
-});
+app.all("*", (req, res) => {
+    return res.status(404).json({ message: "End-point doesn't exist" })
+})
 
-// API routes
-app.use('/api', apiRouter);
-
-// 404 fallback
-app.all('*', (req, res) => {
-  res.status(404).json({ message: "Endpoint doesn't exist" });
-});
-
-// Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Server started on port ${process.env.PORT}`);
-});
+app.listen(process.env.PORT, (err) => {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log(`server starts on port ${process.env.PORT}`)
+    }
+})  
