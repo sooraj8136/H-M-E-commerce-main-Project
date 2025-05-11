@@ -317,7 +317,7 @@ const userForgotPassword = async (req, res) => {
 
         await user.save();
 
-        const resetLink = `${process.env.CORS}/user/user-reset-password/${resetToken}`;
+        const resetLink = `${process.env.CLIENT_URL}/user/user-reset-password/${resetToken}`;
 
         const transporter = nodemailer.createTransport({
             service: "Gmail",
