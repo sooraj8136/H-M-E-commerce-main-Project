@@ -17,22 +17,62 @@ function Signup() {
     login_route: "/login",
   };
 
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axiosInstance({
+  //       method: "POST",
+  //       url: user.signup_api,  
+  //       data: { ...data, _ts: Date.now() }
+  //     });
+  //     console.log(response)
+  //     toast.success("Sign-up success! Please log in.");
+  //     navigate(user.login_route);
+  //   } catch (error) {
+  //     if (error.response?.data?.error === "User with this mobile number already exists") {
+  //       toast.error("User with this mobile number already exists.");
+  //     } else if (error.response?.data?.error === "User with this email already exists") {
+  //       toast.error("User with this email already exists.");
+  //     } else {
+  //     }
+  //   }
+  // };
+
   const onSubmit = async (data) => {
     try {
+      console.log("Sending signup request...", data);
       const response = await axiosInstance({
         method: "POST",
-        url: user.signup_api,  
+        url: user.signup_api,
         data: { ...data, _ts: Date.now() }
       });
-      console.log(response)
+
+      // ✅ Optional: log backend debug messages if included in response
+      if (response.data.message) {
+        console.log("Backend:", response.data.message);
+      }
+      if (response.data.data) {
+        console.log("User saved successfully", response.data.data);
+      }
+
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      if (error.response?.data?.error === "User with this mobile number already exists") {
-        toast.error("User with this mobile number already exists.");
-      } else if (error.response?.data?.error === "User with this email already exists") {
-        toast.error("User with this email already exists.");
+      console.error("Signup error:", error?.response?.data?.error || error.message);
+
+      const errMsg = error?.response?.data?.error;
+
+      if (errMsg === "User with this mobile number already exists") {
+        toast.error(errMsg);
+      } else if (errMsg === "User with this email already exists") {
+        toast.error(errMsg);
+      } else if (errMsg === "Mobile number must be between 10 and 15 digits") {
+        toast.error(errMsg);
+      } else if (errMsg === "Password must be at least 8 characters long") {
+        toast.error(errMsg);
+      } else if (errMsg === "All fields are required") {
+        toast.error(errMsg);
       } else {
+        toast.error("Something went wrong. Try again later.");
       }
     }
   };
