@@ -20,7 +20,7 @@ function Signup() {
   const onSubmit = async (data) => {
     try {
       const response = await axiosInstance({
-        method: "PUT",
+        method: "POST",
         url: user.signup_api,  
         data: { ...data, _ts: Date.now() }
       });

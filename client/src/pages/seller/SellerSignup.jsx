@@ -16,7 +16,7 @@ function SellerSignup() {
     try {
       console.log("Data  :- ", data);
       const response = await axiosInstance({
-        method: "PUT",
+        method: "POST",
         url: "/seller/register-seller", data
       });
       console.log(response, "====response");
