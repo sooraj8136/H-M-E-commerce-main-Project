@@ -22,8 +22,6 @@ function AdminSignup() {
             toast.success("Admin Sign-up success! Please log in.");
             navigate("/admin/login");
         } catch (error) {
-            toast.error("Sign-up failed. Please try again.");
-            console.log(error);
         }
     };
 
