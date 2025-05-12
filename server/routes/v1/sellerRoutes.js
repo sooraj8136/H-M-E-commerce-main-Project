@@ -4,7 +4,7 @@ const { sellerAuth } = require("../../middlewares/sellerAuth")
 
 const sellerRouter = require("express").Router()
 
-sellerRouter.post("/register-seller", registerSeller )
+sellerRouter.get("/register-seller", registerSeller )
 sellerRouter.post("/login-seller", loginSeller )
 sellerRouter.post("/seller-forgot-password", sellerForgotPassword )
 sellerRouter.post("/seller-reset-password/:token", sellerResetPassword )

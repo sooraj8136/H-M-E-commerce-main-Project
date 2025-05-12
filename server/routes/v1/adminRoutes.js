@@ -3,7 +3,7 @@ const { adminAuth } = require("../../middlewares/adminAuth")
 
 const adminRouter = require("express").Router()
 
-adminRouter.post("/register-admin", registerAdmin )
+adminRouter.get("/register-admin", registerAdmin )
 adminRouter.post("/admin-login", loginAdmin )   
 adminRouter.post("/admin-forgot-password", adminForgotPassword )   
 adminRouter.post("/admin-reset-password/:token", adminResetPassword ) 

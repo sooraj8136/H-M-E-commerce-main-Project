@@ -5,7 +5,7 @@ const { userAuth } = require('../../middlewares/userAuth')
 
 const userRouter = require('express').Router()
 
-userRouter.post("/signup", register)
+userRouter.get("/signup", register)
 userRouter.post("/login", login)
 userRouter.post("/user-forgot-password", userForgotPassword)
 userRouter.post("/user-reset-password/:token", userResetPassword)
