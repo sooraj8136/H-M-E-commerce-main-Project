@@ -96,7 +96,6 @@ const login = async (req, res) => {
     }
 };
 
-
 const userProfile = async (req, res) => {
     try {
         const userId = req.user.id
@@ -117,7 +116,6 @@ const userProfile = async (req, res) => {
     }
 
 }
-
 
 const checkUser = async (req, res) => {
     try {
