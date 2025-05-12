@@ -7,53 +7,105 @@ const { generateToken } = require("../utils/token")
 const { cloudinaryInstance } = require("../config/cloudinaryConfig")
 
 
-const register = async (req, res) => {
+// const register = async (req, res) => {
 
+//     try {
+//         const { name, email, mobile, password } = req.body
+//         if (!name || !email || !mobile || !password) {
+//             return res.status(400).json({ error: "All fields are required" })
+//         }
+
+//         if (password.length < 8) {
+//             return res.status(400).json({ error: "Password must be at least 8 characters long" });
+//         }
+
+//         const mobileValidation = /^[0-9]{10,15}$/;  // Only numbers, 10-15 digits
+//         if (!mobileValidation.test(mobile)) {
+//             return res.status(400).json({ error: "Mobile number must be between 10 and 15 digits" });
+//         }
+
+//         const userAlreadyExistWithEmail = await userDb.findOne({ email })
+
+//         if (userAlreadyExistWithEmail) {
+//             return res.status(400).json({ error: "User with this email already exists" })
+//         }
+
+//         const userAlreadyExistWithMobile = await userDb.findOne({ mobile })
+
+//         if (userAlreadyExistWithMobile) {
+//             return res.status(400).json({ error: "User with this mobile number already exists" })
+//         }
+
+//         const salt = await bcrypt.genSalt()
+//         const hashedpassword = await bcrypt.hash(password, salt)
+
+//         const newUser = new userDb({
+//             name, email, password: hashedpassword, mobile
+//         })
+
+//         const savedUser = await newUser.save()
+
+//         const { password: _, ...userData } = savedUser.toObject();
+
+//         res.status(200).json({ message: "User registered successfully", data: userData })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(error.status || 500).json({ error: error.message || "Internal server error" })
+//     }
+// }
+
+
+const register = async (req, res) => {
     try {
-        const { name, email, mobile, password } = req.body
+        const { name, email, mobile, password } = req.body;
         if (!name || !email || !mobile || !password) {
-            return res.status(400).json({ error: "All fields are required" })
+            return res.status(400).json({ error: "All fields are required" });
         }
 
         if (password.length < 8) {
             return res.status(400).json({ error: "Password must be at least 8 characters long" });
         }
 
-        const mobileValidation = /^[0-9]{10,15}$/;  // Only numbers, 10-15 digits
+        const mobileValidation = /^[0-9]{10,15}$/;
         if (!mobileValidation.test(mobile)) {
             return res.status(400).json({ error: "Mobile number must be between 10 and 15 digits" });
         }
 
-        const userAlreadyExistWithEmail = await userDb.findOne({ email })
+        const existingUser = await userDb.findOne({
+            $or: [{ email }, { mobile }],
+        });
 
-        if (userAlreadyExistWithEmail) {
-            return res.status(400).json({ error: "User with this email already exists" })
+        if (existingUser) {
+            if (existingUser.email === email) {
+                return res.status(400).json({ error: "User with this email already exists" });
+            }
+            if (existingUser.mobile === mobile) {
+                return res.status(400).json({ error: "User with this mobile number already exists" });
+            }
         }
 
-        const userAlreadyExistWithMobile = await userDb.findOne({ mobile })
-
-        if (userAlreadyExistWithMobile) {
-            return res.status(400).json({ error: "User with this mobile number already exists" })
-        }
-
-        const salt = await bcrypt.genSalt()
-        const hashedpassword = await bcrypt.hash(password, salt)
+        const hashedpassword = await bcrypt.hash(password, 10);
 
         const newUser = new userDb({
-            name, email, password: hashedpassword, mobile
-        })
+            name,
+            email,
+            mobile,
+            password: hashedpassword,
+        });
 
-        const savedUser = await newUser.save()
-
+        const savedUser = await newUser.save();
         const { password: _, ...userData } = savedUser.toObject();
 
-        res.status(200).json({ message: "User registered successfully", data: userData })
+        res.status(200).json({ message: "User registered successfully", data: userData });
 
     } catch (error) {
-        console.log(error)
-        res.status(error.status || 500).json({ error: error.message || "Internal server error" })
+        console.log(error);
+        res.status(error.status || 500).json({ error: error.message || "Internal server error" });
     }
-}
+};
+
+
 
 const login = async (req, res) => {
     try {
