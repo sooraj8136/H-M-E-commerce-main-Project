@@ -17,14 +17,34 @@ function Signup() {
     login_route: "/login",
   };
 
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axiosInstance({
+  //       method: "POST",
+  //       url: user.signup_api,  
+  //       data: { ...data, _ts: Date.now() }
+  //     });
+  //     console.log(response)
+  //     toast.success("Sign-up success! Please log in.");
+  //     navigate(user.login_route);
+  //   } catch (error) {
+  //     if (error.response?.data?.error === "User with this mobile number already exists") {
+  //       toast.error("User with this mobile number already exists.");
+  //     } else if (error.response?.data?.error === "User with this email already exists") {
+  //       toast.error("User with this email already exists.");
+  //     } else {
+  //     }
+  //   }
+  // };
+
   const onSubmit = async (data) => {
     try {
       const response = await axiosInstance({
         method: "POST",
-        url: user.signup_api,  
+        url: user.signup_api,
         data: { ...data, _ts: Date.now() }
       });
-      console.log(response)
+      console.log(response);
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
@@ -33,6 +53,8 @@ function Signup() {
       } else if (error.response?.data?.error === "User with this email already exists") {
         toast.error("User with this email already exists.");
       } else {
+        console.error("Signup error:", error); // 🔥 added log
+        toast.error("Something went wrong. Please try again later.");
       }
     }
   };
