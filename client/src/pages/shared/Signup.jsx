@@ -33,8 +33,8 @@ function Signup() {
       } else if (error.response?.data?.error === "User with this email already exists") {
         toast.error("User with this email already exists.");
       } else {
-        // console.error("Signup error:", error); 
-        // toast.error("Something went wrong. Please try again later.");
+        console.error("Signup error:", error); 
+        toast.error("Something went wrong. Please try again later.");
       }
     }
   };
