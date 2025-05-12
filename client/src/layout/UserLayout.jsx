@@ -11,11 +11,11 @@ import UserFooter from '../components/user/UserFooter';
 function UserLayout() {
 
     const { darkMode } = useSelector((state) => state.mode);
-    
+
     useEffect(() => {
         document.body.style.background = darkMode ? "white" : "black";
     }, [darkMode]);
-    
+
     const location = useLocation();
 
     const { isUserAuth } = useSelector((state) => state.user);
@@ -36,7 +36,10 @@ function UserLayout() {
     };
 
     useEffect(() => {
-        checkUser();
+        const excludeRoutes = ["/signup", "/login"];
+        if (!excludeRoutes.includes(location.pathname)) {
+            checkUser();
+        }
     }, [location.pathname]);
 
     console.log("isUserAuth:", isUserAuth);
