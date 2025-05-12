@@ -15,7 +15,7 @@ function AdminSignup() {
         try {
             console.log("Data  :- ", data);
             const response = await axiosInstance({
-                method: "GET",
+                method: "PUT",
                 url: '/admin/register-admin', data
             })
             console.log(response, "====response");
