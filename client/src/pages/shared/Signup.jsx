@@ -41,30 +41,27 @@ function Signup() {
 
   const onSubmit = async (data) => {
     try {
-      // Start the signup request with timeout
       const response = await axiosInstance({
         method: "POST",
         url: user.signup_api,
         data: { ...data, _ts: Date.now() },
-        timeout: 30000, // 30 seconds timeout
       });
 
       console.log(response);
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      // Artificial delay to simulate "thinking" time
+
       setTimeout(() => {
-        if (error.code === 'ECONNABORTED') {
-          toast.error("Request timed out. Please try again later.");
-        } else if (error.response?.data?.error === "User with this mobile number already exists") {
+        if (error.response?.data?.error === "User with this mobile number already exists") {
           toast.error("User with this mobile number already exists.");
         } else if (error.response?.data?.error === "User with this email already exists") {
           toast.error("User with this email already exists.");
         } else {
-          // Handle only specific errors and avoid the generic toast error
-          toast.error("We are experiencing delays. Please be patient.");
         }
+        setTimeout(() => {
+          handleSubmit(onSubmit)();
+        }, 1000);
       }, 1000);
     }
   };
