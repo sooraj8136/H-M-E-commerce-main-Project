@@ -22,21 +22,22 @@ function Signup() {
         url: "/user/signup",
         data,
       });
-      console.log(response)
+      console.log(response);
+      setLoading(false);
       toast.success("Sign-up success! Please log in.");
       navigate("/login");
     } catch (error) {
-      if (error.response?.data?.error === "User with this mobile number already exists") {
+      const serverError = error.response?.data?.error;
+
+      setLoading(false);
+
+      if (serverError === "User with this mobile number already exists") {
         toast.error("User with this mobile number already exists.");
-      } else if (error.response?.data?.error === "User with this email already exists") {
+      } else if (serverError === "User with this email already exists") {
         toast.error("User with this email already exists.");
-      }else{
+      } else {
         handleSubmit(onSubmit)();
       }
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 5000);
     }
   };
 
