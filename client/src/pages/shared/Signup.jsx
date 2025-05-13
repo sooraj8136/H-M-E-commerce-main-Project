@@ -30,7 +30,7 @@ function Signup() {
         toast.error("User with this mobile number already exists.");
       } else if (error.response?.data?.error === "User with this email already exists") {
         toast.error("User with this email already exists.");
-      } 
+      }
       handleSubmit(onSubmit)();
     } finally {
       setTimeout(() => {
@@ -41,10 +41,12 @@ function Signup() {
 
   return (
     <>
-      <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
-        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
-          REGISTER YOUR ACCOUNT
-        </p>
+      <div className="d-flex justify-content-center">
+        <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "130px" }}>
+          <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
+            REGISTER <span style={{ color: "red" }}>YOUR</span> ACCOUNT
+          </p>
+        </div>
       </div>
 
       {loading && (
@@ -65,6 +67,7 @@ function Signup() {
               id="name"
               type="text"
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your name"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("name", { required: "Name is required" })}
             />
@@ -77,6 +80,7 @@ function Signup() {
               id="email"
               type="email"
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your email"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("email", { required: "Email is required" })}
             />
@@ -89,6 +93,7 @@ function Signup() {
               id="mobile"
               type="tel"
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your mobile"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("mobile", {
                 required: "Mobile number is required",
@@ -107,6 +112,7 @@ function Signup() {
               id="password"
               type={showPassword ? "text" : "password"}
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your password"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("password", {
                 required: "Password is required",
