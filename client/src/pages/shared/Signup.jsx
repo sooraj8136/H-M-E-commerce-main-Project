@@ -11,46 +11,27 @@ function Signup() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const user = {
     signup_api: "/user/signup",
     login_route: "/login",
   };
 
-  // const onSubmit = async (data) => {
-  //   try {
-  //     const response = await axiosInstance({
-  //       method: "POST",
-  //       url: user.signup_api,
-  //       data: { ...data, _ts: Date.now() }
-  //     });
-  //     console.log(response)
-  //     toast.success("Sign-up success! Please log in.");
-  //     navigate(user.login_route);
-  //   } catch (error) {
-  //     if (error.response?.data?.error === "User with this mobile number already exists") {
-  //       toast.error("User with this mobile number already exists.");
-  //     } else if (error.response?.data?.error === "User with this email already exists") {
-  //       toast.error("User with this email already exists.");
-  //     } else {
-  //       // console.error("Signup error:", error); 
-  //       // toast.error("Something went wrong. Please try again later.");
-  //     }
-  //   }
-  // };
-
   const onSubmit = async (data) => {
+    setLoading(true); 
+
     try {
       const response = await axiosInstance({
         method: "POST",
-        url: user.signup_api, data
+        url: user.signup_api,
+        data,
       });
 
       console.log(response);
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-
       setTimeout(() => {
         if (error.response?.data?.error === "User with this mobile number already exists") {
           toast.error("User with this mobile number already exists.");
@@ -59,9 +40,11 @@ function Signup() {
         } else {
         }
         setTimeout(() => {
-          handleSubmit(onSubmit)();
-        }, 500);
+          handleSubmit(onSubmit)();  
+        }, 500);  
       }, 500);
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -72,6 +55,12 @@ function Signup() {
           REGISTER YOUR ACCOUNT
         </p>
       </div>
+
+      {loading && (
+        <div className="loading-message" style={{ textAlign: "center", marginBottom: "15px" }}>
+          <p className="text-info" style={{ fontSize: "16px" }}>Please wait, signing up...</p>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-sec">
