@@ -22,22 +22,29 @@ function Signup() {
     setLoading(true);
 
     try {
-      const response = await axiosInstance.post(user.signup_api, data);
-      console.log(response)
+      const response = await axiosInstance({
+        method: "POST",
+        url: user.signup_api,
+        data,
+      });
+
+      console.log(response);
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      const errMsg = error.response?.data?.error;
-
-      if (errMsg === "User with this mobile number already exists") {
-        toast.error(errMsg);
-      } else if (errMsg === "User with this email already exists") {
-        toast.error(errMsg);
-      }
-    } finally {
       setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+        if (error.response?.data?.error === "User with this mobile number already exists") {
+          toast.error("User with this mobile number already exists.");
+        } else if (error.response?.data?.error === "User with this email already exists") {
+          toast.error("User with this email already exists.");
+        } else {
+        }
+        setTimeout(() => {
+          handleSubmit(onSubmit)();
+        }, 500);
+      }, 500);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,11 +57,15 @@ function Signup() {
       </div>
 
       {loading && (
-        <div className="loading-message" style={{ textAlign: "center", marginBottom: "15px" }}>
-          <p className="text-info" style={{ fontSize: "16px" }}>Please wait, signing up...</p>
+        <div style={{ textAlign: "center", marginBottom: "15px" }}>
+          <div className="dot-spinner">
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+          </div>
+          <p className="text-info mt-2" style={{ fontSize: "16px" }}>Signing you up...</p>
         </div>
       )}
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-sec">
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
