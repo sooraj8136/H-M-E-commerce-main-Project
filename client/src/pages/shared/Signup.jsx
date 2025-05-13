@@ -23,9 +23,12 @@ function Signup() {
         data,
       });
       console.log(response);
-      setLoading(false);
-      toast.success("Sign-up success! Please log in.");
-      navigate("/login");
+
+      setTimeout(() => {
+        setLoading(false);
+        toast.success("Sign-up success! Please log in.");
+        navigate("/login");
+      }, 5000);
     } catch (error) {
       setLoading(false);
       const serverError = error.response?.data?.error;
