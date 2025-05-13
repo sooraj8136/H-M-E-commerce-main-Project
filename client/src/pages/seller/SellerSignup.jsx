@@ -44,10 +44,12 @@ function SellerSignup() {
 
   return (
     <>
-      <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
-        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
-          REGISTER SELLER ACCOUNT
-        </p>
+      <div className="d-flex justify-content-center">
+        <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
+          <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "60px" }}>
+            REGISTER YOUR <span style={{ color: "red" }}>SELLER</span> ACCOUNT
+          </p>
+        </div>
       </div>
 
       {loading && (
@@ -65,31 +67,31 @@ function SellerSignup() {
         <div className="input-sec">
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="name" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Name</label>
-            <input type="text" {...register("name", { required: "Name is required" })} className="pass-input mx-auto my-1 w-100" required />
+            <input type="text" {...register("name", { required: "Name is required" })} className="pass-input mx-auto my-1 w-100" placeholder="Enter your name" required />
             {errors.name && <p className="text-danger">{errors.name.message}</p>}
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="email" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Email</label>
-            <input type="email" {...register("email", { required: "Email is required" })} className="pass-input mx-auto my-1 w-100" required />
+            <input type="email" {...register("email", { required: "Email is required" })} className="pass-input mx-auto my-1 w-100" placeholder="Enter your email" required />
             {errors.email && <p className="text-danger">{errors.email.message}</p>}
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="mobile" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Mobile</label>
-            <input type="tel" {...register("mobile", { required: "Mobile is required" })} className="pass-input mx-auto my-1 w-100" required />
+            <input type="tel" {...register("mobile", { required: "Mobile is required" })} className="pass-input mx-auto my-1 w-100" placeholder="Enter your mobile" required />
             {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="storeName" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Store Name</label>
-            <input type="text" {...register("storeName", { required: "Store Name is required" })} className="pass-input mx-auto my-1 w-100" required />
+            <input type="text" {...register("storeName", { required: "Store Name is required" })} className="pass-input mx-auto my-1 w-100" placeholder="Enter your store name" required />
             {errors.storeName && <p className="text-danger">{errors.storeName.message}</p>}
           </div>
 
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
             <label htmlFor="address" className={`d-block ${darkMode ? "text-black" : "text-white"} nav-sec-1 fs-10 fw-normal`}>Store Address</label>
-            <input type="text" {...register("address", { required: "Address is required" })} className="pass-input mx-auto my-1 w-100" required />
+            <input type="text" {...register("address", { required: "Address is required" })} className="pass-input mx-auto my-1 w-100" placeholder="Enter your store address" required />
             {errors.address && <p className="text-danger">{errors.address.message}</p>}
           </div>
 
@@ -99,6 +101,7 @@ function SellerSignup() {
               type={showPassword ? "text" : "password"}
               {...register("password", { required: "Password is required" })}
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your password"
               required
             />
             <span

@@ -45,8 +45,8 @@ function AdminSignup() {
     return (
         <>
             <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
-                <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "15px", fontWeight: "700", marginTop: "50px" }}>
-                    ADMIN SIGN UP
+                <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "13px", fontWeight: "700", marginTop: "50px" }}>
+                   REGISTER YOUR <span style={{color:"red"}}>ADMIN</span> ACCOUNT
                 </p>
             </div>
 
@@ -71,6 +71,7 @@ function AdminSignup() {
                             type="text"
                             {...register("name", { required: "Name is required" })}
                             className="pass-input mx-auto my-1 w-100"
+                            placeholder="Enter your name"
                             required
                         />
                         {errors.name && <p className="text-danger">{errors.name.message}</p>}
@@ -84,6 +85,7 @@ function AdminSignup() {
                             type="email"
                             {...register("email", { required: "Email is required" })}
                             className="pass-input mx-auto my-1 w-100"
+                            placeholder="Enter your email"
                             required
                         />
                         {errors.email && <p className="text-danger">{errors.email.message}</p>}
@@ -97,6 +99,7 @@ function AdminSignup() {
                             type="tel"
                             {...register("mobile", { required: "Mobile is required" })}
                             className="pass-input mx-auto my-1 w-100"
+                            placeholder="Enter your mobile"
                             required
                         />
                         {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
@@ -110,6 +113,7 @@ function AdminSignup() {
                             type="text"
                             {...register("qualification")}
                             className="pass-input mx-auto my-1 w-100"
+                            placeholder="Enter your Qualification"
                         />
                     </div>
 
@@ -121,6 +125,7 @@ function AdminSignup() {
                             type={showPassword ? "text" : "password"}
                             {...register("password", { required: "Password is required" })}
                             className="pass-input mx-auto my-1 w-100"
+                            placeholder="Enter your password"
                             required
                         />
                         <span

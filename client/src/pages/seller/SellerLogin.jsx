@@ -38,7 +38,7 @@ const SellerLogin = () => {
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
             <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "60px" }}>
-              SELLER LOGIN
+              LOGIN YOUR <span style={{color:"red"}}>SELLER</span> ACCOUNT
             </p>
           </div>
         </div>
@@ -71,6 +71,7 @@ const SellerLogin = () => {
                 id="email"
                 name="email"
                 className="pass-input w-100 mt-1"
+                placeholder="Enter your email"
                 required
               />
             </div>
@@ -93,6 +94,7 @@ const SellerLogin = () => {
                 id="password"
                 name="password"
                 className="pass-input w-100 mt-1"
+                placeholder="Enter your password"
                 required
               />
               <span

@@ -42,12 +42,12 @@ function Signup() {
       }, 6000);
     }
   };
-  
+
   return (
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
-        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
-          REGISTER YOUR ACCOUNT
+        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "13px", fontWeight: "600" }}>
+          REGISTER  <span style={{color:"red"}}>YOUR</span> ACCOUNT
         </p>
       </div>
 
@@ -69,6 +69,7 @@ function Signup() {
               id="name"
               type="text"
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your name"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("name", { required: "Name is required" })}
             />
@@ -81,6 +82,7 @@ function Signup() {
               id="email"
               type="email"
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your email"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("email", { required: "Email is required" })}
             />
@@ -93,6 +95,7 @@ function Signup() {
               id="mobile"
               type="tel"
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your mobile"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("mobile", {
                 required: "Mobile number is required",
@@ -111,6 +114,7 @@ function Signup() {
               id="password"
               type={showPassword ? "text" : "password"}
               className="pass-input mx-auto my-1 w-100"
+              placeholder="Enter your password"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("password", {
                 required: "Password is required",
@@ -128,7 +132,7 @@ function Signup() {
                 top: "65%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
-                fontSize: "0.8rem",
+                fontSize: "0.7rem",
                 fontWeight: '600'
               }}
             >

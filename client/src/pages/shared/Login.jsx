@@ -51,7 +51,7 @@ const Login = () => {
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "130px" }}>
             <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
-             SIGN IN YO YOUR ACCOUNT
+             SIGN IN <span style={{color:"red"}}>YOUR</span> ACCOUNT
             </p>
           </div>
         </div>
@@ -67,6 +67,7 @@ const Login = () => {
                 id="email"
                 name="email"
                 className="pass-input w-100 mt-1"
+                placeholder="Enter your email"
                 style={{ border: "1px solid gray" }}
                 required
               />
@@ -81,6 +82,7 @@ const Login = () => {
                 id="password"
                 name="password"
                 className="pass-input w-100 mt-1"
+                placeholder="Enter your password"
                 style={{ border: "1px solid gray" }}
                 required
               />
@@ -92,7 +94,7 @@ const Login = () => {
                   top: "68%",
                   transform: "translateY(-50%)",
                   cursor: "pointer",
-                  fontSize: "0.8rem",
+                  fontSize: "0.7rem",
                   fontWeight: '600'
                 }}
               >
