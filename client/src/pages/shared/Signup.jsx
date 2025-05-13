@@ -15,6 +15,7 @@ function Signup() {
 
   const onSubmit = async (data) => {
     setLoading(true);
+    let success = false;
 
     try {
       const response = await axiosInstance({
@@ -22,11 +23,8 @@ function Signup() {
         url: "/user/signup",
         data,
       });
-      console.log(response)
-      setTimeout(() => {
-        toast.success("Sign-up success! Please log in.");
-      }, 1000);
-      navigate("/login");
+      console.log(response);
+      success = true; // mark success
     } catch (error) {
       if (error.response?.data?.error === "User with this mobile number already exists") {
         toast.error("User with this mobile number already exists.");
@@ -37,7 +35,12 @@ function Signup() {
     } finally {
       setTimeout(() => {
         setLoading(false);
-      }, 1000);
+
+        if (success) {
+          toast.success("Sign-up success! Please log in.");
+          navigate("/login");
+        }
+      }, 1000); // Wait 1s, then show success toast and navigate
     }
   };
 
