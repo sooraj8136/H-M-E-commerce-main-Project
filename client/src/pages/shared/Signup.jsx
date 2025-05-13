@@ -17,25 +17,55 @@ function Signup() {
     login_route: "/login",
   };
 
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axiosInstance({
+  //       method: "POST",
+  //       url: user.signup_api,
+  //       data: { ...data, _ts: Date.now() }
+  //     });
+  //     console.log(response)
+  //     toast.success("Sign-up success! Please log in.");
+  //     navigate(user.login_route);
+  //   } catch (error) {
+  //     if (error.response?.data?.error === "User with this mobile number already exists") {
+  //       toast.error("User with this mobile number already exists.");
+  //     } else if (error.response?.data?.error === "User with this email already exists") {
+  //       toast.error("User with this email already exists.");
+  //     } else {
+  //       // console.error("Signup error:", error); 
+  //       // toast.error("Something went wrong. Please try again later.");
+  //     }
+  //   }
+  // };
+
   const onSubmit = async (data) => {
     try {
+      // Start the signup request with timeout
       const response = await axiosInstance({
         method: "POST",
         url: user.signup_api,
-        data: { ...data, _ts: Date.now() }
+        data: { ...data, _ts: Date.now() },
+        timeout: 30000, // 30 seconds timeout
       });
-      console.log(response)
+
+      console.log(response);
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      if (error.response?.data?.error === "User with this mobile number already exists") {
-        toast.error("User with this mobile number already exists.");
-      } else if (error.response?.data?.error === "User with this email already exists") {
-        toast.error("User with this email already exists.");
-      } else {
-        // console.error("Signup error:", error); 
-        // toast.error("Something went wrong. Please try again later.");
-      }
+      // Artificial delay to simulate "thinking" time
+      setTimeout(() => {
+        if (error.code === 'ECONNABORTED') {
+          toast.error("Request timed out. Please try again later.");
+        } else if (error.response?.data?.error === "User with this mobile number already exists") {
+          toast.error("User with this mobile number already exists.");
+        } else if (error.response?.data?.error === "User with this email already exists") {
+          toast.error("User with this email already exists.");
+        } else {
+          // Handle only specific errors and avoid the generic toast error
+          toast.error("We are experiencing delays. Please be patient.");
+        }
+      }, 3000); // Adding a 3-second delay before showing any error
     }
   };
 
