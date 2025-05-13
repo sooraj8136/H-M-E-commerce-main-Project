@@ -14,44 +14,38 @@ function Signup() {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
+    setLoading(true);
+
     try {
       const response = await axiosInstance({
         method: "POST",
         url: "/user/signup",
         data,
       });
-
-      console.log(response);
-
-      // Add 5-second delay before showing the success toast
+      console.log(response)
       setTimeout(() => {
         toast.success("Sign-up success! Please log in.");
-        navigate(user.login_route);
-      }, 5000); // 5 seconds delay for success
-
+        navigate("/login");
+      }, 6000);
     } catch (error) {
-      // Handle errors and retry quickly (without delay before retry)
-      if (error.code === 'ECONNABORTED') {
-        toast.error("Request timed out. Please try again later.");
-      } else if (error.response?.data?.error === "User with this mobile number already exists") {
+      if (error.response?.data?.error === "User with this mobile number already exists") {
         toast.error("User with this mobile number already exists.");
       } else if (error.response?.data?.error === "User with this email already exists") {
         toast.error("User with this email already exists.");
       } else {
-        toast.error("Something went wrong. Please try again.");
       }
-
-      // Retry the form submission immediately after an error
-      handleSubmit(onSubmit)(); // Re-trigger the form submission
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 6000);
     }
   };
-
 
   return (
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
-        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "13px", fontWeight: "600" }}>
-          REGISTER  <span style={{ color: "red" }}>YOUR</span> ACCOUNT
+        <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "18px", fontWeight: "700" }}>
+          REGISTER YOUR ACCOUNT
         </p>
       </div>
 
@@ -73,7 +67,6 @@ function Signup() {
               id="name"
               type="text"
               className="pass-input mx-auto my-1 w-100"
-              placeholder="Enter your name"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("name", { required: "Name is required" })}
             />
@@ -86,7 +79,6 @@ function Signup() {
               id="email"
               type="email"
               className="pass-input mx-auto my-1 w-100"
-              placeholder="Enter your email"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("email", { required: "Email is required" })}
             />
@@ -99,7 +91,6 @@ function Signup() {
               id="mobile"
               type="tel"
               className="pass-input mx-auto my-1 w-100"
-              placeholder="Enter your mobile"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("mobile", {
                 required: "Mobile number is required",
@@ -118,7 +109,6 @@ function Signup() {
               id="password"
               type={showPassword ? "text" : "password"}
               className="pass-input mx-auto my-1 w-100"
-              placeholder="Enter your password"
               style={{ maxWidth: "400px", width: "90%" }}
               {...register("password", {
                 required: "Password is required",
@@ -136,7 +126,7 @@ function Signup() {
                 top: "65%",
                 transform: "translateY(-50%)",
                 cursor: "pointer",
-                fontSize: "0.7rem",
+                fontSize: "0.8rem",
                 fontWeight: '600'
               }}
             >
@@ -174,6 +164,7 @@ function Signup() {
           </button>
         </div>
       </form>
+
       <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
           <Link to="/login" className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
