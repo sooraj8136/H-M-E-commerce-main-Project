@@ -14,11 +14,7 @@ function WishlistPage() {
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
-        const response = await axiosInstance({
-          method: "GET",
-          url: "/wishlist/get-wishlist",
-        });
-        console.log(response);
+        const response = await axiosInstance.get("/wishlist/get-wishlist");
         setWishlist(response?.data?.data?.products || []);
       } catch (error) {
         console.error('Try again to fetch favourites:', error);
@@ -32,10 +28,7 @@ function WishlistPage() {
 
   const handleRemoveFromWishlist = async (productId) => {
     try {
-      await axiosInstance({
-        method:"DELETE",
-        url:`/wishlist/remove-from-wishlist/${productId}`
-      });
+      await axiosInstance.delete(`/wishlist/remove-from-wishlist/${productId}`);
       setWishlist((prevWishlist) =>
         prevWishlist.filter((product) => product._id !== productId)
       );
