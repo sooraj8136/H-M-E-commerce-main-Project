@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
@@ -8,7 +8,7 @@ import { CartCards } from '../../components/user/Cards';
 import { Container } from 'react-bootstrap';
 
 function Cart() {
-  const [productDetails, refreshData] = useFetch('/cart/get-cart'); 
+  const [productDetails, isLoading, error, refreshData] = useFetch('/cart/get-cart');
   const { darkMode } = useSelector((state) => state.mode);
   const [cartData, setCartData] = useState([]);
 
