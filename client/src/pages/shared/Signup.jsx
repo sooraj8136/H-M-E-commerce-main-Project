@@ -34,7 +34,6 @@ function Signup() {
         } else if (error.response?.data?.error === "User with this email already exists") {
           toast.error("User with this email already exists.");
         } else {
-          toast.error("Something went wrong. Please try again.");
         }
       }, 6000);
     } finally {
