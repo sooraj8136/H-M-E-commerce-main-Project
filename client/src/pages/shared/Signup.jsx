@@ -34,6 +34,7 @@ function Signup() {
         toast.error("User with this email already exists.");
       } else {
       }
+      handleSubmit(onSubmit)();
     } finally {
       setTimeout(() => {
         setLoading(false);
