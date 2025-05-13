@@ -23,9 +23,11 @@ function AdminSignup() {
                 data,
             });
             console.log(response);
-            setLoading(false);
-            toast.success("Admin Sign-up success! Please log in.");
-            navigate("/admin/login");
+            setTimeout(() => {
+                setLoading(false);
+                toast.success("Admin Sign-up success! Please log in.");
+                navigate("/admin/login");
+            }, 5000)
         } catch (error) {
             const serverError = error.response?.data?.error;
             setLoading(false);

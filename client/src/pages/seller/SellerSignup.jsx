@@ -23,9 +23,11 @@ function SellerSignup() {
         data,
       });
       console.log(response);
-      setLoading(false);
-      toast.success("Seller Sign-up success! Please log in.");
-      navigate("/seller/login");
+      setTimeout(() => {
+        setLoading(false);
+        toast.success("Seller Sign-up success! Please log in.");
+        navigate("/seller/login");
+      }, 5000)
     } catch (error) {
       const serverError = error.response?.data?.error;
       setLoading(false);

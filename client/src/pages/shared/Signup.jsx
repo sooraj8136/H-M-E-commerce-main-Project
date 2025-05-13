@@ -23,7 +23,6 @@ function Signup() {
         data,
       });
       console.log(response);
-
       setTimeout(() => {
         setLoading(false);
         toast.success("Sign-up success! Please log in.");
