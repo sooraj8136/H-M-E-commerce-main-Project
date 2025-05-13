@@ -14,33 +14,32 @@ function Signup() {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
-    setLoading(true);
-
     try {
       const response = await axiosInstance({
         method: "POST",
         url: "/user/signup",
         data,
       });
-      setTimeout(() => {
-        console.log(response)
-        toast.success("Sign-up success! Please log in.");
-      }, 2000);
-      navigate("/login");
+      console.log(response);
+      toast.success("Sign-up success! Please log in.");
+      navigate(user.login_route);
     } catch (error) {
-      if (error.response?.data?.error === "User with this mobile number already exists") {
-        toast.error("User with this mobile number already exists.");
-      } else if (error.response?.data?.error === "User with this email already exists") {
-        toast.error("User with this email already exists.");
-      } else {
-      }
-      handleSubmit(onSubmit)();
-    } finally {
       setTimeout(() => {
-        setLoading(false);
-      }, 2000);
+        if (error.response?.data?.error === "User with this mobile number already exists") {
+          toast.error("User with this mobile number already exists.");
+        } else if (error.response?.data?.error === "User with this email already exists") {
+          toast.error("User with this email already exists.");
+        } else {
+        }
+
+        setTimeout(() => {
+          handleSubmit(onSubmit)();  
+        }, 500); 
+      }, 500); 
     }
   };
+
+
 
   return (
     <>
