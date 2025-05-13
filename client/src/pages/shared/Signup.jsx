@@ -27,7 +27,7 @@ function Signup() {
       toast.success("Sign-up success! Please log in.");
       navigate("/login");
     } catch (error) {
-      if (error.response?.data?.error === "User with this mobile number already exists") {
+      if (error.response?.data?.error === "User with this mobile number already exists") {user
         toast.error("User with this mobile number already exists.");
       } else if (error.response?.data?.error === "User with this email already exists") {
         toast.error("User with this email already exists.");
@@ -155,7 +155,7 @@ function Signup() {
 
       <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
-          <Link to={user.login_route} className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
+          <Link to="/login" className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
             BACK TO LOGIN
           </Link>
         </p>
