@@ -23,14 +23,16 @@ function Signup() {
         data,
       });
       console.log(response)
-      toast.success("Sign-up success! Please log in.");
+      setTimeout(() => {
+        toast.success("Sign-up success! Please log in.");
+      }, 1000);
       navigate("/login");
     } catch (error) {
       if (error.response?.data?.error === "User with this mobile number already exists") {
         toast.error("User with this mobile number already exists.");
       } else if (error.response?.data?.error === "User with this email already exists") {
         toast.error("User with this email already exists.");
-      } 
+      }
       handleSubmit(onSubmit)();
     } finally {
       setTimeout(() => {
