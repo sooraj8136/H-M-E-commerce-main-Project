@@ -24,7 +24,7 @@ function AdminProfile() {
       } catch (error) {
         console.error("Failed to fetch Admin profile:", error);
       } finally {
-        setTimeout(() => setLoading(false), 1000); // Simulate loading delay
+        setTimeout(() => setLoading(false), 1000);
       }
     };
     fetchAdminProfile();

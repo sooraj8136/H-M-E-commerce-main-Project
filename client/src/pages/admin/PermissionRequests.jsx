@@ -15,7 +15,7 @@ const PendingPermissionRequests = () => {
             setTimeout(() => {
                 setRequests(response.data.requests || []);
                 setLoading(false);
-            }, 1000); // Simulate 1s loading delay
+            }, 1000);
         } catch (error) {
             console.error("Error fetching pending requests:", error);
             toast.error("Failed to fetch pending requests.");
@@ -52,9 +52,13 @@ const PendingPermissionRequests = () => {
             </div>
 
             {loading ? (
-                <div className="text-center mt-2">
-                    <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-                    <p className={darkMode ? "text-dark" : "text-light"} style={{ fontWeight: "600" }}>Loading requests...</p>
+                <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+                    <div className="dot-spinner">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                    </div>
+                    <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
                 </div>
             ) : (
                 <Row className="w-100 d-flex flex-column align-items-center">

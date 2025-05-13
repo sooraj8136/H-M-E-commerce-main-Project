@@ -49,10 +49,14 @@ const PaymentSuccess = () => {
             className={`text-center d-flex flex-column align-items-center justify-content-center ${darkMode ? 'text-black' : 'text-white'}`}
         >
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "180px" }}>
-                <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-                <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>PROCESSING PAYMENT...</span>
-            </div>
+                <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+                    <div className="dot-spinner">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                    </div>
+                    <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
+                </div>
             ) : (
                 <div className="text-center d-flex flex-column align-items-center justify-content-center" style={{ marginTop: "120px" }}>
                     <p style={{ fontWeight: '500', fontSize: 'large' }}>THANK YOU FOR PURCHASE</p>

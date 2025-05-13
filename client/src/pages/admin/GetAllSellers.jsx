@@ -56,9 +56,13 @@ const GetAllSellers = () => {
         </p>
       </div>
       {loading ? (
-        <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "140px" }}>
-          <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-          <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+        <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+          <div className="dot-spinner">
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+          </div>
+          <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
         </div>
       ) : sellers.length === 0 ? (
         <p className="text-center">SORRY, NO SELLER FOUND.</p>

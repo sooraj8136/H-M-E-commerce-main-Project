@@ -44,7 +44,7 @@ function Signup() {
       <div className="d-flex justify-content-center">
         <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "130px" }}>
           <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
-            REGISTER <span style={{ color: "red" }}>YOUR</span> ACCOUNT
+            REGISTER <span style={{ color: "gray" }}>YOUR</span> ACCOUNT
           </p>
         </div>
       </div>

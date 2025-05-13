@@ -19,7 +19,7 @@ function SellerProfile() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200); 
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -52,9 +52,13 @@ function SellerProfile() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ marginTop: '190px' }}>
-        <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-        <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+      <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+        <div className="dot-spinner">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+        <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
       </div>
     );
   }
@@ -71,7 +75,6 @@ function SellerProfile() {
       <Container data-theme={darkMode ? "dark" : "light"}>
         <div className="d-flex justify-content-center flex-column flex-lg-row align-items-center" style={{ gap: "20px" }}>
 
-          {/* Left Side: Profile Content */}
           <div className="profile-container p-4" style={{ flex: "1 1 auto" }}>
             <div className="m-4">
               <div className="profile-details text-start text-dark">
@@ -96,19 +99,19 @@ function SellerProfile() {
                   <Link
                     to="/seller/update-seller-profile"
                     className={`${darkMode ? "text-dark" : "text-light"} link-underline`}
-                    style={{ textDecoration: "none",fontSize:"1rem"  }}>
+                    style={{ textDecoration: "none", fontSize: "1rem" }}>
                     EDIT MY PROFILE
                   </Link>
                 </div>
               </div>
               <div className=" line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <Link to="/contact" className={`${darkMode ? "text-dark" : "text-light"} link-underline`} style={{ textDecoration: "none",fontSize:"1rem" }}>CONTACT US</Link>
+                  <Link to="/contact" className={`${darkMode ? "text-dark" : "text-light"} link-underline`} style={{ textDecoration: "none", fontSize: "1rem" }}>CONTACT US</Link>
                 </div>
               </div>
               <div className="edit-nav line-section d-flex align-items-center justify-content-between w-100 my-2">
                 <div className="d-flex align-items-center" style={{ flexGrow: 1 }}>
-                  <span className={`${darkMode ? "text-dark" : "text-light"} link-underline`} style={{ cursor: "pointer", fontWeight: "500",fontSize:"1rem"  }} onClick={handleLogout}>
+                  <span className={`${darkMode ? "text-dark" : "text-light"} link-underline`} style={{ cursor: "pointer", fontWeight: "500", fontSize: "1rem" }} onClick={handleLogout}>
                     SIGN OUT
                   </span>
                 </div>

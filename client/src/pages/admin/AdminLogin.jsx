@@ -40,7 +40,7 @@ const AdminLogin = () => {
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
             <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "50px" }}>
-              LOGIN YOUR <span style={{color:"red"}}>ADMIN</span> ACCOUNT
+              LOGIN YOUR <span style={{color:"gray"}}>ADMIN</span> ACCOUNT
             </p>
           </div>
         </div>

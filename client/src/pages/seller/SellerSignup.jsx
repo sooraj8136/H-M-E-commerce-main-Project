@@ -44,7 +44,7 @@ function SellerSignup() {
       <div className="d-flex justify-content-center">
         <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "125px" }}>
           <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "60px" }}>
-            REGISTER YOUR <span style={{ color: "red" }}>SELLER</span> ACCOUNT
+            REGISTER YOUR <span style={{ color: "gray" }}>SELLER</span> ACCOUNT
           </p>
         </div>
       </div>

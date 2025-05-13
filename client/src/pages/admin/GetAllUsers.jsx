@@ -17,7 +17,7 @@ const GetAllUsers = () => {
                 setTimeout(() => {
                     setUsers(response.data);
                     setLoading(false);
-                }, 1000); 
+                }, 1000);
             } catch (error) {
                 toast.error('Failed to fetch users');
                 console.error('Error fetching users:', error.response?.data?.message || error.message);
@@ -54,7 +54,7 @@ const GetAllUsers = () => {
 
     const handleModal = (action, userId) => {
         const user = users.find(u => u._id === userId);
-        
+
         if (!user) {
             toast.error("User not found!");
             return;
@@ -85,9 +85,13 @@ const GetAllUsers = () => {
             </div>
 
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" style={{ marginTop: "30px" }}>
-                    <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-                    <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+                <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+                    <div className="dot-spinner">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                    </div>
+                    <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
                 </div>
             ) : users.length === 0 ? (
                 <p className="text-center">NO USERS FOUND.</p>
@@ -100,8 +104,8 @@ const GetAllUsers = () => {
                             style={{ backgroundColor: darkMode ? "white" : "black", color: darkMode ? "#000" : "#fff" }}
                         >
                             <div className="user-details">
-                                <h3 style={{fontSize:"1rem"}}>{user.name}</h3>
-                                <p style={{fontSize:"0.8rem"}}>{user.email}</p>
+                                <h3 style={{ fontSize: "1rem" }}>{user.name}</h3>
+                                <p style={{ fontSize: "0.8rem" }}>{user.email}</p>
                                 <p>{user.mobile}</p>
                                 <p className="card-text">
                                     <strong>Status:</strong>
@@ -130,7 +134,7 @@ const GetAllUsers = () => {
                                 <button
                                     className="w-100"
                                     onClick={() => handleModal('delete', user._id)}
-                                    style={{ border: '1px solid white', backgroundColor:"red" }}
+                                    style={{ border: '1px solid white', backgroundColor: "red" }}
                                 >
                                     Delete
                                 </button>

@@ -16,9 +16,13 @@ function About() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center"style={{marginTop:"180px"}}>
-        <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-        <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`} >Loading...</span>
+      <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+        <div className="dot-spinner">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+        <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
       </div>
     );
   }
@@ -26,7 +30,7 @@ function About() {
   return (
     <div className={darkMode ? "text-black" : "text-white"}>
       <section>
-        <h1 className="text" style={{ fontSize: "80px",marginTop:"120px" }}>About Us</h1>
+        <h1 className="text" style={{ fontSize: "80px", marginTop: "120px" }}>About Us</h1>
         <div style={{ maxWidth: "100%", overflow: "hidden" }}>
           <img
             src="https://hmgroup.com/wp-content/uploads/2025/01/About-Us-HERO.jpg"

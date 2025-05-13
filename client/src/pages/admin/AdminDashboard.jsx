@@ -35,8 +35,13 @@ function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-        <Spinner animation="border" variant={darkMode ? "light" : "dark"} />
+      <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+        <div className="dot-spinner">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+        <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
       </div>
     );
   }
@@ -87,24 +92,24 @@ function AdminDashboard() {
         </Nav>
       </div>
 
-      <div className="flex-grow-1 p-4" style={{ backgroundColor: "transparent", borderRadius:"0px" }}>
+      <div className="flex-grow-1 p-4" style={{ backgroundColor: "transparent", borderRadius: "0px" }}>
         <div className="container-fluid">
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h2 className={darkMode ? "text-white" : "text-dark"}>Admin Dashboard</h2>
             <Button variant={darkMode ? "outline-light" : "outline-dark"}>Manage Users</Button>
           </div>
 
-          <Row className="gy-4" style={{marginTop:"50px"}}>
+          <Row className="gy-4" style={{ marginTop: "50px" }}>
             <Col xs={12} sm={6} md={3}>
-              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{borderRadius:"0px" }}>
+              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{ borderRadius: "0px" }}>
                 <Card.Body>
                   <h5>Total Sales</h5>
-                  <p className="h5">$96,500</p> 
+                  <p className="h5">$96,500</p>
                 </Card.Body>
               </Card>
             </Col>
             <Col xs={12} sm={6} md={3}>
-              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{borderRadius:"0px" }}>
+              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{ borderRadius: "0px" }}>
                 <Card.Body>
                   <h5>Total Orders</h5>
                   <p className="h5">{orders?.length || 0}</p>
@@ -112,7 +117,7 @@ function AdminDashboard() {
               </Card>
             </Col>
             <Col xs={12} sm={6} md={3}>
-              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{borderRadius:"0px" }}>
+              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{ borderRadius: "0px" }}>
                 <Card.Body>
                   <h5>Total Sellers</h5>
                   <p className="h5">{sellers?.length || 0}</p>
@@ -120,7 +125,7 @@ function AdminDashboard() {
               </Card>
             </Col>
             <Col xs={12} sm={6} md={3}>
-              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{borderRadius:"0px" }}>
+              <Card className={darkMode ? "bg-dark text-light" : "bg-light text-dark"} style={{ borderRadius: "0px" }}>
                 <Card.Body>
                   <h5>Total Users</h5>
                   <p className="h5">{users?.length || 0}</p>

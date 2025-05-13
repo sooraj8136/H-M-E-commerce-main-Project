@@ -43,7 +43,7 @@ function AdminSignup() {
         <>
             <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
                 <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "13px", fontWeight: "700", marginTop: "50px" }}>
-                    REGISTER YOUR <span style={{ color: "red" }}>ADMIN</span> ACCOUNT
+                    REGISTER YOUR <span style={{ color: "gray" }}>ADMIN</span> ACCOUNT
                 </p>
             </div>
 

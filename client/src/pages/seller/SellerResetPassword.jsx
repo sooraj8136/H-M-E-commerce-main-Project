@@ -33,19 +33,16 @@ const SellerResetPassword = () => {
 
   return (
     <div>
-      {/* Page Heading */}
       <div className="container d-flex justify-content-center align-items-center heading-head mb-4">
         <p className={darkMode ? "text-black" : "text-white "}>
           HM.com / <span className="text-danger" style={{ fontWeight: "800" }}>Seller Reset Password</span>
         </p>
       </div>
   
-      {/* Form Title */}
       <div className={darkMode ? "text-black" : "text-white"}>
         <h2 className="text-center">Reset Password</h2>
       </div>
   
-      {/* Form */}
       <form onSubmit={handleSubmit}>
         <div className="input-sec">
           <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
@@ -60,14 +57,12 @@ const SellerResetPassword = () => {
           </div>
         </div>
   
-        {/* Submit Button */}
         <div className="d-flex justify-content-center">
           <button className="bg-black signin-btn" style={{ maxWidth: "400px", width: "90%" }} type="submit">
             Reset Password
           </button>
         </div>
   
-        {/* Success/Error Messages */}
         <div className="text-center mt-3">
           {message && <p style={{ color: message.includes("wrong") ? "red" : "green" }}>{message}</p>}
           {error && <p style={{ color: "red" }}>{error}</p>}

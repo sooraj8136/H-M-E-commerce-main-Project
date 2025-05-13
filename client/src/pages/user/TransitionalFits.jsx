@@ -31,15 +31,19 @@ function TransitionalFits() {
     return (
         <>
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" >
-                    <Spinner animation="border" variant={darkMode ? "dark" : "light"} />
-                    <span className={`ms-3 ${darkMode ? "text-black" : "text-white"}`}>Loading...</span>
+                <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginTop: "180px" }}>
+                    <div className="dot-spinner">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                    </div>
+                    <span className={`mt-3 ${darkMode ? "text-black" : "text-white"}`} style={{ letterSpacing: "2px", marginLeft: "12px" }}>Loading...</span>
                 </div>
             ) : (
                 <>
                     <Container className="d-flex flex-wrap justify-content-center">
                         <div className="text-center position-relative mx-1">
-                        <div
+                            <div
                                 className="container d-flex justify-content-start align-items-start heading-head"
                                 style={{ marginTop: "140px" }}>
                                 <p className={darkMode ? "text-black" : "text-white"} style={{ fontWeight: "400", fontSize: "0.9rem", color: "#a0a0a0" }}>
@@ -59,7 +63,7 @@ function TransitionalFits() {
                                     alt="Activewear"
                                     style={{ maxWidth: '100%', height: 'auto' }}
                                 />
-                                <Link to="/productDetails/67b408b99ee20c9e01b9bda8" className="position-absolute" style={{ top: '65%', left: '72%', transform: 'translate(-50%, -50%)', textDecoration: 'none'}}>
+                                <Link to="/productDetails/67b408b99ee20c9e01b9bda8" className="position-absolute" style={{ top: '65%', left: '72%', transform: 'translate(-50%, -50%)', textDecoration: 'none' }}>
                                     <button
                                         style={{
                                             padding: '10px 20px',
