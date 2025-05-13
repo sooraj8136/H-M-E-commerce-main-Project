@@ -43,8 +43,7 @@ function Signup() {
     try {
       const response = await axiosInstance({
         method: "POST",
-        url: user.signup_api,
-        data: { ...data, _ts: Date.now() },
+        url: user.signup_api, data
       });
 
       console.log(response);
@@ -61,8 +60,8 @@ function Signup() {
         }
         setTimeout(() => {
           handleSubmit(onSubmit)();
-        }, 1000);
-      }, 1000);
+        }, 500);
+      }, 500);
     }
   };
 
