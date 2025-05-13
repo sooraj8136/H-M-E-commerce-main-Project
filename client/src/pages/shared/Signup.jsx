@@ -56,7 +56,7 @@ function Signup() {
             <div className="dot"></div>
             <div className="dot"></div>
           </div>
-          <p className="text-dark mt-2" style={{ fontSize: "16px" }}>Signing you up...</p>
+          <p className="text-dark mt-2" style={{ fontSize: "16px" }}>Signing you up Please wait...</p>
         </div>
       )}
       <form onSubmit={handleSubmit(onSubmit)}>
