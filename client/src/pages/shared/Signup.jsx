@@ -13,24 +13,20 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const user = {
-    signup_api: "/user/signup",
-    login_route: "/login",
-  };
-
   const onSubmit = async (data) => {
     setLoading(true);
 
     try {
       const response = await axiosInstance({
         method: "POST",
-        url: user.signup_api,
+        url: "/user/signup",
         data,
       });
-
-      console.log(response);
-      toast.success("Sign-up success! Please log in.");
-      navigate(user.login_route);
+      setTimeout(() => {
+        console.log(response)
+        toast.success("Sign-up success! Please log in.");
+        navigate("/login");
+      }, 6000);
     } catch (error) {
       setTimeout(() => {
         if (error.response?.data?.error === "User with this mobile number already exists") {
@@ -38,16 +34,15 @@ function Signup() {
         } else if (error.response?.data?.error === "User with this email already exists") {
           toast.error("User with this email already exists.");
         } else {
+          toast.error("Something went wrong. Please try again.");
         }
-        setTimeout(() => {
-          handleSubmit(onSubmit)();
-        }, 500);
-      }, 500);
+      }, 6000);
     } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 6000);
     }
   };
-
   return (
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
@@ -63,7 +58,7 @@ function Signup() {
             <div className="dot"></div>
             <div className="dot"></div>
           </div>
-          <p className="text-dark mt-2" style={{ fontSize: "16px" }}>SIGNING YOU UP...</p>
+          <p className="text-dark mt-2" style={{ fontSize: "16px" }}>Signing you up...</p>
         </div>
       )}
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -162,13 +157,19 @@ function Signup() {
         </div>
 
         <div className="mb-3" style={{ maxWidth: "400px", width: "90%", margin: "auto" }}>
-          <button type="submit" className="login-text signup-btn w-100" style={{ maxWidth: "400px" }}>SIGN UP</button>
+          <button
+            type="submit"
+            className="login-text signup-btn w-100"
+            style={{ maxWidth: "400px", opacity: loading ? 0.6 : 1, cursor: loading ? "not-allowed" : "pointer" }}
+            disabled={loading}>
+            SIGN UP
+          </button>
         </div>
       </form>
 
       <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
-          <Link to={user.login_route} className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
+          <Link to="/login" className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
             BACK TO LOGIN
           </Link>
         </p>
