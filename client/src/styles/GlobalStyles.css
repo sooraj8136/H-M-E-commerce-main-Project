@@ -1735,7 +1735,6 @@ button {
   margin: 0 auto;
   border: 1px solid black;
   font-size: 0.9rem;
-  transition: all 0.3s ease;
 }
 
 .signup-btn:hover {

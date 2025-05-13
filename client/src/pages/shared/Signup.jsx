@@ -22,11 +22,9 @@ function Signup() {
         url: "/user/signup",
         data,
       });
-      setTimeout(() => {
-        console.log(response)
-        toast.success("Sign-up success! Please log in.");
-        navigate("/login");
-      }, 6000);
+      console.log(response)
+      toast.success("Sign-up success! Please log in.");
+      navigate("/login");
     } catch (error) {
       setTimeout(() => {
         if (error.response?.data?.error === "User with this mobile number already exists") {
@@ -47,7 +45,7 @@ function Signup() {
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
         <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "13px", fontWeight: "600" }}>
-          REGISTER  <span style={{color:"red"}}>YOUR</span> ACCOUNT
+          REGISTER  <span style={{ color: "red" }}>YOUR</span> ACCOUNT
         </p>
       </div>
 
