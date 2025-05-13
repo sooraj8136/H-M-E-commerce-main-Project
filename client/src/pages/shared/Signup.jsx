@@ -32,17 +32,13 @@ function Signup() {
       toast.success("Sign-up success! Please log in.");
       navigate(user.login_route);
     } catch (error) {
-      setTimeout(() => {
-        if (error.response?.data?.error === "User with this mobile number already exists") {
-          toast.error("User with this mobile number already exists.");
-        } else if (error.response?.data?.error === "User with this email already exists") {
-          toast.error("User with this email already exists.");
-        } else {
-        }
-        setTimeout(() => {
-          handleSubmit(onSubmit)();  
-        }, 500);  
-      }, 500);
+      if (error.response?.data?.error === "User with this mobile number already exists") {
+        toast.error("User with this mobile number already exists.");
+      } else if (error.response?.data?.error === "User with this email already exists") {
+        toast.error("User with this email already exists.");
+      } else {
+        toast.error("Something went wrong. Please try again later.");
+      }
     } finally {
       setLoading(false); 
     }
