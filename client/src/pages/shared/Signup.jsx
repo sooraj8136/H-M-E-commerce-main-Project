@@ -13,29 +13,31 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const user = {
+    signup_api: "/user/signup",
+    login_route: "/login",
+  };
+
   const onSubmit = async (data) => {
-    setLoading(true); 
+    setLoading(true);
 
     try {
-      const response = await axiosInstance({
-        method: "POST",
-        url: "/user/signup",
-        data,
-      });
-
-      console.log(response);
+      const response = await axiosInstance.post(user.signup_api, data);
+      console.log(response)
       toast.success("Sign-up success! Please log in.");
-      navigate("/login");
+      navigate(user.login_route);
     } catch (error) {
-      if (error.response?.data?.error === "User with this mobile number already exists") {user
-        toast.error("User with this mobile number already exists.");
-      } else if (error.response?.data?.error === "User with this email already exists") {
-        toast.error("User with this email already exists.");
-      } else {
-        toast.error("Something went wrong. Please try again later.");
+      const errMsg = error.response?.data?.error;
+
+      if (errMsg === "User with this mobile number already exists") {
+        toast.error(errMsg);
+      } else if (errMsg === "User with this email already exists") {
+        toast.error(errMsg);
       }
     } finally {
-      setLoading(false); 
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
   };
 
@@ -155,7 +157,7 @@ function Signup() {
 
       <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
-          <Link to="/login" className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
+          <Link to={user.login_route} className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
             BACK TO LOGIN
           </Link>
         </p>
