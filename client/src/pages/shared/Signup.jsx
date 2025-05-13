@@ -13,24 +13,19 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const user = {
-    signup_api: "/user/signup",
-    login_route: "/login",
-  };
-
   const onSubmit = async (data) => {
     setLoading(true); 
 
     try {
       const response = await axiosInstance({
         method: "POST",
-        url: user.signup_api,
+        url: "/user/signup",
         data,
       });
 
       console.log(response);
       toast.success("Sign-up success! Please log in.");
-      navigate(user.login_route);
+      navigate("/login");
     } catch (error) {
       if (error.response?.data?.error === "User with this mobile number already exists") {
         toast.error("User with this mobile number already exists.");
