@@ -45,7 +45,7 @@ const SellerLogin = () => {
         <br />
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left" }}>
-            <p style={{ fontSize: "13px", fontWeight: "700" }}>
+            <p style={{ fontSize: "11px", fontWeight: "600" }}>
               ACCESS YOUR SELLER ACCOUNT AND START MANAGING YOUR STORE TODAY.
             </p>
           </div>
@@ -63,7 +63,7 @@ const SellerLogin = () => {
                   : "text-white nav-sec-1 fs-10 fw-normal"
                   }`}
               >
-                Email 
+                Email
               </label>
               <input
                 type="email"
@@ -103,7 +103,7 @@ const SellerLogin = () => {
                   top: "68%",
                   transform: "translateY(-50%)",
                   cursor: "pointer",
-                  fontSize: "0.9rem",
+                  fontSize: "0.7rem",
                   fontWeight: "600",
                   color: darkMode ? "black" : "white",
                 }}
@@ -130,12 +130,17 @@ const SellerLogin = () => {
           </div>
           <br />
         </form>
-        <div className="d-flex justify-content-center mt-2">
+        <div className="d-flex justify-content-center">
           <Link
             to={seller.signup_route}
-            className={darkMode ? "text-black" : "text-black"}
+            className="signup-btn d-flex justify-content-center align-items-center text-black text-decoration-none"
+            style={{
+              maxWidth: "400px",
+              width: "90%",
+              backgroundColor: "white",
+            }}
           >
-            REGISTER SELLER
+            Create account
           </Link>
         </div>
       </Container>

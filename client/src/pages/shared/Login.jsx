@@ -51,10 +51,7 @@ const Login = () => {
         <div className="d-flex justify-content-center">
           <div className={`w-100 ${darkMode ? "text-black" : "text-white"}`} style={{ maxWidth: "400px", textAlign: "left", marginTop: "130px" }}>
             <p style={{ fontSize: "13px", fontWeight: "700", marginTop: "20px" }}>
-              USER LOGIN
-            </p>
-            <p style={{ fontSize: "12px" }}>
-              This site is for educational purposes only. No brand affiliation. No actual data is collected.
+             SIGN IN YO YOUR ACCOUNT
             </p>
           </div>
         </div>

@@ -42,6 +42,7 @@ function Signup() {
       }, 6000);
     }
   };
+  
   return (
     <>
       <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>

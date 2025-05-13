@@ -14,8 +14,6 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   const admin = {
-    login_api: "/admin/admin-login",
-    dashboard_route: "/admin/admin-dashboard",
     signup_route: "/admin/signup",
   };
 
@@ -25,7 +23,7 @@ const AdminLogin = () => {
 
       const response = await axiosInstance({
         method: "POST",
-        url: admin.login_api, data
+        url: "/admin/admin-login", data
       });
       console.log(response, "====response");
       toast.success("Admin log-in success");
@@ -73,7 +71,7 @@ const AdminLogin = () => {
                 Password
               </label>
               <input
-                type={showPassword ? "text" : "password"}  // Fix: Toggle input type based on showPassword state
+                type={showPassword ? "text" : "password"} 
                 {...register("password")}
                 id="password"
                 name="password"
@@ -88,7 +86,7 @@ const AdminLogin = () => {
                   top: "68%",
                   transform: "translateY(-50%)",
                   cursor: "pointer",
-                  fontSize: "0.9rem",
+                  fontSize: "0.7rem",
                   fontWeight: "600",
                   color: darkMode ? "black" : "white",
                 }}
@@ -111,13 +109,18 @@ const AdminLogin = () => {
             </button>
           </div>
           <br />
-          <div className="d-flex justify-content-center mt-2">
+          <div className="d-flex justify-content-center">
             <Link
-              to={admin.signup_route}
-              className={darkMode ? "text-dark" : "text-white"}
-              style={{ fontWeight: "500" }}
+              to="/admin/signup"
+              className="signup-btn d-flex justify-content-center align-items-center text-black text-decoration-none"
+              style={{
+                maxWidth: "400px",
+                width: "90%",
+                backgroundColor: "white",
+                border:"1px solid black"
+              }}
             >
-              REGISTER ADMIN
+              Create account
             </Link>
           </div>
         </form>
