@@ -169,7 +169,6 @@ function Signup() {
           </button>
         </div>
       </form>
-
       <div className="d-flex justify-content-center mt-2">
         <p className="text-center">
           <Link to="/login" className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: ".8rem" }}>
