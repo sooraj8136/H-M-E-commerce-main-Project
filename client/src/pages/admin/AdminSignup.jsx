@@ -34,7 +34,7 @@ function AdminSignup() {
             } else if (serverError === "Admin with this email already exists") {
                 toast.error("Admin with this email already exists.");
             } else {
-                handleSubmit(onSubmit)();
+                toast.error("Something went wrong. Please try again.");
             }
         }
     };

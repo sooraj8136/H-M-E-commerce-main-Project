@@ -34,10 +34,10 @@ function SellerSignup() {
       } else if (serverError === "Seller with this email already exists") {
         toast.error("Seller with this email already exists.");
       } else {
-        handleSubmit(onSubmit)();
+        toast.error("Something went wrong. Please try again.");
       }
     }
-  }
+  };
 
   return (
     <>

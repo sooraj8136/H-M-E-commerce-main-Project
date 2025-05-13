@@ -27,14 +27,15 @@ function Signup() {
       toast.success("Sign-up success! Please log in.");
       navigate("/login");
     } catch (error) {
-      const serverError = error.response?.data?.error;
       setLoading(false);
+      const serverError = error.response?.data?.error;
+
       if (serverError === "User with this mobile number already exists") {
         toast.error("User with this mobile number already exists.");
       } else if (serverError === "User with this email already exists") {
         toast.error("User with this email already exists.");
       } else {
-        handleSubmit(onSubmit)();
+        toast.error("Something went wrong. Please try again later.");
       }
     }
   };
