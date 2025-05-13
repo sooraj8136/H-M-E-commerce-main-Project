@@ -20,25 +20,31 @@ function Signup() {
         url: "/user/signup",
         data,
       });
-      console.log(response);
-      toast.success("Sign-up success! Please log in.");
-      navigate(user.login_route);
-    } catch (error) {
-      setTimeout(() => {
-        if (error.response?.data?.error === "User with this mobile number already exists") {
-          toast.error("User with this mobile number already exists.");
-        } else if (error.response?.data?.error === "User with this email already exists") {
-          toast.error("User with this email already exists.");
-        } else {
-        }
 
-        setTimeout(() => {
-          handleSubmit(onSubmit)();  
-        }, 500); 
-      }, 500); 
+      console.log(response);
+
+      // Add 5-second delay before showing the success toast
+      setTimeout(() => {
+        toast.success("Sign-up success! Please log in.");
+        navigate(user.login_route);
+      }, 5000); // 5 seconds delay for success
+
+    } catch (error) {
+      // Handle errors and retry quickly (without delay before retry)
+      if (error.code === 'ECONNABORTED') {
+        toast.error("Request timed out. Please try again later.");
+      } else if (error.response?.data?.error === "User with this mobile number already exists") {
+        toast.error("User with this mobile number already exists.");
+      } else if (error.response?.data?.error === "User with this email already exists") {
+        toast.error("User with this email already exists.");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+
+      // Retry the form submission immediately after an error
+      handleSubmit(onSubmit)(); // Re-trigger the form submission
     }
   };
-
 
 
   return (
