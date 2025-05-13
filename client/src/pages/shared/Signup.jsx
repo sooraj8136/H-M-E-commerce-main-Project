@@ -30,13 +30,12 @@ function Signup() {
         toast.error("User with this mobile number already exists.");
       } else if (error.response?.data?.error === "User with this email already exists") {
         toast.error("User with this email already exists.");
-      } else {
-      }
+      } 
       handleSubmit(onSubmit)();
     } finally {
       setTimeout(() => {
         setLoading(false);
-      }, 6000);
+      }, 2000);
     }
   };
 
