@@ -28,9 +28,7 @@ function Signup() {
       navigate("/login");
     } catch (error) {
       const serverError = error.response?.data?.error;
-
       setLoading(false);
-
       if (serverError === "User with this mobile number already exists") {
         toast.error("User with this mobile number already exists.");
       } else if (serverError === "User with this email already exists") {

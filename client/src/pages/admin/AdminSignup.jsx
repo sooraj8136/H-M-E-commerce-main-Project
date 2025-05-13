@@ -22,21 +22,20 @@ function AdminSignup() {
                 url: "/admin/register-admin",
                 data,
             });
-            setTimeout(() => {
-                console.log(response);
-                toast.success("Admin Sign-up success! Please log in.");
-                navigate("/admin/login");
-            }, 5000);
+            console.log(response);
+            setLoading(false);
+            toast.success("Admin Sign-up success! Please log in.");
+            navigate("/admin/login");
         } catch (error) {
-            if (error.response?.data?.error === "Admin with this mobile number already exists") {
+            const serverError = error.response?.data?.error;
+            setLoading(false);
+            if (serverError === "Admin with this mobile number already exists") {
                 toast.error("Admin with this mobile number already exists.");
-            } else if (error.response?.data?.error === "Admin with this email already exists") {
+            } else if (serverError === "Admin with this email already exists") {
                 toast.error("Admin with this email already exists.");
+            } else {
+                handleSubmit(onSubmit)();
             }
-        } finally {
-            setTimeout(() => {
-                setLoading(false);
-            }, 6000);
         }
     };
 
