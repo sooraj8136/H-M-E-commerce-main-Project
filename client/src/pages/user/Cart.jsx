@@ -197,7 +197,6 @@ function Cart() {
     }
   };
 
-
   return (
     <Container data-theme={darkMode ? "dark" : "light"}>
       <div
