@@ -65,7 +65,7 @@ function Signup() {
           // Handle only specific errors and avoid the generic toast error
           toast.error("We are experiencing delays. Please be patient.");
         }
-      }, 3000); // Adding a 3-second delay before showing any error
+      }, 1000);
     }
   };
 
