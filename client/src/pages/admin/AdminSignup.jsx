@@ -26,15 +26,13 @@ function AdminSignup() {
                 console.log(response);
                 toast.success("Admin Sign-up success! Please log in.");
                 navigate("/admin/login");
-            }, 6000);
+            }, 5000);
         } catch (error) {
-            setTimeout(() => {
-                if (error.response?.data?.error === "Admin with this mobile number already exists") {
-                    toast.error("Admin with this mobile number already exists.");
-                } else if (error.response?.data?.error === "Admin with this email already exists") {
-                    toast.error("Admin with this email already exists.");
-                }
-            }, 6000);
+            if (error.response?.data?.error === "Admin with this mobile number already exists") {
+                toast.error("Admin with this mobile number already exists.");
+            } else if (error.response?.data?.error === "Admin with this email already exists") {
+                toast.error("Admin with this email already exists.");
+            }
         } finally {
             setTimeout(() => {
                 setLoading(false);
@@ -46,7 +44,7 @@ function AdminSignup() {
         <>
             <div style={{ maxWidth: "400px", width: "90%", margin: "125px auto 0", textAlign: "left" }}>
                 <p className={`login-text ${darkMode ? "text-black" : "text-white"}`} style={{ fontSize: "13px", fontWeight: "700", marginTop: "50px" }}>
-                   REGISTER YOUR <span style={{color:"red"}}>ADMIN</span> ACCOUNT
+                    REGISTER YOUR <span style={{ color: "red" }}>ADMIN</span> ACCOUNT
                 </p>
             </div>
 
