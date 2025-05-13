@@ -142,31 +142,16 @@ import { Container } from 'react-bootstrap';
 function Cart() {
   const [productDetails, refreshData] = useFetch('/cart/get-cart');
   const { darkMode } = useSelector((state) => state.mode);
-  const [cartData, setCartData] = useState([]);
-
-  useEffect(() => {
-    if (productDetails?.products) {
-      setCartData(productDetails.products);
-    }
-  }, [productDetails]);
 
   const handleUpdateProduct = async (productId, action) => {
     try {
       if (action === 'delete') {
-        await axiosInstance({
-          method: 'DELETE',
-          url: `/cart/remove-from-cart/${productId}`,
-        });
+        await axiosInstance.delete(`/cart/remove-from-cart/${productId}`);
       } else {
-        await axiosInstance({
-          method: 'PUT',
-          url: '/cart/update-count',
-          data: { productId, action },
-        });
+        await axiosInstance.put('/cart/update-count', { productId, action });
       }
       toast.success('Cart updated successfully');
       refreshData();
-
     } catch (error) {
       console.error(error);
       toast.error('Failed to update cart');
@@ -177,17 +162,15 @@ function Cart() {
     try {
       const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-      const session = await axiosInstance({
-        method: "POST",
-        url: "/payment/create-checkout-session",
-        data: {
-          products: cartData.map(product => ({
-            productId: product._id,
-            quantity: product.count
-          }))
-        }
+      const session = await axiosInstance.post('/payment/create-checkout-session', {
+        products: productDetails?.products?.map(product => ({
+          productId: product._id,
+          quantity: product.count
+        }))
       });
+
       const result = await stripe.redirectToCheckout({ sessionId: session.data.sessionId });
+
       if (result?.error) {
         toast.error(result.error.message);
       }
@@ -197,34 +180,28 @@ function Cart() {
     }
   };
 
+  const cartItems = productDetails?.products || [];
+
   return (
     <Container data-theme={darkMode ? "dark" : "light"}>
-      <div
-        className="container d-flex justify-content-start align-items-start heading-head"
-        style={{ marginTop: "120px" }}>
+      <div className="container d-flex justify-content-start align-items-start heading-head" style={{ marginTop: "120px" }}>
         <p className={darkMode ? "text-dark" : "text-white"} style={{ fontSize: "40px", fontWeight: "600" }}>
           SHOPPING BAG
         </p>
       </div>
+
       <div className="cart-container">
         <div className="cart-items">
-          {cartData.map((value) => (
-            <CartCards
-              item={value}
-              key={value._id}
-              handleUpdate={handleUpdateProduct}
-            />
+          {cartItems.map((item) => (
+            <CartCards item={item} key={item._id} handleUpdate={handleUpdateProduct} />
           ))}
         </div>
-        {cartData.length ? (
+
+        {cartItems.length ? (
           <div className="price-summary">
             <div className='price-summery'>
-              <div className='order-value'>
-                <p>Order value</p>
-              </div>
-              <div className='price-summary-price'>
-                <p>Rs. {productDetails?.totalPrice}.00</p>
-              </div>
+              <div className='order-value'><p>Order value</p></div>
+              <div className='price-summary-price'><p>Rs. {productDetails?.totalPrice}.00</p></div>
             </div>
             <div className='price-summery'>
               <div className='delivery'><p>Delivery</p></div>
