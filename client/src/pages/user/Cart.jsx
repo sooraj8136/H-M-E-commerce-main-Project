@@ -41,7 +41,7 @@ function Cart() {
       const url = action === 'delete' ? '/cart/remove-from-cart' : '/cart/update-count';
       const data = { productId, action };
 
-      await axiosInstance.put(url, data);
+      await axiosInstance.delete(url, data);
       toast.success('Cart updated successfully');
 
       refreshData();
