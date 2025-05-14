@@ -36,12 +36,12 @@ function Cart() {
         throw new Error('Invalid action');
       }
 
-      setCartData(updatedCart); 
+      setCartData(updatedCart); // Update UI immediately
 
       const url = action === 'delete' ? '/cart/remove-from-cart' : '/cart/update-count';
       const data = { productId, action };
 
-      await axiosInstance.delete(url, data);
+      await axiosInstance.put(url, data);
       toast.success('Cart updated successfully');
 
       refreshData();
