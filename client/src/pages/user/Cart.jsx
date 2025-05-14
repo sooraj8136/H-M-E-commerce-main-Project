@@ -152,17 +152,8 @@ function Cart() {
     }
   }, [productDetails]);
 
-  // If loading, return loading message
   if (isLoading) {
-    return
-    <div style={{ textAlign: "center", marginBottom: "15px" }}>
-      <div className="dot-spinner">
-        <div className="dot"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
-      </div>
-      <p className="text-dark mt-2" style={{ fontSize: "16px" }}>Loading...</p>
-    </div>;
+    return <div>Loading...</div>;
   }
 
   const handleUpdateProduct = async (productId, action) => {
