@@ -36,7 +36,7 @@ function Cart() {
         throw new Error('Invalid action');
       }
 
-      setCartData(updatedCart); // Update UI immediately
+      setCartData(updatedCart); 
 
       const url = action === 'delete' ? '/cart/remove-from-cart' : '/cart/update-count';
       const data = { productId, action };
