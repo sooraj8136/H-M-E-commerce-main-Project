@@ -30,7 +30,6 @@ const PaymentSuccess = () => {
                     toast.error('Failed to update stock.');
                 }
             } catch (error) {
-                toast.error('Something went wrong');
                 console.error(error);
             } finally {
                 setLoading(false);
