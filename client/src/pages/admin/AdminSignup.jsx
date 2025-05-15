@@ -23,11 +23,14 @@ function AdminSignup() {
                 data,
             });
             console.log(response);
-            toast.success("Admin Sign-up success! Please log in.");
-            navigate("/admin/login");
+            setTimeout(() => {
+                setLoading(false);
+                toast.success("Admin Sign-up success! Please log in.");
+                navigate("/admin/login");
+            }, 5000)
         } catch (error) {
             const serverError = error.response?.data?.error;
-
+            setLoading(false);
             if (serverError === "Admin with this mobile number already exists") {
                 toast.error("Admin with this mobile number already exists.");
             } else if (serverError === "Admin with this email already exists") {
@@ -35,8 +38,6 @@ function AdminSignup() {
             } else {
                 toast.error("Something went wrong. Please try again.");
             }
-        } finally {
-            setLoading(false); 
         }
     };
 

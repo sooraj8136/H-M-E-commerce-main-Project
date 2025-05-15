@@ -23,11 +23,14 @@ function SellerSignup() {
         data,
       });
       console.log(response);
-      toast.success("Seller Sign-up success! Please log in.");
-      navigate("/seller/login");
+      setTimeout(() => {
+        setLoading(false);
+        toast.success("Seller Sign-up success! Please log in.");
+        navigate("/seller/login");
+      }, 5000)
     } catch (error) {
       const serverError = error.response?.data?.error;
-
+      setLoading(false);
       if (serverError === "Seller with this mobile number already exists") {
         toast.error("Seller with this mobile number already exists.");
       } else if (serverError === "Seller with this email already exists") {
@@ -35,8 +38,6 @@ function SellerSignup() {
       } else {
         toast.error("Something went wrong. Please try again.");
       }
-    } finally {
-      setLoading(false); 
     }
   };
 

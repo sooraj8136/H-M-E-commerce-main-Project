@@ -23,9 +23,13 @@ function Signup() {
         data,
       });
       console.log(response);
-      toast.success("Sign-up success! Please log in.");
-      navigate("/login");
+      setTimeout(() => {
+        setLoading(false);
+        toast.success("Sign-up success! Please log in.");
+        navigate("/login");
+      }, 5000);
     } catch (error) {
+      setLoading(false);
       const serverError = error.response?.data?.error;
 
       if (serverError === "User with this mobile number already exists") {
@@ -35,8 +39,6 @@ function Signup() {
       } else {
         toast.error("Something went wrong. Please try again later.");
       }
-    } finally {
-      setLoading(false);
     }
   };
 
