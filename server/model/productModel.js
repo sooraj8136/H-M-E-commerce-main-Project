@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema(
         description: {
             type: String,
             required: true,
-            minLength: 10,
+            minLength: 10,-
             maxLength: 300,
         },
         materials: {
