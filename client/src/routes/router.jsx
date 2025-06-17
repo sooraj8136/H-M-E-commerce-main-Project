@@ -20,7 +20,6 @@ import AdminLayout from '../layout/AdminLayout';
 import AdminLogin from '../pages/admin/AdminLogin';
 import AdminProfile from '../pages/admin/AdminProfile';
 import SellerSignup from '../pages/seller/SellerSignup';
-import AdminSignup from '../pages/admin/AdminSignup';
 import WishlistPage from '../pages/user/WishlistPage';
 import ProtectedRoute from './ProtectedRoute';
 import Cart from '../pages/user/Cart';
@@ -229,10 +228,6 @@ export const router = createBrowserRouter([
     element: <AdminLayout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: 'signup',
-        element: <AdminSignup />,
-      },
       {
         path: 'login',
         element: <AdminLogin />,

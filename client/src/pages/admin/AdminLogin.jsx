@@ -111,20 +111,6 @@ const AdminLogin = () => {
             </button>
           </div>
           <br />
-          <div className="d-flex justify-content-center">
-            <Link
-              to="/admin/signup"
-              className="signup-btn d-flex justify-content-center align-items-center text-black text-decoration-none"
-              style={{
-                maxWidth: "400px",
-                width: "90%",
-                backgroundColor: "white",
-                border:"1px solid black"
-              }}
-            >
-              Create account
-            </Link>
-          </div>
         </form>
       </Container>
     </>
