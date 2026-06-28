@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
+import logo from "../../../public/S&J.png";
 
 function UserHeader() {
     const { darkMode } = useSelector((state) => state.mode);
@@ -37,24 +38,33 @@ function UserHeader() {
                         {/* logo for mobile left  */}
                         <div className="d-flex d-lg-none align-items-center">
                             <a href="/" style={{ textDecoration: "none" }}>
-                                <h6
-                                    className="logo-font rounded logo-font"
+                                <img
+                                    src="/logo.png"
+                                    alt="S&J Logo"
                                     style={{
-                                        fontSize: '1.5rem',
-                                        color: darkMode ? 'black' : 'white',
-                                        fontWeight: "700",
-                                        letterSpacing: "2px",
-                                        marginBottom: 0,
+                                        height: "40px",
+                                        width: "auto",
+                                        objectFit: "contain",
                                     }}
-                                >
-                                    S&J
-                                </h6>
+                                />
                             </a>
                         </div>
 
-                        {/* nav links desktop */}
-                        <div className="d-flex align-items-center gap-3 flex-grow-1">
-                            <ul className="nav gap-3 mb-0 d-none d-lg-flex">
+                        {/* logo and nav links desktop */}
+                        <div className="d-none d-lg-flex align-items-center gap-3 flex-grow-1">
+                            <a href="/" style={{ textDecoration: "none" }}>
+                                <img
+                                    src="/S&J.png"
+                                    alt="S&J Logo"
+                                    style={{
+                                        height: "40px",
+                                        width: "auto",
+                                        objectFit: "contain",
+                                    }}
+                                />
+                            </a>
+
+                            <ul className="nav gap-3 mb-0">
                                 {navLinks.map((link, i) => (
                                     <li className="nav-item" key={i}>
                                         <Link
@@ -71,24 +81,6 @@ function UserHeader() {
                                     </li>
                                 ))}
                             </ul>
-                        </div>
-
-                        {/* logo desktop */}
-                        <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
-                            <a href="/" style={{ textDecoration: "none" }}>
-                                <h6
-                                    className="logo-font rounded logo-font"
-                                    style={{
-                                        fontSize: '1.8rem',
-                                        color: darkMode ? 'black' : 'white',
-                                        fontWeight: "700",
-                                        letterSpacing: "2px",
-                                        marginBottom: 0,
-                                    }}
-                                >
-                                    S&J
-                                </h6>
-                            </a>
                         </div>
 
                         {/* right side icons */}

@@ -5,8 +5,8 @@ import kids from "../../../public/Denimmen.png";
 function DenimMen() {
     return (
         <>
-            <Container 
-                className="d-flex justify-content-center align-items-center" 
+            <Container
+                className="d-flex justify-content-center align-items-center"
                 style={{ maxWidth: "100%" }}
             >
                 <section>
@@ -20,15 +20,15 @@ function DenimMen() {
                         }}
                     >
                         <img
-                                                                src={kids}
-                                                                className="img-fluid"
-                                                                alt="Sample"
-                                                                style={{
-                                                                    width: "100%",
-                                                                    height: "100%",
-                                                                    objectFit: "cover",
-                                                                }}
-                                                            />
+                            src={kids}
+                            className="img-fluid"
+                            alt="Sample"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                            }}
+                        />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column justify-content-end"
                             style={{
@@ -45,6 +45,7 @@ function DenimMen() {
                                     fontWeight: "bold",
                                     fontSize: "calc(1.5rem + 1vw)",
                                     marginBottom: "10px",
+                                    color: "black",
                                 }}
                             >
                                 Denim Roundup

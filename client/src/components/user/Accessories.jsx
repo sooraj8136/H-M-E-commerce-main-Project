@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Nav } from 'react-bootstrap'
-import kids from "../../../public/Kids.png";
+import kids from "../../../public/Accessories.png";
 
 function Accessories() {
   return (
@@ -17,15 +17,15 @@ function Accessories() {
             }}
           >
             <img
-                                        src={kids}
-                                        className="img-fluid"
-                                        alt="Sample"
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                            objectFit: "cover",
-                                        }}
-                                    />
+              src={kids}
+              className="img-fluid"
+              alt="Sample"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
             <div
               className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
               style={{
@@ -42,6 +42,7 @@ function Accessories() {
                   fontWeight: "bold",
                   fontSize: "calc(1.5rem + 1vw)",
                   marginBottom: "10px",
+                  color: "black",
                 }}
               >
                 New Season Accessories

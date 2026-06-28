@@ -7,6 +7,7 @@ import { DarkMode } from '../shared/DarkMode';
 import { useSelector } from 'react-redux';
 import { AiOutlineUser } from 'react-icons/ai';
 import { Link, useLocation } from 'react-router-dom';
+import logo from "../../../public/S&J.png";
 
 function Header() {
     const { darkMode } = useSelector((state) => state.mode);
@@ -21,112 +22,53 @@ function Header() {
         { path: '/contact', label: 'CONTACT' },
     ];
 
-    return (
-        <header>
-            <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`}>
-                <Container fluid className="px-4 p-3">
-                    <div className="d-flex justify-content-between align-items-center w-100 flex-wrap flex-lg-nowrap">
+return (
+    <header>
+        <Navbar expand="lg" className={`fixed-top ${darkMode ? "bg-black-200" : "bg-black"}`}>
+            <Container fluid className="px-4 p-3">
 
-                        {/* mobile logo left */}
-                        <div className="d-flex d-lg-none align-items-center">
-                            <a href="/" style={{ textDecoration: "none" }}>
-                                <h6
-                                    className="logo-font rounded "
-                                    style={{
-                                        fontSize: '1.5rem',
-                                        color: darkMode ? 'black' : 'white',
-                                        fontWeight: "700",
-                                        letterSpacing: "2px",
-                                        marginBottom: 0,
-                                    }}
-                                >
-                                    S&J
-                                </h6>
-                            </a>
-                        </div>
+                <div className="d-flex justify-content-between align-items-center w-100">
 
-                        {/* desktop navlinks */}
-                        <div className="d-flex align-items-center gap-3 flex-grow-1">
-                            <ul className="nav gap-3 mb-0 d-none d-lg-flex">
-                                {navLinks.map((link, i) => (
-                                    <li className="nav-item" key={i}>
-                                        <Link
-                                            to={link.path}
-                                            className={`nav-link nav-link-hover ${darkMode ? "text-black" : "text-white"}`}
-                                            style={{
-                                                fontSize: '0.78rem',
-                                                padding: '0 4px',
-                                                textDecoration: 'none',
-                                                fontWeight: '400'
-                                            }}
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* desktop logo  */}
-                        <div className="d-none d-lg-block position-absolute top-50 start-50 translate-middle">
-                            <a href="/" style={{ textDecoration: "none" }}>
-                                <h6
-                                    className="logo-font rounded logo-font"
-                                    style={{
-                                        fontSize: '1.8rem',
-                                        color: darkMode ? 'black' : 'white',
-                                        fontWeight: "700",
-                                        letterSpacing: "2px",
-                                        marginBottom: 0,
-                                    }}
-                                >
-                                    S&J
-                                </h6>
-                            </a>
-                        </div>
-
-                        {/* right side icons */}
-                        <div className="d-flex align-items-center gap-2 gap-md-2 mt-3 mt-lg-0">
-                            {showSearch && (
-                                <input
-                                    className={`search-input ${darkMode ? "text-black" : "text-white"}`}
-                                    placeholder="Search"
-                                    aria-label="Search"
-                                    type="search"
-                                    style={{
-                                        width: '140px',
-                                        fontSize: '0.75rem',
-                                        height: '28px',
-                                        backgroundColor: darkMode ? "#fff" : "#343a40",
-                                        border: 'none'
-                                    }}
-                                />
-                            )}
-
-                            <Nav.Link
-                                href="/login"
-                                className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
-                                style={{ fontSize: '0.75rem', marginLeft: "15px", marginRight: "15px" }}
-                            >
-                                <AiOutlineUser style={{ fontSize: "1.1rem", color: darkMode ? "#000" : "#fff" }} />
-                            </Nav.Link>
-
-                            <DarkMode />
-                        </div>
+                    {/* Mobile Logo */}
+                    <div className="d-lg-none">
+                        <Link to="/" style={{ textDecoration: "none" }}>
+                            <img
+                                src="/S&J.png"
+                                alt="S&J Logo"
+                                style={{
+                                    height: "40px",
+                                    width: "auto",
+                                    objectFit: "contain",
+                                }}
+                            />
+                        </Link>
                     </div>
 
-                    {/* mobile nav links */}
-                    <div className="d-lg-none mt-3">
-                        <ul className="nav d-flex justify-content-start gap-3 ps-3">
+                    {/* Desktop Logo and Navigation */}
+                    <div className="d-none d-lg-flex align-items-center gap-3 flex-grow-1">
+                        <Link to="/" style={{ textDecoration: "none" }}>
+                            <img
+                                src="/S&J.png"
+                                alt="S&J Logo"
+                                style={{
+                                    height: "60px",
+                                    width: "auto",
+                                    objectFit: "contain",
+                                }}
+                            />
+                        </Link>
+
+                        <ul className="nav gap-3 mb-0">
                             {navLinks.map((link, i) => (
                                 <li className="nav-item" key={i}>
                                     <Link
                                         to={link.path}
-                                        className={`nav-link p-0 nav-link-hover ${darkMode ? "text-black" : "text-white"}`}
+                                        className={`nav-link nav-link-hover ${darkMode ? "text-black" : "text-white"}`}
                                         style={{
-                                            fontSize: '0.7rem',
-                                            textDecoration: 'none',
-                                            fontWeight: 'normal',
+                                            fontSize: "0.78rem",
+                                            padding: "0 4px",
+                                            textDecoration: "none",
+                                            fontWeight: "400",
                                         }}
                                     >
                                         {link.label}
@@ -135,10 +77,72 @@ function Header() {
                             ))}
                         </ul>
                     </div>
-                </Container>
-            </Navbar>
-        </header>
-    );
+
+                    {/* Right Icons */}
+                    <div className="d-flex align-items-center gap-2 mt-0 mt-lg-0">
+
+                        {showSearch && (
+                            <input
+                                className={`search-input ${darkMode ? "text-black" : "text-white"}`}
+                                placeholder="Search"
+                                type="search"
+                                style={{
+                                    width: "140px",
+                                    fontSize: "0.75rem",
+                                    height: "28px",
+                                    backgroundColor: darkMode ? "#fff" : "#343a40",
+                                    border: "none",
+                                }}
+                            />
+                        )}
+
+                        <Nav.Link
+                            as={Link}
+                            to="/login"
+                            className={`d-flex align-items-center ${darkMode ? "text-black" : "text-white"}`}
+                            style={{
+                                fontSize: "0.75rem",
+                                marginLeft: "15px",
+                                marginRight: "15px",
+                            }}
+                        >
+                            <AiOutlineUser
+                                style={{
+                                    fontSize: "1.1rem",
+                                    color: darkMode ? "#000" : "#fff",
+                                }}
+                            />
+                        </Nav.Link>
+
+                        <DarkMode />
+                    </div>
+
+                </div>
+
+                {/* Mobile Navigation */}
+                <div className="d-lg-none mt-3">
+                    <ul className="nav d-flex justify-content-start gap-3 ps-3">
+                        {navLinks.map((link, i) => (
+                            <li className="nav-item" key={i}>
+                                <Link
+                                    to={link.path}
+                                    className={`nav-link p-0 nav-link-hover ${darkMode ? "text-black" : "text-white"}`}
+                                    style={{
+                                        fontSize: "0.7rem",
+                                        textDecoration: "none",
+                                    }}
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+            </Container>
+        </Navbar>
+    </header>
+);
 }
 
 export default Header;

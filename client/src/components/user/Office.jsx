@@ -42,6 +42,7 @@ function Office() {
                                     fontWeight: "bold",
                                     fontSize: "calc(1.5rem + 1vw)",
                                     marginBottom: "10px",
+                                    color: "black",
                                 }}
                             >
                                 New neutrals

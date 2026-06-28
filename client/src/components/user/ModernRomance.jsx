@@ -13,37 +13,38 @@ function ModernRomance() {
                     <div
                         className="position-relative"
                         style={{
-                            maxWidth: "930px", 
+                            maxWidth: "930px",
                             width: "100%",
-                            height: "100%", 
+                            height: "100%",
                             marginTop: '27px'
                         }}
                     >
                         <img
-                                                    src={kids}
-                                                    className="img-fluid"
-                                                    alt="Sample"
-                                                    style={{
-                                                        width: "100%",
-                                                        height: "100%",
-                                                        objectFit: "cover",
-                                                    }}
-                                                />
+                            src={kids}
+                            className="img-fluid"
+                            alt="Sample"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                            }}
+                        />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
                             style={{
-                                top: "0", 
+                                top: "0",
                                 left: "0",
                                 width: "100%",
-                                height: "100%", 
-                                textAlign: "left", 
-                                paddingLeft: "20px", 
+                                height: "100%",
+                                textAlign: "left",
+                                paddingLeft: "20px",
                             }}>
                             <h2
                                 style={{
                                     fontWeight: "bold",
-                                    fontSize: "calc(1.5rem + 1vw)", 
+                                    fontSize: "calc(1.5rem + 1vw)",
                                     marginBottom: "10px",
+                                    color: "black",
                                 }}
                             >
                                 Modern romance
