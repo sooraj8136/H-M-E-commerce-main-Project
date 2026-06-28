@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Nav } from 'react-bootstrap';
+import kids from "../../../public/Kids.png";
 
 function KidsDenim() {
     return (
@@ -28,14 +29,13 @@ function KidsDenim() {
                         ></div>
 
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/kids/4041b/4041B-3x2-h-m-adorables-spring-2025.jpg?imwidth=1536"
+                            src={kids}
                             className="img-fluid"
-                            alt="A new take on denim"
+                            alt="Sample"
                             style={{
                                 width: "100%",
                                 height: "100%",
                                 objectFit: "cover",
-                                zIndex: 0,
                             }}
                         />
 

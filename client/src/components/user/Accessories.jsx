@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Nav } from 'react-bootstrap'
+import kids from "../../../public/Kids.png";
 
 function Accessories() {
   return (
@@ -16,15 +17,15 @@ function Accessories() {
             }}
           >
             <img
-              src="https://www2.hm.com/content/dam/global_campaigns/season_00/ladies/ws60i/WS60i-3x2-1.jpg"
-              className="img-fluid"
-              alt="Sample"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
+                                        src={kids}
+                                        className="img-fluid"
+                                        alt="Sample"
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "cover",
+                                        }}
+                                    />
             <div
               className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
               style={{

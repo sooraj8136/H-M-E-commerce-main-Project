@@ -37,8 +37,8 @@ function Home() {
                     <Carousel />
                     <Container>
                         <HomeWidget />
-                        <PreppyUniform />
                         <NewUtilitarian />
+                        <PreppyUniform />
                         <KidsDenim />
                         <Office />
                     </Container>

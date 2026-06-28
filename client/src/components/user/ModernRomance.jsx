@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { BiSolidLeftArrow } from 'react-icons/bi';
+import kids from "../../../public/2619012_Ssmi263p5_16x9.avif";
 
 function ModernRomance() {
     return (
@@ -19,15 +20,15 @@ function ModernRomance() {
                         }}
                     >
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/women/ds11f/DS11F-3x2.jpg?imwidth=1536"
-                            className="img-fluid"
-                            alt="Sample"
-                            style={{
-                                width: "100%",
-                                height: "100%", 
-                                objectFit: "cover",
-                            }}
-                        />
+                                                    src={kids}
+                                                    className="img-fluid"
+                                                    alt="Sample"
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        objectFit: "cover",
+                                                    }}
+                                                />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
                             style={{

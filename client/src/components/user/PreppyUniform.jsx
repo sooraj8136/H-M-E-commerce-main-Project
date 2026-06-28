@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { BiSolidLeftArrow } from 'react-icons/bi';
 import { Container, Nav } from "react-bootstrap";
+import utilitarianImg from "../../../public/PreppyUniform.png";
 
 function PreppyUniform() {
     return (
@@ -18,9 +19,9 @@ function PreppyUniform() {
                         }}
                     >
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/women/ds21aa/DS21AA-3x2-1.jpg?imwidth=1536"
+                            src={utilitarianImg}
                             className="img-fluid"
-                            alt="Preppy Updates"
+                            alt="Sample"
                             style={{
                                 width: "100%",
                                 height: "100%",

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Nav } from 'react-bootstrap';
+import kids from "../../../public/Denimmen.png";
 
 function DenimMen() {
     return (
@@ -19,15 +20,15 @@ function DenimMen() {
                         }}
                     >
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms21e1/common-ratios/MS21E1-denim-roundup-3x2-teaser.jpg?imwidth=1536"
-                            className="img-fluid"
-                            alt="Denim Roundup"
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                            }}
-                        />
+                                                                src={kids}
+                                                                className="img-fluid"
+                                                                alt="Sample"
+                                                                style={{
+                                                                    width: "100%",
+                                                                    height: "100%",
+                                                                    objectFit: "cover",
+                                                                }}
+                                                            />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column justify-content-end"
                             style={{

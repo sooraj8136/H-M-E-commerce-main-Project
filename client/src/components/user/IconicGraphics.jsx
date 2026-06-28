@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Nav } from 'react-bootstrap'
 import { BiSolidLeftArrow } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import kids from "../../../public/Transitional.png";
 
 function IconicGraphics() {
     return (
@@ -18,15 +19,15 @@ function IconicGraphics() {
                             marginTop: '27px',
                         }}>
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/men/ms11e7/teaser/MS11E7-season-start-1x1-teaser.jpg?imwidth=1536"
-                            className="img-fluid"
-                            alt="Sample"
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                            }}
-                        />
+                                                    src={kids}
+                                                    className="img-fluid"
+                                                    alt="Sample"
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        objectFit: "cover",
+                                                    }}
+                                                />
                         <div
                             className="preppy-sec position-absolute text-white d-flex flex-column align-items-start justify-content-center"
                             style={{

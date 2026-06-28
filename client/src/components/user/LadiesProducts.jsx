@@ -16,7 +16,7 @@ function LadiesProducts() {
                         maxWidth: "930px", 
                         width: "100%",
                         height: "150px", 
-                        backgroundImage: "url('https://lp2.hm.com/hmgoepprod?source=url[https://www2.hm.com/content/dam/kids_s06/september_2022/4096-smiley-repeat/4096-Banner-3x1-smileyworld-x-hm.jpg]&scale=size[660]&sink=format[jpeg],quality[80]')",
+                        backgroundImage: "url('https://image.hm.com/content/dam/global_campaigns/season_01/kids/9111f/9111F-3x2-limited-edition-2025.jpg?imwidth=1536')",
                         backgroundSize: "cover",
                         backgroundPosition: "center", 
                         backgroundRepeat: "no-repeat", 
