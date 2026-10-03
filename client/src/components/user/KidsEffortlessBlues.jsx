@@ -29,7 +29,7 @@ function KidsEffortlessBlues() {
                         ></div>
 
                         <img
-                            src="https://image.hm.com/content/dam/global_campaigns/season_01/kids/9111f/9111F-3x2-limited-edition-2025.jpg?imwidth=1536"
+                            src="https://image.hm.com/content/dam/ind-local-assets/IN_Kids_Party_16x9.jpg?imwidth=1660"
                             className="img-fluid"
                             alt="Effortless Blues"
                             style={{
