@@ -16,7 +16,7 @@ function LadiesProducts() {
                         maxWidth: "930px", 
                         width: "100%",
                         height: "150px", 
-                        backgroundImage: "url('https://image.hm.com/content/dam/global_campaigns/season_01/kids/9111f/9111F-3x2-limited-edition-2025.jpg?imwidth=1536')",
+                        backgroundImage: "url('https://image.hm.com/assets/hm/c1/98/c198d84328de43445de5c1234f810d7733b85478.jpg?imwidth=1260')",
                         backgroundSize: "cover",
                         backgroundPosition: "center", 
                         backgroundRepeat: "no-repeat", 
@@ -61,7 +61,7 @@ function LadiesProducts() {
                                     href="/Ladies"
                                     style={{
                                         color: "black",
-                                        backgroundColor: "transperant",
+                                        backgroundColor: "white",
                                         padding: "10px 20px",
                                         fontWeight: "bold",
                                         textDecoration: "none",

@@ -16,7 +16,7 @@ function HomeWidget() {
             }}
           >
             <img
-              src="https://image.hm.com/content/dam/global_campaigns/season_01/women/ws21g/WS21G-new-3x2_2.jpg?imwidth=1536"
+              src="https://image.hm.com/content/dam/hm-images/global-campaigns/season-04/start-page-assets/women/w40/teasers/WA20264P04-women-startpage-wk40-2x3.jpg?imwidth=1024"
               className="img-fluid"
               alt="Sample"
               style={{
